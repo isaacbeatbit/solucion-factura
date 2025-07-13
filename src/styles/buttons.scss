@@ -1,0 +1,279 @@
+// ========================================
+// SISTEMA DE BOTONES
+// ========================================
+
+// Botón base
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border: none;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-family: inherit;
+
+  // Estados focus para accesibilidad
+  &:focus {
+    outline: 2px solid var(--secondary);
+    outline-offset: 2px;
+  }
+}
+
+// Botón primario
+.btn-primary {
+  background: linear-gradient(135deg, var(--highlight-blue), var(--secondary));
+  color: var(--gray-50);
+  box-shadow: var(--shadow-md);
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-lg), var(--glow);
+    background: linear-gradient(
+      135deg,
+      var(--secondary),
+      var(--highlight-blue)
+    );
+  }
+}
+
+// Botón secundario sólido
+.btn-secondary {
+  background: var(--primary);
+  color: var(--gray-100);
+  border: 1px solid var(--primary-light);
+  box-shadow: var(--shadow-sm);
+
+  &:hover {
+    background: var(--primary-light);
+    border-color: var(--secondary);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+  }
+}
+
+// Botón outline
+.btn-outline {
+  background: transparent;
+  color: var(--secondary);
+  border: 1px solid var(--secondary);
+
+  &:hover {
+    background: rgba(26, 109, 204, 0.1);
+    border-color: var(--highlight-blue);
+    box-shadow: var(--glow);
+    color: var(--highlight-blue);
+    transform: translateY(-1px);
+  }
+}
+
+// Botón ghost (solo texto)
+.btn-ghost {
+  background: transparent;
+  color: var(--secondary);
+  border: none;
+
+  &:hover {
+    background: rgba(26, 109, 204, 0.1);
+    color: var(--highlight-blue);
+  }
+}
+
+// Botón de éxito
+.btn-success {
+  background: var(--accent);
+  color: var(--gray-50);
+  box-shadow: var(--shadow-sm);
+
+  &:hover {
+    background: #2d8653;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+  }
+}
+
+// Botón de peligro/alerta
+.btn-danger {
+  background: var(--orange);
+  color: var(--gray-50);
+  box-shadow: var(--shadow-sm);
+
+  &:hover {
+    background: #e55a2b;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+  }
+}
+
+// Botón del menú móvil
+.mobile-menu-btn {
+  display: none;
+  background: transparent;
+  border: 1px solid rgba(26, 109, 204, 0.2);
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--gray-100);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: rgba(26, 109, 204, 0.1);
+    border-color: var(--secondary);
+    box-shadow: var(--glow);
+  }
+
+  &:focus {
+    outline: 2px solid var(--secondary);
+    outline-offset: 2px;
+  }
+
+  // Responsive - mostrar solo en móvil
+  @media (max-width: 768px) {
+    display: block !important;
+  }
+
+  @media (min-width: 769px) {
+    display: none !important;
+  }
+}
+
+// ========================================
+// VARIANTES DE TAMAÑO
+// ========================================
+
+.btn-sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+  gap: 0.25rem;
+}
+
+.btn-lg {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  gap: 0.75rem;
+}
+
+.btn-xl {
+  padding: 1.25rem 2.5rem;
+  font-size: 1.125rem;
+  gap: 0.75rem;
+}
+
+// ========================================
+// VARIANTES ESPECIALES
+// ========================================
+
+// Botón de ancho completo
+.btn-block {
+  width: 100%;
+  justify-content: center;
+}
+
+// Botón con fondo oscuro (para secciones claras)
+.btn-dark {
+  background: var(--gray-900);
+  color: var(--gray-100);
+  border: 1px solid var(--dark-blue);
+
+  &:hover {
+    background: var(--dark-blue);
+    border-color: var(--secondary);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+  }
+}
+
+// Botón con fondo claro (para secciones oscuras)
+.btn-light {
+  background: var(--gray-50);
+  color: var(--gray-900);
+  border: 1px solid var(--gray-100);
+
+  &:hover {
+    background: var(--gray-100);
+    color: var(--primary);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+  }
+}
+
+// ========================================
+// ESTADOS
+// ========================================
+
+// Botón deshabilitado
+.btn:disabled,
+.btn.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+// Botón activo/seleccionado
+.btn.active {
+  background: var(--highlight-blue);
+  color: var(--gray-50);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+// ========================================
+// GRUPOS DE BOTONES
+// ========================================
+
+.btn-group {
+  display: inline-flex;
+
+  .btn {
+    border-radius: 0;
+    margin-left: -1px;
+
+    &:first-child {
+      border-top-left-radius: 0.5rem;
+      border-bottom-left-radius: 0.5rem;
+      margin-left: 0;
+    }
+
+    &:last-child {
+      border-top-right-radius: 0.5rem;
+      border-bottom-right-radius: 0.5rem;
+    }
+
+    &:hover {
+      z-index: 2;
+    }
+  }
+}
+
+// ========================================
+// ANIMACIONES Y ACCESIBILIDAD
+// ========================================
+
+// Animaciones para botones con movimiento reducido
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    transition-duration: 0.01ms !important;
+  }
+
+  .btn:hover {
+    transform: none !important;
+  }
+}
+
+// Mejor contraste en modo alto contraste
+@media (prefers-contrast: high) {
+  .btn {
+    border-width: 2px;
+  }
+
+  .btn-ghost,
+  .btn-outline {
+    border-width: 2px;
+  }
+}

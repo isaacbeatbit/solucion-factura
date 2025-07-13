@@ -1,0 +1,96 @@
+// Breakpoints estándar (mobile-first)
+$breakpoints: (
+  "xs": 320px,
+  "sm": 640px,
+  "md": 768px,
+  "lg": 1024px,
+  "xl": 1280px,
+  "2xl": 1440px,
+);
+
+@mixin xs-up {
+  @media (width >= 320px) {
+    @content;
+  }
+}
+
+@mixin sm-up {
+  @media (width >= 640px) {
+    @content;
+  }
+}
+
+@mixin md-up {
+  @media (width >= 768px) {
+    @content;
+  }
+}
+
+@mixin lg-up {
+  @media (width >= 1024px) {
+    @content;
+  }
+}
+
+@mixin xl-up {
+  @media (width >= 1280px) {
+    @content;
+  }
+}
+
+@mixin xxl-up {
+  @media (width >= 1440px) {
+    @content;
+  }
+}
+
+// ========================================
+// MIXINS PARA RANGOS ESPECÍFICOS
+// ========================================
+
+@mixin mobile-only {
+  @media (width <= 767px) {
+    @content;
+  }
+}
+
+@mixin tablet-only {
+  @media (width >= 768px) and (width <= 1023px) {
+    @content;
+  }
+}
+
+@mixin desktop-only {
+  @media (width >= 1024px) {
+    @content;
+  }
+}
+
+// ========================================
+// MIXINS PARA CONTENEDORES RESPONSIVE
+// ========================================
+
+@mixin container-responsive {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+
+  @include sm-up {
+    padding: 0 1.5rem;
+  }
+
+  @include md-up {
+    padding: 0 2rem;
+    max-width: 768px;
+  }
+
+  @include lg-up {
+    max-width: 1024px;
+    padding: 0 2.5rem;
+  }
+
+  @include xl-up {
+    max-width: 1200px;
+    padding: 0 3rem;
+  }
+}

@@ -1,0 +1,275 @@
+@use "../../styles/links.scss" as *;
+@use "../../styles/buttons.scss" as *;
+@use "../../styles/mediaQueries.scss" as *;
+
+// ========================================
+// CONTENEDOR RESPONSIVE
+// ========================================
+
+.container {
+  @include container-responsive;
+}
+
+.navbar-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  // Fondo blur moderno y semitransparente
+  background: rgba(12, 18, 33, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  // Sombra sutil
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 64px;
+
+  @media (min-width: 768px) {
+    min-height: 72px;
+  }
+}
+
+.logo img {
+  height: 40px;
+  width: auto;
+
+  @media (min-width: 768px) {
+    height: 48px;
+  }
+}
+
+.nav-list {
+  display: none;
+  gap: 2rem;
+  list-style: none;
+
+  @include lg-up {
+    display: flex;
+  }
+
+  .nav-dropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    .nav-dropdown-toggle {
+      background: none;
+      border: none;
+      color: inherit;
+      font: inherit;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.3em;
+      padding: 0; // Igual que .nav-link
+      margin: 0;
+      height: 100%;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 110%;
+      right: 0;
+      min-width: 180px;
+      width: max-content;
+      max-width: 350px;
+      background: rgba(12, 18, 33, 0.97);
+      backdrop-filter: blur(12px);
+      border-radius: 0.5em;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+      padding: 0.5em 0;
+      z-index: 1001;
+      list-style: none;
+      margin: 0;
+      white-space: normal;
+
+      li {
+        width: 100%;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      a,
+      button.btn-ghost {
+        display: flex;
+        align-items: center;
+        padding: 0.6em 1.2em;
+        color: #fff;
+        text-decoration: none;
+        transition:
+          background 0.2s,
+          color 0.2s;
+        border-radius: 0.3em;
+        font-size: 1em;
+        background: none;
+        border: none;
+
+        img {
+          margin-right: 0.5em;
+        }
+
+        &:hover {
+          background: var(--secondary);
+          color: #fff;
+        }
+      }
+    }
+
+    &:hover .nav-dropdown-menu,
+    &:focus-within .nav-dropdown-menu {
+      display: block;
+    }
+  }
+}
+
+.mobile-nav {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(10, 15, 29, 0.98);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(30, 64, 175, 0.2);
+  border-bottom: 1px solid rgba(30, 64, 175, 0.2);
+  z-index: 1000;
+
+  // Mostrar cuando esté activo (hasta lg-up)
+  &.active {
+    display: block;
+    animation: slideDown 0.3s ease-out;
+  }
+
+  // Ocultar solo en desktop (lg-up)
+  @include lg-up {
+    display: none;
+  }
+}
+
+.mobile-nav-list {
+  list-style: none;
+  padding: 1rem 0;
+  margin: 0;
+}
+
+.login-btn {
+  &.btn {
+    display: none;
+    @include lg-up {
+      display: flex;
+    }
+  }
+}
+
+.nav-actions {
+  // Puedes agregar estilos específicos para acciones del navbar aquí si es necesario
+}
+
+.mobile-menu-toggle {
+  &.btn {
+    display: flex;
+
+    @include lg-up {
+      display: none;
+    }
+  }
+}
+
+// Animación para el menú móvil
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mobile-menu-toggle {
+  display: flex;
+
+  @include lg-up {
+    display: none;
+  }
+}
+
+/* --- Dropdown en navbar desktop --- */
+.nav-dropdown {
+  position: relative;
+
+  .nav-dropdown-toggle {
+    background: none;
+    border: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.3em;
+    padding: 0.5em 1em;
+    transition: background 0.2s;
+    border-radius: 0.4em;
+  }
+
+  .nav-dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 110%;
+    right: 0;
+    min-width: 180px;
+    background: rgba(12, 18, 33, 0.97);
+    backdrop-filter: blur(12px);
+    border-radius: 0.5em;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    padding: 0.5em 0;
+    z-index: 1001;
+
+    li {
+      width: 100%;
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+      padding: 0.6em 1.2em;
+      color: var(--gray-100);
+      text-decoration: none;
+      transition:
+        background 0.2s,
+        color 0.2s;
+      border-radius: 0.3em;
+      font-size: 1em;
+
+      img {
+        margin-right: 0.5em;
+      }
+
+      &:hover {
+        background: var(--secondary);
+        color: #fff;
+      }
+    }
+  }
+
+  &:hover .nav-dropdown-menu,
+  &:focus-within .nav-dropdown-menu {
+    display: block;
+  }
+}
+
+/* Opcional: oculta el menú desplegable en móvil si usas el mismo HTML */
+@media (max-width: 1023px) {
+  .nav-dropdown {
+    display: none;
+  }
+}
