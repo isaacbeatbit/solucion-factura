@@ -80,25 +80,15 @@ import "../styles/global.scss";
         "description": "Sistema completo de facturación electrónica CFDI 4.0 con envío por WhatsApp, facturación masiva, multi-empresa y herramientas contables.",
         "url": "https://solucionfactura.mx/",
         "operatingSystem": "Web Browser",
+        "softwareVersion": "4.0",
+        "countriesSupported": "MX",
+        "inLanguage": "es-MX",
         "offers": {
           "@type": "Offer",
           "price": "0",
           "priceCurrency": "MXN",
-          "description": "Prueba gratuita disponible"
-        },
-        "provider": {
-          "@type": "Organization",
-          "name": "Solución Factura",
-          "url": "https://solucionfactura.mx/",
-          "logo": "https://solucionfactura.mx/solucion-factura-logo.png",
-          "contactPoint": {
-            "@type": "ContactPoint",
-            "telephone": "+52-55-9331-4767",
-            "contactType": "sales",
-            "areaServed": "MX",
-            "availableLanguage": "Spanish"
-          },
-          "sameAs": ["https://wa.me/525576017764"]
+          "description": "Prueba gratuita disponible",
+          "url": "https://app.solucionfactura.mx/register"
         },
         "featureList": [
           "Facturación Masiva",
@@ -107,7 +97,34 @@ import "../styles/global.scss";
           "Descarga XML",
           "AutoFactura",
           "DIOT Automático"
-        ]
+        ],
+        "provider": {
+          "@type": "Organization",
+          "name": "Solución Factura",
+          "url": "https://solucionfactura.mx/",
+          "logo": "https://solucionfactura.mx/solucion-factura-logo.png",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "MX"
+          },
+          "contactPoint": [
+            {
+              "@type": "ContactPoint",
+              "telephone": "+52-55-9331-4767",
+              "contactType": "sales",
+              "areaServed": "MX",
+              "availableLanguage": "Spanish"
+            },
+            {
+              "@type": "ContactPoint",
+              "telephone": "+52-55-7601-7764",
+              "contactType": "technical support",
+              "areaServed": "MX",
+              "availableLanguage": "Spanish"
+            }
+          ],
+          "sameAs": ["https://wa.me/525576017764"]
+        }
       }
     </script>
 
