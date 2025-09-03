@@ -1,0 +1,1258 @@
+---
+import Navbar from "../components/Navbar/Navbar.astro";
+import Footer from "../components/Footer/Footer.astro";
+import WhatsAppFloat from "../components/WhatsAppFloat/WhatsAppFloat.astro";
+import "../styles/global.scss";
+---
+
+<html lang="es-MX">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="color-scheme" content="dark light" />
+
+    <!-- SEO Meta Tags -->
+    <title>
+      Aviso de Privacidad - Solución Factura | Protección de Datos Personales
+    </title>
+    <meta
+      name="description"
+      content="Conoce nuestro aviso de privacidad y cómo protegemos tus datos personales en Solución Factura. Información sobre el tratamiento, uso y protección de tu información personal."
+    />
+    <meta
+      name="keywords"
+      content="aviso de privacidad, protección de datos, datos personales, LFPDPPP, Solución Factura, privacidad"
+    />
+    <meta name="author" content="Solución Factura" />
+    <meta name="robots" content="index, follow" />
+    <link
+      rel="canonical"
+      href="https://solucionfactura.mx/aviso-de-privacidad"
+    />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://solucionfactura.mx/aviso-de-privacidad"
+    />
+    <meta
+      property="og:title"
+      content="Aviso de Privacidad - Solución Factura"
+    />
+    <meta
+      property="og:description"
+      content="Conoce cómo protegemos tus datos personales en Solución Factura y nuestras políticas de privacidad."
+    />
+    <meta
+      property="og:image"
+      content="https://solucionfactura.mx/solucion-factura-logo.png"
+    />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:url"
+      content="https://solucionfactura.mx/aviso-de-privacidad"
+    />
+    <meta
+      name="twitter:title"
+      content="Aviso de Privacidad - Solución Factura"
+    />
+    <meta
+      name="twitter:description"
+      content="Conoce cómo protegemos tus datos personales en Solución Factura y nuestras políticas de privacidad."
+    />
+
+    <!-- Script de tema -->
+    <script is:inline>
+      (function () {
+        "use strict";
+
+        function initTheme() {
+          const htmlElement = document.documentElement;
+          const savedTheme = localStorage.getItem("theme");
+          const prefersDark =
+            window.matchMedia &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+          let themeToApply;
+          if (savedTheme) {
+            themeToApply = savedTheme;
+          } else {
+            themeToApply = prefersDark ? "dark" : "light";
+            localStorage.setItem("theme", themeToApply);
+          }
+
+          if (themeToApply === "light") {
+            htmlElement.setAttribute("data-theme", "light");
+          } else {
+            htmlElement.removeAttribute("data-theme");
+          }
+        }
+
+        function watchSystemTheme() {
+          if (window.matchMedia) {
+            const mediaQuery = window.matchMedia(
+              "(prefers-color-scheme: dark)",
+            );
+
+            mediaQuery.addEventListener("change", (e) => {
+              const savedTheme = localStorage.getItem("theme");
+              if (!savedTheme) {
+                const htmlElement = document.documentElement;
+                if (e.matches) {
+                  htmlElement.removeAttribute("data-theme");
+                  localStorage.setItem("theme", "dark");
+                } else {
+                  htmlElement.setAttribute("data-theme", "light");
+                  localStorage.setItem("theme", "light");
+                }
+              }
+            });
+          }
+        }
+
+        function getCurrentTheme() {
+          return document.documentElement.getAttribute("data-theme") || "dark";
+        }
+
+        function setTheme(theme) {
+          const htmlElement = document.documentElement;
+          if (theme === "light") {
+            htmlElement.setAttribute("data-theme", "light");
+          } else {
+            htmlElement.removeAttribute("data-theme");
+          }
+          localStorage.setItem("theme", theme);
+
+          // Dispatch custom event
+          const event = new CustomEvent("theme-changed", {
+            detail: { theme },
+          });
+          window.dispatchEvent(event);
+        }
+
+        function toggleTheme() {
+          const currentTheme = getCurrentTheme();
+          const newTheme = currentTheme === "dark" ? "light" : "dark";
+          setTheme(newTheme);
+        }
+
+        // Initialize theme on page load
+        initTheme();
+        watchSystemTheme();
+
+        // Expose functions globally
+        window.getCurrentTheme = getCurrentTheme;
+        window.setTheme = setTheme;
+        window.toggleTheme = toggleTheme;
+      })();
+    </script>
+  </head>
+
+  <body>
+    <Navbar />
+
+    <main>
+      <!-- Hero Section -->
+      <section class="privacy-hero">
+        <div class="container">
+          <div class="hero-content">
+            <h1 class="hero-title">Aviso de Privacidad</h1>
+            <p class="hero-description">
+              En Solución Factura protegemos la privacidad y seguridad de tus
+              datos personales
+            </p>
+            <div class="last-updated">
+              <span class="update-label">Última actualización:</span>
+              <span class="update-date">Enero 2025</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Privacy Content -->
+      <section class="privacy-content">
+        <div class="container">
+          <div class="content-wrapper">
+            <!-- Responsible -->
+            <article class="privacy-main">
+              <div class="privacy-intro">
+                <p>
+                  <strong>SERINT 360 SAS DE C.V.</strong> con domicilio en Alborada
+                  124, Colonia Parques del Pedregal (Torre Perisur), Tlalpan, Ciudad
+                  de México, C.P. 14010, es el responsable del uso y protección de
+                  sus datos personales, y al respecto le informamos lo siguiente:
+                </p>
+              </div>
+
+              <!-- 1. Identificación del Responsable -->
+              <section class="privacy-section">
+                <h2>1. Identificación del Responsable</h2>
+                <div class="company-info">
+                  <ul>
+                    <li>
+                      <strong>Denominación:</strong> SERINT 360 SAS DE C.V.
+                    </li>
+                    <li>
+                      <strong>Domicilio:</strong> Alborada 124, Colonia Parques del
+                      Pedregal (Torre Perisur), Tlalpan, Ciudad de México, C.P. 14010
+                    </li>
+                    <li>
+                      <strong>Teléfono:</strong>
+                      <a href="tel:+525593314767">55 9331 4767</a>
+                    </li>
+                    <li>
+                      <strong>WhatsApp:</strong>
+                      <a
+                        href="https://wa.me/5576017764"
+                        target="_blank"
+                        rel="noopener noreferrer">55 7601 7764</a>
+                    </li>
+                    <li>
+                      <strong>Correo electrónico:</strong>
+                      <a href="mailto:contacto@solucionfactura.mx"
+                        >contacto@solucionfactura.mx</a>
+                    </li>
+                    <li>
+                      <strong>Sitios web:</strong>
+                      <a
+                        href="https://solucionfiscal.mx"
+                        target="_blank"
+                        rel="noopener noreferrer">solucionfiscal.mx</a
+                      >,
+                      <a
+                        href="https://solucionfactura.mx"
+                        target="_blank"
+                        rel="noopener noreferrer">solucionfactura.mx</a
+                      >,
+                      <a
+                        href="https://solucioncrm.mx"
+                        target="_blank"
+                        rel="noopener noreferrer">solucioncrm.mx</a
+                      >,
+                      <a
+                        href="https://solucionconta.mx"
+                        target="_blank"
+                        rel="noopener noreferrer">solucionconta.mx</a
+                      >,
+                      <a
+                        href="https://descargacfdi.com"
+                        target="_blank"
+                        rel="noopener noreferrer">descargacfdi.com</a
+                      >,
+                      <a
+                        href="https://wabotify.com"
+                        target="_blank"
+                        rel="noopener noreferrer">wabotify.com</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </section>
+
+              <!-- 2. Datos Personales que Recabamos -->
+              <section class="privacy-section">
+                <h2>2. Datos Personales que Recabamos</h2>
+                <p>
+                  Para las finalidades señaladas en el presente aviso de
+                  privacidad, podemos recabar sus datos personales de distintas
+                  formas: cuando usted nos los proporciona directamente; cuando
+                  visita nuestro sitio web o utiliza nuestros servicios en
+                  línea, y cuando obtenemos información a través de otras
+                  fuentes que están permitidas por la ley.
+                </p>
+                <p>
+                  Los datos personales que recabamos de usted son los
+                  siguientes:
+                </p>
+
+                <h3>2.1 Datos de Identificación:</h3>
+                <ul>
+                  <li>Nombre completo</li>
+                  <li>RFC (Registro Federal de Contribuyentes)</li>
+                  <li>CURP (Clave Única de Registro de Población)</li>
+                  <li>Fecha de nacimiento</li>
+                  <li>Nacionalidad</li>
+                  <li>
+                    Domicilio (calle, número, colonia, municipio, entidad
+                    federativa, código postal)
+                  </li>
+                  <li>Teléfono fijo y móvil</li>
+                  <li>Correo electrónico</li>
+                  <li>Firma autógrafa y electrónica</li>
+                </ul>
+
+                <h3>2.2 Datos de Contacto:</h3>
+                <ul>
+                  <li>Correo electrónico personal y empresarial</li>
+                  <li>Teléfono celular y fijo</li>
+                  <li>Direcciones de redes sociales</li>
+                  <li>Datos de contacto empresarial</li>
+                </ul>
+
+                <h3>2.3 Datos Laborales:</h3>
+                <ul>
+                  <li>Puesto o cargo que desempeña</li>
+                  <li>Domicilio del trabajo</li>
+                  <li>Nombre del empleador</li>
+                  <li>Teléfono del trabajo</li>
+                  <li>Correo electrónico del trabajo</li>
+                </ul>
+
+                <h3>2.4 Datos Fiscales:</h3>
+                <ul>
+                  <li>Registro Federal de Contribuyentes (RFC)</li>
+                  <li>Domicilio fiscal</li>
+                  <li>Régimen fiscal</li>
+                  <li>Actividad económica</li>
+                  <li>Certificados de Sello Digital (CSD)</li>
+                  <li>Contraseñas de certificados digitales</li>
+                  <li>Información contenida en comprobantes fiscales</li>
+                </ul>
+
+                <h3>2.5 Datos Financieros y Patrimoniales:</h3>
+                <ul>
+                  <li>Cuentas bancarias</li>
+                  <li>Información de tarjetas de crédito y débito</li>
+                  <li>Estados financieros</li>
+                  <li>Información crediticia</li>
+                  <li>Ingresos y egresos</li>
+                  <li>Bienes muebles e inmuebles</li>
+                </ul>
+
+                <h3>2.6 Datos de Navegación y Tecnológicos:</h3>
+                <ul>
+                  <li>Dirección IP</li>
+                  <li>Tipo de navegador</li>
+                  <li>Sistema operativo</li>
+                  <li>Páginas web visitadas</li>
+                  <li>Tiempo de navegación</li>
+                  <li>Cookies</li>
+                  <li>Web beacons</li>
+                  <li>Logs del servidor</li>
+                </ul>
+              </section>
+
+              <!-- 3. Datos Personales Sensibles -->
+              <section class="privacy-section">
+                <h2>3. Datos Personales Sensibles</h2>
+                <p>
+                  Informamos que <strong>NO</strong> recabamos ni tratamos datos
+                  personales sensibles.
+                </p>
+                <p>
+                  En caso de que en el futuro sea necesario recabar datos
+                  personales sensibles, se solicitará su consentimiento expreso
+                  para su tratamiento.
+                </p>
+              </section>
+
+              <!-- 4. Finalidades del Tratamiento -->
+              <section class="privacy-section">
+                <h2>4. Finalidades del Tratamiento</h2>
+                <p>
+                  Sus datos personales serán utilizados para las siguientes
+                  finalidades:
+                </p>
+
+                <h3>
+                  4.1 Finalidades Primarias (Necesarias para la relación
+                  jurídica):
+                </h3>
+
+                <h4>a) Prestación de servicios:</h4>
+                <ul>
+                  <li>
+                    Generación, validación y certificación de Comprobantes
+                    Fiscales Digitales por Internet (CFDI)
+                  </li>
+                  <li>Servicios de facturación electrónica</li>
+                  <li>Servicios de descarga de archivos XML</li>
+                  <li>Servicios de WhatsApp Business</li>
+                  <li>Servicios de CRM y contabilidad</li>
+                  <li>Soporte técnico y atención al cliente</li>
+                </ul>
+
+                <h4>b) Cumplimiento de obligaciones contractuales:</h4>
+                <ul>
+                  <li>Verificación de identidad y capacidad legal</li>
+                  <li>Administración de cuentas de usuario</li>
+                  <li>Procesamiento de pagos y facturación</li>
+                  <li>Entrega de productos y servicios contratados</li>
+                </ul>
+
+                <h4>c) Cumplimiento de obligaciones legales:</h4>
+                <ul>
+                  <li>Cumplimiento de disposiciones fiscales y tributarias</li>
+                  <li>
+                    Conservación de comprobantes fiscales conforme a la
+                    legislación
+                  </li>
+                  <li>Reporte de información al SAT cuando sea requerido</li>
+                  <li>
+                    Cumplimiento de obligaciones ante autoridades competentes
+                  </li>
+                </ul>
+
+                <h4>d) Gestión administrativa:</h4>
+                <ul>
+                  <li>Control de acceso a sistemas y plataformas</li>
+                  <li>Administración de la relación comercial</li>
+                  <li>Gestión de cobranza y facturación</li>
+                  <li>Archivo de documentos y expedientes</li>
+                </ul>
+
+                <h3>
+                  4.2 Finalidades Secundarias (No son necesarias para la
+                  relación jurídica):
+                </h3>
+
+                <h4>a) Mercadotecnia y publicidad:</h4>
+                <ul>
+                  <li>Envío de comunicaciones comerciales y promocionales</li>
+                  <li>Marketing directo de productos y servicios</li>
+                  <li>Envío de boletines informativos y newsletters</li>
+                  <li>Promoción de nuevos productos y servicios</li>
+                </ul>
+
+                <h4>b) Prospección comercial:</h4>
+                <ul>
+                  <li>Ofrecimiento de productos y servicios adicionales</li>
+                  <li>Invitaciones a eventos comerciales</li>
+                  <li>Envío de información sobre actualizaciones y mejoras</li>
+                  <li>Comunicación sobre ofertas especiales y descuentos</li>
+                </ul>
+
+                <h4>c) Estudios de mercado:</h4>
+                <ul>
+                  <li>Análisis de comportamiento del consumidor</li>
+                  <li>Investigación de mercado y tendencias</li>
+                  <li>Desarrollo de nuevos productos y servicios</li>
+                  <li>Mejora de la experiencia del usuario</li>
+                </ul>
+
+                <h4>d) Comunicación institucional:</h4>
+                <ul>
+                  <li>Envío de información corporativa</li>
+                  <li>Comunicados sobre cambios en términos y condiciones</li>
+                  <li>Notificaciones sobre mantenimientos y actualizaciones</li>
+                  <li>Información sobre políticas empresariales</li>
+                </ul>
+
+                <p>
+                  En caso de que no desee que sus datos personales sean tratados
+                  para estas finalidades secundarias, desde este momento usted
+                  nos puede comunicar lo anterior a través de los mecanismos que
+                  hemos habilitado para tal efecto.
+                </p>
+                <p>
+                  La negativa para el uso de sus datos personales para estas
+                  finalidades no podrá ser un motivo para que le neguemos los
+                  servicios y productos que solicita o contrata con nosotros.
+                </p>
+              </section>
+
+              <!-- 5. Transferencias de Datos Personales -->
+              <section class="privacy-section">
+                <h2>5. Transferencias de Datos Personales</h2>
+                <p>
+                  Le informamos que sus datos personales son compartidos dentro
+                  y fuera del país con las siguientes personas, empresas,
+                  organizaciones o autoridades distintas a nosotros, para los
+                  siguientes fines:
+                </p>
+
+                <h3>5.1 Transferencias Nacionales:</h3>
+
+                <h4>a) Autoridades fiscales (SAT):</h4>
+                <ul>
+                  <li>
+                    <strong>Finalidad:</strong> Cumplimiento de obligaciones fiscales
+                    y tributarias
+                  </li>
+                  <li>
+                    <strong>Base legal:</strong> Obligación legal establecida en
+                    el Código Fiscal de la Federación
+                  </li>
+                </ul>
+
+                <h4>b) Procesadores de pago:</h4>
+                <ul>
+                  <li>
+                    <strong>Finalidad:</strong> Procesamiento de transacciones y
+                    cobros
+                  </li>
+                  <li>
+                    <strong>Base legal:</strong> Relación jurídica necesaria para
+                    la prestación del servicio
+                  </li>
+                </ul>
+
+                <h4>c) Proveedores de servicios tecnológicos:</h4>
+                <ul>
+                  <li>
+                    <strong>Finalidad:</strong> Mantenimiento y operación de sistemas
+                    informáticos
+                  </li>
+                  <li>
+                    <strong>Base legal:</strong> Relación jurídica necesaria para
+                    la prestación del servicio
+                  </li>
+                </ul>
+
+                <h4>d) Instituciones financieras:</h4>
+                <ul>
+                  <li>
+                    <strong>Finalidad:</strong> Procesamiento de pagos y transferencias
+                  </li>
+                  <li>
+                    <strong>Base legal:</strong> Relación jurídica necesaria para
+                    la prestación del servicio
+                  </li>
+                </ul>
+
+                <h3>5.2 Transferencias Internacionales:</h3>
+
+                <h4>a) Proveedores de servicios de nube (Cloud Services):</h4>
+                <ul>
+                  <li><strong>País:</strong> Estados Unidos de América</li>
+                  <li>
+                    <strong>Finalidad:</strong> Almacenamiento seguro de información
+                    y respaldo de datos
+                  </li>
+                  <li>
+                    <strong>Base legal:</strong> Consentimiento del titular
+                  </li>
+                </ul>
+
+                <h4>b) Meta Platforms (WhatsApp Business):</h4>
+                <ul>
+                  <li><strong>País:</strong> Estados Unidos de América</li>
+                  <li>
+                    <strong>Finalidad:</strong> Prestación de servicios de WhatsApp
+                    Business
+                  </li>
+                  <li>
+                    <strong>Base legal:</strong> Relación jurídica necesaria para
+                    la prestación del servicio
+                  </li>
+                </ul>
+
+                <h4>c) Stripe Inc.:</h4>
+                <ul>
+                  <li><strong>País:</strong> Estados Unidos de América</li>
+                  <li>
+                    <strong>Finalidad:</strong> Procesamiento de pagos con tarjeta
+                  </li>
+                  <li>
+                    <strong>Base legal:</strong> Relación jurídica necesaria para
+                    la prestación del servicio
+                  </li>
+                </ul>
+
+                <p>
+                  Le informamos que para estas transferencias hemos celebrado
+                  contratos de transmisión de datos que garantizan un nivel de
+                  protección adecuado y comparable al que exige la Ley Federal
+                  de Protección de Datos Personales en Posesión de los
+                  Particulares.
+                </p>
+              </section>
+
+              <!-- 6. Derechos ARCO -->
+              <section class="privacy-section">
+                <h2>
+                  6. Medios y Procedimiento para Ejercer los Derechos ARCO
+                </h2>
+                <p>
+                  Usted tiene derecho a conocer qué datos personales tenemos de
+                  usted, para qué los utilizamos y las condiciones del uso que
+                  les damos (Acceso). Asimismo, es su derecho solicitar la
+                  corrección de su información personal en caso de que esté
+                  desactualizada, sea inexacta o incompleta (Rectificación); que
+                  la eliminemos de nuestros registros o bases de datos cuando
+                  considere que la misma no está siendo utilizada adecuadamente
+                  (Cancelación); así como oponerse al uso de sus datos
+                  personales para fines específicos (Oposición). Estos derechos
+                  se conocen como derechos ARCO.
+                </p>
+                <p>
+                  Para el ejercicio de cualquiera de los derechos ARCO, deberá
+                  presentar la solicitud respectiva a través de los siguientes
+                  medios:
+                </p>
+
+                <ul>
+                  <li>
+                    <strong>Correo electrónico:</strong>
+                    <a href="mailto:contacto@solucionfactura.mx"
+                      >contacto@solucionfactura.mx</a>
+                  </li>
+                  <li>
+                    <strong>Domicilio:</strong> Alborada 124, Colonia Parques del
+                    Pedregal (Torre Perisur), Tlalpan, Ciudad de México, C.P. 14010
+                  </li>
+                  <li>
+                    <strong>Teléfono:</strong>
+                    <a href="tel:+525593314767">55 9331 4767</a>
+                  </li>
+                  <li>
+                    <strong>WhatsApp:</strong>
+                    <a
+                      href="https://wa.me/5576017764"
+                      target="_blank"
+                      rel="noopener noreferrer">55 7601 7764</a>
+                  </li>
+                </ul>
+
+                <h3>6.1 Requisitos de la Solicitud:</h3>
+                <p>Su solicitud deberá contener y acompañar lo siguiente:</p>
+                <ol>
+                  <li>
+                    El nombre del titular y domicilio u otro medio para
+                    comunicarle la respuesta a su solicitud;
+                  </li>
+                  <li>
+                    Los documentos que acrediten la identidad o, en su caso, la
+                    representación legal del titular;
+                  </li>
+                  <li>
+                    La descripción clara y precisa de los datos personales
+                    respecto de los que se busca ejercer alguno de los derechos
+                    antes mencionados;
+                  </li>
+                  <li>
+                    Cualquier otro elemento o documento que facilite la
+                    localización de los datos personales.
+                  </li>
+                </ol>
+
+                <h3>6.2 Plazos de Respuesta:</h3>
+                <p>
+                  Le informaremos sobre la procedencia de su solicitud en un
+                  plazo máximo de <strong>20 (veinte) días hábiles</strong> contados
+                  desde la fecha en que recibamos su solicitud de acceso, rectificación,
+                  cancelación u oposición.
+                </p>
+                <p>
+                  En caso de que resulte procedente la solicitud, la misma se
+                  hará efectiva en un plazo máximo de <strong
+                    >15 (quince) días hábiles</strong
+                  > después de haberse comunicado la respuesta.
+                </p>
+                <p>
+                  Los plazos antes referidos podrán ser ampliados una sola vez
+                  por un período igual, siempre y cuando así lo justifiquen las
+                  circunstancias del caso.
+                </p>
+
+                <h3>6.3 Medios de Reproducción:</h3>
+                <p>
+                  Para las solicitudes de acceso a datos personales, podrá
+                  elegir entre los siguientes medios de reproducción:
+                </p>
+                <ul>
+                  <li>Documentos impresos</li>
+                  <li>Correo electrónico</li>
+                  <li>
+                    Dispositivos magnéticos, ópticos o de cualquier otra
+                    tecnología
+                  </li>
+                  <li>
+                    Cualquier otro medio que resulte apropiado según el tipo de
+                    datos personales de que se trate
+                  </li>
+                </ul>
+              </section>
+
+              <!-- 7. Limitación de Uso -->
+              <section class="privacy-section">
+                <h2>
+                  7. Medios para Limitar el Uso o Divulgación de sus Datos
+                </h2>
+                <p>
+                  Con objeto de que usted pueda limitar el uso y divulgación de
+                  su información personal, le ofrecemos los siguientes medios:
+                </p>
+
+                <h3>7.1 Registro Público para Evitar Publicidad:</h3>
+                <p>
+                  Usted se puede registrar en el Registro Público para Evitar
+                  Publicidad (REPEP) que está a cargo de la Procuraduría Federal
+                  del Consumidor, con la finalidad de que sus datos no se
+                  utilicen para recibir publicidad o promociones de empresas de
+                  bienes o servicios. Para mayor información sobre este
+                  registro, puede consultar el portal de internet de la PROFECO,
+                  o bien ponerse en contacto directo con ésta.
+                </p>
+
+                <h3>7.2 Lista de Exclusión:</h3>
+                <p>
+                  Usted puede solicitar su inscripción en nuestra lista de
+                  exclusión de comunicaciones comerciales enviando un correo
+                  electrónico a <a href="mailto:contacto@solucionfactura.mx"
+                    >contacto@solucionfactura.mx</a
+                  > con el asunto "BAJA DE PUBLICIDAD" o comunicándose a nuestro
+                  teléfono <a href="tel:+525593314767">55 9331 4767</a>.
+                </p>
+
+                <h3>7.3 Configuración de Cookies:</h3>
+                <p>
+                  Para limitar el uso de tecnologías de rastreo en nuestro sitio
+                  web, usted puede configurar su navegador para restringir,
+                  bloquear o eliminar cookies.
+                </p>
+              </section>
+
+              <!-- 8. Cookies -->
+              <section class="privacy-section">
+                <h2>8. Uso de Cookies, Web Beacons y Otras Tecnologías</h2>
+                <p>
+                  Le informamos que en nuestro sitio web utilizamos cookies, web
+                  beacons y otras tecnologías a través de las cuales es posible
+                  monitorear su comportamiento como usuario de internet, así
+                  como brindarle un mejor servicio y experiencia al navegar en
+                  nuestro sitio. Los datos personales que recabamos a través de
+                  estas tecnologías los utilizamos para los siguientes fines:
+                </p>
+                <ul>
+                  <li>
+                    Mejorar la experiencia del usuario en nuestro sitio web
+                  </li>
+                  <li>Analizar el tráfico y uso del sitio web</li>
+                  <li>Personalizar contenido y publicidad</li>
+                  <li>Recordar preferencias y configuraciones del usuario</li>
+                  <li>Facilitar la navegación y uso de funcionalidades</li>
+                  <li>Generar estadísticas de uso y comportamiento</li>
+                </ul>
+
+                <h3>8.1 Tipos de Cookies que Utilizamos:</h3>
+                <ol type="a">
+                  <li>
+                    <strong>Cookies técnicas:</strong> Necesarias para el funcionamiento
+                    del sitio web
+                  </li>
+                  <li>
+                    <strong>Cookies analíticas:</strong> Para análisis estadístico
+                    del comportamiento de usuarios
+                  </li>
+                  <li>
+                    <strong>Cookies de personalización:</strong> Para recordar preferencias
+                    del usuario
+                  </li>
+                  <li>
+                    <strong>Cookies publicitarias:</strong> Para mostrar publicidad
+                    relevante
+                  </li>
+                </ol>
+
+                <h3>8.2 Gestión de Cookies:</h3>
+                <p>
+                  Usted puede configurar su navegador para ser notificado cuando
+                  reciba cookies y para rechazarlas. También puede eliminar
+                  cookies previamente almacenadas. Para obtener más información
+                  sobre cómo configurar su navegador, puede consultar la sección
+                  de ayuda del mismo.
+                </p>
+
+                <p>
+                  Los datos personales que obtenemos de estas tecnologías de
+                  rastreo son los siguientes:
+                </p>
+                <ul>
+                  <li>Identificadores, usuario y contraseñas de una sesión</li>
+                  <li>Idioma preferido por el usuario</li>
+                  <li>Región en la que se encuentra el usuario</li>
+                  <li>Tipo de navegador del usuario</li>
+                  <li>Tipo de sistema operativo del usuario</li>
+                  <li>
+                    Fecha y hora del inicio y final de una sesión de un usuario
+                  </li>
+                  <li>Páginas web visitadas por un usuario</li>
+                  <li>Búsquedas realizadas por un usuario</li>
+                  <li>Publicidad revisada por un usuario</li>
+                </ul>
+              </section>
+
+              <!-- 9. Menores de Edad -->
+              <section class="privacy-section">
+                <h2>9. Datos Personales de Menores de Edad</h2>
+                <p>
+                  Los servicios ofrecidos por SERINT 360 SAS DE C.V. están
+                  dirigidos a personas mayores de 18 años. No recabamos ni
+                  tratamos datos personales de menores de edad de manera
+                  intencionada.
+                </p>
+                <p>
+                  En caso de que tengamos conocimiento de que hemos recabado
+                  datos personales de menores de edad sin el consentimiento
+                  correspondiente, procederemos a eliminar dicha información de
+                  nuestros registros.
+                </p>
+                <p>
+                  Si usted es padre, madre o tutor legal y tiene conocimiento de
+                  que un menor de edad nos ha proporcionado datos personales, le
+                  solicitamos se ponga en contacto con nosotros para que podamos
+                  eliminar la información correspondiente.
+                </p>
+              </section>
+
+              <!-- 10. Cambios al Aviso -->
+              <section class="privacy-section">
+                <h2>10. Cambios al Aviso de Privacidad</h2>
+                <p>
+                  El presente aviso de privacidad puede sufrir modificaciones,
+                  cambios o actualizaciones derivadas de nuevos requerimientos
+                  legales; de nuestras propias necesidades por los productos o
+                  servicios que ofrecemos; de nuestras prácticas de privacidad;
+                  de cambios en nuestro modelo de negocio, o por otras causas.
+                </p>
+                <p>
+                  Nos comprometemos a mantenerlo informado sobre los cambios que
+                  pueda sufrir el presente aviso de privacidad, a través de los
+                  siguientes medios:
+                </p>
+                <ul>
+                  <li>Correo electrónico registrado en su cuenta</li>
+                  <li>Notificaciones en nuestro sitio web</li>
+                  <li>Aviso en nuestra aplicación web</li>
+                  <li>Publicación en nuestros sitios web oficiales</li>
+                </ul>
+                <p>
+                  El procedimiento a través del cual se llevarán a cabo las
+                  notificaciones sobre cambios o actualizaciones al presente
+                  aviso de privacidad es el siguiente:
+                </p>
+                <ul>
+                  <li>
+                    Se enviará una notificación al correo electrónico registrado
+                    en su cuenta
+                  </li>
+                  <li>
+                    Se publicará el aviso actualizado en nuestros sitios web
+                  </li>
+                  <li>Se colocará un aviso visible en la aplicación web</li>
+                  <li>
+                    Los cambios entrarán en vigor 5 días naturales después de la
+                    publicación
+                  </li>
+                </ul>
+              </section>
+
+              <!-- 11. Consentimiento -->
+              <section class="privacy-section">
+                <h2>11. Consentimiento</h2>
+                <p>
+                  Al proporcionar sus datos personales por cualquier medio,
+                  usted consiente tácitamente en el tratamiento de los mismos
+                  conforme a los términos y condiciones establecidos en el
+                  presente Aviso de Privacidad.
+                </p>
+
+                <h3>11.1 Consentimiento para Finalidades Secundarias:</h3>
+                <p>
+                  ¿Acepta el tratamiento de sus datos personales para las
+                  siguientes finalidades secundarias?
+                </p>
+                <div class="consent-options">
+                  <label>
+                    <input type="checkbox" name="mercadotecnia" />
+                    Mercadotecnia y publicidad
+                  </label>
+                  <label>
+                    <input type="checkbox" name="prospeccion" />
+                    Prospección comercial
+                  </label>
+                  <label>
+                    <input type="checkbox" name="estudios" />
+                    Estudios de mercado
+                  </label>
+                  <label>
+                    <input type="checkbox" name="comunicacion" />
+                    Comunicación institucional
+                  </label>
+                </div>
+
+                <p>Para transferencias internacionales:</p>
+                <div class="consent-options">
+                  <label>
+                    <input type="checkbox" name="transferencias" />
+                    Acepto que mis datos sean transferidos a Estados Unidos para
+                    los fines descritos en este aviso
+                  </label>
+                </div>
+
+                <p>
+                  La falta de respuesta a las preguntas anteriores no impedirá
+                  que podamos tratar sus datos personales para las finalidades
+                  primarias establecidas en el presente aviso de privacidad.
+                </p>
+              </section>
+
+              <!-- 12. Autoridad de Control -->
+              <section class="privacy-section">
+                <h2>12. Autoridad de Control</h2>
+                <p>
+                  Para cualquier información adicional sobre la protección de
+                  sus datos personales o si desea realizar alguna queja con
+                  relación al tratamiento de su información personal, puede
+                  dirigirse al Instituto Nacional de Transparencia, Acceso a la
+                  Información y Protección de Datos Personales (INAI):
+                </p>
+                <ul>
+                  <li>
+                    <strong>Sitio web:</strong>
+                    <a
+                      href="https://www.inai.org.mx"
+                      target="_blank"
+                      rel="noopener noreferrer">www.inai.org.mx</a>
+                  </li>
+                  <li>
+                    <strong>Teléfono:</strong>
+                    <a href="tel:+525550042400">55 5004 2400</a>
+                  </li>
+                  <li>
+                    <strong>Correo electrónico:</strong>
+                    <a href="mailto:datospersonales@inai.org.mx"
+                      >datospersonales@inai.org.mx</a>
+                  </li>
+                </ul>
+              </section>
+
+              <!-- 13. Aceptación -->
+              <section class="privacy-section">
+                <h2>13. Aceptación</h2>
+                <p>
+                  He leído y acepto los términos del presente Aviso de
+                  Privacidad y otorgo mi consentimiento para el tratamiento de
+                  mis datos personales de acuerdo con las finalidades y
+                  condiciones aquí establecidas.
+                </p>
+              </section>
+
+              <!-- Footer Info -->
+              <div class="privacy-final-info">
+                <div class="last-update-footer">
+                  <p>
+                    <strong>Fecha de última actualización:</strong> Enero 2025<br
+                    />
+                    <strong>SERINT 360 SAS DE C.V.</strong><br />
+                    <strong>Correo:</strong>
+                    <a href="mailto:contacto@solucionfactura.mx"
+                      >contacto@solucionfactura.mx</a
+                    ><br />
+                    <strong>Teléfono:</strong>
+                    <a href="tel:+525593314767">55 9331 4767</a><br />
+                    <strong>WhatsApp:</strong>
+                    <a
+                      href="https://wa.me/5576017764"
+                      target="_blank"
+                      rel="noopener noreferrer">55 7601 7764</a
+                    >
+                  </p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <Footer />
+    <WhatsAppFloat />
+  </body>
+</html>
+
+<style lang="scss">
+  // Privacy Hero Section
+  .privacy-hero {
+    padding: 8rem 0 4rem;
+    background: linear-gradient(
+      135deg,
+      var(--bg-primary) 0%,
+      var(--bg-secondary) 100%
+    );
+    border-bottom: 1px solid var(--border-light);
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 var(--padding-x);
+    }
+
+    .hero-content {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero-title {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+      line-height: 1.1;
+    }
+
+    .hero-description {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .last-updated {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--bg-tertiary);
+      padding: 0.75rem 1.5rem;
+      border-radius: 2rem;
+      border: 1px solid var(--border-light);
+      font-size: 0.95rem;
+
+      .update-label {
+        color: var(--text-secondary);
+        font-weight: 500;
+      }
+
+      .update-date {
+        color: var(--secondary);
+        font-weight: 600;
+      }
+    }
+  }
+
+  // Privacy Content
+  .privacy-content {
+    padding: 4rem 0;
+    background: var(--bg-secondary);
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 var(--padding-x);
+    }
+
+    .content-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+  }
+
+  .privacy-main {
+    .privacy-intro {
+      margin-bottom: 3rem;
+
+      p {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        color: var(--text-secondary);
+        margin-bottom: 1.5rem;
+      }
+    }
+  }
+
+  .privacy-section {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border-light);
+
+    &:last-child {
+      border-bottom: none;
+      margin-bottom: 2rem;
+    }
+
+    h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--secondary);
+    }
+
+    h3 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin: 2rem 0 1rem;
+    }
+
+    h4 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin: 1.5rem 0 1rem;
+    }
+
+    h5 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin: 1rem 0 0.75rem;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+    }
+
+    ul,
+    ol {
+      margin: 1rem 0;
+      padding-left: 2rem;
+      color: var(--text-secondary);
+
+      li {
+        margin-bottom: 0.5rem;
+        line-height: 1.6;
+      }
+    }
+
+    a {
+      color: var(--secondary);
+      text-decoration: none;
+      font-weight: 500;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+  }
+
+  .company-info {
+    ul {
+      list-style: none;
+      padding-left: 0;
+
+      li {
+        margin-bottom: 0.75rem;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid var(--border-light);
+
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+
+  .consent-options {
+    margin: 1.5rem 0;
+
+    label {
+      display: block;
+      margin-bottom: 1rem;
+      cursor: pointer;
+      font-weight: 500;
+      color: var(--text-primary);
+
+      input[type="checkbox"] {
+        margin-right: 0.75rem;
+        transform: scale(1.2);
+        accent-color: var(--secondary);
+      }
+
+      &:hover {
+        color: var(--secondary);
+      }
+    }
+  }
+
+  .privacy-final-info {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid var(--border-light);
+    text-align: center;
+
+    .last-update-footer {
+      background: var(--bg-tertiary);
+      padding: 2rem;
+      border-radius: 1rem;
+      border: 1px solid var(--border-light);
+
+      p {
+        margin: 0;
+        color: var(--text-secondary);
+        line-height: 1.8;
+
+        strong {
+          color: var(--text-primary);
+        }
+
+        a {
+          color: var(--secondary);
+          font-weight: 600;
+        }
+      }
+    }
+  }
+
+  // Responsive Design
+  @media (max-width: 768px) {
+    .privacy-hero {
+      padding: 6rem 0 3rem;
+
+      .hero-title {
+        font-size: 2rem;
+      }
+
+      .hero-description {
+        font-size: 1.1rem;
+      }
+    }
+
+    .privacy-content {
+      padding: 3rem 0;
+    }
+
+    .privacy-section {
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      h3 {
+        font-size: 1.25rem;
+      }
+
+      h4 {
+        font-size: 1.1rem;
+      }
+
+      ul,
+      ol {
+        padding-left: 1.5rem;
+      }
+    }
+
+    .consent-options {
+      label {
+        font-size: 0.95rem;
+      }
+    }
+  }
+
+  // Print styles
+  @media print {
+    .privacy-hero .last-updated {
+      display: none;
+    }
+
+    .privacy-section {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+  }
+</style>
