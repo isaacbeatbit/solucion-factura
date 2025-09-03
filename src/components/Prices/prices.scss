@@ -1,14 +1,25 @@
 /* Pricing Section */
 .pricing {
   padding: 4rem 0;
-  background: linear-gradient(135deg, var(--primary) 0%, var(--dark-blue) 100%);
-  color: white;
+  background: linear-gradient(
+    135deg,
+    var(--primary) 0%,
+    var(--bg-secondary) 100%
+  );
+  color: var(--text-primary);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+
+  [data-theme="light"] & {
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, #f0f4ff 100%);
+  }
 }
 
 .pricing .section-title,
 .pricing .section-subtitle {
-  color: white;
-  -webkit-text-fill-color: white;
+  color: var(--text-primary);
+  -webkit-text-fill-color: var(--text-primary);
 }
 
 .pricing-grid {
@@ -19,27 +30,44 @@
 }
 
 .pricing-card {
-  background: rgba(12, 18, 33, 0.7);
+  background: var(--bg-card);
   backdrop-filter: blur(10px);
-  color: var(--gray-100);
+  color: var(--text-primary);
   padding: 2.5rem 2rem;
   border-radius: 1rem;
   position: relative;
-  transition: transform 0.3s ease;
-  border: 1px solid rgba(26, 109, 204, 0.2);
+  transition: all 0.3s ease;
+  border: 1px solid var(--border-light);
+  box-shadow: var(--theme-shadow-md);
+
+  [data-theme="light"] & {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+  }
 }
 .pricing-card:hover {
   transform: translateY(-8px);
   box-shadow:
-    var(--shadow-lg),
+    var(--theme-shadow-lg),
     0 0 20px rgba(26, 109, 204, 0.2);
   border-color: rgba(26, 109, 204, 0.4);
+
+  [data-theme="light"] & {
+    box-shadow:
+      var(--theme-shadow-lg),
+      0 0 15px rgba(26, 109, 204, 0.1);
+  }
 }
 
 .pricing-card.featured {
   transform: scale(1.05);
   border: 2px solid var(--accent);
-  background: rgba(15, 23, 42, 0.8);
+  background: var(--bg-card);
+
+  [data-theme="light"] & {
+    background: var(--bg-primary);
+    box-shadow: var(--theme-shadow-xl);
+  }
 }
 
 .pricing-card.featured::before {
@@ -54,6 +82,7 @@
   border-radius: 1rem;
   font-size: 0.75rem;
   font-weight: 700;
+  box-shadow: var(--theme-shadow-md);
 }
 
 .plan-name {
@@ -66,7 +95,7 @@
 .plan-price {
   font-size: 2.5rem;
   font-weight: 800;
-  color: white;
+  color: var(--text-primary);
   margin-bottom: 0.25rem;
 }
 
@@ -76,7 +105,7 @@
 }
 
 .plan-period {
-  color: var(--gray-600);
+  color: var(--text-secondary);
   margin-bottom: 2rem;
 }
 
@@ -90,7 +119,7 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  color: var(--gray-100);
+  color: var(--text-primary);
 }
 
 .plan-features li::before {

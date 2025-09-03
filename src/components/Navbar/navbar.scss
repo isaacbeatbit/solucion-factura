@@ -7,128 +7,347 @@
 // ========================================
 
 .container {
-  @include container-responsive;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+  max-width: none;
+
+  @include sm-up {
+    padding: 0 1.5rem;
+  }
+
+  @include md-up {
+    padding: 0 2rem;
+  }
+
+  @include lg-up {
+    padding: 0 2.5rem;
+    max-width: 1400px;
+  }
+
+  @include xl-up {
+    max-width: 1600px;
+    padding: 0 3rem;
+  }
 }
+
+// ========================================
+// NAVBAR HEADER
+// ========================================
 
 .navbar-header {
   position: sticky;
   top: 0;
-  z-index: 100;
-  // Fondo blur moderno y semitransparente
-  background: rgba(12, 18, 33, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  z-index: 1000;
+  width: 100%;
+  left: 0;
+  right: 0;
+
+  // Fondo con fallback para navegadores antiguos
+  background: rgba(12, 18, 33, 0.95);
+
+  // Backdrop filter con fallback
+  @supports (backdrop-filter: blur(16px)) {
+    background: rgba(12, 18, 33, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
   // Sombra sutil
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+  transition: all 0.3s ease;
+
+  // Estado cuando se hace scroll
+  &.scrolled {
+    background: rgba(12, 18, 33, 0.95);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+
+    @supports (backdrop-filter: blur(20px)) {
+      background: rgba(12, 18, 33, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+  }
+
+  // Estado oculto (opcional para scroll hacia abajo rápido)
+  &.hidden {
+    transform: translateY(-100%);
+  }
+
+  // Tema claro
+  [data-theme="light"] & {
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid var(--border-color);
+
+    @supports (backdrop-filter: blur(16px)) {
+      background: rgba(255, 255, 255, 0.85);
+    }
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+    &.scrolled {
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+      @supports (backdrop-filter: blur(20px)) {
+        background: rgba(255, 255, 255, 0.9);
+      }
+    }
+  }
 }
+
+// ========================================
+// NAVEGACIÓN PRINCIPAL
+// ========================================
 
 .nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 64px;
+  min-height: 70px;
+  gap: 1rem;
+  position: relative;
 
   @media (min-width: 768px) {
-    min-height: 72px;
+    min-height: 80px;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    min-height: 88px;
+    gap: 2rem;
   }
 }
 
-.logo img {
-  height: 40px;
-  width: auto;
+// ========================================
+// LOGO
+// ========================================
 
-  @media (min-width: 768px) {
-    height: 48px;
+.logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+
+  img {
+    height: 40px;
+    width: auto;
+    display: block;
+
+    @media (min-width: 768px) {
+      height: 48px;
+    }
+
+    @media (min-width: 1024px) {
+      height: 52px;
+    }
   }
 }
+
+// ========================================
+// LISTA DE NAVEGACIÓN DESKTOP
+// ========================================
 
 .nav-list {
   display: none;
-  gap: 2rem;
   list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+  justify-content: center;
 
-  @include lg-up {
+  @media (min-width: 1024px) {
     display: flex;
+    gap: 1rem;
   }
 
-  .nav-dropdown {
-    position: relative;
-    display: flex;
+  @media (min-width: 1200px) {
+    gap: 1.5rem;
+  }
+
+  li {
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-link {
+    display: inline-flex;
     align-items: center;
+    padding: 0.5rem 0.75rem;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    border-radius: 0.375rem;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    position: relative;
 
-    .nav-dropdown-toggle {
-      background: none;
-      border: none;
-      color: inherit;
-      font: inherit;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 0.3em;
-      padding: 0; // Igual que .nav-link
-      margin: 0;
-      height: 100%;
-      font-weight: 500;
-      transition: color 0.2s;
+    @media (min-width: 1200px) {
+      padding: 0.625rem 1rem;
+      font-size: 0.95rem;
     }
 
-    .nav-dropdown-menu {
-      display: none;
-      position: absolute;
-      top: 110%;
-      right: 0;
-      min-width: 180px;
-      width: max-content;
-      max-width: 350px;
-      background: rgba(12, 18, 33, 0.97);
-      backdrop-filter: blur(12px);
-      border-radius: 0.5em;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-      padding: 0.5em 0;
-      z-index: 1001;
-      list-style: none;
-      margin: 0;
-      white-space: normal;
+    &:hover {
+      background: var(--border-light);
+      color: var(--secondary);
+      transform: translateY(-1px);
+    }
 
-      li {
-        width: 100%;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-      }
+    &:focus {
+      outline: 2px solid var(--secondary);
+      outline-offset: 2px;
+    }
 
-      a,
-      button.btn-ghost {
-        display: flex;
-        align-items: center;
-        padding: 0.6em 1.2em;
-        color: #fff;
-        text-decoration: none;
-        transition:
-          background 0.2s,
-          color 0.2s;
-        border-radius: 0.3em;
-        font-size: 1em;
-        background: none;
-        border: none;
+    &.active {
+      color: var(--secondary);
+      background: var(--border-light);
+      position: relative;
 
-        img {
-          margin-right: 0.5em;
-        }
-
-        &:hover {
-          background: var(--secondary);
-          color: #fff;
-        }
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80%;
+        height: 2px;
+        background: var(--secondary);
+        border-radius: 1px;
       }
     }
 
-    &:hover .nav-dropdown-menu,
-    &:focus-within .nav-dropdown-menu {
-      display: block;
+    // Iconos dentro de enlaces
+    img {
+      margin-right: 0.5rem;
+      flex-shrink: 0;
     }
   }
 }
+
+// ========================================
+// ACCIONES DE NAVEGACIÓN
+// ========================================
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+
+  @media (min-width: 768px) {
+    gap: 1rem;
+  }
+}
+
+// ========================================
+// BOTÓN DE LOGIN
+// ========================================
+
+.login-btn {
+  display: none !important;
+
+  @media (min-width: 1024px) {
+    display: inline-flex !important;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+
+    img {
+      margin-right: 0.5rem;
+      flex-shrink: 0;
+    }
+  }
+}
+
+// ========================================
+// BOTÓN DE MENÚ MÓVIL
+// ========================================
+
+.mobile-menu-toggle {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0.5rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--text-primary);
+
+  @media (min-width: 1024px) {
+    display: none !important;
+  }
+
+  &:hover {
+    background: var(--border-light);
+    border-color: var(--secondary);
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  &:focus {
+    outline: 2px solid var(--secondary);
+    outline-offset: 2px;
+  }
+
+  &.active {
+    background: var(--secondary);
+    border-color: var(--secondary);
+    color: white;
+    transform: scale(0.95);
+  }
+
+  img {
+    width: 24px;
+    height: 24px;
+    display: block;
+    filter: brightness(0) saturate(100%) invert(var(--text-invert, 0));
+    transition: filter 0.2s ease;
+  }
+
+  // Tema claro - mejor contraste
+  [data-theme="light"] & {
+    background: var(--bg-primary);
+    border-color: var(--border-color);
+
+    &:hover {
+      background: var(--bg-secondary);
+      border-color: var(--secondary);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    &.active {
+      background: var(--secondary);
+      color: white;
+    }
+
+    img {
+      filter: brightness(0) saturate(100%) invert(1);
+    }
+  }
+
+  // Tema oscuro - asegurar que el icono se vea bien
+  [data-theme="dark"] &,
+  :root:not([data-theme="light"]) & {
+    img {
+      filter: brightness(0) saturate(100%) invert(1);
+    }
+
+    &.active img {
+      filter: brightness(0) saturate(100%) invert(0);
+    }
+  }
+}
+
+// ========================================
+// NAVEGACIÓN MÓVIL
+// ========================================
 
 .mobile-nav {
   display: none;
@@ -136,54 +355,88 @@
   top: 100%;
   left: 0;
   right: 0;
-  background: rgba(10, 15, 29, 0.98);
-  backdrop-filter: blur(10px);
-  border-top: 1px solid rgba(30, 64, 175, 0.2);
-  border-bottom: 1px solid rgba(30, 64, 175, 0.2);
-  z-index: 1000;
+  background: var(--bg-card);
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 999;
 
-  // Mostrar cuando esté activo (hasta lg-up)
-  &.active {
-    display: block;
-    animation: slideDown 0.3s ease-out;
+  // Backdrop filter para móvil si está disponible
+  @supports (backdrop-filter: blur(10px)) {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
   }
 
-  // Ocultar solo en desktop (lg-up)
-  @include lg-up {
-    display: none;
+  &.active {
+    display: block;
+    animation: slideDown 0.25s ease-out;
+  }
+
+  // Ocultar en desktop
+  @media (min-width: 1024px) {
+    display: none !important;
   }
 }
 
 .mobile-nav-list {
   list-style: none;
-  padding: 1rem 0;
+  padding: 0;
   margin: 0;
+
+  li {
+    margin: 0;
+    padding: 0;
+  }
 }
 
-.login-btn {
+.mobile-nav-link {
+  display: block;
+  padding: 1rem 1.5rem;
+  color: var(--text-primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid var(--border-light);
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background: var(--border-light);
+    color: var(--secondary);
+  }
+
+  &:focus {
+    outline: 2px solid var(--secondary);
+    outline-offset: -2px;
+  }
+
+  &.active {
+    background: var(--border-light);
+    color: var(--secondary);
+    border-left: 3px solid var(--secondary);
+  }
+
+  // Para enlaces que son botones
   &.btn {
-    display: none;
-    @include lg-up {
-      display: flex;
+    margin: 1rem;
+    padding: 0.75rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    text-align: center;
+    justify-content: center;
+
+    img {
+      margin-right: 0.5rem;
     }
   }
 }
 
-.nav-actions {
-  // Puedes agregar estilos específicos para acciones del navbar aquí si es necesario
-}
+// ========================================
+// ANIMACIONES
+// ========================================
 
-.mobile-menu-toggle {
-  &.btn {
-    display: flex;
-
-    @include lg-up {
-      display: none;
-    }
-  }
-}
-
-// Animación para el menú móvil
 @keyframes slideDown {
   from {
     opacity: 0;
@@ -195,17 +448,13 @@
   }
 }
 
-.mobile-menu-toggle {
-  display: flex;
+// ========================================
+// DROPDOWNS (para futuro uso)
+// ========================================
 
-  @include lg-up {
-    display: none;
-  }
-}
-
-/* --- Dropdown en navbar desktop --- */
 .nav-dropdown {
   position: relative;
+  display: inline-block;
 
   .nav-dropdown-toggle {
     background: none;
@@ -215,48 +464,61 @@
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 0.3em;
-    padding: 0.5em 1em;
-    transition: background 0.2s;
-    border-radius: 0.4em;
+    gap: 0.3rem;
+    padding: 0.5rem 0.75rem;
+    transition: all 0.2s ease;
+    border-radius: 0.375rem;
+    font-weight: 500;
+
+    &:hover {
+      background: var(--border-light);
+      color: var(--secondary);
+    }
   }
 
   .nav-dropdown-menu {
     display: none;
     position: absolute;
-    top: 110%;
+    top: 100%;
     right: 0;
-    min-width: 180px;
-    background: rgba(12, 18, 33, 0.97);
-    backdrop-filter: blur(12px);
-    border-radius: 0.5em;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-    padding: 0.5em 0;
+    min-width: 200px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 0.5rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    padding: 0.5rem 0;
     z-index: 1001;
+    list-style: none;
+    margin: 0.25rem 0 0 0;
+
+    @supports (backdrop-filter: blur(12px)) {
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
 
     li {
-      width: 100%;
+      margin: 0;
+      padding: 0;
     }
 
     a {
       display: flex;
       align-items: center;
-      padding: 0.6em 1.2em;
-      color: var(--gray-100);
+      padding: 0.75rem 1rem;
+      color: var(--text-primary);
       text-decoration: none;
-      transition:
-        background 0.2s,
-        color 0.2s;
-      border-radius: 0.3em;
-      font-size: 1em;
-
-      img {
-        margin-right: 0.5em;
-      }
+      transition: all 0.2s ease;
+      font-size: 0.9rem;
 
       &:hover {
-        background: var(--secondary);
-        color: #fff;
+        background: var(--border-light);
+        color: var(--secondary);
+      }
+
+      img {
+        margin-right: 0.5rem;
+        width: 18px;
+        height: 18px;
       }
     }
   }
@@ -267,9 +529,101 @@
   }
 }
 
-/* Opcional: oculta el menú desplegable en móvil si usas el mismo HTML */
+// Ocultar dropdowns en móvil
 @media (max-width: 1023px) {
   .nav-dropdown {
     display: none;
+  }
+}
+
+// ========================================
+// MEJORAS DE ACCESIBILIDAD
+// ========================================
+
+// Reducir animaciones para usuarios que las prefieren deshabilitadas
+@media (prefers-reduced-motion: reduce) {
+  .mobile-nav.active {
+    animation: none;
+  }
+
+  .nav-link,
+  .mobile-nav-link,
+  .mobile-menu-toggle {
+    transition: none;
+  }
+}
+
+// Alto contraste
+@media (prefers-contrast: high) {
+  .navbar-header {
+    border-bottom: 2px solid var(--border-color);
+  }
+
+  .mobile-menu-toggle {
+    border-width: 2px;
+  }
+}
+
+// ========================================
+// ESTADOS DE ENFOQUE MEJORADOS
+// ========================================
+
+// Focus visible para mejor accesibilidad
+.nav-link:focus-visible,
+.mobile-nav-link:focus-visible,
+.mobile-menu-toggle:focus-visible {
+  outline: 2px solid var(--secondary);
+  outline-offset: 2px;
+}
+
+// Asegurar que los elementos interactivos tengan tamaño mínimo en móvil
+@media (max-width: 767px) {
+  .mobile-menu-toggle {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .mobile-nav-link {
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+  }
+
+  // Ajustar navbar en móvil
+  .navbar-header {
+    .nav {
+      min-height: 60px;
+    }
+  }
+}
+
+// ========================================
+// LOADING STATE
+// ========================================
+
+.navbar-header.loading {
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--secondary),
+      transparent
+    );
+    animation: loading-bar 2s infinite;
+  }
+}
+
+@keyframes loading-bar {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
   }
 }

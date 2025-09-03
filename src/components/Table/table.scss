@@ -1,8 +1,15 @@
-/* Comparison Table Styles - Dark Blue Theme */
+/* Comparison Table Styles - Theme Support */
 .comparison-section {
-  color: white;
+  color: var(--text-primary);
   padding: 60px 20px;
-  background: var(--deep-blue);
+  background: var(--bg-tertiary);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+
+  [data-theme="light"] & {
+    background: var(--bg-secondary);
+  }
 }
 
 .comparison-section .container {
@@ -19,27 +26,43 @@
   font-size: 2.8rem;
   font-weight: 700;
   margin-bottom: 15px;
-  color: white;
-  background: linear-gradient(135deg, #e1e5ee, #6db1ff);
+  color: var(--text-primary);
+  background: linear-gradient(135deg, var(--text-primary), #6db1ff);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+
+  [data-theme="light"] & {
+    background: linear-gradient(135deg, var(--primary), #6db1ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 }
 
 .comparison-section .section-subtitle {
   font-size: 1.1rem;
-  color: var(--gray-600);
+  color: var(--text-secondary);
   font-weight: 300;
 }
 
 .table-wrapper {
-  background: rgba(10, 15, 29, 0.7);
+  background: var(--bg-card);
   border-radius: 15px;
   overflow: hidden;
   box-shadow:
-    var(--shadow-xl),
+    var(--theme-shadow-xl),
     0 0 30px rgba(26, 109, 204, 0.2);
-  border: 1px solid rgba(26, 109, 204, 0.3);
+  border: 1px solid var(--border-light);
+  transition: all 0.3s ease;
+
+  [data-theme="light"] & {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    box-shadow:
+      var(--theme-shadow-xl),
+      0 0 20px rgba(26, 109, 204, 0.1);
+  }
 }
 
 .comparison-table {
@@ -51,6 +74,10 @@
 /* Header principal */
 .comparison-table thead tr {
   background: var(--primary);
+
+  [data-theme="light"] & {
+    background: var(--bg-secondary);
+  }
 }
 
 .comparison-table th {
@@ -61,11 +88,19 @@
   border: none;
   vertical-align: top;
   width: 16.66%;
+
+  [data-theme="light"] & {
+    color: var(--text-primary);
+  }
 }
 
 .comparison-table th:first-child {
   background: var(--secondary);
   width: 16.66%;
+
+  [data-theme="light"] & {
+    background: var(--secondary);
+  }
 }
 
 /* Contenido del header */
@@ -83,13 +118,23 @@
   background: var(--secondary);
   font-size: 1.2rem;
   font-weight: 700;
+  color: white;
+
+  [data-theme="light"] & {
+    background: var(--secondary);
+    color: white;
+  }
 }
 
 .plan-name {
   font-size: 1.2rem;
   font-weight: 700;
   margin-bottom: 8px;
-  color: var(--gray-100);
+  color: white;
+
+  [data-theme="light"] & {
+    color: var(--text-primary);
+  }
 }
 
 .plan-price {
@@ -97,13 +142,21 @@
   font-weight: 800;
   margin-bottom: 8px;
   color: white;
+
+  [data-theme="light"] & {
+    color: var(--text-primary);
+  }
 }
 
 .plan-period {
   font-size: 0.7rem;
   opacity: 0.8;
   margin-bottom: 15px;
-  color: var(--gray-600);
+  color: rgba(255, 255, 255, 0.8);
+
+  [data-theme="light"] & {
+    color: var(--text-secondary);
+  }
 }
 
 .plan-button {
@@ -119,18 +172,28 @@
   text-decoration: none;
   display: inline-block;
   min-width: 90px;
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--theme-shadow-md);
 }
 
 .plan-button:hover {
   transform: translateY(-2px);
-  box-shadow: var(--shadow-lg), var(--glow);
+  box-shadow: var(--theme-shadow-lg), var(--glow);
 }
 
 /* Columna Premium destacada */
 .premium-header {
-  background: var(--secondary);
+  background: linear-gradient(135deg, var(--secondary), var(--highlight-blue));
   position: relative;
+  box-shadow: 0 0 20px rgba(26, 109, 204, 0.4);
+
+  [data-theme="light"] & {
+    background: linear-gradient(
+      135deg,
+      var(--secondary),
+      var(--highlight-blue)
+    );
+    box-shadow: 0 0 15px rgba(26, 109, 204, 0.3);
+  }
 }
 
 .premium-badge {
@@ -151,13 +214,39 @@
   padding-top: 45px;
 }
 
+/* Estilos específicos para el contenido del header premium */
+.premium-header .plan-name {
+  color: white;
+}
+
+.premium-header .plan-price {
+  color: white;
+}
+
+.premium-header .plan-period {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* En tema claro, mantener texto blanco para contraste */
+[data-theme="light"] .premium-header .plan-name {
+  color: white;
+}
+
+[data-theme="light"] .premium-header .plan-price {
+  color: white;
+}
+
+[data-theme="light"] .premium-header .plan-period {
+  color: rgba(255, 255, 255, 0.9);
+}
+
 /* Filas de datos */
 .comparison-table tbody tr {
-  border-bottom: 1px solid rgba(26, 109, 204, 0.1);
+  border-bottom: 1px solid var(--border-light);
 }
 
 .comparison-table tbody tr:hover {
-  background: rgba(26, 109, 204, 0.05);
+  background: var(--border-light);
 }
 
 .comparison-table td {
@@ -166,22 +255,43 @@
   vertical-align: middle;
   border: none;
   width: 16.66%;
-  color: var(--gray-100);
+  color: var(--text-primary);
 }
 
 .comparison-table td:first-child {
   text-align: left;
   font-weight: 600;
   color: var(--secondary);
-  background: rgba(26, 109, 204, 0.05);
-  border-right: 1px solid rgba(26, 109, 204, 0.1);
+  background: rgba(13, 22, 49, 0.3);
+  border-right: 1px solid var(--border-light);
+
+  [data-theme="light"] & {
+    background: var(--border-light);
+    color: var(--secondary);
+  }
 }
 
 /* Columna Premium destacada en datos */
-.comparison-table td:nth-child(4) {
-  background: rgba(26, 109, 204, 0.08);
-  border-left: 2px solid rgba(26, 109, 204, 0.3);
-  border-right: 2px solid rgba(26, 109, 204, 0.3);
+.comparison-table td:nth-child(5) {
+  background: linear-gradient(
+    135deg,
+    rgba(26, 109, 204, 0.15),
+    rgba(30, 64, 175, 0.1)
+  );
+  border-left: 2px solid var(--secondary);
+  border-right: 2px solid var(--secondary);
+  box-shadow: inset 0 0 10px rgba(26, 109, 204, 0.1);
+
+  [data-theme="light"] & {
+    background: linear-gradient(
+      135deg,
+      rgba(26, 109, 204, 0.12),
+      rgba(30, 64, 175, 0.08)
+    );
+    border-left: 2px solid var(--secondary);
+    border-right: 2px solid var(--secondary);
+    box-shadow: inset 0 0 8px rgba(26, 109, 204, 0.08);
+  }
 }
 
 /* Iconos */
@@ -206,7 +316,7 @@
 
 /* Botón acordeón */
 .accordion-row {
-  background: rgba(10, 15, 29, 0.5);
+  background: var(--bg-tertiary);
 }
 
 .accordion-toggle {
@@ -221,12 +331,12 @@
   transition: all 0.3s ease;
   margin: 15px auto;
   display: block;
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--theme-shadow-md);
 }
 
 .accordion-toggle:hover {
   transform: translateY(-2px);
-  box-shadow: var(--shadow-lg), var(--glow);
+  box-shadow: var(--theme-shadow-lg), var(--glow);
 }
 
 .accordion-arrow {
@@ -283,18 +393,45 @@
 /* Footer */
 .comparison-table tfoot tr {
   background: var(--primary);
+
+  [data-theme="light"] & {
+    background: var(--bg-secondary);
+  }
 }
 
 .comparison-table tfoot td {
   padding: 20px 15px;
   color: white;
   font-weight: 600;
+
+  [data-theme="light"] & {
+    color: var(--text-primary);
+  }
 }
 
 .comparison-table tfoot td:first-child {
-  background: var(--secondary);
+  background: transparent;
   font-weight: 700;
   font-size: 1.1rem;
+
+  [data-theme="light"] & {
+    background: transparent;
+  }
+}
+
+/* Footer columna Premium destacada */
+.comparison-table tfoot td:nth-child(5) {
+  background: transparent;
+  border-left: none;
+  border-right: none;
+  box-shadow: none;
+
+  [data-theme="light"] & {
+    background: transparent;
+    border-left: none;
+    border-right: none;
+    box-shadow: none;
+  }
 }
 
 .comparison-table tfoot .plan-button {

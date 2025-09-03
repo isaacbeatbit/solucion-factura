@@ -28,16 +28,20 @@
 .btn-primary {
   background: linear-gradient(135deg, var(--highlight-blue), var(--secondary));
   color: var(--gray-50);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--theme-shadow-md);
 
   &:hover {
     transform: translateY(-1px);
-    box-shadow: var(--shadow-lg), var(--glow);
+    box-shadow: var(--theme-shadow-lg), var(--glow);
     background: linear-gradient(
       135deg,
       var(--secondary),
       var(--highlight-blue)
     );
+  }
+
+  [data-theme="light"] & {
+    color: white;
   }
 }
 
@@ -46,13 +50,17 @@
   background: var(--primary);
   color: var(--gray-100);
   border: 1px solid var(--primary-light);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--theme-shadow-sm);
 
   &:hover {
     background: var(--primary-light);
     border-color: var(--secondary);
     transform: translateY(-1px);
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--theme-shadow-md);
+  }
+
+  [data-theme="light"] & {
+    color: white;
   }
 }
 
@@ -63,7 +71,7 @@
   border: 1px solid var(--secondary);
 
   &:hover {
-    background: rgba(26, 109, 204, 0.1);
+    background: var(--border-light);
     border-color: var(--highlight-blue);
     box-shadow: var(--glow);
     color: var(--highlight-blue);
@@ -74,12 +82,12 @@
 // Botón ghost (solo texto)
 .btn-ghost {
   background: transparent;
-  color: var(--secondary);
+  color: var(--text-secondary);
   border: none;
 
   &:hover {
-    background: rgba(26, 109, 204, 0.1);
-    color: var(--highlight-blue);
+    background: var(--border-light);
+    color: var(--secondary);
   }
 }
 
@@ -87,12 +95,16 @@
 .btn-success {
   background: var(--accent);
   color: var(--gray-50);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--theme-shadow-sm);
 
   &:hover {
     background: #2d8653;
     transform: translateY(-1px);
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--theme-shadow-md);
+  }
+
+  [data-theme="light"] & {
+    color: white;
   }
 }
 
@@ -100,12 +112,16 @@
 .btn-danger {
   background: var(--orange);
   color: var(--gray-50);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--theme-shadow-sm);
 
   &:hover {
     background: #e55a2b;
     transform: translateY(-1px);
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--theme-shadow-md);
+  }
+
+  [data-theme="light"] & {
+    color: white;
   }
 }
 
@@ -113,16 +129,16 @@
 .mobile-menu-btn {
   display: none;
   background: transparent;
-  border: 1px solid rgba(26, 109, 204, 0.2);
+  border: 1px solid var(--border-light);
   font-size: 1.5rem;
   cursor: pointer;
-  color: var(--gray-100);
+  color: var(--text-primary);
   padding: 0.5rem;
   border-radius: 0.5rem;
   transition: all 0.2s ease;
 
   &:hover {
-    background: rgba(26, 109, 204, 0.1);
+    background: var(--border-light);
     border-color: var(--secondary);
     box-shadow: var(--glow);
   }
@@ -178,27 +194,47 @@
 .btn-dark {
   background: var(--gray-900);
   color: var(--gray-100);
-  border: 1px solid var(--dark-blue);
+  border: 1px solid var(--border-color);
 
   &:hover {
-    background: var(--dark-blue);
+    background: var(--primary);
     border-color: var(--secondary);
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--theme-shadow-md);
     transform: translateY(-1px);
+  }
+
+  [data-theme="light"] & {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary-light);
+
+    &:hover {
+      background: var(--primary-light);
+    }
   }
 }
 
 // Botón con fondo claro (para secciones oscuras)
 .btn-light {
-  background: var(--gray-50);
-  color: var(--gray-900);
-  border: 1px solid var(--gray-100);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
 
   &:hover {
-    background: var(--gray-100);
+    background: var(--bg-secondary);
     color: var(--primary);
     transform: translateY(-1px);
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--theme-shadow-md);
+  }
+
+  [data-theme="light"] & {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+
+    &:hover {
+      background: var(--bg-secondary);
+    }
   }
 }
 

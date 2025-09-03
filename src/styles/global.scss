@@ -22,11 +22,14 @@ body {
   font-size: 16px;
   /* font-size: clamp(1.4rem, 2.5vw, 1.6rem); // Responsive font-size */
   line-height: 1.6;
-  color: #e1e5ee;
-  background: #0c1221;
+  color: var(--text-primary);
+  background: var(--bg-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 
   // Mejor touch en móviles
   -webkit-tap-highlight-color: transparent;
