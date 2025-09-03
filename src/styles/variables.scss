@@ -92,3 +92,38 @@
   --icon-filter-invert: 0;
   --text-invert: 0;
 }
+
+// === TIPOGRAFÍA UNIFICADA ===
+:root {
+  // Colores de títulos
+  --title-color: #ffffff;
+  --subtitle-color: var(--text-secondary);
+  --heading-color: var(--text-primary);
+
+  // Gradientes para títulos principales
+  --title-gradient: linear-gradient(135deg, #ffffff, var(--highlight-blue));
+  --title-gradient-alt: linear-gradient(135deg, #ffffff, #6db1ff);
+
+  // Tamaños de fuente
+  --title-size-xl: clamp(2.5rem, 5vw, 3.5rem);
+  --title-size-lg: clamp(2.2rem, 4vw, 3rem);
+  --title-size-md: clamp(1.8rem, 3vw, 2.5rem);
+  --title-size-sm: clamp(1.4rem, 2.5vw, 1.8rem);
+  --subtitle-size: clamp(1rem, 2vw, 1.2rem);
+  --heading-size: clamp(1.1rem, 2vw, 1.25rem);
+}
+
+[data-theme="light"] {
+  // Colores de títulos para tema claro
+  --title-color: #0c1221;
+  --subtitle-color: var(--text-secondary);
+  --heading-color: var(--text-primary);
+
+  // Gradientes para títulos principales en tema claro
+  --title-gradient: linear-gradient(
+    135deg,
+    var(--secondary),
+    var(--highlight-blue)
+  );
+  --title-gradient-alt: linear-gradient(135deg, var(--primary), #6db1ff);
+}

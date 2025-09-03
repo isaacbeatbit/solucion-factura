@@ -63,24 +63,9 @@
   border: 1px solid rgba(26, 109, 204, 0.3);
 }
 
-.hero h1 {
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
-  font-weight: 800;
-  line-height: 1.1;
-  margin-bottom: 1.5rem;
-  background: linear-gradient(135deg, #2a7fdf, #6db1ff);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 2px 10px rgba(26, 109, 204, 0.3);
-}
+/* Hero title styles are now handled by global typography classes */
 
-.hero p {
-  font-size: 1.125rem;
-  color: var(--text-secondary);
-  margin-bottom: 2rem;
-  line-height: 1.7;
-}
+/* Hero paragraph styles are now handled by global typography classes */
 
 .hero-actions {
   display: flex;

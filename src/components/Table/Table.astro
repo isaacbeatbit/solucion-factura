@@ -5,13 +5,14 @@ import "./table.scss";
 <section class="comparison-section">
   <div class="container">
     <div class="section-header">
-      <h2 class="section-title">Comparación de planes</h2>
-      <p class="section-subtitle">
+      <h2 class="title-section">Comparación de planes</h2>
+      <p class="subtitle">
         Descubre todas las características incluidas en cada plan
       </p>
     </div>
 
-    <div class="table-wrapper">
+    <!-- Desktop Table -->
+    <div class="table-wrapper desktop-table">
       <table class="comparison-table">
         <thead>
           <tr>
@@ -386,25 +387,935 @@ import "./table.scss";
         </tfoot>
       </table>
     </div>
+
+    <!-- Mobile Plans Navigation -->
+    <div class="mobile-table">
+      <!-- Plan Tabs -->
+      <div class="plan-tabs">
+        <button class="plan-tab active" data-plan="emprende">
+          <div class="tab-name">Emprende</div>
+          <div class="tab-price">$292</div>
+        </button>
+        <button class="plan-tab" data-plan="crece">
+          <div class="tab-name">Crece</div>
+          <div class="tab-price">$501</div>
+        </button>
+        <button class="plan-tab" data-plan="empresa">
+          <div class="tab-name">Empresa</div>
+          <div class="tab-price">$960</div>
+        </button>
+        <button class="plan-tab premium" data-plan="premium">
+          <div class="tab-badge">MÁS VENDIDO</div>
+          <div class="tab-name">Premium</div>
+          <div class="tab-price">$2,075</div>
+        </button>
+        <button class="plan-tab" data-plan="premium-plus">
+          <div class="tab-name">Premium PLUS</div>
+          <div class="tab-price">$2,799</div>
+        </button>
+      </div>
+
+      <!-- Plan Content -->
+      <div class="plan-content active" id="plan-emprende">
+        <div class="plan-header">
+          <h3 class="plan-title">Plan Emprende</h3>
+          <div class="plan-pricing">
+            <span class="price">$292</span>
+            <span class="period">por año</span>
+          </div>
+          <a
+            href="https://pagos.solucionfiscal.online/subscribe/6677460f60546edc2553076f/plan-emprende"
+            class="mobile-plan-button"
+          >
+            Comprar Plan
+          </a>
+        </div>
+
+        <div class="features-list">
+          <div class="feature-item highlight-feature">
+            <span class="feature-name">Timbres incluidos</span>
+            <span class="feature-value timbres">300</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-name">MultiEmpresa</span>
+            <span class="feature-value not-included">✕</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-name">Facturas</span>
+            <span class="feature-value included">✓</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-name">Cotizaciones</span>
+            <span class="feature-value not-included">✕</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-name">Notas de Venta</span>
+            <span class="feature-value not-included">✕</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-name">Facturar Notas de Venta masivamente</span
+            >
+            <span class="feature-value not-included">✕</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-name">AUTO FACTURA</span>
+            <span class="feature-value not-included">✕</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-name">Recibo de Honorarios</span>
+            <span class="feature-value included">✓</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-name">Recibo de Arrendamiento</span>
+            <span class="feature-value included">✓</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-name">Factura GLOBAL masiva</span>
+            <span class="feature-value not-included">✕</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-name">Carta Porte</span>
+            <span class="feature-value not-included">✕</span>
+          </div>
+
+          <!-- Accordion for more features -->
+          <div class="mobile-accordion">
+            <button class="mobile-accordion-toggle" data-plan="emprende">
+              <span>Ver más características</span>
+              <span class="mobile-arrow">▼</span>
+            </button>
+            <div class="mobile-accordion-content" id="mobile-features-emprende">
+              <div class="feature-item">
+                <span class="feature-name">Complemento Pago</span>
+                <span class="feature-value included">✓</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Recibo de Nómina</span>
+                <span class="feature-value not-included">✕</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Programación de Facturas</span>
+                <span class="feature-value included">✓</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Complemento Educativo</span>
+                <span class="feature-value not-included">✕</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Complemento Comercio Exterior</span>
+                <span class="feature-value not-included">✕</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name"
+                  >Complemento Donatarias Autorizadas <span class="nuevo-tag"
+                    >NUEVO</span
+                  ></span
+                >
+                <span class="feature-value not-included">✕</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name"
+                  >Complemento Múltiples Pagos (Factoraje financiero) <span
+                    class="nuevo-tag">NUEVO</span
+                  ></span
+                >
+                <span class="feature-value not-included">✕</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Plantillas PDF Personalizables</span>
+                <span class="feature-value included">✓</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Envío por Mail</span>
+                <span class="feature-value included">✓</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Envío por Email Propio</span>
+                <span class="feature-value not-included">✕</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Factura 72 hrs antes</span>
+                <span class="feature-value included">✓</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Envío por WhatsApp</span>
+                <span class="feature-value not-included">✕</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Envío WhatsApp número propio</span>
+                <span class="feature-value not-included">✕</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Descarga XML</span>
+                <span class="feature-value not-included">✕</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name"
+                  >Importar Historial de Facturación</span
+                >
+                <span class="feature-value not-included">✕</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Conciliaciones Bancarias</span>
+                <span class="feature-value not-included">✕</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Conciliaciones de Pagos</span>
+                <span class="feature-value not-included">✕</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Validación de EFOS/EDOS</span>
+                <span class="feature-value not-included">✕</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Validación de Vigencia</span>
+                <span class="feature-value not-included">✕</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Genera DIOT</span>
+                <span class="feature-value not-included">✕</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="plan-content" id="plan-crece">
+        <div class="plan-header">
+          <h3 class="plan-title">Plan Crece</h3>
+          <div class="plan-pricing">
+            <span class="price">$501</span>
+            <span class="period">por año</span>
+          </div>
+          <a
+            href="https://pagos.solucionfiscal.online/subscribe/6677544560546edc255308ea/plan-crece"
+            class="mobile-plan-button"
+          >
+            Comprar Plan
+          </a>
+        </div>
+
+        <div class="features-list">
+          <div class="feature-item highlight-feature">
+            <span class="feature-name">Timbres incluidos</span>
+            <span class="feature-value timbres">600</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-name">MultiEmpresa</span>
+            <span class="feature-value not-included">✕</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-name">Facturas</span>
+            <span class="feature-value included">✓</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-name">Cotizaciones</span>
+            <span class="feature-value not-included">✕</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-name">Notas de Venta</span>
+            <span class="feature-value not-included">✕</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-name">Facturar Notas de Venta masivamente</span
+            >
+            <span class="feature-value not-included">✕</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-name">AUTO FACTURA</span>
+            <span class="feature-value not-included">✕</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-name">Recibo de Honorarios</span>
+            <span class="feature-value included">✓</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-name">Recibo de Arrendamiento</span>
+            <span class="feature-value included">✓</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-name">Factura GLOBAL masiva</span>
+            <span class="feature-value not-included">✕</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-name">Carta Porte</span>
+            <span class="feature-value included">✓</span>
+          </div>
+
+          <div class="mobile-accordion">
+            <button class="mobile-accordion-toggle" data-plan="crece">
+              <span>Ver más características</span>
+              <span class="mobile-arrow">▼</span>
+            </button>
+            <div class="mobile-accordion-content" id="mobile-features-crece">
+              <div class="feature-item">
+                <span class="feature-name">Complemento Pago</span>
+                <span class="feature-value included">✓</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Recibo de Nómina</span>
+                <span class="feature-value not-included">✕</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Programación de Facturas</span>
+                <span class="feature-value included">✓</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Complemento Educativo</span>
+                <span class="feature-value not-included">✕</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Complemento Comercio Exterior</span>
+                <span class="feature-value not-included">✕</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name"
+                  >Complemento Donatarias Autorizadas <span class="nuevo-tag"
+                    >NUEVO</span
+                  ></span
+                >
+                <span class="feature-value not-included">✕</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name"
+                  >Complemento Múltiples Pagos (Factoraje financiero) <span
+                    class="nuevo-tag">NUEVO</span
+                  ></span
+                >
+                <span class="feature-value not-included">✕</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Plantillas PDF Personalizables</span>
+                <span class="feature-value included">✓</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Envío por Mail</span>
+                <span class="feature-value included">✓</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Envío por Email Propio</span>
+                <span class="feature-value not-included">✕</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Factura 72 hrs antes</span>
+                <span class="feature-value included">✓</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Envío por WhatsApp</span>
+                <span class="feature-value not-included">✕</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Envío WhatsApp número propio</span>
+                <span class="feature-value not-included">✕</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Descarga XML</span>
+                <span class="feature-value not-included">✕</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name"
+                  >Importar Historial de Facturación</span
+                >
+                <span class="feature-value not-included">✕</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Conciliaciones Bancarias</span>
+                <span class="feature-value not-included">✕</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Conciliaciones de Pagos</span>
+                <span class="feature-value not-included">✕</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Validación de EFOS/EDOS</span>
+                <span class="feature-value not-included">✕</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Validación de Vigencia</span>
+                <span class="feature-value not-included">✕</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Genera DIOT</span>
+                <span class="feature-value not-included">✕</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="plan-content" id="plan-empresa">
+        <div class="plan-header">
+          <h3 class="plan-title">Plan Empresa</h3>
+          <div class="plan-pricing">
+            <span class="price">$960</span>
+            <span class="period">por año</span>
+          </div>
+          <a
+            href="https://pagos.solucionfiscal.online/subscribe/667754e89b6a9adc0e5693f1/plan-empresa"
+            class="mobile-plan-button"
+          >
+            Comprar Plan
+          </a>
+        </div>
+
+        <div class="features-list">
+          <div class="feature-item highlight-feature">
+            <span class="feature-name">Timbres incluidos</span>
+            <span class="feature-value timbres">1,200</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-name">MultiEmpresa</span>
+            <span class="feature-value included">✓</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-name">Facturas</span>
+            <span class="feature-value included">✓</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-name">Cotizaciones</span>
+            <span class="feature-value not-included">✕</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-name">Notas de Venta</span>
+            <span class="feature-value not-included">✕</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-name">Facturar Notas de Venta masivamente</span
+            >
+            <span class="feature-value not-included">✕</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-name">AUTO FACTURA</span>
+            <span class="feature-value not-included">✕</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-name">Recibo de Honorarios</span>
+            <span class="feature-value included">✓</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-name">Recibo de Arrendamiento</span>
+            <span class="feature-value included">✓</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-name">Factura GLOBAL masiva</span>
+            <span class="feature-value included">✓</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-name">Carta Porte</span>
+            <span class="feature-value included">✓</span>
+          </div>
+
+          <div class="mobile-accordion">
+            <button class="mobile-accordion-toggle" data-plan="empresa">
+              <span>Ver más características</span>
+              <span class="mobile-arrow">▼</span>
+            </button>
+            <div class="mobile-accordion-content" id="mobile-features-empresa">
+              <div class="feature-item">
+                <span class="feature-name">Complemento Pago</span>
+                <span class="feature-value included">✓</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Recibo de Nómina</span>
+                <span class="feature-value included">✓</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Programación de Facturas</span>
+                <span class="feature-value included">✓</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Complemento Educativo</span>
+                <span class="feature-value included">✓</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Complemento Comercio Exterior</span>
+                <span class="feature-value included">✓</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name"
+                  >Complemento Donatarias Autorizadas <span class="nuevo-tag"
+                    >NUEVO</span
+                  ></span
+                >
+                <span class="feature-value not-included">✕</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name"
+                  >Complemento Múltiples Pagos (Factoraje financiero) <span
+                    class="nuevo-tag">NUEVO</span
+                  ></span
+                >
+                <span class="feature-value not-included">✕</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Plantillas PDF Personalizables</span>
+                <span class="feature-value included">✓</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Envío por Mail</span>
+                <span class="feature-value included">✓</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Envío por Email Propio</span>
+                <span class="feature-value not-included">✕</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Factura 72 hrs antes</span>
+                <span class="feature-value included">✓</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Envío por WhatsApp</span>
+                <span class="feature-value not-included">✕</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Envío WhatsApp número propio</span>
+                <span class="feature-value not-included">✕</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Descarga XML</span>
+                <span class="feature-value not-included">✕</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name"
+                  >Importar Historial de Facturación</span
+                >
+                <span class="feature-value not-included">✕</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Conciliaciones Bancarias</span>
+                <span class="feature-value not-included">✕</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Conciliaciones de Pagos</span>
+                <span class="feature-value not-included">✕</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Validación de EFOS/EDOS</span>
+                <span class="feature-value not-included">✕</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Validación de Vigencia</span>
+                <span class="feature-value not-included">✕</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Genera DIOT</span>
+                <span class="feature-value not-included">✕</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="plan-content" id="plan-premium">
+        <div class="plan-header premium-plan">
+          <div class="premium-badge-mobile">MÁS VENDIDO</div>
+          <h3 class="plan-title">Plan Premium</h3>
+          <div class="plan-pricing">
+            <span class="price">$2,075</span>
+            <span class="period">por año</span>
+          </div>
+          <a
+            href="https://pagos.solucionfiscal.online/subscribe/6677554f9b6a9adc0e5693f6/plan-premium"
+            class="mobile-plan-button"
+          >
+            Comprar Plan
+          </a>
+        </div>
+
+        <div class="features-list">
+          <div class="feature-item highlight-feature">
+            <span class="feature-name">Timbres incluidos</span>
+            <span class="feature-value timbres">6,000</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-name">MultiEmpresa</span>
+            <span class="feature-value included">✓</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-name">Facturas</span>
+            <span class="feature-value included">✓</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-name">Cotizaciones</span>
+            <span class="feature-value included">✓</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-name">Notas de Venta</span>
+            <span class="feature-value included">✓</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-name">Facturar Notas de Venta masivamente</span
+            >
+            <span class="feature-value included">✓</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-name">AUTO FACTURA</span>
+            <span class="feature-value not-included">✕</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-name">Recibo de Honorarios</span>
+            <span class="feature-value included">✓</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-name">Recibo de Arrendamiento</span>
+            <span class="feature-value included">✓</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-name">Factura GLOBAL masiva</span>
+            <span class="feature-value included">✓</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-name">Carta Porte</span>
+            <span class="feature-value included">✓</span>
+          </div>
+
+          <div class="mobile-accordion">
+            <button class="mobile-accordion-toggle" data-plan="premium">
+              <span>Ver más características</span>
+              <span class="mobile-arrow">▼</span>
+            </button>
+            <div class="mobile-accordion-content" id="mobile-features-premium">
+              <div class="feature-item">
+                <span class="feature-name">Complemento Pago</span>
+                <span class="feature-value included">✓</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Recibo de Nómina</span>
+                <span class="feature-value included">✓</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Programación de Facturas</span>
+                <span class="feature-value included">✓</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Complemento Educativo</span>
+                <span class="feature-value included">✓</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Complemento Comercio Exterior</span>
+                <span class="feature-value included">✓</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name"
+                  >Complemento Donatarias Autorizadas <span class="nuevo-tag"
+                    >NUEVO</span
+                  ></span
+                >
+                <span class="feature-value not-included">✕</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name"
+                  >Complemento Múltiples Pagos (Factoraje financiero) <span
+                    class="nuevo-tag">NUEVO</span
+                  ></span
+                >
+                <span class="feature-value not-included">✕</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Plantillas PDF Personalizables</span>
+                <span class="feature-value included">✓</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Envío por Mail</span>
+                <span class="feature-value included">✓</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Envío por Email Propio</span>
+                <span class="feature-value not-included">✕</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Factura 72 hrs antes</span>
+                <span class="feature-value included">✓</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Envío por WhatsApp</span>
+                <span class="feature-value included">✓</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Envío WhatsApp número propio</span>
+                <span class="feature-value not-included">✕</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Descarga XML</span>
+                <span class="feature-value included">✓</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name"
+                  >Importar Historial de Facturación</span
+                >
+                <span class="feature-value included">✓</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Conciliaciones Bancarias</span>
+                <span class="feature-value included">✓</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Conciliaciones de Pagos</span>
+                <span class="feature-value included">✓</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Validación de EFOS/EDOS</span>
+                <span class="feature-value included">✓</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Validación de Vigencia</span>
+                <span class="feature-value included">✓</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Genera DIOT</span>
+                <span class="feature-value not-included">✕</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="plan-content" id="plan-premium-plus">
+        <div class="plan-header">
+          <h3 class="plan-title">Plan Premium PLUS</h3>
+          <div class="plan-pricing">
+            <span class="price">$2,799</span>
+            <span class="period">por año</span>
+          </div>
+          <a
+            href="https://pagos.solucionfiscal.online/subscribe/667756fe9b6a9adc0e569424/plan-premium-plus"
+            class="mobile-plan-button"
+          >
+            Comprar Plan
+          </a>
+        </div>
+
+        <div class="features-list">
+          <div class="feature-item highlight-feature">
+            <span class="feature-name">Timbres incluidos</span>
+            <span class="feature-value timbres">10,000</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-name">MultiEmpresa</span>
+            <span class="feature-value included">✓</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-name">Facturas</span>
+            <span class="feature-value included">✓</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-name">Cotizaciones</span>
+            <span class="feature-value included">✓</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-name">Notas de Venta</span>
+            <span class="feature-value included">✓</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-name">Facturar Notas de Venta masivamente</span
+            >
+            <span class="feature-value included">✓</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-name">AUTO FACTURA</span>
+            <span class="feature-value included">✓</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-name">Recibo de Honorarios</span>
+            <span class="feature-value included">✓</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-name">Recibo de Arrendamiento</span>
+            <span class="feature-value included">✓</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-name">Factura GLOBAL masiva</span>
+            <span class="feature-value included">✓</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-name">Carta Porte</span>
+            <span class="feature-value included">✓</span>
+          </div>
+
+          <div class="mobile-accordion">
+            <button class="mobile-accordion-toggle" data-plan="premium-plus">
+              <span>Ver más características</span>
+              <span class="mobile-arrow">▼</span>
+            </button>
+            <div
+              class="mobile-accordion-content"
+              id="mobile-features-premium-plus"
+            >
+              <div class="feature-item">
+                <span class="feature-name">Complemento Pago</span>
+                <span class="feature-value included">✓</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Recibo de Nómina</span>
+                <span class="feature-value included">✓</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Programación de Facturas</span>
+                <span class="feature-value included">✓</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Complemento Educativo</span>
+                <span class="feature-value included">✓</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Complemento Comercio Exterior</span>
+                <span class="feature-value included">✓</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name"
+                  >Complemento Donatarias Autorizadas <span class="nuevo-tag"
+                    >NUEVO</span
+                  ></span
+                >
+                <span class="feature-value included">✓</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name"
+                  >Complemento Múltiples Pagos (Factoraje financiero) <span
+                    class="nuevo-tag">NUEVO</span
+                  ></span
+                >
+                <span class="feature-value included">✓</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Plantillas PDF Personalizables</span>
+                <span class="feature-value included">✓</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Envío por Mail</span>
+                <span class="feature-value included">✓</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Envío por Email Propio</span>
+                <span class="feature-value included">✓</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Factura 72 hrs antes</span>
+                <span class="feature-value included">✓</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Envío por WhatsApp</span>
+                <span class="feature-value included">✓</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Envío WhatsApp número propio</span>
+                <span class="feature-value included">✓</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Descarga XML</span>
+                <span class="feature-value included">✓</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name"
+                  >Importar Historial de Facturación</span
+                >
+                <span class="feature-value included">✓</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Conciliaciones Bancarias</span>
+                <span class="feature-value included">✓</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Conciliaciones de Pagos</span>
+                <span class="feature-value included">✓</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Validación de EFOS/EDOS</span>
+                <span class="feature-value included">✓</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Validación de Vigencia</span>
+                <span class="feature-value included">✓</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-name">Genera DIOT</span>
+                <span class="feature-value included">✓</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
+    // Desktop accordion functionality
     const btn = document.getElementById("ver-caracteristicas");
     const tabla = document.getElementById("tabla-caracteristicas");
-    const text = btn.querySelector(".toggle-text");
-    const arrow = btn.querySelector(".accordion-arrow");
-    let abierto = true;
-    btn.addEventListener("click", function () {
-      abierto = !abierto;
-      tabla.classList.toggle("expanded", abierto);
-      tabla.style.display = abierto ? "table-row-group" : "none";
-      text.textContent = abierto
-        ? "Ocultar características"
-        : "Ver todas las características";
-      arrow.textContent = abierto ? "▲" : "▼";
-      btn.classList.toggle("expanded", abierto);
+
+    if (btn && tabla) {
+      const text = btn.querySelector(".toggle-text");
+      const arrow = btn.querySelector(".accordion-arrow");
+      let abierto = true;
+
+      btn.addEventListener("click", function () {
+        abierto = !abierto;
+        tabla.classList.toggle("expanded", abierto);
+        tabla.style.display = abierto ? "table-row-group" : "none";
+        if (text) {
+          text.textContent = abierto
+            ? "Ocultar características"
+            : "Ver todas las características";
+        }
+        if (arrow) {
+          arrow.textContent = abierto ? "▲" : "▼";
+        }
+        btn.classList.toggle("expanded", abierto);
+      });
+    }
+
+    // Mobile tabs functionality
+    const planTabs = document.querySelectorAll(".plan-tab");
+    const planContents = document.querySelectorAll(".plan-content");
+
+    planTabs.forEach((tab) => {
+      tab.addEventListener("click", function () {
+        const planId = tab.getAttribute("data-plan");
+
+        // Remove active class from all tabs
+        planTabs.forEach((t) => t.classList.remove("active"));
+        // Remove active class from all content
+        planContents.forEach((c) => c.classList.remove("active"));
+
+        // Add active class to clicked tab
+        tab.classList.add("active");
+        // Add active class to corresponding content
+        if (planId) {
+          const planContent = document.getElementById(`plan-${planId}`);
+          if (planContent) {
+            planContent.classList.add("active");
+          }
+        }
+      });
+    });
+
+    // Mobile accordion functionality
+    const mobileToggles = document.querySelectorAll(".mobile-accordion-toggle");
+
+    mobileToggles.forEach((toggle) => {
+      toggle.addEventListener("click", function () {
+        const planId = toggle.getAttribute("data-plan");
+        const arrow = toggle.querySelector(".mobile-arrow");
+        const text = toggle.querySelector("span:first-child");
+
+        if (planId) {
+          const content = document.getElementById(`mobile-features-${planId}`);
+
+          if (content) {
+            if (content.style.display === "block") {
+              content.style.display = "none";
+              if (arrow) arrow.textContent = "▼";
+              if (text) text.textContent = "Ver más características";
+            } else {
+              content.style.display = "block";
+              if (arrow) arrow.textContent = "▲";
+              if (text) text.textContent = "Ocultar características";
+            }
+          }
+        }
+      });
     });
   });
 </script>

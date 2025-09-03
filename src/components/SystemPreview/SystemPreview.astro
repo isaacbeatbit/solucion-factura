@@ -1,0 +1,331 @@
+---
+import "./system-preview.scss";
+---
+
+<!-- Preload first carousel image for better performance -->
+<link rel="preload" as="image" href="https://solucionfactura.mx/images/1" />
+
+<section class="system-preview">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="title-section">Conoce nuestro sistema</h2>
+      <p class="subtitle">
+        Explora la interfaz intuitiva y las funcionalidades avanzadas de
+        Solución Factura
+      </p>
+    </div>
+
+    <div class="carousel-container">
+      <div class="carousel-wrapper">
+        <div class="carousel-track" id="carouselTrack">
+          <div class="carousel-slide active">
+            <div class="slide-image">
+              <img
+                src="https://solucionfactura.mx/images/1"
+                alt="Dashboard Principal"
+                loading="eager"
+              />
+            </div>
+            <div class="slide-content">
+              <h3 class="slide-title">Dashboard Principal</h3>
+              <p class="slide-subtitle">Vista general de tu facturación</p>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="slide-image">
+              <img
+                src="https://solucionfactura.mx/images/2"
+                alt="Creación de Facturas"
+                loading="eager"
+              />
+            </div>
+            <div class="slide-content">
+              <h3 class="slide-title">Generación de Facturas</h3>
+              <p class="slide-subtitle">
+                Crea facturas de forma rápida y sencilla
+              </p>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="slide-image">
+              <img
+                src="https://solucionfactura.mx/images/3"
+                alt="Gestión de Clientes"
+                loading="eager"
+              />
+            </div>
+            <div class="slide-content">
+              <h3 class="slide-title">Convertidor PDF a Excel</h3>
+              <p class="slide-subtitle">Convierte estados de cuenta a Excel</p>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="slide-image">
+              <img
+                src="https://solucionfactura.mx/images/4"
+                alt="Reportes Avanzados"
+                loading="eager"
+              />
+            </div>
+            <div class="slide-content">
+              <h3 class="slide-title">Multi-empresa</h3>
+              <p class="slide-subtitle">
+                Maneja multiples RFC desde un solo lugar
+              </p>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="slide-image">
+              <img
+                src="https://solucionfactura.mx/images/5"
+                alt="Integración WhatsApp"
+                loading="eager"
+              />
+            </div>
+            <div class="slide-content">
+              <h3 class="slide-title">Descarga XML</h3>
+              <p class="slide-subtitle">Descarga masiva del SAT</p>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="slide-image">
+              <img
+                src="https://solucionfactura.mx/images/6"
+                alt="Configuración Multi-empresa"
+                loading="eager"
+              />
+            </div>
+            <div class="slide-content">
+              <h3 class="slide-title">Conciliación Bancaria</h3>
+              <p class="slide-subtitle">Automatiza tu contabilidad</p>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="slide-image">
+              <img
+                src="https://solucionfactura.mx/images/7"
+                alt="Facturación Masiva"
+                loading="eager"
+              />
+            </div>
+            <div class="slide-content">
+              <h3 class="slide-title">Facturación Masiva</h3>
+              <p class="slide-subtitle">
+                Procesa miles de facturas con un solo clic
+              </p>
+            </div>
+          </div>
+
+          <div class="carousel-slide">
+            <div class="slide-image">
+              <img
+                src="https://solucionfactura.mx/images/8"
+                alt="Conciliación Bancaria"
+                loading="eager"
+              />
+            </div>
+            <div class="slide-content">
+              <h3 class="slide-title">Conciliación Bancaria</h3>
+              <p class="slide-subtitle">
+                Automatiza la conciliación de tus cuentas
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Buttons -->
+      <button
+        class="carousel-btn carousel-btn-prev"
+        id="prevBtn"
+        aria-label="Imagen anterior"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path
+            d="M15 18L9 12L15 6"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"></path>
+        </svg>
+      </button>
+      <button
+        class="carousel-btn carousel-btn-next"
+        id="nextBtn"
+        aria-label="Siguiente imagen"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path
+            d="M9 18L15 12L9 6"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"></path>
+        </svg>
+      </button>
+
+      <!-- Dots Indicator -->
+      <div class="carousel-dots" id="carouselDots">
+        <button class="dot active" data-slide="0" aria-label="Ir a imagen 1"
+        ></button>
+        <button class="dot" data-slide="1" aria-label="Ir a imagen 2"></button>
+        <button class="dot" data-slide="2" aria-label="Ir a imagen 3"></button>
+        <button class="dot" data-slide="3" aria-label="Ir a imagen 4"></button>
+        <button class="dot" data-slide="4" aria-label="Ir a imagen 5"></button>
+        <button class="dot" data-slide="5" aria-label="Ir a imagen 6"></button>
+        <button class="dot" data-slide="6" aria-label="Ir a imagen 7"></button>
+        <button class="dot" data-slide="7" aria-label="Ir a imagen 8"></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const track = document.getElementById("carouselTrack");
+    const slides = document.querySelectorAll(".carousel-slide");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const dots = document.querySelectorAll(".dot");
+
+    if (!track || !slides.length || !prevBtn || !nextBtn) return;
+
+    // Handle image loading
+    const images = document.querySelectorAll(".slide-image img");
+    images.forEach((img, index) => {
+      const slideContainer = img.closest(".slide-image");
+      const imgElement = img as HTMLImageElement;
+
+      imgElement.addEventListener("load", function () {
+        this.classList.add("loaded");
+        slideContainer?.classList.add("loaded");
+      });
+
+      imgElement.addEventListener("error", function () {
+        console.warn(`Failed to load image ${index + 1}:`, this.src);
+        this.classList.add("loaded"); // Show even if failed to load
+        slideContainer?.classList.add("loaded");
+      });
+
+      // If image is already loaded (cached), add loaded class immediately
+      if (imgElement.complete && imgElement.naturalHeight !== 0) {
+        imgElement.classList.add("loaded");
+        slideContainer?.classList.add("loaded");
+      }
+    });
+
+    let currentSlide = 0;
+    const totalSlides = slides.length;
+
+    function updateCarousel() {
+      // Update slides
+      slides.forEach((slide, index) => {
+        slide.classList.remove("active");
+        if (index === currentSlide) {
+          slide.classList.add("active");
+          // Ensure current slide image is visible
+          const img = slide.querySelector("img");
+          if (img && img.complete) {
+            img.classList.add("loaded");
+            slide.querySelector(".slide-image")?.classList.add("loaded");
+          }
+        }
+      });
+
+      // Update dots
+      dots.forEach((dot, index) => {
+        dot.classList.remove("active");
+        if (index === currentSlide) {
+          dot.classList.add("active");
+        }
+      });
+
+      // Move track
+      const translateX = -currentSlide * 100;
+      if (track) {
+        track.style.transform = `translateX(${translateX}%)`;
+      }
+    }
+
+    function goToSlide(slideIndex: number) {
+      currentSlide = slideIndex;
+      updateCarousel();
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      updateCarousel();
+    }
+
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+      updateCarousel();
+    }
+
+    // Event listeners
+    nextBtn.addEventListener("click", nextSlide);
+    prevBtn.addEventListener("click", prevSlide);
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener("click", () => goToSlide(index));
+    });
+
+    // Auto-play functionality
+    let autoplayInterval: any;
+
+    function startAutoplay() {
+      autoplayInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+    }
+
+    function stopAutoplay() {
+      clearInterval(autoplayInterval);
+    }
+
+    // Start autoplay
+    startAutoplay();
+
+    // Pause on hover
+    const carouselContainer = document.querySelector(".carousel-container");
+    if (carouselContainer) {
+      carouselContainer.addEventListener("mouseenter", stopAutoplay);
+      carouselContainer.addEventListener("mouseleave", startAutoplay);
+    }
+
+    // Keyboard navigation
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowLeft") {
+        prevSlide();
+      } else if (e.key === "ArrowRight") {
+        nextSlide();
+      }
+    });
+
+    // Touch/swipe support for mobile
+    let startX = 0;
+    let endX = 0;
+
+    track.addEventListener("touchstart", function (e) {
+      startX = e.touches[0].clientX;
+    });
+
+    track.addEventListener("touchend", function (e) {
+      endX = e.changedTouches[0].clientX;
+      const diffX = startX - endX;
+
+      if (Math.abs(diffX) > 50) {
+        // Minimum swipe distance
+        if (diffX > 0) {
+          nextSlide();
+        } else {
+          prevSlide();
+        }
+      }
+    });
+  });
+</script>
