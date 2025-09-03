@@ -1,0 +1,1404 @@
+---
+import Navbar from "../components/Navbar/Navbar.astro";
+import Footer from "../components/Footer/Footer.astro";
+import WhatsAppFloat from "../components/WhatsAppFloat/WhatsAppFloat.astro";
+import "../styles/global.scss";
+---
+
+<html lang="es-MX">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="color-scheme" content="dark light" />
+
+    <!-- SEO Meta Tags -->
+    <title>
+      Términos y Condiciones - Solución Factura | Facturación Electrónica CFDI
+      4.0
+    </title>
+    <meta
+      name="description"
+      content="Conoce los términos y condiciones de uso de Solución Factura, nuestras políticas de servicio, obligaciones y derechos para el uso de nuestro sistema de facturación electrónica CFDI 4.0."
+    />
+    <meta
+      name="keywords"
+      content="términos y condiciones, política de servicio, facturación electrónica, CFDI 4.0, Solución Factura, condiciones de uso"
+    />
+    <meta name="author" content="Solución Factura" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://solucionfactura.mx/terms" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://solucionfactura.mx/terms" />
+    <meta
+      property="og:title"
+      content="Términos y Condiciones - Solución Factura"
+    />
+    <meta
+      property="og:description"
+      content="Conoce los términos y condiciones de uso de Solución Factura para nuestro sistema de facturación electrónica CFDI 4.0."
+    />
+    <meta
+      property="og:image"
+      content="https://solucionfactura.mx/solucion-factura-logo.png"
+    />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://solucionfactura.mx/terms" />
+    <meta
+      name="twitter:title"
+      content="Términos y Condiciones - Solución Factura"
+    />
+    <meta
+      name="twitter:description"
+      content="Conoce los términos y condiciones de uso de Solución Factura para nuestro sistema de facturación electrónica CFDI 4.0."
+    />
+
+    <!-- Script de tema -->
+    <script is:inline>
+      (function () {
+        "use strict";
+
+        function initTheme() {
+          const htmlElement = document.documentElement;
+          const savedTheme = localStorage.getItem("theme");
+          const prefersDark =
+            window.matchMedia &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+          let themeToApply;
+          if (savedTheme) {
+            themeToApply = savedTheme;
+          } else {
+            themeToApply = prefersDark ? "dark" : "light";
+            localStorage.setItem("theme", themeToApply);
+          }
+
+          if (themeToApply === "light") {
+            htmlElement.setAttribute("data-theme", "light");
+          } else {
+            htmlElement.removeAttribute("data-theme");
+          }
+        }
+
+        function watchSystemTheme() {
+          if (window.matchMedia) {
+            const mediaQuery = window.matchMedia(
+              "(prefers-color-scheme: dark)",
+            );
+
+            mediaQuery.addEventListener("change", (e) => {
+              const savedTheme = localStorage.getItem("theme");
+              if (!savedTheme) {
+                const htmlElement = document.documentElement;
+                if (e.matches) {
+                  htmlElement.removeAttribute("data-theme");
+                  localStorage.setItem("theme", "dark");
+                } else {
+                  htmlElement.setAttribute("data-theme", "light");
+                  localStorage.setItem("theme", "light");
+                }
+
+                window.dispatchEvent(
+                  new CustomEvent("themeChanged", {
+                    detail: {
+                      theme: e.matches ? "dark" : "light",
+                      source: "system",
+                    },
+                  }),
+                );
+              }
+            });
+          }
+        }
+
+        function getCurrentTheme() {
+          const htmlElement = document.documentElement;
+          return htmlElement.getAttribute("data-theme") || "dark";
+        }
+
+        function setTheme(theme) {
+          const htmlElement = document.documentElement;
+
+          if (theme === "light") {
+            htmlElement.setAttribute("data-theme", "light");
+          } else {
+            htmlElement.removeAttribute("data-theme");
+            theme = "dark";
+          }
+
+          localStorage.setItem("theme", theme);
+
+          window.dispatchEvent(
+            new CustomEvent("themeChanged", {
+              detail: { theme, source: "manual" },
+            }),
+          );
+
+          return theme;
+        }
+
+        function toggleTheme() {
+          const currentTheme = getCurrentTheme();
+          const newTheme = currentTheme === "light" ? "dark" : "light";
+          return setTheme(newTheme);
+        }
+
+        initTheme();
+
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", watchSystemTheme);
+        } else {
+          watchSystemTheme();
+        }
+
+        window.themeManager = {
+          getCurrentTheme,
+          setTheme,
+          toggleTheme,
+          init: initTheme,
+        };
+      })();
+    </script>
+  </head>
+
+  <body>
+    <Navbar />
+
+    <!-- Hero Section -->
+    <section class="terms-hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="hero-title">Términos y Condiciones</h1>
+          <p class="hero-description">
+            Conoce los términos y condiciones generales de uso de nuestros
+            servicios de facturación electrónica CFDI 4.0
+          </p>
+          <div class="last-updated">
+            <span class="update-label">Última actualización:</span>
+            <span class="update-date">01 de Enero de 2025</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Términos Content -->
+    <section class="terms-content">
+      <div class="container">
+        <div class="content-wrapper">
+          <!-- Contenido Principal -->
+          <main class="terms-main">
+            <div class="terms-intro">
+              <h2>Términos y Condiciones Generales</h2>
+              <p>
+                Contrato de Términos y Condiciones Generales de los servicios
+                ofrecidos por
+                <strong>"SERINT 360 SAS DE C.V."</strong> que en lo sucesivo se le
+                denominará
+                <strong>"LA EMPRESA"</strong> hacia usted que es denominado <strong
+                  >"EL USUARIO"</strong
+                >.
+              </p>
+            </div>
+
+            <!-- 1. Siglas y Glosario -->
+            <section id="siglas-glosario" class="terms-section">
+              <h3>1. SIGLAS Y GLOSARIO</h3>
+              <p>
+                Para efectos del presente, se tomarán en cuenta las siguientes
+                definiciones:
+              </p>
+
+              <div class="definitions-grid">
+                <div class="definition-item">
+                  <dt>1.1 API.-</dt>
+                  <dd>
+                    Podemos entender la API como un código que indica a las
+                    aplicaciones cómo pueden mantener una comunicación entre sí.
+                    Estas reglas permiten que los distintos programas mantengan
+                    interacciones.
+                  </dd>
+                </div>
+
+                <div class="definition-item">
+                  <dt>1.2 Aplicación Web.-</dt>
+                  <dd>
+                    Referente a la interfaz que ofrece Solución Fiscal dentro de
+                    su sitio web, donde puede administrar sus servicios
+                    adquiridos y aprovechar sus características.
+                  </dd>
+                </div>
+
+                <div class="definition-item">
+                  <dt>1.3 CFD.-</dt>
+                  <dd>
+                    Comprobante Fiscal Digital; son documentos electrónicos que
+                    permiten comprobar las operaciones realizadas entre los
+                    contribuyentes, bajo estándares tecnológicos y de seguridad
+                    internacionalmente reconocidos, estos no se encuentran
+                    actualmente vigentes ya que fueron reemplazados por los
+                    CFDI.
+                  </dd>
+                </div>
+
+                <div class="definition-item">
+                  <dt>1.4 CFDI.-</dt>
+                  <dd>
+                    El Comprobante Fiscal Digital a través de Internet o Factura
+                    Electrónica; Es el comprobante fiscal de un pago realizado
+                    que describe el costo del producto vendido o servicio
+                    prestado y el cual desglosa los impuestos aplicados. Se
+                    trata de un archivo en formato XML que cumple los estándares
+                    definidos por el SAT.
+                  </dd>
+                </div>
+
+                <div class="definition-item">
+                  <dt>1.5 CFF.-</dt>
+                  <dd>
+                    Código Fiscal de la Federación; Es un ordenamiento jurídico
+                    de carácter tributario, de aplicación en los Estados Unidos
+                    Mexicanos, que sirve como instrumento de la administración
+                    tributaria.
+                  </dd>
+                </div>
+
+                <div class="definition-item">
+                  <dt>1.6 CSD.-</dt>
+                  <dd>
+                    El Certificado de Sello Digital; Es un documento electrónico
+                    mediante el cual una autoridad de certificación (SAT)
+                    garantiza la vinculación entre la identidad de un sujeto o
+                    entidad y su clave pública.
+                  </dd>
+                </div>
+
+                <div class="definition-item">
+                  <dt>1.7 Magento.-</dt>
+                  <dd>
+                    Es una plataforma de código abierto para comercio
+                    electrónico escrita en PHP.
+                  </dd>
+                </div>
+
+                <div class="definition-item">
+                  <dt>1.8 Prestashop.-</dt>
+                  <dd>
+                    Es un sistema de gestión de contenidos libre y de código
+                    abierto pensado para construir desde cero tiendas en línea
+                    de comercio electrónico.
+                  </dd>
+                </div>
+
+                <div class="definition-item">
+                  <dt>1.9 RCFF.-</dt>
+                  <dd>
+                    Reglamento del Código Fiscal de la Federación; La ley
+                    adjetiva o reglamentaria que rige la aplicación del Código
+                    Fiscal de la Federación.
+                  </dd>
+                </div>
+
+                <div class="definition-item">
+                  <dt>1.10 RFC.-</dt>
+                  <dd>
+                    Registro Federal de Contribuyentes; Es una clave única de
+                    registro que sirve para identificar a toda persona que
+                    realiza una actividad económica y deba contribuir con el
+                    gasto público ante el SAT (Servicio de Administración
+                    Tributaria).
+                  </dd>
+                </div>
+
+                <div class="definition-item">
+                  <dt>1.11 RMF.-</dt>
+                  <dd>
+                    Resolución Miscelánea Fiscal; La Miscelánea Fiscal se puede
+                    definir como la disposición en materia de recaudación de
+                    impuestos que emite anualmente la Secretaría de Hacienda y
+                    Crédito Público (SHCP) con el objetivo de reformar leyes
+                    fiscales.
+                  </dd>
+                </div>
+
+                <div class="definition-item">
+                  <dt>1.12 SAT.-</dt>
+                  <dd>
+                    Servicio de Administración Tributaria; El Sistema de
+                    Administración Tributaria, es una institución gubernamental
+                    encargada de que las personas físicas y morales contribuyan
+                    lo que corresponde a las disposiciones tributarias y
+                    aduaneras.
+                  </dd>
+                </div>
+
+                <div class="definition-item">
+                  <dt>1.13 SHCP.-</dt>
+                  <dd>
+                    Secretaría, la Secretaría de Hacienda y Crédito Público; Es
+                    la entidad que se encarga de regular, dirigir y controlar en
+                    materia fiscal la política del Gobierno Federal (las
+                    finanzas, fiscalidad, ingreso público, gasto público, deuda
+                    pública).
+                  </dd>
+                </div>
+
+                <div class="definition-item">
+                  <dt>1.14 Shopify.-</dt>
+                  <dd>
+                    Se encarga de ofrecer una serie de servicios, incluidos
+                    pagos, marketing, envíos y herramientas de fidelización de
+                    clientes para simplificar el proceso de manejar una tienda
+                    en línea para los pequeños comerciantes.
+                  </dd>
+                </div>
+
+                <div class="definition-item">
+                  <dt>1.15 WHMCS.-</dt>
+                  <dd>
+                    Software de facturación para desarrolladores y web hosting.
+                    Crea facturas de aspecto profesional.
+                  </dd>
+                </div>
+
+                <div class="definition-item">
+                  <dt>1.16 Woocommerce.-</dt>
+                  <dd>
+                    Es un plugin de comercio electrónico de código abierto para
+                    WordPress. Está diseñado para pequeños y grandes
+                    comerciantes en línea con WordPress.
+                  </dd>
+                </div>
+              </div>
+            </section>
+
+            <!-- 2. Datos Generales -->
+            <section id="datos-generales" class="terms-section">
+              <h3>2. DATOS GENERALES</h3>
+              <p>
+                Para sus efectos legales, <strong>"LA EMPRESA"</strong> declara que
+                es una persona moral, debidamente constituida conforme a la legislación
+                mexicana. Que tiene la capacidad legal, tecnológica y humana para
+                ofrecer los servicios señalados en el presente escrito, facultades
+                que no han sido restringidas o modificadas en forma alguna. Su Registro
+                Federal de Contribuyentes ante la Secretaría de Hacienda y Crédito
+                Público es <strong>SER240101ABC</strong>.
+              </p>
+
+              <div class="company-info">
+                <h4>Información de Contacto:</h4>
+                <ul>
+                  <li>
+                    <strong>Domicilio:</strong> Alborada 124, Colonia Parques del
+                    Pedregal (Torre Perisur), Tlalpan, Ciudad de México. C.P. 14010
+                  </li>
+                  <li><strong>Teléfono:</strong> 55 9331 4767</li>
+                  <li><strong>WhatsApp:</strong> 55 7601 7764</li>
+                  <li>
+                    <strong>Correo electrónico:</strong> contacto@solucionfactura.mx
+                  </li>
+                </ul>
+
+                <h4>Sitios Web Oficiales:</h4>
+                <ul>
+                  <li>solucionfiscal.mx</li>
+                  <li>solucionfactura.mx</li>
+                  <li>solucioncrm.mx</li>
+                  <li>solucionconta.mx</li>
+                  <li>descargacfdi.com</li>
+                  <li>wabotify.com</li>
+                </ul>
+
+                <h4>Redes Sociales:</h4>
+                <ul>
+                  <li>Instagram: instagram.com/solucionfiscal</li>
+                  <li>Facebook: facebook.com/SolucionFiscalMX/</li>
+                  <li>YouTube: youtube.com/c/SolucionFiscal</li>
+                  <li>LinkedIn: mx.linkedin.com/company/solucion-fiscal</li>
+                </ul>
+              </div>
+
+              <p>
+                Que es plenamente capaz para la celebración del presente
+                contrato, toda vez que su objeto social se lo permite y cuenta
+                con la debida autorización del SAT para prestar el servicio de
+                certificación de CFDI, así mismo cuenta con la capacidad
+                tecnológica y de infraestructura que le permite prestar el
+                servicio de generación, validación y certificación de CFDI de
+                conformidad con los estándares y requerimientos establecidos por
+                el SAT, además <strong>"LA EMPRESA"</strong> es legítima propietaria
+                de la APLICACIÓN WEB utilizada para el servicio otorgado.
+              </p>
+            </section>
+
+            <!-- 3. Obligaciones de la Empresa -->
+            <section id="obligaciones-empresa" class="terms-section">
+              <h3>3. OBLIGACIONES DE "LA EMPRESA"</h3>
+              <p>
+                <strong>"LA EMPRESA"</strong> se obliga a generar, validar y certificar
+                los CFDI que emita <strong>"EL USUARIO"</strong> a partir de la APLICACIÓN
+                WEB, cumpliendo con las características funcionales, servicios generales
+                y niveles de servicios mínimos, establecidos por las disposiciones
+                de carácter general aplicables y vigentes, y de conformidad con los
+                estándares y lineamientos publicados en la PÁGINA DE INTERNET del
+                SAT.
+              </p>
+
+              <p>
+                De la misma forma se obliga a almacenar y conservar los CFDI que <strong
+                  >"EL USUARIO"</strong
+                > emita a través de LA APLICACIÓN WEB, en una base de datos autónoma
+                y segura, sujetándose estrictamente a todas y cada una de las disposiciones
+                de carácter general aplicable y que mantendrá en todo momento a disposición
+                del SAT los elementos necesarios para su verificación y cotejo, por
+                así requerirlo la legislación aplicable y vigente.
+              </p>
+
+              <p>
+                Por último <strong>"LA EMPRESA"</strong> se obliga a no realizar
+                prácticas engañosas, por los distintos medios digitales y tradicionales.
+              </p>
+            </section>
+
+            <!-- 4. Cumplimiento con el SAT -->
+            <section id="cumplimiento-sat" class="terms-section">
+              <h3>4. CUMPLIMIENTO CON EL SAT</h3>
+              <p>
+                Los servicios que <strong>"LA EMPRESA"</strong> otorga se sujetan
+                al Código Fiscal Federal, en los apartados 29, 29 BIS, 29-A y los
+                demás relacionados con los Proveedores Autorizados de Certificaciones,
+                entre los requerimientos se encuentran los siguientes:
+              </p>
+
+              <ol class="sat-requirements">
+                <li>
+                  Habilitación de la emisión de Comprobantes Fiscales Digitales
+                  por Internet (CFDI)
+                </li>
+                <li>Procesamiento ágil y eficiente del CFDI</li>
+                <li>
+                  Aceptación de la carga del o los Certificados de Sello Digital
+                  (CSD) de "EL USUARIO", para el sellado de los comprobantes
+                </li>
+                <li>
+                  Permiso de pre-cargar los datos fiscales de "EL USUARIO"
+                  emisor
+                </li>
+                <li>
+                  Generación del documento para su validación y certificación,
+                  cumpliendo con todas las especificaciones técnicas emitidas
+                  por el SAT
+                </li>
+                <li>Validación y certificación (timbrado) del CFDI</li>
+                <li>
+                  Entrega a "EL USUARIO" emisor del comprobante certificado o
+                  acuse de rechazo, en su caso
+                </li>
+                <li>Administración del almacenamiento de los comprobantes</li>
+                <li>
+                  Permite al emisor del comprobante consultar, guardar o
+                  imprimir los comprobantes durante los 3 meses seguidos a
+                  partir de la certificación del comprobante
+                </li>
+                <li>
+                  Envío de copia del CFDI al SAT de manera inmediata o en un
+                  plazo que no excede las 72 horas contadas a partir de la
+                  certificación del comprobante
+                </li>
+              </ol>
+            </section>
+
+            <!-- 5. Obligaciones del Usuario -->
+            <section id="obligaciones-usuario" class="terms-section">
+              <h3>5. OBLIGACIONES DEL USUARIO</h3>
+
+              <div class="user-obligations">
+                <h4>Información Veraz</h4>
+                <p>
+                  Cualquier persona que comparta su información personal a <strong
+                    >"LA EMPRESA"</strong
+                  > se obliga a proporcionar información fidedigna, por lo que manifiesta
+                  que la información que proporciona es real y comprobable, relevando
+                  a <strong>"LA EMPRESA"</strong> de cualquier responsabilidad por
+                  la falsedad con la que se conduzca, por la falsificación de documentos
+                  o suplantación de personas, nombres, direcciones o datos de identificación
+                  que utilice para contratar los servicios que presta <strong
+                    >"LA EMPRESA"</strong
+                  >.
+                </p>
+
+                <h4>Capacidad Legal</h4>
+                <p>
+                  Así mismo declara encontrarse en pleno uso de sus facultades
+                  físicas, mentales y legales para poder celebrar este contrato.
+                  En el caso de ser usuario individual, <strong
+                    >"EL USUARIO"</strong
+                  > garantiza que al menos tiene 18 años de edad; en caso de ser
+                  usuario de una persona moral, <strong>"EL USUARIO"</strong> garantiza
+                  que el servicio no será usado por una persona menor a los 18 años
+                  de edad.
+                </p>
+
+                <h4>Responsabilidad sobre Contenidos</h4>
+                <p>
+                  También declara que es el único y exclusivo responsable por
+                  los datos, marcas, logos, patentes o símbolos y colores de
+                  identificación que proporciona.
+                </p>
+
+                <h4>Conocimiento de Normativas</h4>
+                <p>
+                  <strong>"EL USUARIO"</strong> se obliga a conocer las disposiciones
+                  que rigen los derechos y obligaciones de los contribuyentes, respecto
+                  a la emisión de CFDI contenidas en el CFF, entre otras las de sus
+                  artículos 29, 29 BIS y 29-A, así como las de la RMF y la PÁGINA
+                  DE INTERNET del SAT.
+                </p>
+
+                <h4>Uso Apropiado del Servicio</h4>
+                <p>
+                  <strong>"EL USUARIO"</strong> se compromete a abstenerse de utilizar
+                  el Servicio y/o la APLICACIÓN WEB con fines ilícitos, prohibidos
+                  en las leyes o disposiciones aplicables que pudieran resultar lesivos
+                  a los intereses de terceros, o de <strong>"LA EMPRESA"</strong
+                  > o que de cualquier forma puedan dañar, inutilizar, sobrecargar
+                  o deteriorar los servicios.
+                </p>
+
+                <h4>Relación de Respeto</h4>
+                <p>
+                  <strong>"EL USUARIO"</strong> y <strong>"LA EMPRESA"</strong> se
+                  comprometen a mantener una relación de respeto, por lo que las
+                  coacciones, incitaciones a la violencia, discriminación y/o racismo
+                  ya sea en contra de otros "USUARIOS", visitantes del sitio web,
+                  empleados, colaboradores, proveedores y público en general, podrán
+                  por consecuencia terminar anticipadamente la relación entre las
+                  partes.
+                </p>
+
+                <h4>Autorización de Datos</h4>
+                <p>
+                  <strong>"EL USUARIO"</strong> acepta expresamente que sus datos
+                  personales podrán ser utilizados por <strong
+                    >"LA EMPRESA"</strong
+                  > para fines de marketing, envío de notificaciones comerciales,
+                  promociones, publicidad de productos y servicios relacionados,
+                  comunicaciones de carácter comercial, así como para el desarrollo
+                  de estrategias comerciales y mejora de servicios.
+                </p>
+              </div>
+            </section>
+
+            <!-- 6. Objeto -->
+            <section id="objeto" class="terms-section">
+              <h3>6. OBJETO</h3>
+              <p>
+                Por medio del presente contrato, <strong>"EL USUARIO"</strong> adquiere
+                y administra los servicios y/o planes de <strong
+                  >"LA EMPRESA"</strong
+                > mediante sus sitios web oficiales, los cuales son mencionados a
+                continuación:
+              </p>
+
+              <ul class="service-list">
+                <li>Plan emprendedor</li>
+                <li>Plan PyME</li>
+                <li>Plan Empresa</li>
+                <li>Folios Digitales por Volumen</li>
+                <li>Servicio de API</li>
+                <li>Servicio de RFC adicional</li>
+                <li>Usuario Extra</li>
+              </ul>
+
+              <p>
+                Siendo la generación de Comprobantes Fiscales Digitales por
+                Internet el servicio principal ofrecido por <strong
+                  >"LA EMPRESA"</strong
+                >.
+              </p>
+
+              <p>
+                <strong>"LA EMPRESA"</strong> se obliga a prestar a <strong
+                  >"EL USUARIO"</strong
+                >, a través de la APLICACIÓN WEB, los servicios de facturación
+                electrónica establecidos en el presente contrato, siempre y
+                cuando <strong>"EL USUARIO"</strong> inicie sesión en la mencionada
+                aplicación.
+              </p>
+            </section>
+
+            <!-- 7. Protección de Datos Personales -->
+            <section id="proteccion-datos" class="terms-section">
+              <h3>7. PROTECCIÓN DE DATOS PERSONALES</h3>
+              <p>
+                <strong>"LA EMPRESA"</strong> se compromete a proteger los datos
+                personales de <strong>"EL USUARIO"</strong> de conformidad con la
+                Ley Federal de Protección de Datos Personales en Posesión de los
+                Particulares y su Reglamento.
+              </p>
+
+              <div class="data-protection">
+                <h4>7.1 FINALIDADES DEL TRATAMIENTO DE DATOS</h4>
+                <p>
+                  Los datos personales recabados serán utilizados para las
+                  siguientes finalidades:
+                </p>
+
+                <div class="finalidades">
+                  <div class="finalidad-group">
+                    <h5>Finalidades Primarias:</h5>
+                    <ul>
+                      <li>Prestación de los servicios contratados</li>
+                      <li>Facturación y cobranza</li>
+                      <li>Cumplimiento de obligaciones contractuales</li>
+                      <li>Atención al cliente y soporte técnico</li>
+                      <li>Cumplimiento de obligaciones legales y fiscales</li>
+                    </ul>
+                  </div>
+
+                  <div class="finalidad-group">
+                    <h5>Finalidades Secundarias:</h5>
+                    <ul>
+                      <li>
+                        Envío de comunicaciones comerciales, promocionales y
+                        publicitarias
+                      </li>
+                      <li>Marketing directo y campañas promocionales</li>
+                      <li>
+                        Desarrollo de estudios de mercado y análisis comerciales
+                      </li>
+                      <li>Mejora de productos y servicios</li>
+                      <li>
+                        Envío de notificaciones sobre actualizaciones, nuevos
+                        servicios y ofertas
+                      </li>
+                      <li>Prospección comercial</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <h4>7.2 DERECHOS ARCO</h4>
+                <p>
+                  <strong>"EL USUARIO"</strong> podrá ejercer sus derechos de Acceso,
+                  Rectificación, Cancelación y Oposición (derechos ARCO) mediante
+                  solicitud dirigida a <a
+                    href="mailto:contacto@solucionfactura.mx"
+                    >contacto@solucionfactura.mx</a
+                  >, proporcionando la documentación que acredite su identidad.
+                </p>
+
+                <h4>7.3 TRANSFERENCIAS</h4>
+                <p>
+                  Los datos personales podrán ser transferidos a terceros
+                  únicamente en los casos previstos por la ley, previo
+                  consentimiento del titular o cuando sea necesario para la
+                  prestación del servicio.
+                </p>
+
+                <h4>7.4 MEDIDAS DE SEGURIDAD</h4>
+                <p>
+                  <strong>"LA EMPRESA"</strong> implementa medidas técnicas, administrativas
+                  y físicas de seguridad para proteger los datos personales contra
+                  daño, pérdida, alteración, destrucción o uso no autorizado.
+                </p>
+              </div>
+            </section>
+
+            <!-- 8. Contrato de Adhesión -->
+            <section id="contrato-adhesion" class="terms-section">
+              <h3>8. CONTRATO DE ADHESIÓN</h3>
+              <p>
+                El presente instrumento constituye un contrato de adhesión en
+                términos de los artículos 85, 86, 87 y 90 de la Ley Federal de
+                Protección al Consumidor. Las cláusulas del presente contrato
+                han sido redactadas unilateralmente por <strong
+                  >"LA EMPRESA"</strong
+                > y no son negociables. <strong>"EL USUARIO"</strong> manifiesta
+                que ha leído, entendido y acepta todas las cláusulas del presente
+                contrato.
+              </p>
+              <p>
+                En caso de dudas sobre la interpretación de cualquier cláusula,
+                se estará a lo más favorable para <strong>"EL USUARIO"</strong>,
+                de conformidad con el principio de interpretación favorable al
+                consumidor establecido en la legislación de protección al
+                consumidor.
+              </p>
+              <p>
+                Las cláusulas abusivas o leoninas que pudieran existir en el
+                presente contrato serán consideradas nulas de pleno derecho, sin
+                que ello afecte la validez del resto del contrato.
+              </p>
+            </section>
+
+            <!-- 9. Cancelación del Servicio -->
+            <section id="cancelacion-servicio" class="terms-section">
+              <h3>9. CANCELACIÓN DEL SERVICIO</h3>
+              <p>
+                <strong>"EL USUARIO"</strong> podrá cancelar su servicio en cualquier
+                momento a través del portal de clientes ubicado en <a
+                  href="https://pagos.solucionfiscal.online/portal/signin/solucionfactura"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >https://pagos.solucionfiscal.online/portal/signin/solucionfactura</a
+                >
+              </p>
+              <p>
+                Una vez solicitada la cancelación a través del portal, el
+                servicio se cancelará de manera automática sin necesidad de
+                intervención adicional por parte de <strong>"LA EMPRESA"</strong
+                >.
+              </p>
+              <p>
+                La cancelación será efectiva al término del período de
+                facturación vigente, por lo que <strong>"EL USUARIO"</strong> podrá
+                seguir utilizando el servicio hasta la fecha de vencimiento correspondiente.
+              </p>
+              <p>
+                No se realizarán reembolsos por cancelaciones voluntarias del
+                servicio, salvo en los casos específicamente contemplados en la
+                cláusula de devoluciones del presente contrato.
+              </p>
+            </section>
+
+            <!-- 10. Política de Devoluciones -->
+            <section id="politica-devoluciones" class="terms-section">
+              <h3>10. POLÍTICA DE DEVOLUCIONES</h3>
+
+              <div class="policy-subsection">
+                <h4>10.1 PROCEDENCIA DE DEVOLUCIONES</h4>
+                <p>
+                  Las devoluciones únicamente procederán en los siguientes
+                  casos:
+                </p>
+                <ul>
+                  <li>
+                    <strong>Fallas técnicas del sistema:</strong> Cuando existan
+                    fallas comprobables en el funcionamiento del sistema que impidan
+                    el uso normal del servicio, siempre que sean atribuibles directamente
+                    a <strong>"LA EMPRESA"</strong> y no a factores externos como
+                    conectividad del usuario, configuración incorrecta o uso inadecuado
+                    del servicio.
+                  </li>
+                </ul>
+              </div>
+
+              <div class="policy-subsection">
+                <h4>10.2 PLAZO PARA SOLICITAR DEVOLUCIÓN</h4>
+                <p>
+                  Las solicitudes de devolución deberán presentarse dentro de
+                  los 10 (diez) días naturales siguientes a la fecha de
+                  activación del servicio o a la fecha en que se haya presentado
+                  la falla técnica comprobable.
+                </p>
+              </div>
+
+              <div class="policy-subsection">
+                <h4>10.3 CASOS EN QUE NO PROCEDE LA DEVOLUCIÓN</h4>
+                <ul>
+                  <li>
+                    Cuando el usuario no haya comprendido o investigado
+                    adecuadamente las funciones y características del plan
+                    adquirido
+                  </li>
+                  <li>Por cambio de opinión o arrepentimiento de la compra</li>
+                  <li>Por uso incorrecto o inadecuado del servicio</li>
+                  <li>Por problemas de conectividad del usuario</li>
+                  <li>Por recontrataciones de servicios</li>
+                  <li>Por plugins e integraciones personalizadas</li>
+                  <li>Por cotizaciones de personalización de PDFs</li>
+                  <li>Por cambios personalizados en la plataforma</li>
+                  <li>
+                    Cuando hayan transcurrido más de 10 días naturales desde la
+                    activación del servicio
+                  </li>
+                  <li>
+                    Servicios no activados por causas atribuibles al usuario
+                  </li>
+                </ul>
+              </div>
+
+              <div class="policy-subsection">
+                <h4>10.4 PROCEDIMIENTO PARA SOLICITAR DEVOLUCIÓN</h4>
+                <p>
+                  Las solicitudes de devolución deberán enviarse al correo
+                  electrónico <a href="mailto:contacto@solucionfactura.mx"
+                    >contacto@solucionfactura.mx</a
+                  >, incluyendo:
+                </p>
+                <ul>
+                  <li>Datos completos del usuario y del servicio contratado</li>
+                  <li>Descripción detallada del problema técnico</li>
+                  <li>Evidencia comprobable de la falla del sistema</li>
+                  <li>
+                    Documentación soporte que acredite la procedencia de la
+                    devolución
+                  </li>
+                </ul>
+              </div>
+
+              <div class="policy-subsection">
+                <h4>10.5 PROCESAMIENTO DE DEVOLUCIONES</h4>
+                <p>
+                  Una vez aprobada la procedencia de la devolución, el reintegro
+                  se realizará por el mismo medio de pago utilizado para la
+                  compra:
+                </p>
+                <ul>
+                  <li>
+                    <strong>Transferencias bancarias:</strong> Máximo 15 días hábiles
+                    para realizar el depósito
+                  </li>
+                  <li>
+                    <strong>Pagos con tarjeta:</strong> A través de Stripe, sujeto
+                    a los tiempos de procesamiento de cada banco emisor
+                  </li>
+                  <li>
+                    <strong>Otros medios de pago:</strong> Según las políticas del
+                    procesador correspondiente
+                  </li>
+                </ul>
+              </div>
+
+              <div class="policy-subsection">
+                <h4>10.6 DEVOLUCIONES PROPORCIONALES</h4>
+                <p>
+                  En caso de servicios parcialmente utilizados, la devolución
+                  será proporcional al tiempo y recursos no consumidos,
+                  aplicando descuentos correspondientes.
+                </p>
+              </div>
+            </section>
+
+            <!-- 11. Reglas para la Prestación del Servicio -->
+            <section id="reglas-prestacion" class="terms-section">
+              <h3>11. REGLAS PARA LA PRESTACIÓN DEL SERVICIO</h3>
+
+              <div class="service-rules">
+                <h4>11.1 DISPONIBILIDAD EN EL SERVICIO</h4>
+                <p>
+                  La APLICACIÓN WEB, así como el servicio de generación,
+                  validación y certificación de CFDI tendrán una disponibilidad
+                  establecida de 99.3%, el cual no está garantizado, donde el
+                  otro .7% corresponderá al periodo de tiempo máximo en que la
+                  aplicación podría no estar disponible por causas no planeadas
+                  e imputables a <strong>"LA EMPRESA"</strong>, lo anterior en
+                  cumplimiento de la legislación aplicable y de las
+                  disposiciones de carácter general aplicables emitidas por el
+                  SAT.
+                </p>
+                <p>
+                  En caso de no cumplir con la anterior disponibilidad, se
+                  ofrecerá un descuento de un día de servicio, siempre y cuando
+                  haya sido por causas directas imputables a <strong
+                    >"LA EMPRESA"</strong
+                  >.
+                </p>
+                <p>
+                  Sin perjuicio de lo anterior, <strong>"LA EMPRESA"</strong>,
+                  se reserva el derecho de realizar las mejoras y el
+                  mantenimiento continuo de la infraestructura del servicio y de
+                  la APLICACIÓN WEB, en cualquier momento, de igual forma <strong
+                    >"LA EMPRESA"</strong
+                  >, podrá planear y ejecutar mantenimientos trimestrales, con
+                  una duración máxima de 24 horas, y de las cuales notificará a <strong
+                    >"EL USUARIO"</strong
+                  > con anterioridad a su ejecución.
+                </p>
+
+                <h4>11.2 SOPORTE TÉCNICO Y ATENCIÓN A CLIENTES</h4>
+                <p>
+                  <strong>"LA EMPRESA"</strong> dará soporte técnico, soluciones
+                  a aclaraciones, reclamaciones y dudas a <strong
+                    >"EL USUARIO"</strong
+                  > solamente sobre el producto, excluyendo programas de terceros
+                  incluyendo pero no limitando a los Plugins y APIs externos.
+                </p>
+                <p>
+                  En cualquier caso las solicitudes de soporte técnico, quejas,
+                  aclaraciones y reclamaciones que realice <strong
+                    >"EL USUARIO"</strong
+                  >, serán atendidas en un plazo no mayor a 48 horas y resueltas
+                  en un plazo no mayor a 7 días.
+                </p>
+
+                <div class="support-channels">
+                  <h5>Canales de Atención y Soporte:</h5>
+                  <ul>
+                    <li><strong>Atención telefónica:</strong> 55 9331 4767</li>
+                    <li>
+                      <strong>Atención por WhatsApp:</strong> 55 7601 7764
+                    </li>
+                    <li>
+                      <strong>Chat en Línea:</strong> Dentro del sitio web
+                    </li>
+                    <li>
+                      <strong>Correo electrónico:</strong> contacto@solucionfactura.mx
+                    </li>
+                  </ul>
+                  <p>
+                    <strong>Horario:</strong> Lunes a Viernes de 9:00 a 14:00 y de
+                    15:00 a 18:00
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <!-- 12. Comunicaciones -->
+            <section id="comunicaciones" class="terms-section">
+              <h3>12. COMUNICACIONES</h3>
+              <p>
+                Es voluntad de las partes que todas las comunicaciones, entre
+                ellos, para efectos del presente contrato, se realicen vía
+                correo electrónico a <a
+                  href="mailto:contacto@solucionfactura.mx"
+                  >contacto@solucionfactura.mx</a
+                > o mediante cualquier otro medio de comunicación que <strong
+                  >"LA EMPRESA"</strong
+                > facilite a través de los SITIOS WEB y/o la APLICACIÓN WEB.
+              </p>
+            </section>
+
+            <!-- Información Final -->
+            <section class="terms-final-info">
+              <div class="websites-brands">
+                <div class="info-section">
+                  <h4>SITIOS WEB QUE AMPARA EL PRESENTE CONTRATO:</h4>
+                  <ul>
+                    <li>solucionfiscal.mx</li>
+                    <li>solucionfactura.mx</li>
+                    <li>solucioncrm.mx</li>
+                    <li>solucionconta.mx</li>
+                    <li>descargacfdi.com</li>
+                    <li>wabotify.com</li>
+                  </ul>
+                </div>
+
+                <div class="info-section">
+                  <h4>MARCAS COMERCIALES:</h4>
+                  <ul>
+                    <li>Solución Factura</li>
+                    <li>Solución Conta</li>
+                    <li>Solución Fiscal</li>
+                    <li>Solución CRM</li>
+                    <li>Descarga XML</li>
+                    <li>Wabotify MX</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="last-update-footer">
+                <p><strong>Última actualización:</strong> [01-01-2025]</p>
+              </div>
+            </section>
+          </main>
+        </div>
+      </div>
+    </section>
+
+    <Footer />
+    <WhatsAppFloat />
+
+    <style lang="scss">
+      // Terms and Conditions Page Styles
+
+      .terms-hero {
+        background: linear-gradient(
+          135deg,
+          var(--bg-primary) 0%,
+          var(--bg-secondary) 100%
+        );
+        padding: 120px 0 80px;
+        text-align: center;
+        border-bottom: 1px solid var(--border-light);
+
+        .container {
+          max-width: 1200px;
+        }
+
+        .hero-content {
+          max-width: 800px;
+          margin: 0 auto;
+        }
+
+        .hero-title {
+          font-size: clamp(2.5rem, 5vw, 3.5rem);
+          font-weight: 700;
+          color: var(--text-primary);
+          margin-bottom: 1.5rem;
+          background: linear-gradient(
+            135deg,
+            var(--text-primary),
+            var(--secondary)
+          );
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+
+        .hero-description {
+          font-size: 1.2rem;
+          color: var(--text-secondary);
+          line-height: 1.6;
+          margin-bottom: 2rem;
+        }
+
+        .last-updated {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.75rem 1.5rem;
+          background: var(--bg-card);
+          border: 1px solid var(--border-light);
+          border-radius: 50px;
+          font-size: 0.9rem;
+
+          .update-label {
+            color: var(--text-secondary);
+          }
+
+          .update-date {
+            color: var(--secondary);
+            font-weight: 600;
+          }
+        }
+      }
+
+      .terms-content {
+        padding: 80px 0;
+        background: var(--bg-primary);
+
+        .container {
+          max-width: 1400px;
+        }
+
+        .content-wrapper {
+          display: flex;
+          justify-content: center;
+        }
+      }
+
+      .terms-main {
+        width: 100%;
+        max-width: 1200px;
+
+        .terms-intro {
+          margin-bottom: 3rem;
+          padding: 2rem;
+          background: var(--bg-card);
+          border: 1px solid var(--border-light);
+          border-radius: 16px;
+
+          h2 {
+            font-size: 2rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+          }
+
+          p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+          }
+        }
+      }
+
+      .terms-section {
+        margin-bottom: 3rem;
+        padding: 2.5rem;
+        background: var(--bg-card);
+        border: 1px solid var(--border-light);
+        border-radius: 16px;
+        box-shadow: var(--theme-shadow-sm);
+
+        h3 {
+          font-size: 1.5rem;
+          color: var(--text-primary);
+          margin-bottom: 1.5rem;
+          padding-bottom: 0.75rem;
+          border-bottom: 2px solid var(--secondary);
+        }
+
+        h4 {
+          font-size: 1.2rem;
+          color: var(--text-primary);
+          margin: 2rem 0 1rem 0;
+        }
+
+        h5 {
+          font-size: 1rem;
+          color: var(--secondary);
+          margin: 1.5rem 0 0.75rem 0;
+          font-weight: 600;
+        }
+
+        p {
+          color: var(--text-secondary);
+          line-height: 1.7;
+          margin-bottom: 1rem;
+        }
+
+        ul,
+        ol {
+          color: var(--text-secondary);
+          line-height: 1.7;
+          margin-bottom: 1rem;
+          padding-left: 1.5rem;
+
+          li {
+            margin-bottom: 0.5rem;
+          }
+        }
+
+        a {
+          color: var(--secondary);
+          text-decoration: underline;
+
+          &:hover {
+            text-decoration: none;
+          }
+        }
+
+        strong {
+          color: var(--text-primary);
+          font-weight: 600;
+        }
+      }
+
+      .definitions-grid {
+        display: grid;
+        gap: 1.5rem;
+
+        .definition-item {
+          padding: 1.5rem;
+          background: var(--bg-secondary);
+          border: 1px solid var(--border-light);
+          border-radius: 12px;
+
+          dt {
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+          }
+
+          dd {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin: 0;
+          }
+        }
+      }
+
+      .company-info {
+        background: var(--bg-secondary);
+        padding: 2rem;
+        border-radius: 12px;
+        margin: 2rem 0;
+
+        h4 {
+          color: var(--secondary);
+          margin-bottom: 1rem;
+          margin-top: 0;
+        }
+
+        ul {
+          margin-bottom: 1.5rem;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+
+      .sat-requirements {
+        background: var(--bg-secondary);
+        padding: 2rem;
+        border-radius: 12px;
+        border-left: 4px solid var(--secondary);
+      }
+
+      .user-obligations {
+        h4 {
+          color: var(--secondary);
+          border-left: 3px solid var(--secondary);
+          padding-left: 1rem;
+          margin: 2rem 0 1rem 0;
+        }
+      }
+
+      .service-list {
+        background: var(--bg-secondary);
+        padding: 1.5rem;
+        border-radius: 12px;
+        columns: 2;
+        column-gap: 2rem;
+
+        @media (max-width: 768px) {
+          columns: 1;
+        }
+      }
+
+      .data-protection {
+        .finalidades {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 2rem;
+          margin: 2rem 0;
+
+          @media (max-width: 768px) {
+            grid-template-columns: 1fr;
+          }
+
+          .finalidad-group {
+            background: var(--bg-secondary);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-light);
+          }
+        }
+      }
+
+      .policy-subsection {
+        margin: 2rem 0;
+        padding: 1.5rem;
+        background: var(--bg-secondary);
+        border: 1px solid var(--border-light);
+        border-radius: 12px;
+
+        h4 {
+          margin-top: 0;
+          color: var(--secondary);
+        }
+      }
+
+      .service-rules {
+        h4 {
+          color: var(--secondary);
+          border-bottom: 1px solid var(--border-light);
+          padding-bottom: 0.5rem;
+          margin: 2rem 0 1rem 0;
+        }
+
+        .support-channels {
+          background: var(--bg-secondary);
+          padding: 1.5rem;
+          border-radius: 12px;
+          margin-top: 1.5rem;
+
+          h5 {
+            margin-top: 0;
+          }
+        }
+      }
+
+      .terms-final-info {
+        margin-top: 3rem;
+        padding: 2.5rem;
+        background: linear-gradient(
+          135deg,
+          var(--bg-card) 0%,
+          var(--bg-secondary) 100%
+        );
+        border: 1px solid var(--border-light);
+        border-radius: 16px;
+        text-align: center;
+
+        .websites-brands {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 3rem;
+          margin-bottom: 2rem;
+
+          @media (max-width: 768px) {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+          }
+        }
+
+        .info-section {
+          h4 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+          }
+
+          ul {
+            list-style: none;
+            padding: 0;
+
+            li {
+              padding: 0.5rem;
+              margin: 0.25rem 0;
+              background: var(--border-light);
+              border-radius: 6px;
+              color: var(--text-secondary);
+              font-size: 0.9rem;
+            }
+          }
+        }
+
+        .last-update-footer {
+          padding-top: 2rem;
+          border-top: 1px solid var(--border-light);
+
+          p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin: 0;
+          }
+        }
+      }
+
+      // Smooth scroll behavior
+      html {
+        scroll-behavior: smooth;
+      }
+
+      // Responsive adjustments
+      @media (max-width: 768px) {
+        .terms-hero {
+          padding: 100px 0 60px;
+
+          .hero-title {
+            font-size: 2rem;
+          }
+
+          .hero-description {
+            font-size: 1rem;
+          }
+        }
+
+        .terms-content {
+          padding: 60px 0;
+        }
+
+        .terms-section {
+          padding: 1.5rem;
+          margin-bottom: 2rem;
+        }
+
+        .table-of-contents {
+          padding: 1.5rem;
+        }
+      }
+
+      // Print styles
+      @media print {
+        .table-of-contents,
+        .terms-hero .last-updated {
+          display: none;
+        }
+
+        .terms-section {
+          break-inside: avoid;
+          page-break-inside: avoid;
+        }
+      }
+    </style>
+  </body>
+</html>
