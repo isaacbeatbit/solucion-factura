@@ -277,5 +277,43 @@ import "../styles/global.scss";
     <CTA />
     <Footer />
     <WhatsAppFloat />
+
+    <script>
+      // Script para prevenir overflow horizontal en producción
+      function preventOverflow() {
+        const html = document.documentElement;
+        const body = document.body;
+
+        // Aplicar estilos anti-overflow
+        html.style.overflowX = "hidden";
+        html.style.maxWidth = "100vw";
+        body.style.overflowX = "hidden";
+        body.style.maxWidth = "100vw";
+
+        // Verificar navbar específicamente
+        const navbar = document.querySelector(".navbar-header");
+        if (navbar) {
+          navbar.style.maxWidth = "100vw";
+          navbar.style.overflowX = "hidden";
+        }
+
+        // Verificar todos los containers
+        const containers = document.querySelectorAll(".container");
+        containers.forEach((container) => {
+          container.style.maxWidth = "100%";
+          container.style.overflowX = "hidden";
+        });
+      }
+
+      // Ejecutar cuando la página carga
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", preventOverflow);
+      } else {
+        preventOverflow();
+      }
+
+      // También ejecutar después de Astro navigation
+      document.addEventListener("astro:page-load", preventOverflow);
+    </script>
   </body>
 </html>
