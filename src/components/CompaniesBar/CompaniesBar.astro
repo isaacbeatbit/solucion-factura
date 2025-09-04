@@ -13,33 +13,35 @@
 
     <div class="companies-carousel">
       <div class="companies-track">
-        <!-- Primera fila de empresas -->
+        <!-- Primera serie completa de logos -->
         <img src="/logos/autozone.svg" alt="AutoZone" class="company-logo" />
-        <img src="/logos/bimbo.svg" alt="Grupo Bimbo" class="company-logo" />
+        <img src="/logos/fuelex.svg" alt="Fuelex" class="company-logo" />
         <img
           src="/logos/constructora.svg"
           alt="Constructora"
           class="company-logo"
         />
         <img src="/logos/manpower.svg" alt="Manpower" class="company-logo" />
-        <img src="/logos/autozone.svg" alt="AutoZone" class="company-logo" />
-        <img src="/logos/bimbo.svg" alt="Grupo Bimbo" class="company-logo" />
         <img
-          src="/logos/constructora.svg"
-          alt="Constructora"
+          src="/logos/spinmaster.png"
+          alt="Spinmaster"
           class="company-logo"
         />
-        <img src="/logos/manpower.svg" alt="Manpower" class="company-logo" />
 
-        <!-- Duplicado para animación infinita -->
+        <!-- Duplicado completo para animación infinita -->
         <img src="/logos/autozone.svg" alt="AutoZone" class="company-logo" />
-        <img src="/logos/bimbo.svg" alt="Grupo Bimbo" class="company-logo" />
+        <img src="/logos/fuelex.svg" alt="Fuelex" class="company-logo" />
         <img
           src="/logos/constructora.svg"
           alt="Constructora"
           class="company-logo"
         />
         <img src="/logos/manpower.svg" alt="Manpower" class="company-logo" />
+        <img
+          src="/logos/spinmaster.svg"
+          alt="Spinmaster"
+          class="company-logo"
+        />
       </div>
     </div>
 
@@ -118,9 +120,9 @@
 
   .companies-track {
     display: flex;
-    animation: scroll-companies 40s linear infinite;
+    animation: scroll-companies 30s linear infinite;
     gap: 3rem;
-    width: calc(200% + 6rem);
+    width: max-content;
 
     &:hover {
       animation-play-state: paused;
@@ -129,8 +131,8 @@
 
   .company-logo {
     flex-shrink: 0;
-    max-height: 42px;
-    max-width: 120px;
+    max-height: 50px;
+    max-width: 140px;
     width: auto;
     height: auto;
     object-fit: contain;
@@ -147,8 +149,8 @@
 
     // Ajuste específico para el logo de AutoZone que es muy horizontal
     &[src="/logos/autozone.svg"] {
-      max-width: 90px;
-      max-height: 34px;
+      max-width: 110px;
+      max-height: 40px;
     }
   }
 
@@ -157,7 +159,7 @@
       transform: translateX(0);
     }
     100% {
-      transform: translateX(-50%);
+      transform: translateX(calc(-50% - 1.5rem));
     }
   }
 
@@ -209,13 +211,13 @@
     }
 
     .company-logo {
-      max-height: 34px;
-      max-width: 100px;
+      max-height: 42px;
+      max-width: 120px;
       margin: 0 1rem;
 
       &[src="/logos/autozone.svg"] {
-        max-width: 78px;
-        max-height: 26px;
+        max-width: 95px;
+        max-height: 32px;
       }
     }
   }

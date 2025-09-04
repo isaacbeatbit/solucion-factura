@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280">
+  <rect width="400" height="280" fill="#1a7b47"/>
+
+  <!-- Logo K con diseño moderno -->
+  <g transform="translate(120, 80)">
+    <!-- Marco blanco -->
+    <rect x="0" y="0" width="160" height="120" fill="none" stroke="#ffffff" stroke-width="4"/>
+
+    <!-- Letra K estilizada -->
+    <g fill="#ffffff">
+      <!-- Línea vertical izquierda -->
+      <rect x="15" y="15" width="8" height="90"/>
+
+      <!-- Parte superior derecha de la K -->
+      <polygon points="30,15 55,15 35,50 45,50 70,15 85,15 55,55 30,55"/>
+
+      <!-- Parte inferior derecha de la K con acento rojo -->
+      <polygon points="30,65 45,65 85,105 70,105"/>
+      <polygon points="50,65 85,105 85,105 50,65" fill="#e53e3e"/>
+    </g>
+  </g>
+
+  <!-- Texto FUELEX -->
+  <g transform="translate(80, 220)" fill="#ffffff">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="48" font-weight="bold" letter-spacing="4">FUELEX</text>
+  </g>
+</svg>

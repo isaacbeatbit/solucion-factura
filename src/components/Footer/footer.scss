@@ -15,9 +15,32 @@
 
 .footer-content {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 2rem;
   margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .footer-content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .footer-content {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .footer {
+    padding: 2rem 0 1rem;
+  }
 }
 
 /* Footer headings now use global typography classes */
@@ -47,6 +70,115 @@
 .footer-links a:hover {
   color: var(--secondary);
   background: var(--border-light);
+}
+
+/* Card de distribuidores en footer */
+.distribuidor-cta-footer {
+  margin: 2rem 0 1.5rem;
+  padding: 0;
+}
+
+.cta-footer-content {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  border-radius: 12px;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  box-shadow: var(--theme-shadow-lg);
+  transition: all 0.3s ease;
+}
+
+.cta-footer-content:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--theme-shadow-xl);
+}
+
+.cta-footer-text {
+  flex: 1;
+  color: white;
+}
+
+.cta-footer-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: white;
+  background: none;
+  -webkit-text-fill-color: white;
+}
+
+.cta-footer-description {
+  font-size: 1rem;
+  line-height: 1.5;
+  opacity: 0.95;
+  margin: 0;
+}
+
+.cta-footer-actions {
+  flex-shrink: 0;
+}
+
+.btn-footer-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.btn-footer-cta:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-footer-cta span {
+  font-size: 1.1rem;
+}
+
+/* Responsive para la card */
+@media (max-width: 768px) {
+  .cta-footer-content {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .btn-footer-cta {
+    width: 100%;
+    max-width: 250px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .distribuidor-cta-footer {
+    margin: 1.5rem 0 1rem;
+  }
+
+  .cta-footer-content {
+    padding: 1.25rem;
+    gap: 1rem;
+  }
+
+  .cta-footer-title {
+    font-size: 1.1rem;
+  }
+
+  .cta-footer-description {
+    font-size: 0.9rem;
+  }
 }
 
 .footer-bottom {

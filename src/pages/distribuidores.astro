@@ -1,0 +1,599 @@
+---
+import Navbar from "../components/Navbar/Navbar.astro";
+import Footer from "../components/Footer/Footer.astro";
+import WhatsAppFloat from "../components/WhatsAppFloat/WhatsAppFloat.astro";
+import "../styles/global.scss";
+---
+
+<html lang="es-MX">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="color-scheme" content="dark light" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <!-- SEO Meta Tags -->
+    <title>
+      Distribuidores - Solución Factura | Crea tu negocio de facturación
+      electrónica
+    </title>
+    <meta
+      name="description"
+      content="Conviértete en distribuidor de Solución Factura y crea tu propio negocio de facturación electrónica con nuestra plataforma personalizada."
+    />
+    <meta
+      name="keywords"
+      content="distribuidor facturación, negocio facturación electrónica, CFDI 4.0, plataforma personalizada, marca blanca"
+    />
+    <meta name="author" content="Solución Factura" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://solucionfactura.mx/distribuidores" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://solucionfactura.mx/distribuidores"
+    />
+    <meta
+      property="og:title"
+      content="Distribuidores - Solución Factura | Crea tu negocio de facturación electrónica"
+    />
+    <meta
+      property="og:description"
+      content="Conviértete en distribuidor de Solución Factura y crea tu propio negocio de facturación electrónica con nuestra plataforma personalizada."
+    />
+    <meta
+      property="og:image"
+      content="https://solucionfactura.mx/solucion-factura-logo.png"
+    />
+
+    <!-- Script de tema - debe ejecutarse lo antes posible -->
+    <script is:inline>
+      (function () {
+        "use strict";
+
+        function initTheme() {
+          const htmlElement = document.documentElement;
+          const savedTheme = localStorage.getItem("theme");
+          const prefersDark =
+            window.matchMedia &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+          let themeToApply;
+          if (savedTheme) {
+            themeToApply = savedTheme;
+          } else {
+            themeToApply = prefersDark ? "dark" : "light";
+            localStorage.setItem("theme", themeToApply);
+          }
+
+          if (themeToApply === "light") {
+            htmlElement.setAttribute("data-theme", "light");
+          } else {
+            htmlElement.removeAttribute("data-theme");
+          }
+        }
+
+        initTheme();
+        window.themeManager = { initTheme };
+      })();
+    </script>
+
+    <style>
+      /* Estilos específicos para la página de distribuidores */
+      .distribuidores-page {
+        min-height: 100vh;
+        background: var(--bg-primary);
+      }
+
+      .hero-section {
+        padding: 80px 0 60px;
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--secondary) 100%
+        );
+        color: white;
+        text-align: center;
+      }
+
+      .hero-title {
+        font-size: var(--title-size-xl);
+        font-weight: 700;
+        margin-bottom: 20px;
+        background: linear-gradient(135deg, #ffffff, #6db1ff);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .hero-subtitle {
+        font-size: var(--subtitle-size);
+        margin-bottom: 30px;
+        opacity: 0.9;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .cta-button {
+        display: inline-block;
+        background: var(--accent);
+        color: white;
+        padding: 15px 30px;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 18px;
+        transition: all 0.3s ease;
+      }
+
+      .cta-button:hover {
+        background: #2d8a56;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(54, 161, 104, 0.3);
+      }
+
+      .section {
+        padding: 60px 0;
+      }
+
+      .section-title {
+        font-size: var(--title-size-md);
+        text-align: center;
+        margin-bottom: 50px;
+        color: var(--text-primary);
+      }
+
+      .plans-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 30px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .plan-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border-light);
+        border-radius: 12px;
+        padding: 30px;
+        position: relative;
+        transition: all 0.3s ease;
+        box-shadow: var(--theme-shadow-md);
+      }
+
+      .plan-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--theme-shadow-xl);
+        border-color: var(--secondary);
+      }
+
+      .plan-popular {
+        border-color: var(--accent);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .popular-badge {
+        position: absolute;
+        top: -1px;
+        right: -1px;
+        background: var(--accent);
+        color: white;
+        padding: 8px 20px;
+        font-size: 12px;
+        font-weight: 600;
+        border-radius: 0 12px 0 12px;
+      }
+
+      .plan-name {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 10px;
+        color: var(--text-primary);
+      }
+
+      .plan-price {
+        font-size: 32px;
+        font-weight: 800;
+        color: var(--secondary);
+        margin-bottom: 20px;
+      }
+
+      .plan-period {
+        font-size: 14px;
+        color: var(--text-muted);
+        margin-left: 5px;
+      }
+
+      .plan-features {
+        list-style: none;
+        margin-bottom: 30px;
+      }
+
+      .plan-features li {
+        padding: 8px 0;
+        color: var(--text-secondary);
+        position: relative;
+        padding-left: 25px;
+      }
+
+      .plan-features li:before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: var(--accent);
+        font-weight: bold;
+      }
+
+      .plan-button {
+        width: 100%;
+        background: var(--secondary);
+        color: white;
+        border: none;
+        padding: 15px;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .plan-button:hover {
+        background: var(--primary-light);
+        transform: translateY(-2px);
+      }
+
+      .features-section {
+        background: var(--bg-secondary);
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .feature-card {
+        background: var(--bg-card);
+        padding: 30px;
+        border-radius: 12px;
+        text-align: center;
+        box-shadow: var(--theme-shadow-sm);
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--theme-shadow-md);
+      }
+
+      .feature-icon {
+        font-size: 64px;
+        margin-bottom: 20px;
+        color: var(--secondary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        text-align: center;
+      }
+
+      .feature-title {
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 15px;
+        color: var(--text-primary);
+        text-align: center;
+        width: 100%;
+      }
+
+      .feature-description {
+        color: var(--text-secondary);
+        line-height: 1.6;
+        text-align: center;
+        width: 100%;
+      }
+
+      .contact-section {
+        background: var(--bg-tertiary);
+        text-align: center;
+      }
+
+      .contact-info {
+        max-width: 600px;
+        margin: 0 auto;
+        color: var(--text-secondary);
+        line-height: 1.8;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 var(--container-padding);
+      }
+
+      @media (max-width: 768px) {
+        .hero-section {
+          padding: 60px 0 40px;
+        }
+
+        .plans-grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+
+        .plan-card {
+          padding: 25px;
+        }
+
+        .features-grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="distribuidores-page">
+      <Navbar />
+
+      <!-- Hero Section -->
+      <section class="hero-section">
+        <div class="container">
+          <h1 class="hero-title">
+            Crea tu propia empresa de facturación electrónica con Solución
+            Factura
+          </h1>
+          <p class="hero-subtitle">
+            ¡Solución Factura te ayuda a generar ingresos creando tu negocio de
+            facturación electrónica bajo tu propia marca!
+          </p>
+          <a
+            href="https://wa.me/525576017764?text=Hola%2C%20quiero%20información%20sobre%20ser%20distribuidor"
+            class="cta-button"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            ¡Quiero ser Distribuidor!
+          </a>
+        </div>
+      </section>
+
+      <!-- Personalización Section -->
+      <section class="section">
+        <div class="container">
+          <h2 class="section-title">
+            Facilita la venta de planes de facturación electrónica bajo <span
+              style="color: var(--secondary);">tu propia marca</span
+            >
+          </h2>
+          <p
+            style="text-align: center; max-width: 800px; margin: 0 auto; color: var(--text-secondary); font-size: 18px; line-height: 1.6;"
+          >
+            Con nuestra plataforma, puedes ofrecer a tus clientes planes de
+            facturación electrónica bajo tu marca, simplificando el proceso de
+            venta y fortaleciendo tu imagen de marca.
+          </p>
+        </div>
+      </section>
+
+      <!-- Plans Section -->
+      <section class="section">
+        <div class="container">
+          <h2 class="section-title">Planes para Distribuidores</h2>
+          <div class="plans-grid">
+            <!-- Plan Anual -->
+            <div class="plan-card plan-popular">
+              <div class="popular-badge">🔥 MÁS POPULAR</div>
+              <h3 class="plan-name">Plan Anual</h3>
+              <div class="plan-price">
+                $9,999
+                <span class="plan-period">MXN/Anual</span>
+              </div>
+              <ul class="plan-features">
+                <li>Personalización completa (colores y logo del sistema)</li>
+                <li>Personalización del dominio</li>
+                <li>Soporte técnico dedicado</li>
+                <li>Incluye inicialmente 3,000 timbres</li>
+                <li>Panel de administración completo</li>
+                <li>API para desarrolladores</li>
+                <li>Estadísticas y reportes detallados</li>
+                <li>Capacitación incluida</li>
+              </ul>
+              <button class="plan-button" onclick="contactarPlan('anual')">
+                Contratar Plan Anual
+              </button>
+            </div>
+
+            <!-- Plan Mensual -->
+            <div class="plan-card">
+              <h3 class="plan-name">Plan Mensual</h3>
+              <div class="plan-price">
+                $2,999
+                <span class="plan-period">MXN/Mensual</span>
+              </div>
+              <ul class="plan-features">
+                <li>Personalización completa (colores y logo del sistema)</li>
+                <li>Personalización del dominio</li>
+                <li>Soporte técnico dedicado</li>
+                <li>Incluye inicialmente 500 timbres</li>
+                <li>Panel de administración básico</li>
+                <li>Estadísticas básicas</li>
+                <li>Soporte por chat y correo</li>
+              </ul>
+              <button class="plan-button" onclick="contactarPlan('mensual')">
+                Contratar Plan Mensual
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features Section -->
+      <section class="section features-section">
+        <div class="container">
+          <h2 class="section-title">¿Qué incluyen nuestros planes?</h2>
+          <div class="features-grid">
+            <div class="feature-card">
+              <div class="feature-icon">🏢</div>
+              <h3 class="feature-title">Centraliza la gestión de clientes</h3>
+              <p class="feature-description">
+                Administra y migra a todos tus clientes en un único sistema de
+                facturación electrónica, simplificando tus operaciones y
+                mejorando la eficiencia de tu negocio.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon">🎨</div>
+              <h3 class="feature-title">
+                Espacios personalizados para tus clientes
+              </h3>
+              <p class="feature-description">
+                Proporciona a tus clientes un espacio exclusivo donde puedan
+                gestionar sus empresas, folios y usuarios según tus
+                indicaciones, brindándoles autonomía y control.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon">⚙️</div>
+              <h3 class="feature-title">API para desarrolladores</h3>
+              <p class="feature-description">
+                Utiliza nuestra API para desarrolladores y conecta tu software
+                de terceros para gestionar tanto tus clientes como las empresas
+                de ellos, ampliando tus capacidades.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon">🛠️</div>
+              <h3 class="feature-title">Herramientas avanzadas</h3>
+              <p class="feature-description">
+                Tus clientes tendrán acceso al autofacturador, migrador de
+                facturas y nuevas características que se lancen, manteniéndolos
+                siempre actualizados.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon">🎧</div>
+              <h3 class="feature-title">Soporte directo y ágil</h3>
+              <p class="feature-description">
+                Accede al espacio de empresa de tus clientes para brindarles
+                asistencia inmediata en la generación de facturas, reduciendo
+                los tiempos de asistencia.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon">🔧</div>
+              <h3 class="feature-title">Mantenimiento constante</h3>
+              <p class="feature-description">
+                Mantenemos tus facturas, retenciones y complementos actualizados
+                según las regulaciones y actualizaciones del SAT, asegurando el
+                cumplimiento legal.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Benefits Section -->
+      <section class="section">
+        <div class="container">
+          <h2 class="section-title">
+            Conviértete en Distribuidor de Solución Factura
+          </h2>
+          <div class="features-grid">
+            <div class="feature-card">
+              <div class="feature-icon">📄</div>
+              <h3 class="feature-title">Ofrece CFDI 4.0</h3>
+              <p class="feature-description">
+                Podrán crear varios tipos de CDFIs 4.0 de forma fácil y segura
+                con todas las actualizaciones del SAT.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon">📊</div>
+              <h3 class="feature-title">Recibe reportes y estadísticas</h3>
+              <p class="feature-description">
+                Acceso a reportes y estadísticas de ingresos, paquetes vendidos
+                y clientes activos para optimizar tu negocio.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon">🎯</div>
+              <h3 class="feature-title">Personaliza la plataforma</h3>
+              <p class="feature-description">
+                Sube tu logo y personaliza los colores, este aparecerá en el
+                sistema de facturación de tus clientes.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon">✉️</div>
+              <h3 class="feature-title">Correos personalizados</h3>
+              <p class="feature-description">
+                Personaliza los correos de bienvenida y comunicaciones para tus
+                nuevos clientes con tu marca.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section class="section contact-section">
+        <div class="container">
+          <h2 class="section-title">¿Aún tienes dudas?</h2>
+          <div class="contact-info">
+            <p>
+              Contáctanos al WhatsApp <strong>55 7601 7764</strong> o llámanos al
+              <strong>55 9331 4767</strong> para más información, dudas sobre el
+              panel, paquetes, folios, etc.
+            </p>
+            <p style="margin-top: 20px;">
+              Nuestros expertos de Solución Factura te ayudarán a elegir el
+              mejor paquete para que inicies tus ventas.
+            </p>
+            <div style="margin-top: 30px;">
+              <a
+                href="https://wa.me/525576017764?text=Hola%2C%20quiero%20información%20sobre%20ser%20distribuidor"
+                class="cta-button"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                ¡Quiero ser Distribuidor!
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+      <WhatsAppFloat />
+    </div>
+
+    <script>
+      function contactarPlan(plan) {
+        const mensaje = `Hola, quiero información sobre el Plan ${plan} para distribuidores`;
+        const url = `https://wa.me/525576017764?text=${encodeURIComponent(mensaje)}`;
+        window.open(url, "_blank");
+      }
+    </script>
+  </body>
+</html>
