@@ -280,7 +280,13 @@ import "../styles/pages/distribuidores.scss";
                 <li>No compatibles con planes anuales estándar</li>
               </ul>
 
-              <a href="#" class="buy-button" onclick="contactarFoliosExtras()">
+              <a
+                href="#"
+                class="buy-button"
+                id="folios-whatsapp-btn"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Comprar folios extras
               </a>
             </div>
@@ -511,14 +517,14 @@ import "../styles/pages/distribuidores.scss";
         );
       }
 
-      function contactarFoliosExtras() {
+      function updateWhatsAppLink() {
         const folios = document.getElementById("foliosAmount").textContent;
         const precio = document.getElementById("resultPrice").textContent;
         const mensaje = `Me interesa adquirir un plan de folios para distribuidor con ${folios} timbres por ${precio} MXN`;
-        window.open(
-          `https://wa.me/525576017764?text=${encodeURIComponent(mensaje)}`,
-          "_blank",
-        );
+        const whatsappBtn = document.getElementById("folios-whatsapp-btn");
+        if (whatsappBtn) {
+          whatsappBtn.href = `https://wa.me/525576017764?text=${encodeURIComponent(mensaje)}`;
+        }
       }
 
       // Slider functionality
@@ -528,6 +534,9 @@ import "../styles/pages/distribuidores.scss";
         const pricePerFolio = document.getElementById("pricePerFolio");
         const resultFolios = document.getElementById("resultFolios");
         const resultPrice = document.getElementById("resultPrice");
+
+        // Actualizar link de WhatsApp inicialmente
+        updateWhatsAppLink();
 
         function updateCalculation() {
           const folios = parseInt(slider.value);
@@ -556,6 +565,9 @@ import "../styles/pages/distribuidores.scss";
           pricePerFolio.textContent = pricePerUnit.toFixed(2);
           resultFolios.textContent = folios.toLocaleString();
           resultPrice.textContent = `$${totalPrice.toLocaleString("es-MX", { minimumFractionDigits: 2 })}`;
+
+          // Actualizar enlace de WhatsApp
+          updateWhatsAppLink();
         }
 
         slider.addEventListener("input", updateCalculation);

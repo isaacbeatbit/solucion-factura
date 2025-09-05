@@ -6,11 +6,7 @@
 
 .hero-section {
   padding: 80px 0 60px;
-  background: linear-gradient(
-    135deg,
-    var(--primary) 0%,
-    var(--secondary) 100%
-  );
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
   color: white;
   text-align: center;
 }
@@ -399,11 +395,21 @@
   transition: all 0.3s ease;
   text-decoration: none;
   display: inline-block;
+  font-family: inherit;
 
   &:hover {
     background: #2d8a56;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(54, 161, 104, 0.3);
+  }
+
+  &:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  &:active {
+    transform: translateY(0);
   }
 }
 
