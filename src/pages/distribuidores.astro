@@ -3,6 +3,8 @@ import Navbar from "../components/Navbar/Navbar.astro";
 import Footer from "../components/Footer/Footer.astro";
 import WhatsAppFloat from "../components/WhatsAppFloat/WhatsAppFloat.astro";
 import "../styles/global.scss";
+import "../styles/pages/distribuidores.scss";
+import "../styles/pages/distribuidores.scss";
 ---
 
 <html lang="es-MX">
@@ -49,447 +51,80 @@ import "../styles/global.scss";
       property="og:image"
       content="https://solucionfactura.mx/solucion-factura-logo.png"
     />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="es_MX" />
+    <meta property="og:site_name" content="Solución Factura" />
+
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Distribuidores - Solución Factura | Crea tu negocio de facturación electrónica"
+    />
+    <meta
+      name="twitter:description"
+      content="Conviértete en distribuidor de Solución Factura y crea tu propio negocio de facturación electrónica con nuestra plataforma personalizada."
+    />
+    <meta
+      name="twitter:image"
+      content="https://solucionfactura.mx/solucion-factura-logo.png"
+    />
+    <meta name="twitter:creator" content="@SolucionFactura" />
+    <meta name="twitter:site" content="@SolucionFactura" />
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BusinessOpportunity",
+        "name": "Programa de Distribuidores Solución Factura",
+        "description": "Conviértete en distribuidor de Solución Factura y crea tu propio negocio de facturación electrónica con nuestra plataforma personalizada.",
+        "url": "https://solucionfactura.mx/distribuidores",
+        "provider": {
+          "@type": "Organization",
+          "name": "Solución Factura",
+          "url": "https://solucionfactura.mx",
+          "logo": "https://solucionfactura.mx/solucion-factura-logo.png",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+52-55-7601-7764",
+            "contactType": "sales",
+            "availableLanguage": "Spanish"
+          }
+        },
+        "offers": [
+          {
+            "@type": "Offer",
+            "name": "Plan Anual Distribuidor",
+            "description": "Plan anual para distribuidores con personalización completa",
+            "price": "9999",
+            "priceCurrency": "MXN",
+            "priceValidUntil": "2025-12-31",
+            "availability": "https://schema.org/InStock"
+          },
+          {
+            "@type": "Offer",
+            "name": "Plan Mensual Distribuidor",
+            "description": "Plan mensual para distribuidores",
+            "price": "2999",
+            "priceCurrency": "MXN",
+            "priceValidUntil": "2025-12-31",
+            "availability": "https://schema.org/InStock"
+          }
+        ],
+        "benefits": [
+          "Margen de ganancia del 20%",
+          "Sin costos iniciales",
+          "Material gráfico incluido",
+          "Soporte técnico dedicado",
+          "Personalización completa"
+        ]
+      }
+    </script>
 
     <!-- Script de tema simple -->
     <script is:inline src="/src/scripts/theme.js"></script>
-
-    <style>
-      /* Estilos específicos para la página de distribuidores */
-      .distribuidores-page {
-        min-height: 100vh;
-        background: var(--bg-primary);
-      }
-
-      .hero-section {
-        padding: 80px 0 60px;
-        background: linear-gradient(
-          135deg,
-          var(--primary) 0%,
-          var(--secondary) 100%
-        );
-        color: white;
-        text-align: center;
-      }
-
-      .hero-title {
-        font-size: var(--title-size-xl);
-        font-weight: 700;
-        margin-bottom: 20px;
-        background: linear-gradient(135deg, #ffffff, #6db1ff);
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-
-      .hero-subtitle {
-        font-size: var(--subtitle-size);
-        margin-bottom: 30px;
-        opacity: 0.9;
-        text-align: center;
-      }
-
-      .cta-button {
-        display: inline-block;
-        background: var(--accent);
-        color: white;
-        padding: 15px 30px;
-        text-decoration: none;
-        border-radius: 8px;
-        font-weight: 600;
-        font-size: 18px;
-        transition: all 0.3s ease;
-      }
-
-      .cta-button:hover {
-        background: #2d8a56;
-        transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(54, 161, 104, 0.3);
-      }
-
-      .section {
-        padding: 60px 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-
-      .layout-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-
-      .section-title {
-        font-size: var(--title-size-md);
-        text-align: center;
-        margin-bottom: 50px;
-        color: var(--text-primary);
-      }
-
-      .plans-grid {
-        display: flex;
-        flex-direction: row;
-        gap: 30px;
-        justify-content: center;
-        align-items: stretch;
-      }
-
-      .plan-card {
-        background: var(--bg-card);
-        border: 1px solid var(--border-light);
-        border-radius: 12px;
-        padding: 30px;
-        position: relative;
-        transition: all 0.3s ease;
-        box-shadow: var(--theme-shadow-md);
-      }
-
-      .plan-card:hover {
-        transform: translateY(-5px);
-        box-shadow: var(--theme-shadow-xl);
-        border-color: var(--secondary);
-      }
-
-      .plan-popular {
-        border-color: var(--accent);
-        position: relative;
-        overflow: hidden;
-      }
-
-      .popular-badge {
-        position: absolute;
-        top: -1px;
-        right: -1px;
-        background: var(--accent);
-        color: white;
-        padding: 8px 20px;
-        font-size: 12px;
-        font-weight: 600;
-        border-radius: 0 12px 0 12px;
-      }
-
-      .plan-name {
-        font-size: 24px;
-        font-weight: 700;
-        margin-bottom: 10px;
-        color: var(--text-primary);
-      }
-
-      .plan-price {
-        font-size: 32px;
-        font-weight: 800;
-        color: var(--secondary);
-        margin-bottom: 20px;
-      }
-
-      .plan-period {
-        font-size: 14px;
-        color: var(--text-muted);
-        margin-left: 5px;
-      }
-
-      .plan-features {
-        list-style: none;
-        margin-bottom: 30px;
-      }
-
-      .plan-features li {
-        padding: 8px 0;
-        color: var(--text-secondary);
-        position: relative;
-        padding-left: 25px;
-      }
-
-      .plan-features li:before {
-        content: "✓";
-        position: absolute;
-        left: 0;
-        color: var(--accent);
-        font-weight: bold;
-      }
-
-      .plan-button {
-        width: 100%;
-        background: var(--secondary);
-        color: white;
-        border: none;
-        padding: 15px;
-        border-radius: 8px;
-        font-size: 16px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s ease;
-      }
-
-      .plan-button:hover {
-        background: var(--primary-light);
-        transform: translateY(-2px);
-      }
-
-      .features-section {
-        background: var(--bg-secondary);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-
-      .features-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 30px;
-      }
-
-      .feature-card {
-        background: var(--bg-card);
-        padding: 30px;
-        border-radius: 12px;
-        text-align: center;
-        box-shadow: var(--theme-shadow-sm);
-        transition: all 0.3s ease;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-      }
-
-      .feature-card:hover {
-        transform: translateY(-3px);
-        box-shadow: var(--theme-shadow-md);
-      }
-
-      .feature-icon {
-        font-size: 64px;
-        margin-bottom: 20px;
-        color: var(--secondary);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        text-align: center;
-      }
-
-      .feature-title {
-        font-size: 20px;
-        font-weight: 600;
-        margin-bottom: 15px;
-        color: var(--text-primary);
-        text-align: center;
-        width: 100%;
-      }
-
-      .feature-description {
-        color: var(--text-secondary);
-        line-height: 1.6;
-        text-align: center;
-        width: 100%;
-      }
-
-      .contact-section {
-        background: var(--bg-secondary);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-
-      .contact-info {
-        color: var(--text-secondary);
-        line-height: 1.8;
-        text-align: center;
-      }
-
-      /* Estilos para la sección de folios extras */
-      .folios-section {
-        background: var(--bg-secondary);
-      }
-
-      .folios-calculator {
-        background: var(--bg-card);
-        border-radius: 16px;
-        padding: 40px;
-        box-shadow: var(--theme-shadow-md);
-        max-width: 600px;
-        margin: 0 auto;
-      }
-
-      .calculator-title {
-        font-size: 28px;
-        font-weight: 700;
-        color: var(--text-primary);
-        margin-bottom: 10px;
-        text-align: center;
-      }
-
-      .calculator-subtitle {
-        color: var(--text-secondary);
-        text-align: center;
-        margin-bottom: 30px;
-        font-size: 16px;
-      }
-
-      .folios-slider {
-        margin-bottom: 30px;
-      }
-
-      .slider-label {
-        display: block;
-        font-weight: 600;
-        color: var(--text-primary);
-        margin-bottom: 15px;
-        font-size: 18px;
-      }
-
-      .slider-container {
-        position: relative;
-        margin-bottom: 20px;
-      }
-
-      .folios-range {
-        width: 100%;
-        height: 8px;
-        border-radius: 4px;
-        background: var(--border-light);
-        outline: none;
-        appearance: none;
-        cursor: pointer;
-      }
-
-      .folios-range::-webkit-slider-thumb {
-        appearance: none;
-        width: 24px;
-        height: 24px;
-        border-radius: 50%;
-        background: var(--secondary);
-        cursor: pointer;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-      }
-
-      .folios-range::-moz-range-thumb {
-        width: 24px;
-        height: 24px;
-        border-radius: 50%;
-        background: var(--secondary);
-        cursor: pointer;
-        border: none;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-      }
-
-      .slider-values {
-        display: flex;
-        justify-content: space-between;
-        font-size: 14px;
-        color: var(--text-muted);
-        margin-top: 5px;
-      }
-
-      .folios-result {
-        text-align: center;
-        background: var(--bg-primary);
-        border-radius: 12px;
-        padding: 30px;
-        border: 2px solid var(--border-light);
-      }
-
-      .result-folios {
-        font-size: 36px;
-        font-weight: 800;
-        color: var(--secondary);
-        margin-bottom: 5px;
-      }
-
-      .result-label {
-        color: var(--text-muted);
-        font-size: 14px;
-        margin-bottom: 15px;
-      }
-
-      .result-price {
-        font-size: 32px;
-        font-weight: 700;
-        color: var(--text-primary);
-        margin-bottom: 5px;
-      }
-
-      .result-currency {
-        color: var(--text-secondary);
-        font-size: 14px;
-        margin-bottom: 20px;
-      }
-
-      .result-features {
-        list-style: none;
-        text-align: left;
-        margin-bottom: 25px;
-      }
-
-      .result-features li {
-        padding: 5px 0;
-        color: var(--text-secondary);
-        position: relative;
-        padding-left: 20px;
-        font-size: 14px;
-      }
-
-      .result-features li:before {
-        content: "✓";
-        position: absolute;
-        left: 0;
-        color: var(--accent);
-        font-weight: bold;
-      }
-
-      .buy-button {
-        background: var(--accent);
-        color: white;
-        border: none;
-        padding: 12px 30px;
-        border-radius: 8px;
-        font-size: 16px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        text-decoration: none;
-        display: inline-block;
-      }
-
-      .buy-button:hover {
-        background: #2d8a56;
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(54, 161, 104, 0.3);
-      }
-
-      @media (max-width: 768px) {
-        .plans-grid {
-          flex-direction: column;
-          align-items: center;
-        }
-
-        .plan-card {
-          width: 100%;
-          max-width: 400px;
-        }
-        .hero-section {
-          padding: 60px 0 40px;
-        }
-
-        .plans-grid {
-          grid-template-columns: 1fr;
-          gap: 20px;
-        }
-
-        .plan-card {
-          padding: 25px;
-        }
-
-        .features-grid {
-          grid-template-columns: 1fr;
-          gap: 20px;
-        }
-      }
-    </style>
   </head>
   <body>
     <div class="distribuidores-page">
@@ -879,7 +514,7 @@ import "../styles/global.scss";
       function contactarFoliosExtras() {
         const folios = document.getElementById("foliosAmount").textContent;
         const precio = document.getElementById("resultPrice").textContent;
-        const mensaje = `Hola, quiero información sobre ${folios} folios extras por ${precio} MXN`;
+        const mensaje = `Me interesa adquirir un plan de folios para distribuidor con ${folios} timbres por ${precio} MXN`;
         window.open(
           `https://wa.me/525576017764?text=${encodeURIComponent(mensaje)}`,
           "_blank",
