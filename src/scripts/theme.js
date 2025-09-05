@@ -1,5 +1,5 @@
 // Simple shared theme manager
-(function() {
+(function () {
   function initTheme() {
     const savedTheme = localStorage.getItem("theme");
     const html = document.documentElement;
@@ -22,7 +22,8 @@
   }
 
   function toggleTheme() {
-    const current = document.documentElement.getAttribute("data-theme") || "dark";
+    const current =
+      document.documentElement.getAttribute("data-theme") || "dark";
     setTheme(current === "light" ? "dark" : "light");
   }
 

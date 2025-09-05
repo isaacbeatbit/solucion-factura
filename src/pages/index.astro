@@ -133,134 +133,16 @@ import "../styles/global.scss";
       }
     </script>
 
-    <!-- Script de tema - debe ejecutarse lo antes posible -->
+    <!-- Minimal theme script to prevent flash -->
     <script is:inline>
-      // theme.js - Script global para inicialización del tema
-      // Este script debe ejecutarse lo antes posible para evitar flash del tema incorrecto
-
       (function () {
-        "use strict";
-
-        // Función para inicializar el tema
-        function initTheme() {
-          const htmlElement = document.documentElement;
-
-          // Obtener el tema guardado en localStorage
-          const savedTheme = localStorage.getItem("theme");
-
-          // Detectar preferencia del sistema si no hay tema guardado
-          const prefersDark =
-            window.matchMedia &&
-            window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-          // Determinar qué tema usar
-          let themeToApply;
-          if (savedTheme) {
-            themeToApply = savedTheme;
-          } else {
-            // Si no hay tema guardado, usar la preferencia del sistema
-            themeToApply = prefersDark ? "dark" : "light";
-            // Guardar la preferencia detectada
-            localStorage.setItem("theme", themeToApply);
-          }
-
-          // Aplicar el tema
-          if (themeToApply === "light") {
-            htmlElement.setAttribute("data-theme", "light");
-          } else {
-            htmlElement.removeAttribute("data-theme");
-          }
-        }
-
-        // Función para escuchar cambios en la preferencia del sistema
-        function watchSystemTheme() {
-          if (window.matchMedia) {
-            const mediaQuery = window.matchMedia(
-              "(prefers-color-scheme: dark)",
-            );
-
-            mediaQuery.addEventListener("change", (e) => {
-              // Solo actualizar si no hay tema guardado manualmente
-              const savedTheme = localStorage.getItem("theme");
-              if (!savedTheme) {
-                const htmlElement = document.documentElement;
-                if (e.matches) {
-                  // Sistema prefiere oscuro
-                  htmlElement.removeAttribute("data-theme");
-                  localStorage.setItem("theme", "dark");
-                } else {
-                  // Sistema prefiere claro
-                  htmlElement.setAttribute("data-theme", "light");
-                  localStorage.setItem("theme", "light");
-                }
-
-                // Disparar evento personalizado
-                window.dispatchEvent(
-                  new CustomEvent("themeChanged", {
-                    detail: {
-                      theme: e.matches ? "dark" : "light",
-                      source: "system",
-                    },
-                  }),
-                );
-              }
-            });
-          }
-        }
-
-        // Función para obtener el tema actual
-        function getCurrentTheme() {
-          const htmlElement = document.documentElement;
-          return htmlElement.getAttribute("data-theme") || "dark";
-        }
-
-        // Función para cambiar el tema programáticamente
-        function setTheme(theme) {
-          const htmlElement = document.documentElement;
-
-          if (theme === "light") {
-            htmlElement.setAttribute("data-theme", "light");
-          } else {
-            htmlElement.removeAttribute("data-theme");
-            theme = "dark"; // Normalizar
-          }
-
-          localStorage.setItem("theme", theme);
-
-          // Disparar evento personalizado
-          window.dispatchEvent(
-            new CustomEvent("themeChanged", {
-              detail: { theme, source: "manual" },
-            }),
-          );
-
-          return theme;
-        }
-
-        // Función para alternar el tema
-        function toggleTheme() {
-          const currentTheme = getCurrentTheme();
-          const newTheme = currentTheme === "light" ? "dark" : "light";
-          return setTheme(newTheme);
-        }
-
-        // Inicializar inmediatamente
-        initTheme();
-
-        // Configurar el observador del sistema cuando el DOM esté listo
-        if (document.readyState === "loading") {
-          document.addEventListener("DOMContentLoaded", watchSystemTheme);
-        } else {
-          watchSystemTheme();
-        }
-
-        // Exponer funciones globales útiles
-        window.themeManager = {
-          getCurrentTheme,
-          setTheme,
-          toggleTheme,
-          init: initTheme,
-        };
+        const savedTheme = localStorage.getItem("theme");
+        const prefersDark =
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const theme = savedTheme || (prefersDark ? "dark" : "light");
+        if (theme === "light")
+          document.documentElement.setAttribute("data-theme", "light");
       })();
     </script>
   </head>
@@ -279,41 +161,9 @@ import "../styles/global.scss";
     <WhatsAppFloat />
 
     <script>
-      // Script para prevenir overflow horizontal en producción
-      function preventOverflow() {
-        const html = document.documentElement;
-        const body = document.body;
-
-        // Aplicar estilos anti-overflow
-        html.style.overflowX = "hidden";
-        html.style.maxWidth = "100vw";
-        body.style.overflowX = "hidden";
-        body.style.maxWidth = "100vw";
-
-        // Verificar navbar específicamente
-        const navbar = document.querySelector(".navbar-header");
-        if (navbar) {
-          navbar.style.maxWidth = "100vw";
-          navbar.style.overflowX = "hidden";
-        }
-
-        // Verificar todos los containers
-        const containers = document.querySelectorAll(".container");
-        containers.forEach((container) => {
-          container.style.maxWidth = "100%";
-          container.style.overflowX = "hidden";
-        });
-      }
-
-      // Ejecutar cuando la página carga
-      if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", preventOverflow);
-      } else {
-        preventOverflow();
-      }
-
-      // También ejecutar después de Astro navigation
-      document.addEventListener("astro:page-load", preventOverflow);
+      // Simple overflow prevention
+      document.documentElement.style.overflowX = "hidden";
+      document.body.style.overflowX = "hidden";
     </script>
   </body>
 </html>

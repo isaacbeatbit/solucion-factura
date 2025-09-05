@@ -73,6 +73,9 @@ import "../styles/pages/distribuidores.scss";
     <meta name="twitter:creator" content="@SolucionFactura" />
     <meta name="twitter:site" content="@SolucionFactura" />
 
+    <!-- Essential Performance Meta Tags -->
+    <meta name="theme-color" content="#36a168" />
+
     <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
       {
@@ -202,9 +205,15 @@ import "../styles/pages/distribuidores.scss";
                 <li>Estadísticas y reportes detallados</li>
                 <li>Capacitación incluida</li>
               </ul>
-              <button class="plan-button" onclick="contactarPlan('anual')">
+              <a
+                href="https://wa.me/525576017764?text=Quiero%20contratar%20el%20plan%20anual%20de%20marca%20blanca%20de%20Solución%20Factura"
+                class="plan-button"
+                target="_blank"
+                rel="noopener noreferrer"
+                style="text-decoration: none; display: block; text-align: center;"
+              >
                 Contratar Plan Anual
-              </button>
+              </a>
             </div>
 
             <!-- Plan Mensual -->
@@ -223,9 +232,15 @@ import "../styles/pages/distribuidores.scss";
                 <li>Estadísticas básicas</li>
                 <li>Soporte por chat y correo</li>
               </ul>
-              <button class="plan-button" onclick="contactarPlan('mensual')">
+              <a
+                href="https://wa.me/525576017764?text=Quiero%20contratar%20el%20plan%20mensual%20de%20marca%20blanca%20de%20Solución%20Factura"
+                class="plan-button"
+                target="_blank"
+                rel="noopener noreferrer"
+                style="text-decoration: none; display: block; text-align: center;"
+              >
                 Contratar Plan Mensual
-              </button>
+              </a>
             </div>
           </div>
         </div>
@@ -509,14 +524,6 @@ import "../styles/pages/distribuidores.scss";
     </div>
 
     <script>
-      function contactarPlan(plan) {
-        const mensaje = `Hola, quiero información sobre el Plan ${plan} para distribuidores`;
-        window.open(
-          `https://wa.me/525576017764?text=${encodeURIComponent(mensaje)}`,
-          "_blank",
-        );
-      }
-
       function updateWhatsAppLink() {
         const folios = document.getElementById("foliosAmount").textContent;
         const precio = document.getElementById("resultPrice").textContent;
