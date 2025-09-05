@@ -187,28 +187,6 @@ select:not([class]) {
 }
 
 // ========================================
-// PERSONALIZACIÓN DE SCROLLBAR
-// ========================================
-
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--bg-secondary, #f8fafc);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--border-color, #e1e5ee);
-  border-radius: 4px;
-  transition: background 0.2s ease;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--secondary, #1a6dcc);
-}
-
-// ========================================
 // MEJORAS DE RENDIMIENTO
 // ========================================
 
