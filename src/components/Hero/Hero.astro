@@ -32,19 +32,169 @@ import "./hero.scss";
       </div>
 
       <div class="hero-visual">
-        <video
-          src="/sf-video.mp4"
-          class="hero-image"
-          width="650"
-          height="380"
-          muted
-          autoplay
-          loop
-          poster="https://solucionfactura.mx/wp-content/uploads/2025/05/Caracteristicas-SFactura-1.png"
-          playsinline
-        >
-          Tu navegador no soporta el video.
-        </video>
+        <div class="video-container">
+          <!-- Thumbnail que se muestra inicialmente -->
+          <picture>
+            <source srcset="/dashboard-thumbnail.webp" type="image/webp" />
+            <img
+              src="/dashboard-thumbnail.jpg"
+              alt="Dashboard del sistema Solución Factura - Vista de reportes y estadísticas"
+              class="video-thumbnail"
+              width="650"
+              height="380"
+              loading="eager"
+            />
+          </picture>
+
+          <!-- Video que se carga después -->
+          <video
+            src="/sf-video.mp4"
+            class="hero-video"
+            width="650"
+            height="380"
+            muted
+            loop
+            playsinline
+            preload="none"
+            style="display: none; opacity: 0;"
+          >
+            Tu navegador no soporta el video.
+          </video>
+
+          <!-- Botón de play opcional -->
+          <div class="play-button" aria-label="Reproducir video">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="white">
+              <path d="M8 5v14l11-7z"></path>
+            </svg>
+          </div>
+        </div>
+
+        <style>
+          .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 650px;
+            height: 380px;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+          }
+
+          .video-thumbnail,
+          .hero-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+            transition: opacity 0.5s ease;
+          }
+
+          .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+          }
+
+          .play-button:hover {
+            background: rgba(0, 0, 0, 0.8);
+            transform: translate(-50%, -50%) scale(1.1);
+          }
+
+          .video-container.playing .play-button {
+            opacity: 0;
+            pointer-events: none;
+          }
+
+          @media (max-width: 768px) {
+            .video-container {
+              height: 250px;
+            }
+
+            .play-button {
+              width: 60px;
+              height: 60px;
+            }
+          }
+        </style>
+
+        <script>
+          document.addEventListener("DOMContentLoaded", function () {
+            const container = document.querySelector(".video-container");
+            const thumbnail = document.querySelector(".video-thumbnail");
+            const video = document.querySelector(".hero-video");
+            const playButton = document.querySelector(".play-button");
+
+            // Auto-cargar video cuando sea visible
+            const observer = new IntersectionObserver(
+              (entries) => {
+                entries.forEach((entry) => {
+                  if (entry.isIntersecting) {
+                    // Pre-cargar video en background
+                    video.preload = "auto";
+                    video.load();
+                    observer.unobserve(container);
+                  }
+                });
+              },
+              {
+                threshold: 0.1,
+                rootMargin: "100px",
+              },
+            );
+
+            observer.observe(container);
+
+            // Función para iniciar video
+            function startVideo() {
+              container.classList.add("playing");
+              video.style.display = "block";
+
+              video
+                .play()
+                .then(() => {
+                  // Transición suave de thumbnail a video
+                  setTimeout(() => {
+                    video.style.opacity = "1";
+                    thumbnail.style.opacity = "0";
+                  }, 100);
+
+                  // Ocultar thumbnail después de la transición
+                  setTimeout(() => {
+                    thumbnail.style.display = "none";
+                  }, 600);
+                })
+                .catch(() => {
+                  // Si falla el autoplay, mostrar solo el botón
+                  console.log("Autoplay bloqueado");
+                });
+            }
+
+            // Click en cualquier parte del contenedor inicia el video
+            container.addEventListener("click", startVideo);
+
+            // También auto-iniciar después de que el video esté cargado
+            video.addEventListener("canplaythrough", () => {
+              // Auto-iniciar solo si está visible
+              const rect = container.getBoundingClientRect();
+              const isVisible =
+                rect.top < window.innerHeight && rect.bottom > 0;
+
+              if (isVisible) {
+                setTimeout(startVideo, 1000); // Esperar 1 segundo después de cargar
+              }
+            });
+          });
+        </script>
       </div>
     </div>
   </div>
