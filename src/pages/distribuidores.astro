@@ -53,32 +53,35 @@ import "../styles/global.scss";
     <!-- Script de tema - debe ejecutarse lo antes posible -->
     <script is:inline>
       (function () {
-        "use strict";
-
         function initTheme() {
           const htmlElement = document.documentElement;
           const savedTheme = localStorage.getItem("theme");
-          const prefersDark =
-            window.matchMedia &&
-            window.matchMedia("(prefers-color-scheme: dark)").matches;
 
-          let themeToApply;
-          if (savedTheme) {
-            themeToApply = savedTheme;
-          } else {
-            themeToApply = prefersDark ? "dark" : "light";
-            localStorage.setItem("theme", themeToApply);
-          }
-
-          if (themeToApply === "light") {
+          if (savedTheme === "light") {
             htmlElement.setAttribute("data-theme", "light");
           } else {
             htmlElement.removeAttribute("data-theme");
           }
         }
 
+        function setTheme(theme) {
+          const htmlElement = document.documentElement;
+          if (theme === "light") {
+            htmlElement.setAttribute("data-theme", "light");
+          } else {
+            htmlElement.removeAttribute("data-theme");
+          }
+          localStorage.setItem("theme", theme);
+        }
+
+        function toggleTheme() {
+          const currentTheme =
+            document.documentElement.getAttribute("data-theme") || "dark";
+          setTheme(currentTheme === "light" ? "dark" : "light");
+        }
+
         initTheme();
-        window.themeManager = { initTheme };
+        window.themeManager = { setTheme, toggleTheme };
       })();
     </script>
 
@@ -611,45 +614,11 @@ import "../styles/global.scss";
     <script>
       function contactarPlan(plan) {
         const mensaje = `Hola, quiero información sobre el Plan ${plan} para distribuidores`;
-        const url = `https://wa.me/525576017764?text=${encodeURIComponent(mensaje)}`;
-        window.open(url, "_blank");
+        window.open(
+          `https://wa.me/525576017764?text=${encodeURIComponent(mensaje)}`,
+          "_blank",
+        );
       }
-
-      // Script para prevenir overflow horizontal en producción
-      function preventOverflow() {
-        const html = document.documentElement;
-        const body = document.body;
-
-        // Aplicar estilos anti-overflow
-        html.style.overflowX = "hidden";
-        html.style.maxWidth = "100vw";
-        body.style.overflowX = "hidden";
-        body.style.maxWidth = "100vw";
-
-        // Verificar navbar específicamente
-        const navbar = document.querySelector(".navbar-header");
-        if (navbar) {
-          navbar.style.maxWidth = "100vw";
-          navbar.style.overflowX = "hidden";
-        }
-
-        // Verificar todos los containers
-        const containers = document.querySelectorAll(".container");
-        containers.forEach((container) => {
-          container.style.maxWidth = "100%";
-          container.style.overflowX = "hidden";
-        });
-      }
-
-      // Ejecutar cuando la página carga
-      if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", preventOverflow);
-      } else {
-        preventOverflow();
-      }
-
-      // También ejecutar después de Astro navigation
-      document.addEventListener("astro:page-load", preventOverflow);
     </script>
   </body>
 </html>
