@@ -2,7 +2,7 @@
 
 /* Hero Section */
 .hero {
-  padding: 8rem 0 4rem;
+  padding: 5rem 0 3rem;
   background: linear-gradient(
     135deg,
     var(--bg-secondary) 0%,
@@ -11,6 +11,14 @@
   position: relative;
   overflow: hidden;
   transition: background 0.3s ease;
+
+  @media (max-width: 768px) {
+    padding: 3rem 0 2rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 2rem 0 1.5rem;
+  }
 
   [data-theme="light"] & {
     background: linear-gradient(135deg, var(--bg-primary) 0%, #f0f4ff 100%);
@@ -35,12 +43,16 @@
 .hero-content {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
+  gap: 1.5rem;
   align-items: center;
 
   @include md-up {
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 1rem;
   }
 }
 
@@ -78,10 +90,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
 
   @include md-up {
     margin-top: 0;
+  }
+
+  @media (max-width: 480px) {
+    margin-top: 1rem;
   }
 }
 

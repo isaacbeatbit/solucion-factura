@@ -61,15 +61,12 @@
 .footer-links a {
   color: var(--text-secondary);
   text-decoration: none;
-  transition: all 0.2s ease;
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
+  transition: color 0.2s ease;
   display: inline-block;
 }
 
 .footer-links a:hover {
   color: var(--secondary);
-  background: var(--border-light);
 }
 
 /* Card de distribuidores en footer */

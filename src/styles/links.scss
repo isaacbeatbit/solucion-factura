@@ -2,8 +2,9 @@
 // SISTEMA DE ENLACES
 // ========================================
 
-// Enlace base (reset)
-a {
+// Enlace base (reset) - Solo para elementos que específicamente necesiten reset
+.link-reset,
+a.link-reset {
   text-decoration: none;
   color: inherit;
   transition: all 0.2s ease;
@@ -16,12 +17,21 @@ a {
   }
 }
 
+// Reset mínimo para todos los enlaces (solo lo esencial)
+a {
+  color: inherit;
+
+  &:focus-visible {
+    outline: 2px solid var(--secondary);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}
+
 // ========================================
 // ENLACES DE NAVEGACIÓN
 // ========================================
-.nav .nav-link,
-.nav-list .nav-link,
-a.nav-link {
+.nav-link {
   text-decoration: none;
   color: var(--text-primary);
   font-weight: 500;
@@ -74,7 +84,8 @@ a.nav-link {
 }
 
 // Enlaces de navegación móvil
-.mobile-nav-link {
+.mobile-nav-link,
+a.mobile-nav-link {
   display: block;
   padding: 1rem;
   text-decoration: none;
@@ -99,7 +110,8 @@ a.nav-link {
 // ========================================
 
 // Enlaces dentro de texto/párrafos
-.link-inline {
+.link-inline,
+a.link-inline {
   color: var(--secondary);
   text-decoration: underline;
   text-decoration-color: rgba(26, 109, 204, 0.3);
@@ -113,7 +125,8 @@ a.nav-link {
 }
 
 // Enlaces destacados
-.link-primary {
+.link-primary,
+a.link-primary {
   color: var(--secondary);
   font-weight: 600;
   transition: all 0.2s ease;
@@ -125,7 +138,8 @@ a.nav-link {
 }
 
 // Enlaces sutiles
-.link-subtle {
+.link-subtle,
+a.link-subtle {
   color: var(--text-muted);
   transition: color 0.2s ease;
 
@@ -138,7 +152,8 @@ a.nav-link {
 // ENLACES DE FOOTER
 // ========================================
 
-.footer-link {
+.footer-link,
+a.footer-link {
   color: var(--text-secondary);
   text-decoration: none;
   transition: color 0.2s ease;
@@ -154,7 +169,8 @@ a.nav-link {
 // ENLACES CON ICONOS
 // ========================================
 
-.link-icon {
+.link-icon,
+a.link-icon {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;

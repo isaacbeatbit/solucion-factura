@@ -1,5 +1,11 @@
 ---
 import "./footer.scss";
+
+export interface Props {
+  hideDistributorCTA?: boolean;
+}
+
+const { hideDistributorCTA = false } = Astro.props;
 ---
 
 <footer class="footer">
@@ -103,26 +109,30 @@ import "./footer.scss";
     </div>
 
     <!-- Card de Distribuidores -->
-    <div class="distribuidor-cta-footer">
-      <div class="cta-footer-content">
-        <div class="cta-footer-text">
-          <h4 class="cta-footer-title">
-            🚀 ¿Quieres crear tu propio negocio de facturación?
-          </h4>
-          <p class="cta-footer-description">
-            Únete a nuestro programa de distribuidores y ofrece facturación
-            electrónica bajo tu marca. Genera ingresos recurrentes con nuestra
-            plataforma.
-          </p>
+    {
+      !hideDistributorCTA && (
+        <div class="distribuidor-cta-footer">
+          <div class="cta-footer-content">
+            <div class="cta-footer-text">
+              <h4 class="cta-footer-title">
+                🚀 ¿Quieres crear tu propio negocio de facturación?
+              </h4>
+              <p class="cta-footer-description">
+                Únete a nuestro programa de distribuidores y ofrece facturación
+                electrónica bajo tu marca. Genera ingresos recurrentes con
+                nuestra plataforma.
+              </p>
+            </div>
+            <div class="cta-footer-actions">
+              <a href="/distribuidores" class="btn-footer-cta">
+                <span>💼</span>
+                Conocer Más
+              </a>
+            </div>
+          </div>
         </div>
-        <div class="cta-footer-actions">
-          <a href="/distribuidores" class="btn-footer-cta">
-            <span>💼</span>
-            Conocer Más
-          </a>
-        </div>
-      </div>
-    </div>
+      )
+    }
 
     <div class="footer-bottom">
       <p>&copy; 2025 Solución Factura. Todos los derechos reservados.</p>

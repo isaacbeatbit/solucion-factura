@@ -1,4 +1,4 @@
-/* WhatsApp Integration Section Styles */
+/* WhatsApp Integration Section - Simple Layout */
 .whatsapp-integration {
   padding: 80px 20px;
   background: var(--bg-secondary);
@@ -6,14 +6,14 @@
   transition:
     background-color 0.3s ease,
     color 0.3s ease;
+}
 
-  [data-theme="light"] & {
-    background: var(--bg-tertiary);
-  }
+[data-theme="light"] .whatsapp-integration {
+  background: var(--bg-tertiary);
 }
 
 .whatsapp-integration .container {
-  max-width: 1200px;
+  max-width: 1104px !important;
   margin: 0 auto;
 }
 
@@ -27,13 +27,13 @@
 
 /* Text Section */
 .whatsapp-text {
-  max-width: 800px;
+  max-width: 800px !important;
 }
 
 /* Video Section */
 .whatsapp-video {
   width: 100%;
-  max-width: 900px;
+  max-width: 898px !important;
 }
 
 .video-wrapper {
@@ -48,14 +48,14 @@
     0 0 30px rgba(26, 109, 204, 0.2);
   border: 1px solid var(--border-light);
   background: var(--bg-card);
+}
 
-  [data-theme="light"] & {
-    box-shadow:
-      var(--theme-shadow-xl),
-      0 0 20px rgba(26, 109, 204, 0.1);
-    border: 1px solid var(--border-color);
-    background: var(--bg-primary);
-  }
+[data-theme="light"] .video-wrapper {
+  box-shadow:
+    var(--theme-shadow-xl),
+    0 0 20px rgba(26, 109, 204, 0.1);
+  border: 1px solid var(--border-color);
+  background: var(--bg-primary);
 }
 
 .video-wrapper iframe {
@@ -108,11 +108,11 @@
   background: transparent;
   color: var(--secondary);
   border-color: var(--secondary);
+}
 
-  [data-theme="light"] & {
-    color: var(--primary);
-    border-color: var(--primary);
-  }
+[data-theme="light"] .cta-button.secondary {
+  color: var(--primary);
+  border-color: var(--primary);
 }
 
 .cta-button.secondary:hover {
@@ -120,11 +120,11 @@
   color: white;
   transform: translateY(-3px);
   box-shadow: var(--theme-shadow-lg);
+}
 
-  [data-theme="light"] & {
-    background: var(--primary);
-    color: white;
-  }
+[data-theme="light"] .cta-button.secondary:hover {
+  background: var(--primary);
+  color: white;
 }
 
 /* Responsive Design */
@@ -172,47 +172,5 @@
 
   .video-wrapper {
     border-radius: 10px;
-  }
-}
-
-/* Animation for entrance effect */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.whatsapp-content > * {
-  animation: fadeInUp 0.6s ease forwards;
-}
-
-.whatsapp-text {
-  animation-delay: 0.1s;
-}
-
-.whatsapp-video {
-  animation-delay: 0.2s;
-}
-
-.whatsapp-actions {
-  animation-delay: 0.3s;
-}
-
-/* Hover effects for video wrapper */
-.video-wrapper:hover {
-  transform: translateY(-5px);
-  box-shadow:
-    var(--theme-shadow-xl),
-    0 0 40px rgba(26, 109, 204, 0.3);
-
-  [data-theme="light"] & {
-    box-shadow:
-      var(--theme-shadow-xl),
-      0 0 30px rgba(26, 109, 204, 0.2);
   }
 }

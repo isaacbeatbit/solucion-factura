@@ -2,9 +2,6 @@
 import "./system-preview.scss";
 ---
 
-<!-- Preload first carousel image for better performance -->
-<link rel="preload" as="image" href="https://solucionfactura.mx/images/1" />
-
 <section class="system-preview">
   <div class="container">
     <div class="section-header">
@@ -15,124 +12,215 @@ import "./system-preview.scss";
       </p>
     </div>
 
-    <div class="carousel-container">
-      <div class="carousel-wrapper">
-        <div class="carousel-track" id="carouselTrack">
-          <div class="carousel-slide active">
-            <div class="slide-image">
-              <img
-                src="https://solucionfactura.mx/images/1"
-                alt="Dashboard Principal"
-                loading="eager"
-              />
-            </div>
-            <div class="slide-content">
-              <h3 class="slide-title">Dashboard Principal</h3>
-              <p class="slide-subtitle">Vista general de tu facturación</p>
+    <div
+      class="carousel-wrapper"
+      style="position: relative; max-width: 900px; margin: 0 auto;"
+    >
+      <div
+        class="carousel-container"
+        id="carousel"
+        style="overflow: hidden; border-radius: 12px; box-shadow: var(--theme-shadow-xl); background: var(--bg-card);"
+      >
+        <div
+          class="carousel-track"
+          id="carousel-track"
+          style="display: flex; transition: transform 0.5s ease;"
+        >
+          <div
+            class="carousel-slide active"
+            style="min-width: 100%; flex-shrink: 0; position: relative; width: 100%; height: 450px; overflow: hidden; border-radius: 8px;"
+          >
+            <img
+              src="https://solucionfactura.mx/images/1"
+              alt="Dashboard Principal"
+              loading="eager"
+              style="width: 100%; height: 100%; object-fit: cover; display: block;"
+            />
+            <div
+              class="slide-overlay"
+              style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.9)); color: white; padding: 2rem; text-align: center; text-shadow: 1px 1px 2px rgba(0,0,0,0.7);"
+            >
+              <h3
+                style="margin: 0 0 0.5rem 0; font-size: 1.5rem; font-weight: bold;"
+              >
+                Dashboard Principal
+              </h3>
+              <p style="margin: 0; font-size: 1rem; opacity: 0.9;">
+                Vista general de tu facturación
+              </p>
             </div>
           </div>
 
-          <div class="carousel-slide">
-            <div class="slide-image">
-              <img
-                src="https://solucionfactura.mx/images/2"
-                alt="Creación de Facturas"
-                loading="eager"
-              />
-            </div>
-            <div class="slide-content">
-              <h3 class="slide-title">Generación de Facturas</h3>
-              <p class="slide-subtitle">
+          <div
+            class="carousel-slide"
+            style="min-width: 100%; flex-shrink: 0; position: relative; width: 100%; height: 450px; overflow: hidden; border-radius: 8px;"
+          >
+            <img
+              src="https://solucionfactura.mx/images/2"
+              alt="Generación de Facturas"
+              loading="lazy"
+              style="width: 100%; height: 100%; object-fit: cover; display: block;"
+            />
+            <div
+              class="slide-overlay"
+              style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.9)); color: white; padding: 2rem; text-align: center; text-shadow: 1px 1px 2px rgba(0,0,0,0.7);"
+            >
+              <h3
+                style="margin: 0 0 0.5rem 0; font-size: 1.5rem; font-weight: bold;"
+              >
+                Generación de Facturas
+              </h3>
+              <p style="margin: 0; font-size: 1rem; opacity: 0.9;">
                 Crea facturas de forma rápida y sencilla
               </p>
             </div>
           </div>
 
-          <div class="carousel-slide">
-            <div class="slide-image">
-              <img
-                src="https://solucionfactura.mx/images/3"
-                alt="Gestión de Clientes"
-                loading="eager"
-              />
-            </div>
-            <div class="slide-content">
-              <h3 class="slide-title">Convertidor PDF a Excel</h3>
-              <p class="slide-subtitle">Convierte estados de cuenta a Excel</p>
-            </div>
-          </div>
-
-          <div class="carousel-slide">
-            <div class="slide-image">
-              <img
-                src="https://solucionfactura.mx/images/4"
-                alt="Reportes Avanzados"
-                loading="eager"
-              />
-            </div>
-            <div class="slide-content">
-              <h3 class="slide-title">Multi-empresa</h3>
-              <p class="slide-subtitle">
-                Maneja multiples RFC desde un solo lugar
+          <div
+            class="carousel-slide"
+            style="min-width: 100%; flex-shrink: 0; position: relative; width: 100%; height: 450px; overflow: hidden; border-radius: 8px;"
+          >
+            <img
+              src="https://solucionfactura.mx/images/3"
+              alt="Convertidor PDF a Excel"
+              loading="lazy"
+              style="width: 100%; height: 100%; object-fit: cover; display: block;"
+            />
+            <div
+              class="slide-overlay"
+              style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.9)); color: white; padding: 2rem; text-align: center; text-shadow: 1px 1px 2px rgba(0,0,0,0.7);"
+            >
+              <h3
+                style="margin: 0 0 0.5rem 0; font-size: 1.5rem; font-weight: bold;"
+              >
+                Convertidor PDF a Excel
+              </h3>
+              <p style="margin: 0; font-size: 1rem; opacity: 0.9;">
+                Convierte estados de cuenta a Excel
               </p>
             </div>
           </div>
 
-          <div class="carousel-slide">
-            <div class="slide-image">
-              <img
-                src="https://solucionfactura.mx/images/5"
-                alt="Integración WhatsApp"
-                loading="eager"
-              />
-            </div>
-            <div class="slide-content">
-              <h3 class="slide-title">Descarga XML</h3>
-              <p class="slide-subtitle">Descarga masiva del SAT</p>
-            </div>
-          </div>
-
-          <div class="carousel-slide">
-            <div class="slide-image">
-              <img
-                src="https://solucionfactura.mx/images/6"
-                alt="Configuración Multi-empresa"
-                loading="eager"
-              />
-            </div>
-            <div class="slide-content">
-              <h3 class="slide-title">Conciliación Bancaria</h3>
-              <p class="slide-subtitle">Automatiza tu contabilidad</p>
+          <div
+            class="carousel-slide"
+            style="min-width: 100%; flex-shrink: 0; position: relative; width: 100%; height: 450px; overflow: hidden; border-radius: 8px;"
+          >
+            <img
+              src="https://solucionfactura.mx/images/4"
+              alt="Multi-empresa"
+              loading="lazy"
+              style="width: 100%; height: 100%; object-fit: cover; display: block;"
+            />
+            <div
+              class="slide-overlay"
+              style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.9)); color: white; padding: 2rem; text-align: center; text-shadow: 1px 1px 2px rgba(0,0,0,0.7);"
+            >
+              <h3
+                style="margin: 0 0 0.5rem 0; font-size: 1.5rem; font-weight: bold;"
+              >
+                Multi-empresa
+              </h3>
+              <p style="margin: 0; font-size: 1rem; opacity: 0.9;">
+                Maneja múltiples RFC desde un solo lugar
+              </p>
             </div>
           </div>
 
-          <div class="carousel-slide">
-            <div class="slide-image">
-              <img
-                src="https://solucionfactura.mx/images/7"
-                alt="Facturación Masiva"
-                loading="eager"
-              />
+          <div
+            class="carousel-slide"
+            style="min-width: 100%; flex-shrink: 0; position: relative; width: 100%; height: 450px; overflow: hidden; border-radius: 8px;"
+          >
+            <img
+              src="https://solucionfactura.mx/images/5"
+              alt="Descarga XML"
+              loading="lazy"
+              style="width: 100%; height: 100%; object-fit: cover; display: block;"
+            />
+            <div
+              class="slide-overlay"
+              style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.9)); color: white; padding: 2rem; text-align: center; text-shadow: 1px 1px 2px rgba(0,0,0,0.7);"
+            >
+              <h3
+                style="margin: 0 0 0.5rem 0; font-size: 1.5rem; font-weight: bold;"
+              >
+                Descarga XML
+              </h3>
+              <p style="margin: 0; font-size: 1rem; opacity: 0.9;">
+                Descarga masiva del SAT
+              </p>
             </div>
-            <div class="slide-content">
-              <h3 class="slide-title">Facturación Masiva</h3>
-              <p class="slide-subtitle">
+          </div>
+
+          <div
+            class="carousel-slide"
+            style="min-width: 100%; flex-shrink: 0; position: relative; width: 100%; height: 450px; overflow: hidden; border-radius: 8px;"
+          >
+            <img
+              src="https://solucionfactura.mx/images/6"
+              alt="Conciliación Bancaria"
+              loading="lazy"
+              style="width: 100%; height: 100%; object-fit: cover; display: block;"
+            />
+            <div
+              class="slide-overlay"
+              style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.9)); color: white; padding: 2rem; text-align: center; text-shadow: 1px 1px 2px rgba(0,0,0,0.7);"
+            >
+              <h3
+                style="margin: 0 0 0.5rem 0; font-size: 1.5rem; font-weight: bold;"
+              >
+                Conciliación Bancaria
+              </h3>
+              <p style="margin: 0; font-size: 1rem; opacity: 0.9;">
+                Automatiza tu contabilidad
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="carousel-slide"
+            style="min-width: 100%; flex-shrink: 0; position: relative; width: 100%; height: 450px; overflow: hidden; border-radius: 8px;"
+          >
+            <img
+              src="https://solucionfactura.mx/images/7"
+              alt="Facturación Masiva"
+              loading="lazy"
+              style="width: 100%; height: 100%; object-fit: cover; display: block;"
+            />
+            <div
+              class="slide-overlay"
+              style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.9)); color: white; padding: 2rem; text-align: center; text-shadow: 1px 1px 2px rgba(0,0,0,0.7);"
+            >
+              <h3
+                style="margin: 0 0 0.5rem 0; font-size: 1.5rem; font-weight: bold;"
+              >
+                Facturación Masiva
+              </h3>
+              <p style="margin: 0; font-size: 1rem; opacity: 0.9;">
                 Procesa miles de facturas con un solo clic
               </p>
             </div>
           </div>
 
-          <div class="carousel-slide">
-            <div class="slide-image">
-              <img
-                src="https://solucionfactura.mx/images/8"
-                alt="Conciliación Bancaria"
-                loading="eager"
-              />
-            </div>
-            <div class="slide-content">
-              <h3 class="slide-title">Conciliación Bancaria</h3>
-              <p class="slide-subtitle">
+          <div
+            class="carousel-slide"
+            style="min-width: 100%; flex-shrink: 0; position: relative; width: 100%; height: 450px; overflow: hidden; border-radius: 8px;"
+          >
+            <img
+              src="https://solucionfactura.mx/images/8"
+              alt="Conciliación Bancaria Avanzada"
+              loading="lazy"
+              style="width: 100%; height: 100%; object-fit: cover; display: block;"
+            />
+            <div
+              class="slide-overlay"
+              style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.9)); color: white; padding: 2rem; text-align: center; text-shadow: 1px 1px 2px rgba(0,0,0,0.7);"
+            >
+              <h3
+                style="margin: 0 0 0.5rem 0; font-size: 1.5rem; font-weight: bold;"
+              >
+                Conciliación Bancaria Avanzada
+              </h3>
+              <p style="margin: 0; font-size: 1rem; opacity: 0.9;">
                 Automatiza la conciliación de tus cuentas
               </p>
             </div>
@@ -140,11 +228,12 @@ import "./system-preview.scss";
         </div>
       </div>
 
-      <!-- Navigation Buttons -->
+      <!-- Navigation Controls -->
       <button
-        class="carousel-btn carousel-btn-prev"
-        id="prevBtn"
-        aria-label="Imagen anterior"
+        class="carousel-btn carousel-btn--prev"
+        id="prev-btn"
+        aria-label="Anterior"
+        style="position: absolute; top: 50%; transform: translateY(-50%); left: 16px; background: var(--bg-card); border: 2px solid var(--border-color); color: var(--text-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease; z-index: 10; box-shadow: var(--theme-shadow-md); backdrop-filter: blur(10px);"
       >
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
           <path
@@ -155,10 +244,12 @@ import "./system-preview.scss";
             stroke-linejoin="round"></path>
         </svg>
       </button>
+
       <button
-        class="carousel-btn carousel-btn-next"
-        id="nextBtn"
-        aria-label="Siguiente imagen"
+        class="carousel-btn carousel-btn--next"
+        id="next-btn"
+        aria-label="Siguiente"
+        style="position: absolute; top: 50%; transform: translateY(-50%); right: 16px; background: var(--bg-card); border: 2px solid var(--border-color); color: var(--text-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease; z-index: 10; box-shadow: var(--theme-shadow-md); backdrop-filter: blur(10px);"
       >
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
           <path
@@ -171,90 +262,80 @@ import "./system-preview.scss";
       </button>
 
       <!-- Dots Indicator -->
-      <div class="carousel-dots" id="carouselDots">
-        <button class="dot active" data-slide="0" aria-label="Ir a imagen 1"
-        ></button>
-        <button class="dot" data-slide="1" aria-label="Ir a imagen 2"></button>
-        <button class="dot" data-slide="2" aria-label="Ir a imagen 3"></button>
-        <button class="dot" data-slide="3" aria-label="Ir a imagen 4"></button>
-        <button class="dot" data-slide="4" aria-label="Ir a imagen 5"></button>
-        <button class="dot" data-slide="5" aria-label="Ir a imagen 6"></button>
-        <button class="dot" data-slide="6" aria-label="Ir a imagen 7"></button>
-        <button class="dot" data-slide="7" aria-label="Ir a imagen 8"></button>
+      <div
+        class="carousel-dots"
+        id="carousel-dots"
+        style="display: flex; justify-content: center; gap: 0.5rem; margin-top: 0.75rem; margin-bottom: 2rem;"
+      >
       </div>
     </div>
   </div>
 </section>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const track = document.getElementById("carouselTrack");
-    const slides = document.querySelectorAll(".carousel-slide");
-    const prevBtn = document.getElementById("prevBtn");
-    const nextBtn = document.getElementById("nextBtn");
-    const dots = document.querySelectorAll(".dot");
+<script is:inline>
+  window.addEventListener("load", function () {
+    console.log("Carousel initializing...");
 
-    if (!track || !slides.length || !prevBtn || !nextBtn) return;
-
-    // Handle image loading
-    const images = document.querySelectorAll(".slide-image img");
-    images.forEach((img, index) => {
-      const slideContainer = img.closest(".slide-image");
-      const imgElement = img as HTMLImageElement;
-
-      imgElement.addEventListener("load", function () {
-        this.classList.add("loaded");
-        slideContainer?.classList.add("loaded");
-      });
-
-      imgElement.addEventListener("error", function () {
-        console.warn(`Failed to load image ${index + 1}:`, this.src);
-        this.classList.add("loaded"); // Show even if failed to load
-        slideContainer?.classList.add("loaded");
-      });
-
-      // If image is already loaded (cached), add loaded class immediately
-      if (imgElement.complete && imgElement.naturalHeight !== 0) {
-        imgElement.classList.add("loaded");
-        slideContainer?.classList.add("loaded");
-      }
-    });
+    const track = document.getElementById("carousel-track");
+    const slides = track.querySelectorAll(".carousel-slide");
+    const prevBtn = document.getElementById("prev-btn");
+    const nextBtn = document.getElementById("next-btn");
+    const dotsContainer = document.getElementById("carousel-dots");
 
     let currentSlide = 0;
     const totalSlides = slides.length;
+    let autoplayInterval;
 
-    function updateCarousel() {
-      // Update slides
-      slides.forEach((slide, index) => {
-        slide.classList.remove("active");
-        if (index === currentSlide) {
-          slide.classList.add("active");
-          // Ensure current slide image is visible
-          const img = slide.querySelector("img");
-          if (img && img.complete) {
-            img.classList.add("loaded");
-            slide.querySelector(".slide-image")?.classList.add("loaded");
-          }
+    console.log("Found", totalSlides, "slides");
+
+    // Create dots
+    function createDots() {
+      dotsContainer.innerHTML = "";
+      for (let i = 0; i < totalSlides; i++) {
+        const dot = document.createElement("button");
+        dot.style.cssText =
+          "width: 12px; height: 12px; border-radius: 50%; background: var(--border-light); border: none; cursor: pointer; transition: all 0.3s ease;";
+        dot.setAttribute("aria-label", "Ir a slide " + (i + 1));
+
+        if (i === 0) {
+          dot.style.background = "var(--secondary)";
+          dot.style.transform = "scale(1.3)";
         }
-      });
 
-      // Update dots
-      dots.forEach((dot, index) => {
-        dot.classList.remove("active");
-        if (index === currentSlide) {
-          dot.classList.add("active");
-        }
-      });
+        (function (index) {
+          dot.addEventListener("click", function () {
+            goToSlide(index);
+          });
+        })(i);
 
-      // Move track
-      const translateX = -currentSlide * 100;
-      if (track) {
-        track.style.transform = `translateX(${translateX}%)`;
+        dotsContainer.appendChild(dot);
       }
     }
 
-    function goToSlide(slideIndex: number) {
-      currentSlide = slideIndex;
+    // Update carousel display
+    function updateCarousel() {
+      console.log("Moving to slide:", currentSlide);
+
+      // Move track - cada slide es 100% del contenedor
+      const translateX = -currentSlide * 100;
+      track.style.transform = "translateX(" + translateX + "%)";
+
+      // Update dots
+      const dots = dotsContainer.querySelectorAll("button");
+      for (let i = 0; i < dots.length; i++) {
+        if (i === currentSlide) {
+          dots[i].style.background = "var(--secondary)";
+          dots[i].style.transform = "scale(1.3)";
+        } else {
+          dots[i].style.background = "var(--border-light)";
+          dots[i].style.transform = "scale(1)";
+        }
+      }
+    }
+
+    // Navigation functions
+    function goToSlide(index) {
+      currentSlide = index;
       updateCarousel();
     }
 
@@ -268,64 +349,108 @@ import "./system-preview.scss";
       updateCarousel();
     }
 
-    // Event listeners
-    nextBtn.addEventListener("click", nextSlide);
-    prevBtn.addEventListener("click", prevSlide);
-
-    dots.forEach((dot, index) => {
-      dot.addEventListener("click", () => goToSlide(index));
-    });
-
-    // Auto-play functionality
-    let autoplayInterval: any;
-
+    // Autoplay functions
     function startAutoplay() {
-      autoplayInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+      autoplayInterval = setInterval(nextSlide, 4000);
     }
 
     function stopAutoplay() {
-      clearInterval(autoplayInterval);
+      if (autoplayInterval) {
+        clearInterval(autoplayInterval);
+        autoplayInterval = null;
+      }
     }
 
-    // Start autoplay
-    startAutoplay();
+    // Event listeners
+    prevBtn.addEventListener("click", function () {
+      prevSlide();
+      stopAutoplay();
+      setTimeout(startAutoplay, 5000);
+    });
+
+    nextBtn.addEventListener("click", function () {
+      nextSlide();
+      stopAutoplay();
+      setTimeout(startAutoplay, 5000);
+    });
+
+    // Hover events
+    prevBtn.addEventListener("mouseenter", function () {
+      this.style.background = "var(--secondary)";
+      this.style.borderColor = "var(--secondary)";
+      this.style.color = "white";
+      this.style.transform = "translateY(-50%) scale(1.05)";
+      this.style.boxShadow = "var(--glow)";
+    });
+
+    prevBtn.addEventListener("mouseleave", function () {
+      this.style.background = "var(--bg-card)";
+      this.style.borderColor = "var(--border-color)";
+      this.style.color = "var(--text-primary)";
+      this.style.transform = "translateY(-50%) scale(1)";
+      this.style.boxShadow = "var(--theme-shadow-md)";
+    });
+
+    nextBtn.addEventListener("mouseenter", function () {
+      this.style.background = "var(--secondary)";
+      this.style.borderColor = "var(--secondary)";
+      this.style.color = "white";
+      this.style.transform = "translateY(-50%) scale(1.05)";
+      this.style.boxShadow = "var(--glow)";
+    });
+
+    nextBtn.addEventListener("mouseleave", function () {
+      this.style.background = "var(--bg-card)";
+      this.style.borderColor = "var(--border-color)";
+      this.style.color = "var(--text-primary)";
+      this.style.transform = "translateY(-50%) scale(1)";
+      this.style.boxShadow = "var(--theme-shadow-md)";
+    });
 
     // Pause on hover
-    const carouselContainer = document.querySelector(".carousel-container");
-    if (carouselContainer) {
-      carouselContainer.addEventListener("mouseenter", stopAutoplay);
-      carouselContainer.addEventListener("mouseleave", startAutoplay);
-    }
+    const carousel = document.getElementById("carousel");
+    carousel.addEventListener("mouseenter", stopAutoplay);
+    carousel.addEventListener("mouseleave", startAutoplay);
 
-    // Keyboard navigation
-    document.addEventListener("keydown", function (e) {
-      if (e.key === "ArrowLeft") {
-        prevSlide();
-      } else if (e.key === "ArrowRight") {
-        nextSlide();
-      }
-    });
-
-    // Touch/swipe support for mobile
+    // Touch support
     let startX = 0;
-    let endX = 0;
-
-    track.addEventListener("touchstart", function (e) {
+    carousel.addEventListener("touchstart", function (e) {
       startX = e.touches[0].clientX;
+      stopAutoplay();
     });
 
-    track.addEventListener("touchend", function (e) {
-      endX = e.changedTouches[0].clientX;
+    carousel.addEventListener("touchend", function (e) {
+      const endX = e.changedTouches[0].clientX;
       const diffX = startX - endX;
 
       if (Math.abs(diffX) > 50) {
-        // Minimum swipe distance
         if (diffX > 0) {
           nextSlide();
         } else {
           prevSlide();
         }
       }
+      setTimeout(startAutoplay, 3000);
     });
+
+    // Keyboard navigation
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowLeft") {
+        prevSlide();
+        stopAutoplay();
+        setTimeout(startAutoplay, 3000);
+      } else if (e.key === "ArrowRight") {
+        nextSlide();
+        stopAutoplay();
+        setTimeout(startAutoplay, 3000);
+      }
+    });
+
+    // Initialize
+    createDots();
+    updateCarousel();
+    startAutoplay();
+
+    console.log("Carousel initialized successfully");
   });
 </script>

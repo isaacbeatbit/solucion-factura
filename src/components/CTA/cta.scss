@@ -1,9 +1,17 @@
 /* CTA Section */
 .cta {
-  padding: 4rem 0;
+  padding: 3rem 0;
   background: var(--bg-card);
   text-align: center;
   transition: background-color 0.3s ease;
+
+  @media (max-width: 768px) {
+    padding: 2rem 0;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1.5rem 0;
+  }
 
   [data-theme="light"] & {
     background: var(--bg-secondary);

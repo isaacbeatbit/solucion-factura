@@ -1,129 +1,185 @@
-// Variables adicionales para el sistema completo
+// Variables del sistema de diseño - Solución Factura
 :root {
   // === COLORES PRINCIPALES ===
-  --primary: #0d1631;
-  --primary-light: #1a2c64;
-  --secondary: #1a6dcc;
-  --accent: #36a168;
-  --orange: #ff6b35;
+  --app-primary: #0d1631;
+  --app-primary-light: #1a2c64;
+  --app-secondary: #1a6dcc;
+  --app-accent: #36a168;
+  --app-orange: #ff6b35;
 
   // === ESCALA DE GRISES ===
-  --gray-50: #f8fafc;
-  --gray-100: #e1e5ee;
-  --gray-500: #6b7280;
-  --gray-600: #a7b3cc;
-  --gray-900: #0c1221;
+  --app-gray-50: #f8fafc;
+  --app-gray-100: #e1e5ee;
+  --app-gray-500: #6b7280;
+  --app-gray-600: #a7b3cc;
+  --app-gray-900: #0c1221;
 
   // === COLORES DE FONDO ===
-  --dark-blue: #0a0f1d;
-  --deep-blue: #050a14;
-  --midnight-blue: #0f172a;
-  --highlight-blue: #1e40af;
+  --app-dark-blue: #0a0f1d;
+  --app-deep-blue: #050a14;
+  --app-midnight-blue: #0f172a;
+  --app-highlight-blue: #1e40af;
 
-  // === SOMBRAS ===
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.6);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.7);
+  // === SOMBRAS BASE ===
+  --app-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+  --app-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+  --app-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.6);
+  --app-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.7);
 
   // === EFECTOS ===
-  --glow: 0 0 10px rgba(26, 109, 204, 0.5);
+  --app-glow: 0 0 10px rgba(26, 109, 204, 0.5);
 
   // === ICONOS Y FILTROS ===
-  --icon-filter-invert: 1;
-  --text-invert: 1;
+  --app-icon-filter-invert: 1;
+  --app-text-invert: 1;
 
   // === LAYOUT ===
-  --container-padding: clamp(1rem, 5vw, 2rem);
-}
+  --app-container-padding: clamp(1rem, 5vw, 2rem);
 
-// === TEMA OSCURO (por defecto) ===
-:root {
-  --bg-primary: #0c1221;
-  --bg-secondary: #0a0f1d;
-  --bg-tertiary: #050a14;
-  --bg-card: #0f172a;
+  // === TEMA OSCURO (por defecto) ===
+  --app-bg-primary: #0c1221;
+  --app-bg-secondary: #0a0f1d;
+  --app-bg-tertiary: #050a14;
+  --app-bg-card: #0f172a;
 
-  --text-primary: #e1e5ee;
-  --text-secondary: #a7b3cc;
-  --text-muted: #6b7280;
+  --app-text-primary: #e1e5ee;
+  --app-text-secondary: #a7b3cc;
+  --app-text-muted: #6b7280;
 
-  --border-color: #1a2c64;
-  --border-light: rgba(161, 179, 204, 0.2);
+  --app-border-color: #1a2c64;
+  --app-border-light: rgba(161, 179, 204, 0.2);
 
-  --theme-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
-  --theme-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
-  --theme-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.6);
-  --theme-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.7);
+  --app-theme-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+  --app-theme-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+  --app-theme-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.6);
+  --app-theme-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.7);
 }
 
 // === TEMA CLARO ===
 [data-theme="light"] {
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8fafc;
-  --bg-tertiary: #e1e5ee;
-  --bg-card: #ffffff;
+  --app-bg-primary: #ffffff;
+  --app-bg-secondary: #f8fafc;
+  --app-bg-tertiary: #e1e5ee;
+  --app-bg-card: #ffffff;
 
-  --text-primary: #0c1221;
-  --text-secondary: #1a2c64;
-  --text-muted: #6b7280;
+  --app-text-primary: #0c1221;
+  --app-text-secondary: #1a2c64;
+  --app-text-muted: #6b7280;
 
-  --border-color: #e1e5ee;
-  --border-light: rgba(13, 22, 49, 0.1);
+  --app-border-color: #e1e5ee;
+  --app-border-light: rgba(13, 22, 49, 0.1);
 
-  --theme-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
-  --theme-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  --theme-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.15);
-  --theme-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  --app-theme-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+  --app-theme-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --app-theme-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.15);
+  --app-theme-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
 
   // Ajustar algunos colores específicos para el tema claro
-  --primary: #0d1631;
-  --primary-light: #1a2c64;
-  --gray-900: #0c1221;
-  --gray-100: #f8fafc;
-  --dark-blue: #f8fafc;
-  --deep-blue: #e1e5ee;
-  --midnight-blue: #ffffff;
+  --app-primary: #0d1631;
+  --app-primary-light: #1a2c64;
+  --app-gray-900: #0c1221;
+  --app-gray-100: #f8fafc;
+  --app-dark-blue: #f8fafc;
+  --app-deep-blue: #e1e5ee;
+  --app-midnight-blue: #ffffff;
 
   // Mejorar el glow para tema claro
-  --glow: 0 0 10px rgba(26, 109, 204, 0.3);
+  --app-glow: 0 0 10px rgba(26, 109, 204, 0.3);
 
   // Iconos para tema claro
-  --icon-filter-invert: 0;
-  --text-invert: 0;
+  --app-icon-filter-invert: 0;
+  --app-text-invert: 0;
 }
 
 // === TIPOGRAFÍA UNIFICADA ===
 :root {
   // Colores de títulos
-  --title-color: #ffffff;
-  --subtitle-color: var(--text-secondary);
-  --heading-color: var(--text-primary);
+  --app-title-color: #ffffff;
+  --app-subtitle-color: var(--app-text-secondary);
+  --app-heading-color: var(--app-text-primary);
 
   // Gradientes para títulos principales
-  --title-gradient: linear-gradient(135deg, #ffffff, var(--highlight-blue));
-  --title-gradient-alt: linear-gradient(135deg, #ffffff, #6db1ff);
+  --app-title-gradient: linear-gradient(
+    135deg,
+    #ffffff,
+    var(--app-highlight-blue)
+  );
+  --app-title-gradient-alt: linear-gradient(135deg, #ffffff, #6db1ff);
 
   // Tamaños de fuente
-  --title-size-xl: clamp(2.5rem, 5vw, 3.5rem);
-  --title-size-lg: clamp(2.2rem, 4vw, 3rem);
-  --title-size-md: clamp(1.8rem, 3vw, 2.5rem);
-  --title-size-sm: clamp(1.4rem, 2.5vw, 1.8rem);
-  --subtitle-size: clamp(1rem, 2vw, 1.2rem);
-  --heading-size: clamp(1.1rem, 2vw, 1.25rem);
+  --app-title-size-xl: clamp(2.5rem, 5vw, 3.5rem);
+  --app-title-size-lg: clamp(2.2rem, 4vw, 3rem);
+  --app-title-size-md: clamp(1.8rem, 3vw, 2.5rem);
+  --app-title-size-sm: clamp(1.4rem, 2.5vw, 1.8rem);
+  --app-subtitle-size: clamp(1rem, 2vw, 1.2rem);
+  --app-heading-size: clamp(1.1rem, 2vw, 1.25rem);
 }
 
 [data-theme="light"] {
   // Colores de títulos para tema claro
-  --title-color: #0c1221;
-  --subtitle-color: var(--text-secondary);
-  --heading-color: var(--text-primary);
+  --app-title-color: #0c1221;
+  --app-subtitle-color: var(--app-text-secondary);
+  --app-heading-color: var(--app-text-primary);
 
   // Gradientes para títulos principales en tema claro
-  --title-gradient: linear-gradient(
+  --app-title-gradient: linear-gradient(
     135deg,
-    var(--secondary),
-    var(--highlight-blue)
+    var(--app-secondary),
+    var(--app-highlight-blue)
   );
-  --title-gradient-alt: linear-gradient(135deg, var(--primary), #6db1ff);
+  --app-title-gradient-alt: linear-gradient(
+    135deg,
+    var(--app-primary),
+    #6db1ff
+  );
+}
+
+// === COMPATIBILIDAD CON SISTEMA ANTERIOR ===
+// Estas variables mantienen compatibilidad pero se deprecarán gradualmente
+:root {
+  --primary: var(--app-primary);
+  --primary-light: var(--app-primary-light);
+  --secondary: var(--app-secondary);
+  --accent: var(--app-accent);
+  --orange: var(--app-orange);
+
+  --gray-50: var(--app-gray-50);
+  --gray-100: var(--app-gray-100);
+  --gray-500: var(--app-gray-500);
+  --gray-600: var(--app-gray-600);
+  --gray-900: var(--app-gray-900);
+
+  --bg-primary: var(--app-bg-primary);
+  --bg-secondary: var(--app-bg-secondary);
+  --bg-tertiary: var(--app-bg-tertiary);
+  --bg-card: var(--app-bg-card);
+
+  --text-primary: var(--app-text-primary);
+  --text-secondary: var(--app-text-secondary);
+  --text-muted: var(--app-text-muted);
+
+  --border-color: var(--app-border-color);
+  --border-light: var(--app-border-light);
+
+  --theme-shadow-sm: var(--app-theme-shadow-sm);
+  --theme-shadow-md: var(--app-theme-shadow-md);
+  --theme-shadow-lg: var(--app-theme-shadow-lg);
+  --theme-shadow-xl: var(--app-theme-shadow-xl);
+
+  --glow: var(--app-glow);
+  --highlight-blue: var(--app-highlight-blue);
+  --container-padding: var(--app-container-padding);
+
+  --title-color: var(--app-title-color);
+  --subtitle-color: var(--app-subtitle-color);
+  --heading-color: var(--app-heading-color);
+  --title-gradient: var(--app-title-gradient);
+  --title-gradient-alt: var(--app-title-gradient-alt);
+
+  --title-size-xl: var(--app-title-size-xl);
+  --title-size-lg: var(--app-title-size-lg);
+  --title-size-md: var(--app-title-size-md);
+  --title-size-sm: var(--app-title-size-sm);
+  --subtitle-size: var(--app-subtitle-size);
+  --heading-size: var(--app-heading-size);
 }

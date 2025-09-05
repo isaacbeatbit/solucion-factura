@@ -1,7 +1,15 @@
 .features {
-  padding: 4rem 0;
+  padding: 3rem 0;
   background: var(--bg-tertiary);
   transition: background-color 0.3s ease;
+
+  @media (max-width: 768px) {
+    padding: 2rem 0;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1.5rem 0;
+  }
 
   [data-theme="light"] & {
     background: var(--bg-secondary);
@@ -10,7 +18,15 @@
 
 .section-header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 2.5rem;
+
+  @media (max-width: 768px) {
+    margin-bottom: 2rem;
+  }
+
+  @media (max-width: 480px) {
+    margin-bottom: 1.5rem;
+  }
 }
 
 .features-grid {
@@ -40,15 +56,22 @@
 
 .feature-card {
   background: var(--bg-card);
-  padding: 2rem;
+  padding: 1.75rem;
   border-radius: 1rem;
   box-shadow: var(--theme-shadow-md);
   border: 1px solid var(--border-light);
   transition: all 0.3s ease;
 
-  // Responsive padding
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1.25rem;
+  }
+
   @media (min-width: 1024px) {
-    padding: 2rem;
+    padding: 1.75rem;
   }
 
   [data-theme="light"] & {
@@ -72,7 +95,7 @@
 }
 
 .feature-icon {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
 
   img {
     width: 60px;
@@ -81,9 +104,17 @@
     filter: drop-shadow(0 4px 15px rgba(26, 109, 204, 0.4));
   }
 
-  // Desktop: maintain full size for 3-column layout
+  @media (max-width: 480px) {
+    margin-bottom: 1rem;
+
+    img {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
   @media (min-width: 1024px) {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
 
     img {
       width: 60px;

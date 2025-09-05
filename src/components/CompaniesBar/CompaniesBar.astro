@@ -11,38 +11,16 @@
       </p>
     </div>
 
-    <div class="companies-carousel">
-      <div class="companies-track">
-        <!-- Primera serie completa de logos -->
-        <img src="/logos/autozone.svg" alt="AutoZone" class="company-logo" />
-        <img src="/logos/fuelex.svg" alt="Fuelex" class="company-logo" />
-        <img
-          src="/logos/constructora.svg"
-          alt="Constructora"
-          class="company-logo"
-        />
-        <img src="/logos/manpower.svg" alt="Manpower" class="company-logo" />
-        <img
-          src="/logos/spinmaster.png"
-          alt="Spinmaster"
-          class="company-logo"
-        />
-
-        <!-- Duplicado completo para animación infinita -->
-        <img src="/logos/autozone.svg" alt="AutoZone" class="company-logo" />
-        <img src="/logos/fuelex.svg" alt="Fuelex" class="company-logo" />
-        <img
-          src="/logos/constructora.svg"
-          alt="Constructora"
-          class="company-logo"
-        />
-        <img src="/logos/manpower.svg" alt="Manpower" class="company-logo" />
-        <img
-          src="/logos/spinmaster.svg"
-          alt="Spinmaster"
-          class="company-logo"
-        />
-      </div>
+    <div class="companies-grid">
+      <img src="/logos/autozone.svg" alt="AutoZone" class="company-logo" />
+      <img src="/logos/fuelex.svg" alt="Fuelex" class="company-logo" />
+      <img
+        src="/logos/constructora.svg"
+        alt="Constructora"
+        class="company-logo"
+      />
+      <img src="/logos/manpower.svg" alt="Manpower" class="company-logo" />
+      <img src="/logos/spinmaster.png" alt="Spinmaster" class="company-logo" />
     </div>
 
     <!-- Estadísticas de confianza -->
@@ -69,10 +47,18 @@
 
 <style lang="scss">
   .companies-bar {
-    padding: 60px 0;
+    padding: 3rem 0;
     background: var(--bg-secondary);
     border-bottom: 1px solid var(--border-light);
     overflow: hidden;
+
+    @media (max-width: 768px) {
+      padding: 2rem 0;
+    }
+
+    @media (max-width: 480px) {
+      padding: 1.5rem 0;
+    }
 
     [data-theme="light"] & {
       background: var(--bg-tertiary);
@@ -81,7 +67,15 @@
 
   .companies-header {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
+
+    @media (max-width: 768px) {
+      margin-bottom: 1.5rem;
+    }
+
+    @media (max-width: 480px) {
+      margin-bottom: 1.25rem;
+    }
 
     .companies-title {
       font-size: clamp(1.5rem, 3vw, 2rem);
@@ -97,36 +91,15 @@
     }
   }
 
-  .companies-carousel {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    padding-top: 10px;
-    mask: linear-gradient(
-      to right,
-      transparent,
-      black 10%,
-      black 90%,
-      transparent
-    );
-    -webkit-mask: linear-gradient(
-      to right,
-      transparent,
-      black 10%,
-      black 90%,
-      transparent
-    );
-  }
-
-  .companies-track {
+  .companies-grid {
     display: flex;
-    animation: scroll-companies 30s linear infinite;
+    justify-content: center;
+    align-items: center;
     gap: 3rem;
-    width: max-content;
-
-    &:hover {
-      animation-play-state: paused;
-    }
+    flex-wrap: wrap;
+    padding: 2rem 0;
+    width: 100%;
+    text-align: center;
   }
 
   .company-logo {
@@ -140,11 +113,10 @@
     transition:
       opacity 0.3s ease,
       transform 0.3s ease;
-    margin: 0 1.5rem;
 
     &:hover {
       opacity: 1;
-      transform: scale(1.1);
+      transform: scale(1.05);
     }
 
     // Ajuste específico para el logo de AutoZone que es muy horizontal
@@ -154,26 +126,25 @@
     }
   }
 
-  @keyframes scroll-companies {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(calc(-50% - 1.5rem));
-    }
-  }
-
   .trust-stats {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
-    padding-top: 2rem;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
     border-top: 1px solid var(--border-light);
 
     @media (max-width: 768px) {
       grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+      padding-top: 1.25rem;
+    }
+
+    @media (max-width: 480px) {
+      gap: 1rem;
+      margin-top: 1.25rem;
+      padding-top: 1rem;
     }
   }
 
@@ -198,22 +169,15 @@
 
   // Responsive adjustments
   @media (max-width: 768px) {
-    .companies-bar {
-      padding: 40px 0;
-    }
-
-    .companies-header {
-      margin-bottom: 2rem;
-    }
-
-    .companies-track {
+    .companies-grid {
       gap: 1.5rem;
+      justify-content: center;
+      align-items: center;
     }
 
     .company-logo {
       max-height: 42px;
       max-width: 120px;
-      margin: 0 1rem;
 
       &[src="/logos/autozone.svg"] {
         max-width: 95px;
@@ -224,8 +188,8 @@
 
   // Reduced motion support
   @media (prefers-reduced-motion: reduce) {
-    .companies-track {
-      animation: none;
+    .company-logo {
+      transition: none;
     }
   }
 

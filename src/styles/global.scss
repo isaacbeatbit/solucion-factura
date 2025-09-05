@@ -3,7 +3,10 @@
 @use "./links.scss";
 @use "./buttons.scss";
 
-// Reset básico y estilos globales
+// ========================================
+// RESET BÁSICO Y ESTILOS GLOBALES
+// ========================================
+
 *,
 *::before,
 *::after {
@@ -12,65 +15,10 @@
   padding: 0;
 }
 
-// Prevenir overflow horizontal - reglas más estrictas para producción
-html {
-  overflow-x: hidden !important;
-  max-width: 100vw !important;
-  width: 100% !important;
-  box-sizing: border-box;
-}
-
-body {
-  overflow-x: hidden !important;
-  max-width: 100vw !important;
-  width: 100% !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  box-sizing: border-box;
-}
-
-// Asegurar que todos los elementos respeten el ancho de pantalla
-*,
-*::before,
-*::after {
-  max-width: 100% !important;
-  box-sizing: border-box !important;
-}
-
-// Contenedores responsivos
-.container {
-  width: 100% !important;
-  max-width: 100% !important;
-  margin: 0 auto;
-  padding: 0 var(--container-padding);
-  box-sizing: border-box !important;
-  overflow-x: hidden;
-}
-
-// Prevenir que elementos se salgan del viewport
-section,
-div,
-main,
-header,
-footer,
-nav {
-  max-width: 100% !important;
-  overflow-x: hidden;
-  box-sizing: border-box;
-}
-
-// Regla específica para navbar y elementos de navegación
-.navbar-header,
-.nav,
-.nav-list,
-.nav-actions {
-  max-width: 100% !important;
-  overflow-x: hidden !important;
-  box-sizing: border-box !important;
-}
-
+// Configuración base del HTML
 html {
   scroll-behavior: smooth;
+  font-size: 16px;
 }
 
 body {
@@ -78,7 +26,6 @@ body {
     -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
     Cantarell, sans-serif;
   font-size: 16px;
-  /* font-size: clamp(1.4rem, 2.5vw, 1.6rem); // Responsive font-size */
   line-height: 1.6;
   color: var(--text-primary);
   background: var(--bg-primary);
@@ -92,4 +39,240 @@ body {
   // Mejor touch en móviles
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
+}
+
+// ========================================
+// SISTEMA DE LAYOUT - CONTENEDORES
+// ========================================
+
+// Contenedor principal del layout
+.layout-container,
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--container-padding, clamp(1rem, 5vw, 2rem));
+}
+
+// Contenedor ancho para elementos que necesitan más espacio
+.layout-container--wide {
+  max-width: 1400px;
+}
+
+// Contenedor estrecho para contenido de texto
+.layout-container--narrow {
+  max-width: 800px;
+}
+
+// ========================================
+// ELEMENTOS BASE
+// ========================================
+
+// Imágenes responsivas por defecto
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+// Enlaces - reset mínimo (los estilos específicos están en links.scss)
+a:not([class]) {
+  color: inherit;
+  text-decoration: none;
+}
+
+// Botones básicos - solo estilos fundamentales
+button:not([class]) {
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+// Formularios básicos
+input:not([class]),
+textarea:not([class]),
+select:not([class]) {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background: var(--bg-primary, #ffffff);
+  border: 1px solid var(--border-color, #e1e5ee);
+  border-radius: 0.375rem;
+  padding: 0.5rem;
+}
+
+// ========================================
+// UTILIDADES DE ACCESIBILIDAD
+// ========================================
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// Estados de focus mejorados
+*:focus-visible {
+  outline: 2px solid var(--secondary, #1a6dcc);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+// ========================================
+// UTILIDADES DE LAYOUT
+// ========================================
+
+// Flex utilities
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+// Grid utilities
+.grid {
+  display: grid;
+}
+
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+@media (min-width: 640px) {
+  .sm\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+// Spacing utilities
+.gap-4 {
+  gap: 1rem;
+}
+
+.gap-6 {
+  gap: 1.5rem;
+}
+
+.gap-8 {
+  gap: 2rem;
+}
+
+// ========================================
+// PERSONALIZACIÓN DE SCROLLBAR
+// ========================================
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary, #f8fafc);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color, #e1e5ee);
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary, #1a6dcc);
+}
+
+// ========================================
+// MEJORAS DE RENDIMIENTO
+// ========================================
+
+// Optimización para elementos que se animan frecuentemente
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-opacity {
+  will-change: opacity;
+}
+
+// GPU acceleration para elementos críticos
+.gpu-accelerated {
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+// ========================================
+// RESPONSIVE UTILITIES
+// ========================================
+
+// Hide/show utilities
+.hidden {
+  display: none !important;
+}
+
+@media (max-width: 767px) {
+  .hide-mobile {
+    display: none !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .hide-desktop {
+    display: none !important;
+  }
+
+  .show-desktop {
+    display: block !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .show-mobile {
+    display: block !important;
+  }
+}
+
+// ========================================
+// PRINT STYLES
+// ========================================
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    color: black !important;
+    background: white !important;
+  }
+
+  a[href^="http"]:after {
+    content: " (" attr(href) ")";
+  }
 }
