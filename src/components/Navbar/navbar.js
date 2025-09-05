@@ -157,189 +157,78 @@ export function initMobileMenu() {
 }
 
 // ========================================
-// NAVBAR SCROLL EFFECTS
+// NAVBAR SCROLL EFFECTS (SIMPLIFIED)
 // ========================================
 
 export function initNavbarScrollEffects() {
   const navbar = document.querySelector(".navbar-header");
+  if (!navbar) return;
 
-  if (!navbar) {
-    console.warn("Navbar not found for scroll effects");
-    return;
+  let ticking = false;
+
+  function updateNavbar() {
+    const scrolled = window.scrollY > 50;
+    navbar.classList.toggle("scrolled", scrolled);
+    ticking = false;
   }
 
-  let lastScrollY = window.scrollY;
-  let isScrolling = false;
-
-  function handleScroll() {
-    if (!isScrolling) {
-      window.requestAnimationFrame(() => {
-        const currentScrollY = window.scrollY;
-
-        // Añadir clase cuando se haga scroll hacia abajo
-        if (currentScrollY > 50) {
-          navbar.classList.add("scrolled");
-        } else {
-          navbar.classList.remove("scrolled");
-        }
-
-        // Opcional: ocultar navbar al hacer scroll hacia abajo rápido
-        // if (currentScrollY > lastScrollY && currentScrollY > 200) {
-        //   navbar.classList.add("hidden");
-        // } else {
-        //   navbar.classList.remove("hidden");
-        // }
-
-        lastScrollY = currentScrollY;
-        isScrolling = false;
-      });
-    }
-    isScrolling = true;
-  }
-
-  // Throttle scroll events para mejor performance
-  let scrollTimeout;
   window.addEventListener(
     "scroll",
     () => {
-      if (scrollTimeout) {
-        clearTimeout(scrollTimeout);
+      if (!ticking) {
+        requestAnimationFrame(updateNavbar);
+        ticking = true;
       }
-      scrollTimeout = setTimeout(handleScroll, 10);
     },
     { passive: true },
   );
 }
 
 // ========================================
-// NAVBAR SMOOTH SCROLLING
+// NAVBAR SMOOTH SCROLLING (SIMPLIFIED)
 // ========================================
 
 export function initSmoothScrolling() {
-  const anchors = document.querySelectorAll('a[href^="#"]');
+  document.addEventListener("click", (e) => {
+    const anchor = e.target.closest('a[href^="#"]');
+    if (!anchor) return;
 
-  anchors.forEach((anchor) => {
-    anchor.addEventListener("click", function (e) {
-      const href = this.getAttribute("href");
+    const href = anchor.getAttribute("href");
+    if (href === "#" || href === "#top") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
 
-      // Solo procesar enlaces de ancla válidos
-      if (href === "#" || href === "#top") {
-        e.preventDefault();
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth",
-        });
-        return;
-      }
+    const target = document.getElementById(href.substring(1));
+    if (target) {
+      e.preventDefault();
+      const navbar = document.querySelector(".navbar-header");
+      const offset = (navbar?.offsetHeight || 0) + 20;
 
-      const targetId = href.substring(1);
-      const targetElement = document.getElementById(targetId);
-
-      if (targetElement) {
-        e.preventDefault();
-
-        // Calcular offset para el navbar sticky
-        const navbar = document.querySelector(".navbar-header");
-        const navbarHeight = navbar ? navbar.offsetHeight : 0;
-        const targetPosition = targetElement.offsetTop - navbarHeight - 20;
-
-        window.scrollTo({
-          top: targetPosition,
-          behavior: "smooth",
-        });
-
-        // Actualizar URL sin saltar
-        if (history.pushState) {
-          history.pushState(null, null, href);
-        }
-      }
-    });
+      window.scrollTo({
+        top: target.offsetTop - offset,
+        behavior: "smooth",
+      });
+    }
   });
 }
 
-// ========================================
-// NAVBAR ACTIVE LINK HIGHLIGHTING
-// ========================================
-
-export function initActiveLinkHighlighting() {
-  const sections = document.querySelectorAll("section[id], div[id]");
-  const navLinks = document.querySelectorAll(
-    '.nav-link[href^="#"], .mobile-nav-link[href^="#"]',
-  );
-
-  if (sections.length === 0 || navLinks.length === 0) {
-    return;
-  }
-
-  function updateActiveLink() {
-    let current = "";
-    const scrollPosition = window.scrollY + 100; // Offset para activar antes
-
-    sections.forEach((section) => {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.offsetHeight;
-
-      if (
-        scrollPosition >= sectionTop &&
-        scrollPosition < sectionTop + sectionHeight
-      ) {
-        current = section.getAttribute("id");
-      }
-    });
-
-    // Actualizar clases activas
-    navLinks.forEach((link) => {
-      link.classList.remove("active");
-      const href = link.getAttribute("href");
-
-      if (href === `#${current}` || (current === "" && href === "#")) {
-        link.classList.add("active");
-      }
-    });
-  }
-
-  // Throttle para mejor performance
-  let scrollTimeout;
-  window.addEventListener(
-    "scroll",
-    () => {
-      if (scrollTimeout) {
-        clearTimeout(scrollTimeout);
-      }
-      scrollTimeout = setTimeout(updateActiveLink, 10);
-    },
-    { passive: true },
-  );
-
-  // Ejecutar una vez al cargar
-  updateActiveLink();
-}
+// Active link highlighting removed - not essential for performance
 
 // ========================================
-// MAIN INITIALIZATION FUNCTION
+// MAIN INITIALIZATION FUNCTION (SIMPLIFIED)
 // ========================================
 
 export function initNavbar() {
-  try {
-    initMobileMenu();
-    initNavbarScrollEffects();
-    initSmoothScrolling();
-    initActiveLinkHighlighting();
-
-    // Marcar como inicializado
-    document.documentElement.setAttribute("data-navbar-initialized", "true");
-
-    console.log("Navbar initialized successfully");
-  } catch (error) {
-    console.error("Error initializing navbar:", error);
-  }
+  initMobileMenu();
+  initNavbarScrollEffects();
+  initSmoothScrolling();
 }
 
-// Auto-inicialización cuando el DOM esté listo
-if (typeof window !== "undefined") {
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initNavbar);
-  } else {
-    initNavbar();
-  }
+// Auto-init
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initNavbar);
+} else {
+  initNavbar();
 }

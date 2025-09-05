@@ -128,83 +128,11 @@ select:not([class]) {
 }
 
 // ========================================
-// UTILIDADES DE LAYOUT
+// UTILIDADES DE LAYOUT (SOLO LAS USADAS)
 // ========================================
 
-// Flex utilities
-.flex {
-  display: flex;
-}
-
-.flex-col {
-  flex-direction: column;
-}
-
-.items-center {
-  align-items: center;
-}
-
-.justify-center {
-  justify-content: center;
-}
-
-.justify-between {
-  justify-content: space-between;
-}
-
-// Grid utilities
-.grid {
-  display: grid;
-}
-
-.grid-cols-1 {
-  grid-template-columns: repeat(1, minmax(0, 1fr));
-}
-
-@media (min-width: 640px) {
-  .sm\:grid-cols-2 {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (min-width: 1024px) {
-  .lg\:grid-cols-3 {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
-// Spacing utilities
-.gap-4 {
-  gap: 1rem;
-}
-
-.gap-6 {
-  gap: 1.5rem;
-}
-
-.gap-8 {
-  gap: 2rem;
-}
-
-// ========================================
-// MEJORAS DE RENDIMIENTO
-// ========================================
-
-// Optimización para elementos que se animan frecuentemente
-.will-change-transform {
-  will-change: transform;
-}
-
-.will-change-opacity {
-  will-change: opacity;
-}
-
-// GPU acceleration para elementos críticos
-.gpu-accelerated {
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
-}
-
+// Solo mantener .hidden que se usa en navbar
+// Las demás utilidades no se usan en el proyecto
 // ========================================
 // RESPONSIVE UTILITIES
 // ========================================
@@ -214,27 +142,7 @@ select:not([class]) {
   display: none !important;
 }
 
-@media (max-width: 767px) {
-  .hide-mobile {
-    display: none !important;
-  }
-}
-
-@media (min-width: 768px) {
-  .hide-desktop {
-    display: none !important;
-  }
-
-  .show-desktop {
-    display: block !important;
-  }
-}
-
-@media (max-width: 767px) {
-  .show-mobile {
-    display: block !important;
-  }
-}
+// Responsive utilities eliminadas - no se usan en el proyecto
 
 // ========================================
 // PRINT STYLES
