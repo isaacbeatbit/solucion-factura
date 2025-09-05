@@ -1246,23 +1246,8 @@ import "./table.scss";
     const tabla = document.getElementById("tabla-caracteristicas");
 
     if (btn && tabla) {
-      const text = btn.querySelector(".toggle-text");
-      const arrow = btn.querySelector(".accordion-arrow");
-      let abierto = true;
-
       btn.addEventListener("click", function () {
-        abierto = !abierto;
-        tabla.classList.toggle("expanded", abierto);
-        tabla.style.display = abierto ? "table-row-group" : "none";
-        if (text) {
-          text.textContent = abierto
-            ? "Ocultar características"
-            : "Ver todas las características";
-        }
-        if (arrow) {
-          arrow.textContent = abierto ? "▲" : "▼";
-        }
-        btn.classList.toggle("expanded", abierto);
+        tabla.classList.toggle("expanded");
       });
     }
 
@@ -1274,46 +1259,13 @@ import "./table.scss";
       tab.addEventListener("click", function () {
         const planId = tab.getAttribute("data-plan");
 
-        // Remove active class from all tabs
         planTabs.forEach((t) => t.classList.remove("active"));
-        // Remove active class from all content
         planContents.forEach((c) => c.classList.remove("active"));
 
-        // Add active class to clicked tab
         tab.classList.add("active");
-        // Add active class to corresponding content
-        if (planId) {
-          const planContent = document.getElementById(`plan-${planId}`);
-          if (planContent) {
-            planContent.classList.add("active");
-          }
-        }
-      });
-    });
-
-    // Mobile accordion functionality
-    const mobileToggles = document.querySelectorAll(".mobile-accordion-toggle");
-
-    mobileToggles.forEach((toggle) => {
-      toggle.addEventListener("click", function () {
-        const planId = toggle.getAttribute("data-plan");
-        const arrow = toggle.querySelector(".mobile-arrow");
-        const text = toggle.querySelector("span:first-child");
-
-        if (planId) {
-          const content = document.getElementById(`mobile-features-${planId}`);
-
-          if (content) {
-            if (content.style.display === "block") {
-              content.style.display = "none";
-              if (arrow) arrow.textContent = "▼";
-              if (text) text.textContent = "Ver más características";
-            } else {
-              content.style.display = "block";
-              if (arrow) arrow.textContent = "▲";
-              if (text) text.textContent = "Ocultar características";
-            }
-          }
+        const targetContent = document.getElementById(`plan-${planId}`);
+        if (targetContent) {
+          targetContent.classList.add("active");
         }
       });
     });

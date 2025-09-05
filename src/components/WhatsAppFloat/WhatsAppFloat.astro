@@ -479,125 +479,22 @@
 </style>
 
 <script>
-  // Widget functionality mejorado con manejo de errores
-  function initContactWidget() {
-    try {
-      const widgetToggle = document.getElementById("widgetToggle");
-      const widgetMenu = document.getElementById("widgetMenu");
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.getElementById("widgetToggle");
+    const menu = document.getElementById("widgetMenu");
 
-      if (!widgetToggle || !widgetMenu) {
-        console.warn("Contact widget elements not found");
-        return;
+    if (!toggle || !menu) return;
+
+    toggle.addEventListener("click", function () {
+      menu.classList.toggle("active");
+      toggle.classList.toggle("active");
+    });
+
+    document.addEventListener("click", function (e) {
+      if (!e.target.closest(".contact-widget")) {
+        menu.classList.remove("active");
+        toggle.classList.remove("active");
       }
-
-      let isOpen = false;
-
-      // Toggle widget menu
-      const toggleWidget = () => {
-        isOpen = !isOpen;
-
-        try {
-          if (isOpen) {
-            widgetMenu.classList.add("active");
-            widgetToggle.classList.add("active");
-            widgetToggle.setAttribute("aria-expanded", "true");
-            widgetToggle.setAttribute("aria-label", "Cerrar menú de contacto");
-          } else {
-            widgetMenu.classList.remove("active");
-            widgetToggle.classList.remove("active");
-            widgetToggle.setAttribute("aria-expanded", "false");
-            widgetToggle.setAttribute("aria-label", "Abrir menú de contacto");
-          }
-        } catch (error) {
-          console.error("Error toggling widget:", error);
-        }
-      };
-
-      widgetToggle.addEventListener("click", toggleWidget);
-
-      // Close widget when clicking outside
-      const handleOutsideClick = (e) => {
-        if (!e.target.closest(".contact-widget") && isOpen) {
-          isOpen = false;
-          widgetMenu.classList.remove("active");
-          widgetToggle.classList.remove("active");
-          widgetToggle.setAttribute("aria-expanded", "false");
-          widgetToggle.setAttribute("aria-label", "Abrir menú de contacto");
-        }
-      };
-
-      document.addEventListener("click", handleOutsideClick);
-
-      // Close widget when pressing Escape key
-      const handleEscapeKey = (e) => {
-        if (e.key === "Escape" && isOpen) {
-          isOpen = false;
-          widgetMenu.classList.remove("active");
-          widgetToggle.classList.remove("active");
-          widgetToggle.setAttribute("aria-expanded", "false");
-          widgetToggle.setAttribute("aria-label", "Abrir menú de contacto");
-          widgetToggle.focus(); // Devolver el foco al botón
-        }
-      };
-
-      document.addEventListener("keydown", handleEscapeKey);
-
-      // Analytics tracking mejorado
-      const trackWidgetInteraction = (action, label) => {
-        try {
-          // Google Analytics 4
-          if (typeof gtag !== "undefined") {
-            gtag("event", action, {
-              event_category: "contact_widget",
-              event_label: label,
-              value: 1,
-            });
-          }
-
-          // Fallback a console para desarrollo
-          console.log(`Contact widget interaction: ${action} - ${label}`);
-        } catch (error) {
-          console.error("Error tracking widget interaction:", error);
-        }
-      };
-
-      // Track button clicks
-      document.querySelectorAll(".widget-btn").forEach((btn) => {
-        btn.addEventListener("click", function (e) {
-          const label =
-            this.querySelector(".btn-text")?.textContent?.trim() || "Unknown";
-          trackWidgetInteraction("click", label);
-        });
-      });
-
-      // Track widget open/close
-      widgetToggle.addEventListener("click", () => {
-        trackWidgetInteraction(isOpen ? "close" : "open", "widget_toggle");
-      });
-
-      // Cleanup function para evitar memory leaks
-      window.addEventListener("beforeunload", () => {
-        document.removeEventListener("click", handleOutsideClick);
-        document.removeEventListener("keydown", handleEscapeKey);
-      });
-    } catch (error) {
-      console.error("Error initializing contact widget:", error);
-    }
-  }
-
-  // Inicializar con mejor manejo de estados
-  const initWidget = () => {
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", initContactWidget);
-    } else {
-      // Pequeño delay para asegurar que todos los elementos estén renderizados
-      setTimeout(initContactWidget, 100);
-    }
-  };
-
-  // Inicializar inmediatamente
-  initWidget();
-
-  // Re-inicializar en navegación de Astro
-  document.addEventListener("astro:page-load", initContactWidget);
+    });
+  });
 </script>
