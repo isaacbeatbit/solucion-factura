@@ -1,5 +1,21 @@
 // Variables del sistema de diseño - Solución Factura (Optimizado)
 :root {
+  // === TIPOGRAFÍA ===
+  --app-title-size-xl: 3.5rem;
+  --app-title-size-lg: 2.5rem;
+  --app-title-size-md: 1.75rem;
+  --app-title-size-sm: 1.25rem;
+  --app-subtitle-size: 1.15rem;
+  --app-heading-size: 1.1rem;
+  --app-title-gradient: linear-gradient(90deg, #36a168 0%, #1a6dcc 100%);
+  --app-title-gradient-alt: linear-gradient(90deg, #1a6dcc 0%, #36a168 100%);
+  --app-title-color: #1a6dcc;
+  --app-heading-color: #1a2c64;
+  --app-text-primary: #e1e5ee;
+  --app-text-secondary: #a7b3cc;
+  --app-subtitle-color: #a7b3cc;
+  --app-secondary: #1a6dcc;
+
   // === COLORES PRINCIPALES ===
   --primary: #0d1631;
   --primary-light: #1a2c64;
@@ -42,6 +58,22 @@
 
 // === TEMA CLARO ===
 [data-theme="light"] {
+  /* Tipografía para tema claro */
+  --app-title-size-xl: 3.2rem;
+  --app-title-size-lg: 2.2rem;
+  --app-title-size-md: 1.5rem;
+  --app-title-size-sm: 1.1rem;
+  --app-subtitle-size: 1rem;
+  --app-heading-size: 1rem;
+  --app-title-gradient: linear-gradient(90deg, #1a6dcc 0%, #36a168 100%);
+  --app-title-gradient-alt: linear-gradient(90deg, #36a168 0%, #1a6dcc 100%);
+  --app-title-color: #1a6dcc;
+  --app-heading-color: #1a2c64;
+  --app-text-primary: #0c1221;
+  --app-text-secondary: #1a2c64;
+  --app-subtitle-color: #6b7280;
+  --app-secondary: #1a6dcc;
+
   --bg-primary: #ffffff;
   --bg-secondary: #f8fafc;
   --bg-tertiary: #e1e5ee;

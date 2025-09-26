@@ -173,7 +173,7 @@ import "../styles/global.scss";
     <section class="terms-hero">
       <div class="container">
         <div class="hero-content">
-          <h1 class="hero-title">Términos y Condiciones</h1>
+          <h1 class="title-hero">Términos y Condiciones</h1>
           <p class="hero-description">
             Conoce los términos y condiciones generales de uso de nuestros
             servicios de facturación electrónica CFDI 4.0
@@ -1025,19 +1025,17 @@ import "../styles/global.scss";
           margin: 0 auto;
         }
 
-        .hero-title {
-          font-size: clamp(2.5rem, 5vw, 3.5rem);
-          font-weight: 700;
-          color: var(--text-primary);
+        .title-hero {
+          font-size: var(--app-title-size-xl);
+          font-weight: 800;
+          line-height: 1.1;
           margin-bottom: 1.5rem;
-          background: linear-gradient(
-            135deg,
-            var(--text-primary),
-            var(--secondary)
-          );
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
+          background: none;
+          -webkit-background-clip: initial;
+          background-clip: initial;
+          -webkit-text-fill-color: white;
+          color: white;
+          text-shadow: none;
         }
 
         .hero-description {
@@ -1364,8 +1362,9 @@ import "../styles/global.scss";
         .terms-hero {
           padding: 100px 0 60px;
 
-          .hero-title {
-            font-size: 2rem;
+          .title-hero {
+            font-size: calc(var(--app-title-size-xl) * 0.8);
+            margin-bottom: 1rem;
           }
 
           .hero-description {

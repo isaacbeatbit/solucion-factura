@@ -24,8 +24,7 @@
 }
 
 .system-preview .title-section {
-  font-size: var(--title-size-lg);
-  font-weight: 700;
+  /* Elimina font-size y font-weight personalizados para heredar de .title-section global */
   color: white;
   margin-bottom: 1rem;
 

@@ -5,9 +5,11 @@
 <section class="companies-bar">
   <div class="container">
     <div class="companies-header">
-      <h3 class="companies-title">Empresas que confían en nosotros</h3>
+      <h2 class="title-section companies-title">
+        Empresas que confían en nosotros
+      </h2>
       <p class="companies-subtitle">
-        Más de 2,500+ empresas ya utilizan nuestros servicios
+        Más de 9,500+ empresas ya utilizan nuestros servicios
       </p>
     </div>
 
@@ -26,7 +28,7 @@
     <!-- Estadísticas de confianza -->
     <div class="trust-stats">
       <div class="stat-item">
-        <span class="stat-number">2,500+</span>
+        <span class="stat-number">9,500+</span>
         <span class="stat-label">Empresas activas</span>
       </div>
       <div class="stat-item">
@@ -78,8 +80,8 @@
     }
 
     .companies-title {
-      font-size: clamp(1.5rem, 3vw, 2rem);
-      font-weight: 600;
+      /* Elimina font-size personalizado para heredar de .title-section */
+      /* Elimina font-weight personalizado para heredar de .title-section */
       color: var(--text-primary);
       margin-bottom: 0.5rem;
     }

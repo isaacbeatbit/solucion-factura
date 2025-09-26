@@ -75,7 +75,40 @@
   border: 1px solid rgba(26, 109, 204, 0.3);
 }
 
-/* Hero title styles are now handled by global typography classes */
+.title-hero {
+  font-size: var(--app-title-size-xl);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  background: none;
+  -webkit-background-clip: initial;
+  background-clip: initial;
+  -webkit-text-fill-color: white;
+  color: white;
+  text-shadow: none;
+  /* Tema claro: gradiente/color */
+  [data-theme="light"] & {
+    background: none;
+    -webkit-background-clip: initial;
+    background-clip: initial;
+    -webkit-text-fill-color: var(--app-secondary);
+    color: var(--app-secondary);
+  }
+}
+
+@media (max-width: 768px) {
+  .title-hero {
+    font-size: calc(var(--app-title-size-xl) * 0.8);
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .title-hero {
+    font-size: calc(var(--app-title-size-xl) * 0.6);
+    margin-bottom: 0.75rem;
+  }
+}
 
 /* Hero paragraph styles are now handled by global typography classes */
 
