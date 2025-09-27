@@ -25,9 +25,8 @@ import "./table.scss";
                 <div class="plan-name">Emprende</div>
                 <div class="plan-price">$292</div>
                 <div class="plan-period">por año</div>
-                <a
-                  href="https://pagos.solucionfiscal.online/subscribe/6677460f60546edc2553076f/plan-emprende"
-                  class="plan-button">Comprar</a
+                <button type="button" class="plan-button" data-plan="emprende"
+                  >Comprar</button
                 >
               </div>
             </th>
@@ -36,9 +35,8 @@ import "./table.scss";
                 <div class="plan-name">Crece</div>
                 <div class="plan-price">$501</div>
                 <div class="plan-period">por año</div>
-                <a
-                  href="https://pagos.solucionfiscal.online/subscribe/6677544560546edc255308ea/plan-crece"
-                  class="plan-button">Comprar</a
+                <button type="button" class="plan-button" data-plan="crece"
+                  >Comprar</button
                 >
               </div>
             </th>
@@ -47,9 +45,8 @@ import "./table.scss";
                 <div class="plan-name">Empresa</div>
                 <div class="plan-price">$960</div>
                 <div class="plan-period">por año</div>
-                <a
-                  href="https://pagos.solucionfiscal.online/subscribe/667754e89b6a9adc0e5693f1/plan-empresa"
-                  class="plan-button">Comprar</a
+                <button type="button" class="plan-button" data-plan="empresa"
+                  >Comprar</button
                 >
               </div>
             </th>
@@ -58,9 +55,8 @@ import "./table.scss";
                 <div class="plan-name">Premium</div>
                 <div class="plan-price">$2,075</div>
                 <div class="plan-period">por año</div>
-                <a
-                  href="https://pagos.solucionfiscal.online/subscribe/6677554f9b6a9adc0e5693f6/plan-premium"
-                  class="plan-button">Comprar</a
+                <button type="button" class="plan-button" data-plan="premium"
+                  >Comprar</button
                 >
               </div>
             </th>
@@ -69,9 +65,10 @@ import "./table.scss";
                 <div class="plan-name">Premium PLUS</div>
                 <div class="plan-price">$2,799</div>
                 <div class="plan-period">por año</div>
-                <a
-                  href="https://pagos.solucionfiscal.online/subscribe/667756fe9b6a9adc0e569424/plan-premium-plus"
-                  class="plan-button">Comprar</a
+                <button
+                  type="button"
+                  class="plan-button"
+                  data-plan="premium-plus">Comprar</button
                 >
               </div>
             </th>
@@ -354,33 +351,30 @@ import "./table.scss";
           <tr>
             <td>Comprar Plan</td>
             <td
-              ><a
-                href="https://pagos.solucionfiscal.online/subscribe/6677460f60546edc2553076f/plan-emprende"
-                class="plan-button">Comprar $292 / año</a
+              ><button type="button" class="plan-button" data-plan="emprende"
+                >Comprar $292 / año</button
               ></td
             >
             <td
-              ><a
-                href="https://pagos.solucionfiscal.online/subscribe/6677544560546edc255308ea/plan-crece"
-                class="plan-button">Comprar $501 / año</a
+              ><button type="button" class="plan-button" data-plan="crece"
+                >Comprar $501 / año</button
               ></td
             >
             <td
-              ><a
-                href="https://pagos.solucionfiscal.online/subscribe/667754e89b6a9adc0e5693f1/plan-empresa"
-                class="plan-button">Comprar $960 / año</a
+              ><button type="button" class="plan-button" data-plan="empresa"
+                >Comprar $960 / año</button
               ></td
             >
             <td
-              ><a
-                href="https://pagos.solucionfiscal.online/subscribe/6677554f9b6a9adc0e5693f6/plan-premium"
-                class="plan-button">Comprar $2,075 / año</a
+              ><button type="button" class="plan-button" data-plan="premium"
+                >Comprar $2,075 / año</button
               ></td
             >
             <td
-              ><a
-                href="https://pagos.solucionfiscal.online/subscribe/667756fe9b6a9adc0e569424/plan-premium-plus"
-                class="plan-button">Comprar $2,799 / año</a
+              ><button
+                type="button"
+                class="plan-button"
+                data-plan="premium-plus">Comprar $2,799 / año</button
               ></td
             >
           </tr>
@@ -423,12 +417,9 @@ import "./table.scss";
             <span class="price">$292</span>
             <span class="period">por año</span>
           </div>
-          <a
-            href="https://pagos.solucionfiscal.online/subscribe/6677460f60546edc2553076f/plan-emprende"
-            class="mobile-plan-button"
-          >
+          <button type="button" class="mobile-plan-button" data-plan="emprende">
             Comprar Plan
-          </a>
+          </button>
         </div>
 
         <div class="features-list">
@@ -587,12 +578,9 @@ import "./table.scss";
             <span class="price">$501</span>
             <span class="period">por año</span>
           </div>
-          <a
-            href="https://pagos.solucionfiscal.online/subscribe/6677544560546edc255308ea/plan-crece"
-            class="mobile-plan-button"
-          >
+          <button type="button" class="mobile-plan-button" data-plan="crece">
             Comprar Plan
-          </a>
+          </button>
         </div>
 
         <div class="features-list">
@@ -750,12 +738,9 @@ import "./table.scss";
             <span class="price">$960</span>
             <span class="period">por año</span>
           </div>
-          <a
-            href="https://pagos.solucionfiscal.online/subscribe/667754e89b6a9adc0e5693f1/plan-empresa"
-            class="mobile-plan-button"
-          >
+          <button type="button" class="mobile-plan-button" data-plan="empresa">
             Comprar Plan
-          </a>
+          </button>
         </div>
 
         <div class="features-list">
@@ -914,12 +899,9 @@ import "./table.scss";
             <span class="price">$2,075</span>
             <span class="period">por año</span>
           </div>
-          <a
-            href="https://pagos.solucionfiscal.online/subscribe/6677554f9b6a9adc0e5693f6/plan-premium"
-            class="mobile-plan-button"
-          >
+          <button type="button" class="mobile-plan-button" data-plan="premium">
             Comprar Plan
-          </a>
+          </button>
         </div>
 
         <div class="features-list">
@@ -1077,12 +1059,13 @@ import "./table.scss";
             <span class="price">$2,799</span>
             <span class="period">por año</span>
           </div>
-          <a
-            href="https://pagos.solucionfiscal.online/subscribe/667756fe9b6a9adc0e569424/plan-premium-plus"
+          <button
+            type="button"
             class="mobile-plan-button"
+            data-plan="premium-plus"
           >
             Comprar Plan
-          </a>
+          </button>
         </div>
 
         <div class="features-list">
@@ -1269,5 +1252,158 @@ import "./table.scss";
         }
       });
     });
+  });
+</script>
+
+<!-- Modal centrado para selección de cuenta -->
+<style>
+  #plan-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.45);
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s;
+  }
+  #plan-modal.active {
+    display: flex;
+  }
+  #plan-modal .modal-content {
+    background: #fff;
+    color: #222;
+    border-radius: 12px;
+    max-width: 340px;
+    width: 90vw;
+    padding: 2rem 1.5rem 1.5rem 1.5rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+    text-align: center;
+    position: relative;
+  }
+  #plan-modal .close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #888;
+    cursor: pointer;
+  }
+  #plan-modal .modal-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  #plan-modal .modal-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+  #plan-modal .modal-actions a {
+    display: block;
+    padding: 0.75rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+  #plan-modal .modal-actions a.yes {
+    background: #1a6dcc;
+    color: #fff;
+  }
+  #plan-modal .modal-actions a.no {
+    background: #f0f4ff;
+    color: #1a6dcc;
+    border: 1px solid #1a6dcc;
+  }
+  #plan-modal .modal-actions a:hover {
+    opacity: 0.85;
+  }
+</style>
+<div id="plan-modal">
+  <div class="modal-content">
+    <button class="close-modal" aria-label="Cerrar">&times;</button>
+    <div class="modal-title">¿Ya tienes cuenta?</div>
+    <div class="modal-actions">
+      <a class="yes" id="modal-yes-link" href="" target="_blank" rel="noopener"
+        >Sí, comprar</a
+      >
+      <a
+        class="no"
+        id="modal-register-link"
+        href="https://app.solucionfactura.mx/register"
+        target="_blank"
+        rel="noopener">No, registrarme</a
+      >
+    </div>
+  </div>
+</div>
+<script>
+  // Abrir modal al hacer click en cualquier botón de plan
+  document
+    .querySelectorAll(".plan-button, .mobile-plan-button")
+    .forEach((btn) => {
+      btn.addEventListener("click", function (e) {
+        e.preventDefault();
+        const plan = btn.getAttribute("data-plan");
+        const modal = document.getElementById("plan-modal");
+        const registerLink = document.getElementById("modal-register-link");
+        const yesLink = document.getElementById("modal-yes-link");
+
+        // Links de compra y registro por plan
+        let yesUrl = "";
+        let regUrl = "";
+
+        if (plan === "emprende") {
+          yesUrl =
+            "https://pagos.solucionfiscal.online/subscribe/6677460f60546edc2553076f/plan-emprende";
+          regUrl = "https://app.solucionfactura.mx/register?plan=emprende";
+        } else if (plan === "crece") {
+          yesUrl =
+            "https://pagos.solucionfiscal.online/subscribe/6677544560546edc255308ea/plan-crece";
+          regUrl = "https://app.solucionfactura.mx/register?plan=crece";
+        } else if (plan === "empresa") {
+          yesUrl =
+            "https://pagos.solucionfiscal.online/subscribe/667754e89b6a9adc0e5693f1/plan-empresa";
+          regUrl = "https://app.solucionfactura.mx/register?plan=empresa";
+        } else if (plan === "premium") {
+          yesUrl =
+            "https://pagos.solucionfiscal.online/subscribe/6677554f9b6a9adc0e5693f6/plan-premium";
+          regUrl = "https://app.solucionfactura.mx/register?plan=premium";
+        } else if (plan === "premium-plus") {
+          yesUrl =
+            "https://pagos.solucionfiscal.online/subscribe/667756fe9b6a9adc0e569424/plan-premium-plus";
+          regUrl = "https://app.solucionfactura.mx/register?plan=premium-plus";
+        } else {
+          // fallback: registro general
+          regUrl = "https://app.solucionfactura.mx/register";
+        }
+
+        yesLink.setAttribute("href", yesUrl);
+        registerLink.setAttribute("href", regUrl);
+
+        modal.classList.add("active");
+        document.body.style.overflow = "hidden";
+      });
+    });
+  // Cerrar modal al hacer click en la X
+  document
+    .querySelector("#plan-modal .close-modal")
+    .addEventListener("click", function () {
+      document.getElementById("plan-modal").classList.remove("active");
+      document.body.style.overflow = "";
+    });
+  // Cerrar modal al hacer click fuera del contenido
+  document.getElementById("plan-modal").addEventListener("click", function (e) {
+    if (e.target === this) {
+      this.classList.remove("active");
+      document.body.style.overflow = "";
+    }
   });
 </script>
