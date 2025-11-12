@@ -1,0 +1,2539 @@
+---
+// Landing Buen Fin 2025 | Solución Factura
+import "../../../../styles/pages/campaigns/buenfin.scss";
+---
+
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      Buen Fin | Solución Factura + Contable – Descuentos, Paquetes y
+      Renovaciones
+    </title>
+    <meta
+      name="description"
+      content="Buen Fin 2025: Paquete Empresarial Contable (Sistema Contable + Premium), descuentos a clientes actuales, upgrades flash, volumen y prepago 2 años. Congela tu precio antes del ajuste."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Estilos base y utilidades tipo Tailwind */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family:
+          Inter,
+          system-ui,
+          -apple-system,
+          sans-serif;
+      }
+
+      /* Colores y variables */
+      :root {
+        --slate-950: #020617;
+        --slate-900: #0f172a;
+        --slate-800: #1e293b;
+        --red-400: #f87171;
+        --red-500: #ef4444;
+        --red-600: #dc2626;
+        --red-800: #991b1b;
+        --amber-300: #fcd34d;
+        --amber-400: #fbbf24;
+        --green-400: #4ade80;
+        --green-500: #22c55e;
+        --blue-300: #93c5fd;
+        --blue-500: #3b82f6;
+      }
+
+      /* Backgrounds */
+      .bg-slate-950 {
+        background-color: var(--slate-950);
+      }
+      .bg-slate-900\/80 {
+        background-color: rgba(15, 23, 42, 0.8);
+      }
+      .bg-slate-900\/40 {
+        background-color: rgba(15, 23, 42, 0.4);
+      }
+      .bg-slate-800\/50 {
+        background-color: rgba(30, 41, 59, 0.5);
+      }
+      .bg-red-500 {
+        background-color: var(--red-500);
+      }
+      .bg-red-400 {
+        background-color: var(--red-400);
+      }
+      .bg-green-500 {
+        background-color: var(--green-500);
+      }
+      .bg-green-400 {
+        background-color: var(--green-400);
+      }
+      .bg-white\/5 {
+        background-color: rgba(255, 255, 255, 0.05);
+      }
+      .bg-white\/10 {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+      .bg-black\/70 {
+        background-color: rgba(0, 0, 0, 0.7);
+      }
+      .bg-gradient-to-b {
+        background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
+      }
+      .bg-gradient-to-r {
+        background-image: linear-gradient(to right, var(--tw-gradient-stops));
+      }
+      .from-red-800\/40 {
+        --tw-gradient-from: rgba(153, 27, 27, 0.4);
+        --tw-gradient-stops:
+          var(--tw-gradient-from), var(--tw-gradient-to, transparent);
+      }
+      .from-amber-500\/20 {
+        --tw-gradient-from: rgba(245, 158, 11, 0.2);
+        --tw-gradient-stops:
+          var(--tw-gradient-from), var(--tw-gradient-to, transparent);
+      }
+      .to-slate-950 {
+        --tw-gradient-to: var(--slate-950);
+      }
+      .to-orange-500\/20 {
+        --tw-gradient-to: rgba(249, 115, 22, 0.2);
+      }
+
+      /* Text colors */
+      .text-white {
+        color: #fff;
+      }
+      .text-white\/80 {
+        color: rgba(255, 255, 255, 0.8);
+      }
+      .text-white\/70 {
+        color: rgba(255, 255, 255, 0.7);
+      }
+      .text-white\/60 {
+        color: rgba(255, 255, 255, 0.6);
+      }
+      .text-white\/50 {
+        color: rgba(255, 255, 255, 0.5);
+      }
+      .text-white\/40 {
+        color: rgba(255, 255, 255, 0.4);
+      }
+      .text-red-400 {
+        color: var(--red-400);
+      }
+      .text-red-300 {
+        color: #fca5a5;
+      }
+      .text-slate-900 {
+        color: var(--slate-900);
+      }
+      .text-amber-300 {
+        color: var(--amber-300);
+      }
+      .text-blue-300 {
+        color: var(--blue-300);
+      }
+      .text-green-300 {
+        color: #86efac;
+      }
+
+      /* Spacing */
+      .p-2 {
+        padding: 0.5rem;
+      }
+      .p-3 {
+        padding: 0.75rem;
+      }
+      .p-4 {
+        padding: 1rem;
+      }
+      .p-6 {
+        padding: 1.5rem;
+      }
+      .p-8 {
+        padding: 2rem;
+      }
+      .px-2 {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+      }
+      .px-3 {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+      }
+      .px-4 {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+      .px-5 {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+      }
+      .px-6 {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+      .py-1 {
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+      }
+      .py-1\.5 {
+        padding-top: 0.375rem;
+        padding-bottom: 0.375rem;
+      }
+      .py-2 {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+      }
+      .py-3 {
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+      }
+      .py-4 {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+      }
+      .py-8 {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+      }
+      .py-12 {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+      }
+      .py-16 {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+      }
+
+      .mt-1 {
+        margin-top: 0.25rem;
+      }
+      .mt-2 {
+        margin-top: 0.5rem;
+      }
+      .mt-3 {
+        margin-top: 0.75rem;
+      }
+      .mt-4 {
+        margin-top: 1rem;
+      }
+      .mt-5 {
+        margin-top: 1.25rem;
+      }
+      .mt-6 {
+        margin-top: 1.5rem;
+      }
+      .mt-8 {
+        margin-top: 2rem;
+      }
+      .mt-10 {
+        margin-top: 2.5rem;
+      }
+      .mb-2 {
+        margin-bottom: 0.5rem;
+      }
+      .mb-3 {
+        margin-bottom: 0.75rem;
+      }
+      .mb-4 {
+        margin-bottom: 1rem;
+      }
+      .mb-6 {
+        margin-bottom: 1.5rem;
+      }
+
+      /* Layout */
+      .w-full {
+        width: 100%;
+      }
+      .max-w-xl {
+        max-width: 36rem;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .max-w-2xl {
+        max-width: 42rem;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .max-w-3xl {
+        max-width: 48rem;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .max-w-4xl {
+        max-width: 56rem;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .max-w-5xl {
+        max-width: 64rem;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .max-w-6xl {
+        max-width: 72rem;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .max-w-7xl {
+        max-width: 80rem;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .max-w-md {
+        max-width: 28rem;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .mx-auto {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .h-48 {
+        height: 12rem;
+      }
+      .h-4 {
+        height: 1rem !important;
+      }
+      .w-4 {
+        width: 1rem !important;
+      }
+      .object-cover {
+        object-fit: cover;
+      }
+
+      /* Flexbox */
+      .flex {
+        display: flex;
+      }
+      .inline-flex {
+        display: inline-flex;
+      }
+      .items-center {
+        align-items: center;
+      }
+      .items-start {
+        align-items: flex-start;
+      }
+      .items-end {
+        align-items: flex-end;
+      }
+      .justify-center {
+        justify-content: center;
+      }
+      .justify-between {
+        justify-content: space-between;
+      }
+      .flex-col {
+        flex-direction: column;
+      }
+      .flex-wrap {
+        flex-wrap: wrap;
+      }
+      .flex-1 {
+        flex: 1 1 0%;
+      }
+      .flex-shrink-0 {
+        flex-shrink: 0;
+      }
+      .flex-grow {
+        flex-grow: 1;
+      }
+      .gap-1 {
+        gap: 0.25rem;
+      }
+      .gap-2 {
+        gap: 0.5rem;
+      }
+      .gap-3 {
+        gap: 0.75rem;
+      }
+      .gap-4 {
+        gap: 1rem;
+      }
+      .gap-5 {
+        gap: 1.25rem;
+      }
+      .gap-6 {
+        gap: 1.5rem;
+      }
+      .gap-10 {
+        gap: 2.5rem;
+      }
+
+      /* Grid */
+      .grid {
+        display: grid;
+      }
+      .grid-cols-4 {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      /* Borders */
+      .border {
+        border-width: 1px;
+      }
+      .border-2 {
+        border-width: 2px;
+      }
+      .border-b {
+        border-bottom-width: 1px;
+      }
+      .border-t {
+        border-top-width: 1px;
+      }
+      .border-y {
+        border-top-width: 1px;
+        border-bottom-width: 1px;
+      }
+      .border-white\/20 {
+        border-color: rgba(255, 255, 255, 0.2);
+      }
+      .border-white\/10 {
+        border-color: rgba(255, 255, 255, 0.1);
+      }
+      .border-amber-400\/50 {
+        border-color: rgba(251, 191, 36, 0.5);
+      }
+      .border-red-500\/50 {
+        border-color: rgba(239, 68, 68, 0.5);
+      }
+      .border-red-500\/30 {
+        border-color: rgba(239, 68, 68, 0.3);
+      }
+      .border-blue-500\/30 {
+        border-color: rgba(59, 130, 246, 0.3);
+      }
+      .border-green-500\/30 {
+        border-color: rgba(34, 197, 94, 0.3);
+      }
+      .border-amber-400\/30 {
+        border-color: rgba(251, 191, 36, 0.3);
+      }
+
+      /* Border radius */
+      .rounded-xl {
+        border-radius: 0.75rem;
+      }
+      .rounded-2xl {
+        border-radius: 1rem;
+      }
+      .rounded-3xl {
+        border-radius: 1.5rem;
+      }
+      .rounded-full {
+        border-radius: 9999px;
+      }
+      .rounded-lg {
+        border-radius: 0.5rem;
+      }
+
+      /* Position */
+      .relative {
+        position: relative;
+      }
+      .absolute {
+        position: absolute;
+      }
+      .fixed {
+        position: fixed;
+      }
+      .inset-0 {
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+      .top-4 {
+        top: 1rem;
+      }
+      .right-4 {
+        right: 1rem;
+      }
+
+      /* Display */
+      .hidden {
+        display: none;
+      }
+      .block {
+        display: block;
+      }
+      .inline-block {
+        display: inline-block;
+      }
+
+      /* Text */
+      .text-xs {
+        font-size: 0.75rem;
+        line-height: 1rem;
+      }
+      .text-sm {
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+      }
+      .text-base {
+        font-size: 1rem;
+        line-height: 1.5rem;
+      }
+      .text-lg {
+        font-size: 1.125rem;
+        line-height: 1.75rem;
+      }
+
+      /* Forzar tamaño de fuente en botones */
+      button.text-slate-900,
+      button.font-semibold,
+      button.font-bold {
+        font-size: 1rem;
+      }
+      .text-xl {
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+      }
+      .text-2xl {
+        font-size: 1.5rem;
+        line-height: 2rem;
+      }
+      .text-3xl {
+        font-size: 1.875rem;
+        line-height: 2.25rem;
+      }
+      .text-4xl {
+        font-size: 2.25rem;
+        line-height: 2.5rem;
+      }
+      .text-5xl {
+        font-size: 3rem;
+        line-height: 1;
+      }
+      .text-6xl {
+        font-size: 3.75rem;
+        line-height: 1;
+      }
+      .font-semibold {
+        font-weight: 600;
+      }
+      .font-bold {
+        font-weight: 700;
+      }
+      .font-extrabold {
+        font-weight: 800;
+      }
+      .font-black {
+        font-weight: 900;
+      }
+      .uppercase {
+        text-transform: uppercase;
+      }
+      .capitalize {
+        text-transform: capitalize;
+      }
+      .tracking-wide {
+        letter-spacing: 0.025em;
+      }
+      .tracking-widest {
+        letter-spacing: 0.1em;
+      }
+      .leading-tight {
+        line-height: 1.25;
+      }
+      .leading-relaxed {
+        line-height: 1.625;
+      }
+      .text-center {
+        text-align: center;
+      }
+      .underline {
+        text-decoration: underline;
+      }
+      .underline-offset-4 {
+        text-underline-offset: 4px;
+      }
+      .list-none {
+        list-style: none;
+      }
+      .list-disc {
+        list-style-type: disc;
+      }
+
+      /* Overflow */
+      .overflow-hidden {
+        overflow: hidden;
+      }
+
+      /* Shadow */
+      .shadow {
+        box-shadow:
+          0 1px 3px 0 rgba(0, 0, 0, 0.1),
+          0 1px 2px 0 rgba(0, 0, 0, 0.06);
+      }
+      .shadow-md {
+        box-shadow:
+          0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      }
+      .shadow-lg {
+        box-shadow:
+          0 10px 15px -3px rgba(0, 0, 0, 0.1),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      }
+      .shadow-amber-500\/20 {
+        --tw-shadow-color: rgba(245, 158, 11, 0.2);
+        --tw-shadow:
+          0 10px 15px -3px var(--tw-shadow-color),
+          0 4px 6px -2px var(--tw-shadow-color);
+        box-shadow: var(--tw-shadow);
+      }
+
+      /* Backdrop */
+      .backdrop-blur-sm {
+        backdrop-filter: blur(4px);
+      }
+      .glass {
+        background: rgba(255, 255, 255, 0.06);
+        backdrop-filter: blur(10px);
+      }
+
+      /* Z-index */
+      .z-50 {
+        z-index: 50;
+      }
+
+      /* Cursor */
+      .cursor-pointer {
+        cursor: pointer;
+      }
+      .cursor-not-allowed {
+        cursor: not-allowed;
+      }
+
+      /* Opacity */
+      .opacity-25 {
+        opacity: 0.25;
+      }
+      .opacity-50 {
+        opacity: 0.5;
+      }
+      .opacity-75 {
+        opacity: 0.75;
+      }
+
+      /* Space */
+      .space-y-1 > * + * {
+        margin-top: 0.25rem;
+      }
+      .space-y-2 > * + * {
+        margin-top: 0.5rem;
+      }
+      .space-y-4 > * + * {
+        margin-top: 1rem;
+      }
+
+      /* Transitions */
+      .transition {
+        transition-property: all;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        transition-duration: 150ms;
+      }
+      .transition-colors {
+        transition-property: color, background-color, border-color;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        transition-duration: 150ms;
+      }
+
+      /* Hover states */
+      .hover\:text-white:hover {
+        color: #fff;
+      }
+      .hover\:bg-red-400:hover {
+        background-color: var(--red-400);
+      }
+      .hover\:bg-green-400:hover {
+        background-color: var(--green-400);
+      }
+      .hover\:bg-white\/10:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+      .hover\:bg-white\/20:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+      .hover\:bg-slate-800:hover {
+        background-color: var(--slate-800);
+      }
+
+      /* Focus states */
+      input:focus {
+        outline: none;
+      }
+      .focus\:outline-none:focus {
+        outline: none;
+      }
+      .focus\:border-red-500\/50:focus {
+        border-color: rgba(239, 68, 68, 0.5);
+      }
+      .focus\:ring-2:focus {
+        box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+      }
+
+      /* Placeholder */
+      ::placeholder {
+        color: rgba(255, 255, 255, 0.4);
+      }
+
+      /* Reset global para links y botones */
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      button {
+        text-decoration: none;
+        outline: none;
+        font-family: inherit;
+        font-size: 1rem !important;
+        line-height: 1.5;
+      }
+
+      /* Links con clases específicas mantienen sus estilos */
+      .underline {
+        text-decoration: underline;
+      }
+
+      /* Botones estilo primario (rojos) */
+      button.bg-red-500,
+      button.bg-red-400,
+      button.bg-green-500,
+      button.bg-green-400,
+      a.bg-red-500,
+      a.bg-red-400,
+      a.bg-green-500,
+      a.bg-green-400 {
+        text-decoration: none !important;
+        font-size: 1rem !important;
+        line-height: 1.5;
+        font-weight: 600;
+      }
+
+      /* Botones específicos con tamaños consistentes */
+      button.inline-flex,
+      a.inline-flex {
+        font-size: 1rem !important;
+        font-weight: 600;
+      }
+
+      /* Botones pequeños en modales - estos sí pueden ser pequeños */
+      .text-xs button,
+      button.text-xs {
+        font-size: 0.875rem !important;
+      }
+
+      /* Botones de acción principales - tamaño estándar */
+      button.font-semibold,
+      button.font-bold,
+      a.font-semibold,
+      a.font-bold {
+        font-size: 1rem !important;
+      }
+
+      /* Botones de cerrar modales - mejorados */
+      button.absolute.top-4.right-4 {
+        width: 2.5rem;
+        height: 2.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        font-size: 1.75rem;
+        line-height: 1;
+        transition: all 0.2s;
+        background: rgba(255, 255, 255, 0.08);
+        padding: 0;
+        cursor: pointer;
+      }
+      button.absolute.top-4.right-4:hover {
+        background: rgba(255, 255, 255, 0.15);
+        transform: rotate(90deg);
+        color: #fff;
+      }
+
+      /* Asegurar que todos los botones CTA no tengan underline */
+      button[onclick],
+      button[data-sku] {
+        text-decoration: none !important;
+      }
+
+      /* Links que deben verse como botones */
+      a.inline-flex.items-center.justify-center {
+        text-decoration: none !important;
+      }
+
+      /* Animations */
+      @keyframes spin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      .animate-spin {
+        animation: spin 1s linear infinite !important;
+        display: inline-block;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.5;
+        }
+      }
+      .animate-pulse {
+        animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      }
+
+      /* SVG spinner específico */
+      svg.animate-spin {
+        width: 1rem !important;
+        height: 1rem !important;
+        flex-shrink: 0;
+      }
+
+      /* Iconos de loading en mensajes */
+      .flex.items-center.gap-2 svg {
+        width: 1rem !important;
+        height: 1rem !important;
+      }
+
+      /* Clases combinadas h-4 w-4 */
+      .h-4.w-4,
+      svg.h-4.w-4 {
+        width: 1rem !important;
+        height: 1rem !important;
+      }
+
+      /* Group interactions */
+      .group:open .group-open\:rotate-180 {
+        transform: rotate(180deg);
+      }
+
+      /* Responsive */
+      @media (min-width: 768px) {
+        .md\:h-64 {
+          height: 16rem;
+        }
+        .md\:py-20 {
+          padding-top: 5rem;
+          padding-bottom: 5rem;
+        }
+        .md\:py-24 {
+          padding-top: 6rem;
+          padding-bottom: 6rem;
+        }
+        .md\:text-4xl {
+          font-size: 2.25rem;
+          line-height: 2.5rem;
+        }
+        .md\:text-5xl {
+          font-size: 3rem;
+          line-height: 1;
+        }
+        .md\:grid-cols-2 {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .md\:grid-cols-3 {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .md\:grid-cols-5 {
+          grid-template-columns: repeat(5, 1fr);
+        }
+        .md\:flex-row {
+          flex-direction: row;
+        }
+        .md\:w-auto {
+          width: auto;
+        }
+      }
+    </style>
+  </head>
+  <body class="buenfin-page">
+    <!-- Top Bar -->
+    <div class="bf-top-bar">
+      <div class="bf-top-bar__container">
+        <p class="bf-top-bar__text">🎉 Buen Fin 13–17 de noviembre de 2025</p>
+        <nav class="bf-top-bar__nav">
+          <a href="#paquete-contable">Paquete Contable</a>
+          <a href="#clientes">Clientes actuales</a>
+          <a href="#planes">Planes</a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- BANNER -->
+    <section id="banner" class="bf-banner">
+      <div class="bf-banner__container">
+        <img
+          src="https://solucionfactura.mx/mkt/campaigns/buenfin/images/bf_2025.png"
+          alt="Banner Buen Fin Solución Factura"
+          class="bf-banner__image"
+        />
+      </div>
+    </section>
+
+    <!-- HERO -->
+    <header class="relative overflow-hidden">
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-red-800/40 to-slate-950"
+      >
+      </div>
+      <div class="max-w-7xl mx-auto px-4 py-16 md:py-24 relative">
+        <div class="grid md:grid-cols-2 gap-10 items-center">
+          <div>
+            <span
+              class="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-white/70 bg-white/5 border border-white/10 rounded-full px-3 py-1"
+              >Buen Fin • 2025</span
+            >
+            <h1 class="mt-5 text-4xl md:text-5xl font-extrabold leading-tight">
+              Paquete
+              <span class="text-red-400">Empresarial Contable</span>
+              y descuentos para clientes actuales
+            </h1>
+            <p class="mt-4 text-white/80 text-lg max-w-xl">
+              Sistema Contable + Plan Premium por
+              <strong>$3,999 MXN</strong> 💼 • O agrega el Sistema Contable desde
+              <strong>$999</strong>.
+            </p>
+            <div class="mt-6 flex flex-wrap gap-3">
+              <a
+                href="#paquete-contable"
+                class="inline-flex items-center justify-center px-5 py-3 rounded-xl bg-red-500 hover:bg-red-400 text-slate-900 font-semibold shadow"
+                >Ver paquete</a
+              >
+              <a
+                href="#clientes"
+                class="inline-flex items-center justify-center px-5 py-3 rounded-xl border border-white/20 hover:bg-white/10 font-semibold"
+                >Soy cliente actual</a
+              >
+            </div>
+            <p class="mt-3 text-sm text-white/60">
+              *Vigente del 13 al 17 de noviembre. No acumulable con otras
+              promociones.
+            </p>
+            <!-- Countdown -->
+            <div
+              class="mt-6 glass rounded-2xl border border-white/10 p-4 w-full md:w-auto"
+            >
+              <p class="text-white/70 text-sm">Termina en</p>
+              <div
+                id="countdown"
+                class="mt-2 grid grid-cols-4 gap-3 text-center"
+              >
+                <div class="rounded-xl bg-white/5 p-3">
+                  <div class="text-3xl font-bold" id="dd">00</div>
+                  <div class="text-xs text-white/60">días</div>
+                </div>
+                <div class="rounded-xl bg-white/5 p-3">
+                  <div class="text-3xl font-bold" id="hh">00</div>
+                  <div class="text-xs text-white/60">hrs</div>
+                </div>
+                <div class="rounded-xl bg-white/5 p-3">
+                  <div class="text-3xl font-bold" id="mm">00</div>
+                  <div class="text-xs text-white/60">min</div>
+                </div>
+                <div class="rounded-xl bg-white/5 p-3">
+                  <div class="text-3xl font-bold" id="ss">00</div>
+                  <div class="text-xs text-white/60">seg</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="relative">
+            <div class="rounded-3xl border border-white/10 p-8 glass">
+              <h3 class="text-xl font-bold">Beneficios clave</h3>
+              <ul class="mt-4 space-y-2 text-white/80">
+                <li>✅ Sistema contable integrado (nuevo)</li>
+                <li>✅ Ahorros hasta 33%</li>
+                <li>
+                  ✅ Descuentos inmediatos en
+                  <strong>renovaciones</strong>
+                </li>
+                <li>
+                  ✅ Programa
+                  <strong>Amigo Renueva Contigo</strong>
+                </li>
+                <li>✅ Facturación, Global, XML, WhatsApp, EFOS/EDOS*</li>
+              </ul>
+              <p class="text-xs text-white/50 mt-3">
+                *Según plan. Consulta la tabla.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- PAQUETE CONTABLE + PREMIUM -->
+    <section
+      id="paquete-contable"
+      class="py-16 md:py-20 bg-slate-900/40 border-y border-white/10"
+    >
+      <div class="max-w-6xl mx-auto px-4 text-center">
+        <h2 class="text-3xl md:text-4xl font-extrabold mb-4">
+          💼 Paquete Empresarial Contable
+        </h2>
+        <p class="text-white/70 max-w-2xl mx-auto">
+          Sistema Contable MultiRFC + Plan Premium por
+          <strong class="text-red-400">$3,999 MXN</strong>. Control fiscal y
+          operativo completo.
+        </p>
+        <div class="mt-8 grid md:grid-cols-2 gap-6 justify-center">
+          <div class="rounded-2xl border border-white/10 p-6 glass">
+            <h3 class="text-xl font-bold">Paquete completo</h3>
+            <p class="mt-2 text-3xl font-extrabold">$3,999 MXN</p>
+            <p class="text-white/60 text-sm">
+              Incluye: Sistema Contable + Plan Premium anual
+            </p>
+            <button
+              onclick="openWhatsAppModal('paquete_completo')"
+              class="mt-5 inline-flex w-full justify-center px-4 py-2 rounded-xl bg-red-500 hover:bg-red-400 text-slate-900 font-semibold cursor-pointer"
+            >
+              Comprar ahora
+            </button>
+          </div>
+          <div class="rounded-2xl border border-white/10 p-6 glass">
+            <h3 class="text-xl font-bold">Agregar Sistema Contable</h3>
+            <ul class="mt-3 text-white/80 space-y-1 text-sm">
+              <li>➡️ 1 RFC: <strong>$999 MXN</strong></li>
+              <li>➡️ MultiRFC: <strong>$2,499 MXN</strong></li>
+            </ul>
+            <a
+              href="#contacto"
+              class="mt-5 inline-flex w-full justify-center px-4 py-2 rounded-xl bg-red-500 hover:bg-red-400 text-slate-900 font-semibold"
+              >Solicitar complemento</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLIENTES ACTUALES: RENOVACIONES -->
+    <section id="clientes" class="py-16 md:py-20">
+      <div class="max-w-6xl mx-auto px-4 text-center">
+        <h2 class="text-3xl md:text-4xl font-extrabold mb-4">
+          💎 Beneficios para Clientes Actuales
+        </h2>
+        <p class="text-white/70 max-w-3xl mx-auto">
+          Renueva o sube de plan con descuentos instantáneos durante el Buen
+          Fin.
+        </p>
+        <div class="mt-10 grid md:grid-cols-3 gap-6">
+          <div class="rounded-2xl border border-white/10 p-6 glass">
+            <h3 class="font-bold text-xl">Renueva Empresa</h3>
+            <p class="text-2xl font-extrabold mt-2">10% de descuento</p>
+          </div>
+          <div class="rounded-2xl border border-white/10 p-6 glass">
+            <h3 class="font-bold text-xl">Renueva Premium</h3>
+            <p class="text-2xl font-extrabold mt-2">15% de descuento</p>
+          </div>
+          <div class="rounded-2xl border border-white/10 p-6 glass">
+            <h3 class="font-bold text-xl">Renueva Premium Plus</h3>
+            <p class="text-2xl font-extrabold mt-2">20% de descuento</p>
+          </div>
+        </div>
+        <p class="mt-8 text-white/80">
+          Programa <strong>Amigo Renueva Contigo</strong>: gana
+          <strong>100 timbres gratis</strong> por cada referido que renueve su plan.
+        </p>
+        <div class="mt-6">
+          <a
+            href="#upgrade"
+            class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-red-500 hover:bg-red-400 text-slate-900 font-semibold shadow"
+            >Ver Upgrades Flash</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- PLANES INDIVIDUALES (NUEVOS) -->
+    <section id="planes" class="py-16 md:py-20">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="flex items-end justify-between gap-6 flex-wrap">
+          <div>
+            <h2 class="text-3xl md:text-4xl font-extrabold">
+              Descuentos individuales (nuevos)
+            </h2>
+            <p class="text-white/70 mt-2">
+              Activa anualidades con descuentos directos. Tras Buen Fin, los
+              precios subirán.
+            </p>
+          </div>
+          <div class="text-sm text-white/60">Moneda: MXN • Precios anuales</div>
+        </div>
+
+        <div
+          class="mt-6 rounded-xl border border-amber-400 bg-gradient-to-r from-amber-500/20 to-orange-500/20 p-4"
+          style="backdrop-filter: blur(10px); outline: 1px solid rgba(251, 191, 36, 0.3); outline-offset: 1px;"
+        >
+          <div class="flex items-start gap-3">
+            <div class="flex-shrink-0">
+              <span class="text-3xl animate-pulse">⚠️</span>
+            </div>
+            <div class="flex-1">
+              <h4
+                class="font-bold text-amber-300 text-base mb-1 tracking-wide flex items-center gap-2"
+              >
+                <span
+                  class="inline-block w-1.5 h-1.5 bg-amber-400 rounded-full animate-pulse"
+                ></span>
+                IMPORTANTE
+              </h4>
+              <p class="text-white text-sm leading-relaxed">
+                Estos descuentos aplican
+                <strong class="text-amber-200 font-bold"
+                  >únicamente en planes nuevos</strong
+                >. Si ya eres cliente, usa la sección
+                <strong class="text-white font-semibold"
+                  >Clientes actuales</strong
+                > o <strong class="text-white font-semibold">Upgrade</strong>.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-5 gap-5 mt-8">
+          <!-- Emprende -->
+          <article
+            class="rounded-2xl border border-white/10 p-6 glass flex flex-col h-full"
+          >
+            <h3 class="text-lg font-bold">Emprende</h3>
+            <p class="text-white/60 text-sm">Lista: $292.00</p>
+            <div class="mt-3 text-3xl font-extrabold">$262.80</div>
+            <p class="text-white/60 text-sm">(-10%)</p>
+            <ul class="mt-4 text-sm text-white/80 space-y-1">
+              <li>CFDI 4.0 básico</li>
+              <li>Programación de facturas</li>
+              <li>300 timbres</li>
+            </ul>
+            <div class="mt-3 text-xs text-white/70">
+              ➕ Agrega Sistema Contable:
+              <strong>$999 (1 RFC)</strong> /
+              <strong>$2,499 (MultiRFC)</strong>
+            </div>
+            <div class="flex-grow"></div>
+            <button
+              data-sku="BF-EMP-10"
+              onclick="openNewAccountModal('emprende', 'BF-EMP-10')"
+              class="mt-5 inline-flex w-full justify-center px-4 py-2 rounded-xl bg-red-500 hover:bg-red-400 text-slate-900 font-semibold cursor-pointer"
+            >
+              Comprar
+            </button>
+          </article>
+          <!-- Crece -->
+          <article
+            class="rounded-2xl border border-white/10 p-6 glass flex flex-col h-full"
+          >
+            <h3 class="text-lg font-bold">Crece</h3>
+            <p class="text-white/60 text-sm">Lista: $501.00</p>
+            <div class="mt-3 text-3xl font-extrabold">$440.88</div>
+            <p class="text-white/60 text-sm">(-12%)</p>
+            <ul class="mt-4 text-sm text-white/80 space-y-1">
+              <li>CFDI 4.0 PyME</li>
+              <li>Carta Porte</li>
+              <li>600 timbres</li>
+            </ul>
+            <div class="mt-3 text-xs text-white/70">
+              ➕ Agrega Sistema Contable:
+              <strong>$999 / $2,499</strong>
+            </div>
+            <div class="flex-grow"></div>
+            <button
+              data-sku="BF-CRE-12"
+              onclick="openNewAccountModal('crece', 'BF-CRE-12')"
+              class="mt-5 inline-flex w-full justify-center px-4 py-2 rounded-xl bg-red-500 hover:bg-red-400 text-slate-900 font-semibold cursor-pointer"
+            >
+              Comprar
+            </button>
+          </article>
+          <!-- Empresa -->
+          <article
+            class="rounded-2xl border border-white/10 p-6 glass flex flex-col h-full"
+          >
+            <h3 class="text-lg font-bold">Empresa</h3>
+            <p class="text-white/60 text-sm">Lista: $960.00</p>
+            <div class="mt-3 text-3xl font-extrabold">$816.00</div>
+            <p class="text-white/60 text-sm">(-15%)</p>
+            <ul class="mt-4 text-sm text-white/80 space-y-1">
+              <li>MultiEmpresa</li>
+              <li>Factura GLOBAL masiva</li>
+              <li>1,200 timbres</li>
+            </ul>
+            <div class="mt-3 text-xs text-white/70">
+              ➕ Agrega Sistema Contable:
+              <strong>$999 / $2,499</strong>
+            </div>
+            <div class="flex-grow"></div>
+            <button
+              data-sku="BF-EMPRESA-15"
+              onclick="openNewAccountModal('empresa', 'BF-EMPRESA-15')"
+              class="mt-5 inline-flex w-full justify-center px-4 py-2 rounded-xl bg-red-500 hover:bg-red-400 text-slate-900 font-semibold cursor-pointer"
+            >
+              Comprar
+            </button>
+          </article>
+          <!-- Premium -->
+          <article
+            class="rounded-2xl border border-white/10 p-6 glass relative overflow-hidden flex flex-col h-full"
+          >
+            <div
+              class="absolute right-4 top-4 text-xs font-extrabold tracking-wider rounded-full px-3 py-1.5"
+              style="z-index: 10; background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%); color: #000; box-shadow: 0 4px 12px rgba(251, 191, 36, 0.4), 0 0 0 2px rgba(0, 0, 0, 0.1); text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);"
+            >
+              MÁS VENDIDO
+            </div>
+            <h3 class="text-lg font-bold">Premium</h3>
+            <p class="text-white/60 text-sm">Lista: $2,075.00</p>
+            <div class="mt-3 text-3xl font-extrabold">$1,701.50</div>
+            <p class="text-white/60 text-sm">(-18%)</p>
+            <ul class="mt-4 text-sm text-white/80 space-y-1">
+              <li>Empresas ilimitadas</li>
+              <li>WhatsApp + Descarga XML</li>
+              <li>Conciliaciones, EFOS/EDOS</li>
+              <li>6,000 timbres</li>
+            </ul>
+            <div class="mt-3 text-xs text-white/70">
+              ➕ Agrega Sistema Contable:
+              <strong>$999 / $2,499</strong>
+            </div>
+            <div class="flex-grow"></div>
+            <button
+              data-sku="BF-PREMIUM-18"
+              onclick="openNewAccountModal('premium', 'BF-PREMIUM-18')"
+              class="mt-5 inline-flex w-full justify-center px-4 py-2 rounded-xl bg-red-500 hover:bg-red-400 text-slate-900 font-semibold cursor-pointer"
+            >
+              Comprar
+            </button>
+          </article>
+          <!-- Premium Plus -->
+          <article
+            class="rounded-2xl border border-white/10 p-6 glass flex flex-col h-full"
+          >
+            <h3 class="text-lg font-bold">Premium Plus</h3>
+            <p class="text-white/60 text-sm">Lista: $2,799.00</p>
+            <div class="mt-3 text-3xl font-extrabold">$2,239.20</div>
+            <p class="text-white/60 text-sm">(-20%)</p>
+            <ul class="mt-4 text-sm text-white/80 space-y-1">
+              <li>AutoFactura, email propio</li>
+              <li>WhatsApp con número propio</li>
+              <li>10,000–12,000 timbres*</li>
+            </ul>
+            <p class="text-xs text-white/50">
+              *Unifica en checkout el número oficial de timbres.
+            </p>
+            <div class="mt-3 text-xs text-white/70">
+              ➕ Agrega Sistema Contable:
+              <strong>$999 / $2,499</strong>
+            </div>
+            <div class="flex-grow"></div>
+            <button
+              data-sku="BF-PREMPLUS-20"
+              onclick="openNewAccountModal('premium_plus', 'BF-PREMPLUS-20')"
+              class="mt-5 inline-flex w-full justify-center px-4 py-2 rounded-xl bg-red-500 hover:bg-red-400 text-slate-900 font-semibold cursor-pointer"
+            >
+              Comprar
+            </button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- VOLUMEN -->
+    <section
+      id="volumen"
+      class="py-16 md:py-20 bg-slate-900/40 border-y border-white/10"
+    >
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="flex items-end justify-between gap-6 flex-wrap">
+          <div>
+            <h2 class="text-3xl md:text-4xl font-extrabold">
+              Descuentos por volumen
+            </h2>
+            <p class="text-white/70 mt-2">
+              Ideal para distribuidores o varias razones sociales. Pago en una
+              sola exhibición.
+            </p>
+          </div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6 mt-8">
+          <div class="rounded-2xl border border-white/10 p-6 glass">
+            <h3 class="text-xl font-bold">2–3 licencias (mismo plan anual)</h3>
+            <ul class="mt-3 space-y-2 text-white/80">
+              <li>
+                <strong>Premium:</strong> 22% →
+                <span class="font-semibold">$1,618.50</span> c/u
+              </li>
+              <li>
+                <strong>Premium Plus:</strong> 24% →
+                <span class="font-semibold">$2,127.24</span> c/u
+              </li>
+            </ul>
+            <a
+              data-sku="BF-VOL-3P-24"
+              href="#contacto"
+              class="mt-5 inline-flex px-4 py-2 rounded-xl bg-red-500 hover:bg-red-400 text-slate-900 font-semibold"
+              >Cotizar ahora</a
+            >
+          </div>
+          <div class="rounded-2xl border border-white/10 p-6 glass">
+            <h3 class="text-xl font-bold">4+ licencias (mismo plan anual)</h3>
+            <ul class="mt-3 space-y-2 text-white/80">
+              <li>
+                <strong>Premium:</strong> 28% →
+                <span class="font-semibold">$1,494.00</span> c/u
+              </li>
+              <li>
+                <strong>Premium Plus:</strong> 30% →
+                <span class="font-semibold">$1,959.30</span> c/u
+              </li>
+            </ul>
+            <a
+              data-sku="BF-VOL-4P-30"
+              href="#contacto"
+              class="mt-5 inline-flex px-4 py-2 rounded-xl bg-red-500 hover:bg-red-400 text-slate-900 font-semibold"
+              >Cotizar ahora</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PREPAGO 2 AÑOS -->
+    <section id="dos-anios" class="py-16 md:py-20">
+      <div class="max-w-7xl mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-extrabold">Prepago a 2 años</h2>
+        <p class="text-white/70 mt-2 max-w-3xl">
+          Maximiza tu ahorro y congela tarifa hasta por 24 meses. No acumulable
+          con otras promos.
+        </p>
+        <div class="grid md:grid-cols-2 gap-6 mt-8">
+          <div class="rounded-2xl border border-white/10 p-6 glass">
+            <h3 class="text-xl font-bold">Premium (2 años)</h3>
+            <p class="mt-1 text-white/60">30% sobre el total</p>
+            <div class="mt-2 text-3xl font-extrabold">$2,905.00</div>
+            <button
+              data-sku="BF-2Y-PREM-30"
+              onclick="openWhatsAppModal('premium_2y')"
+              class="mt-5 inline-flex px-4 py-2 rounded-xl bg-red-500 hover:bg-red-400 text-slate-900 font-semibold cursor-pointer"
+            >
+              Elegir Premium 2 años
+            </button>
+          </div>
+          <div class="rounded-2xl border border-white/10 p-6 glass">
+            <h3 class="text-xl font-bold">Premium Plus (2 años)</h3>
+            <p class="mt-1 text-white/60">33% sobre el total</p>
+            <div class="mt-2 text-3xl font-extrabold">$3,750.66</div>
+            <button
+              data-sku="BF-2Y-PPLUS-33"
+              onclick="openWhatsAppModal('premium_plus_2y')"
+              class="mt-5 inline-flex px-4 py-2 rounded-xl bg-red-500 hover:bg-red-400 text-slate-900 font-semibold cursor-pointer"
+            >
+              Elegir Premium Plus 2 años
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- UPGRADE FLASH (CLIENTES EMPRESA) -->
+    <section
+      id="upgrade"
+      class="py-16 md:py-20 bg-slate-900/40 border-y border-white/10"
+    >
+      <div class="max-w-7xl mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-extrabold">
+          Renovaciones (clientes Empresa)
+        </h2>
+        <p class="text-white/70 mt-2">
+          Renueva tu plan o convierte hoy y congela tu tarifa antes del ajuste
+          de precios.
+        </p>
+        <div class="grid md:grid-cols-3 gap-6 mt-8">
+          <div class="rounded-2xl border border-white/10 p-6 glass">
+            <h3 class="text-xl font-bold">Plan Empresa</h3>
+            <p class="text-white/60">10% de descuento</p>
+            <div class="mt-2 text-3xl font-extrabold">$864.00</div>
+            <button
+              data-sku="BF-UP-EMPRESA-10"
+              data-upgrade-type="empresa"
+              onclick="openUpgradeModal('empresa', 'BF-UP-EMPRESA-10')"
+              class="mt-5 inline-flex px-4 py-2 rounded-xl bg-red-500 hover:bg-red-400 text-slate-900 font-semibold cursor-pointer"
+            >
+              Renovar Empresa
+            </button>
+          </div>
+          <div class="rounded-2xl border border-white/10 p-6 glass">
+            <h3 class="text-xl font-bold">Plan Premium</h3>
+            <p class="text-white/60">15% de descuento</p>
+            <div class="mt-2 text-3xl font-extrabold">
+              <!--$1,763.75-->
+              $1,763.00
+            </div>
+            <button
+              data-sku="BF-UP-EMP-PREM-20"
+              data-upgrade-type="premium"
+              onclick="openUpgradeModal('premium', 'BF-UP-EMP-PREM-20')"
+              class="mt-5 inline-flex px-4 py-2 rounded-xl bg-red-500 hover:bg-red-400 text-slate-900 font-semibold cursor-pointer"
+            >
+              Subir a Premium
+            </button>
+          </div>
+          <div class="rounded-2xl border border-white/10 p-6 glass">
+            <h3 class="text-xl font-bold">Plan Premium Plus</h3>
+            <p class="text-white/60">20% de descuento</p>
+            <div class="mt-2 text-3xl font-extrabold">
+              <!--$2,239.20-->
+              $2,239.00
+            </div>
+            <button
+              data-sku="BF-UP-EMP-PPLUS-25"
+              data-upgrade-type="premiumplus"
+              onclick="openUpgradeModal('premiumplus', 'BF-UP-EMP-PPLUS-25')"
+              class="mt-5 inline-flex px-4 py-2 rounded-xl bg-red-500 hover:bg-red-400 text-slate-900 font-semibold cursor-pointer"
+            >
+              Subir a Premium Plus
+            </button>
+          </div>
+        </div>
+        <p class="mt-4 text-white/60 text-sm">
+          *Exclusivo para cuentas activas en plan Empresa. No acumulable con
+          volumen ni 2 años.
+        </p>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-16 md:py-20">
+      <div class="max-w-5xl mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-extrabold text-center">
+          Preguntas frecuentes
+        </h2>
+        <div class="mt-10 grid gap-4">
+          <details class="group rounded-2xl border border-white/10 p-6 glass">
+            <summary
+              class="cursor-pointer list-none flex items-center justify-between gap-4"
+            >
+              <span class="font-semibold">¿Cuándo termina el Buen Fin?</span
+              ><span class="text-white/50 group-open:rotate-180 transition"
+                >⌄</span
+              >
+            </summary>
+            <p class="mt-3 text-white/80">
+              El 17 de noviembre de 2025 a las 23:59 (hora Ciudad de México).
+              Después de esa fecha, se aplicará el ajuste de precios.
+            </p>
+          </details>
+          <details class="group rounded-2xl border border-white/10 p-6 glass">
+            <summary
+              class="cursor-pointer list-none flex items-center justify-between gap-4"
+            >
+              <span class="font-semibold"
+                >¿Qué significa “precio congelado”?</span
+              ><span class="text-white/50 group-open:rotate-180 transition"
+                >⌄</span
+              >
+            </summary>
+            <p class="mt-3 text-white/80">
+              Renovarás al mismo precio contratado durante 12 o 24 meses (según
+              la opción). La renovación debe ser continua y dentro de la
+              vigencia.
+            </p>
+          </details>
+          <details class="group rounded-2xl border border-white/10 p-6 glass">
+            <summary
+              class="cursor-pointer list-none flex items-center justify-between gap-4"
+            >
+              <span class="font-semibold">¿Se pueden combinar descuentos?</span
+              ><span class="text-white/50 group-open:rotate-180 transition"
+                >⌄</span
+              >
+            </summary>
+            <p class="mt-3 text-white/80">
+              No. Elige la opción que más te convenga: individual, volumen, 2
+              años o beneficios de cliente actual.
+            </p>
+          </details>
+          <details class="group rounded-2xl border border-white/10 p-6 glass">
+            <summary
+              class="cursor-pointer list-none flex items-center justify-between gap-4"
+            >
+              <span class="font-semibold"
+                >¿Cuándo recibo mis timbres o activaciones?</span
+              ><span class="text-white/50 group-open:rotate-180 transition"
+                >⌄</span
+              >
+            </summary>
+            <p class="mt-3 text-white/80">
+              Activación en 24–48 horas hábiles posteriores al pago. Con
+              tarjeta, activación inmediata.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section
+      id="contacto"
+      class="py-16 md:py-20 bg-slate-900/40 border-y border-white/10"
+    >
+      <div class="max-w-4xl mx-auto px-4 text-center">
+        <h2 class="text-3xl md:text-4xl font-extrabold">
+          ¿Dudas o cotización por volumen?
+        </h2>
+        <p class="text-white/70 mt-2">
+          Escríbenos por WhatsApp y asegura tu descuento antes del 17 de
+          noviembre.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-3 justify-center">
+          <a
+            href="https://wa.me/5215576017764?text=Quiero%20mi%20descuento%20de%20Buen%20Fin%20en%20Soluci%C3%B3n%20Factura"
+            target="_blank"
+            rel="noopener"
+            class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-green-500 hover:bg-green-400 text-slate-900 font-semibold shadow"
+            >Hablar por WhatsApp</a
+          >
+          <a
+            href="#planes"
+            class="inline-flex items-center justify-center px-6 py-3 rounded-xl border border-white/20 hover:bg-white/10 font-semibold"
+            >Ir a planes</a
+          >
+        </div>
+        <p class="mt-3 text-xs text-white/50">
+          Al proceder aceptas los
+          <a
+            href="#terminos"
+            class="underline underline-offset-4 hover:text-white"
+            >términos de la promoción</a
+          >.
+        </p>
+      </div>
+    </section>
+
+    <!-- TÉRMINOS -->
+    <section id="terminos" class="py-12">
+      <div class="max-w-5xl mx-auto px-4 text-white/70 text-sm leading-relaxed">
+        <h3 class="text-white text-2xl font-bold mb-4">
+          Términos de la promoción
+        </h3>
+        <ul class="space-y-2">
+          <li>
+            Vigencia: del 13 al 17 de noviembre de 2025. Zona horaria: Ciudad de
+            México.
+          </li>
+          <li>
+            Descuentos válidos para anualidades (o 2 años, según sección). No
+            acumulables entre sí.
+          </li>
+          <li>
+            Descuentos por volumen aplican para mismo plan y pago en una sola
+            exhibición.
+          </li>
+          <li>
+            “Precio congelado” = misma tarifa al renovar dentro de la vigencia
+            contratada (12 o 24 meses).
+          </li>
+          <li>
+            Después de Buen Fin se aplicará el ajuste de precios comunicado.
+          </li>
+          <li>
+            Funciones varían por plan (WhatsApp, XML, Conciliaciones, EFOS/EDOS,
+            AutoFactura, etc.).
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Modal de Upgrade -->
+    <div
+      id="upgradeModal"
+      class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center px-4 hidden"
+    >
+      <div
+        class="bg-slate-900 border border-white/20 rounded-2xl p-8 max-w-md w-full glass relative"
+      >
+        <button
+          onclick="closeUpgradeModal()"
+          class="absolute top-4 right-4 text-white/60 hover:text-white text-2xl"
+        >
+          ×
+        </button>
+        <h3 class="text-2xl font-bold mb-2">Confirmar Upgrade</h3>
+        <p class="text-white/70 mb-6">
+          Para actualizar tu plan, confirma el correo electrónico asociado a tu
+          cuenta existente.
+        </p>
+        <form id="upgradeForm" class="space-y-4">
+          <div>
+            <label for="upgradeEmail" class="block text-sm font-semibold mb-2"
+              >Correo electrónico</label
+            >
+            <input
+              type="email"
+              id="upgradeEmail"
+              name="email"
+              required
+              placeholder="tu@email.com"
+              onkeypress="if(event.key === 'Enter') { event.preventDefault(); handleUpgradeSubmit(event); }"
+              class="w-full px-4 py-3 rounded-xl bg-slate-800/50 border border-white/10 text-white placeholder:text-white/40 focus:outline-none focus:border-red-500/50 focus:ring-2 focus:ring-red-500/20"
+            />
+          </div>
+          <div class="text-xs text-white/50">
+            Plan seleccionado:
+            <span id="selectedPlan" class="font-semibold text-white/80"></span>
+          </div>
+          <div id="upgradeMessage" class="hidden p-3 rounded-lg text-sm"></div>
+          <button
+            type="button"
+            id="upgradeSubmitBtn"
+            onclick="handleUpgradeSubmit(event)"
+            class="w-full px-6 py-3 rounded-xl bg-red-500 hover:bg-red-400 text-slate-900 font-bold transition-colors"
+          >
+            Confirmar y continuar
+          </button>
+          <button
+            type="button"
+            onclick="closeUpgradeModal()"
+            class="w-full px-6 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-white font-semibold transition-colors"
+          >
+            Cancelar
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal de WhatsApp Paquete Completo -->
+    <div
+      id="whatsappModal"
+      class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center px-4 hidden"
+    >
+      <div
+        class="bg-slate-900 border border-white/20 rounded-2xl p-8 max-w-md w-full glass relative"
+      >
+        <button
+          onclick="closeWhatsAppModal()"
+          class="absolute top-4 right-4 text-white/60 hover:text-white text-2xl"
+        >
+          ×
+        </button>
+        <div class="text-center">
+          <div class="text-6xl mb-4">💬</div>
+          <h3 class="text-2xl font-bold mb-3">¡Comunícate por WhatsApp!</h3>
+          <div id="whatsappModalText" class="mb-6">
+            <p class="text-white/80 text-base leading-relaxed">
+              Uno de nuestros asesores te atenderá personalmente para ayudarte
+              con tu compra.
+            </p>
+          </div>
+          <a
+            id="whatsappModalLink"
+            href="https://wa.me/5215576017764"
+            target="_blank"
+            rel="noopener"
+            onclick="closeWhatsAppModal()"
+            class="inline-flex items-center justify-center gap-2 w-full px-6 py-3 rounded-xl bg-green-500 hover:bg-green-400 text-white font-bold transition-colors"
+          >
+            <span>💬</span> Abrir WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal de Nueva Cuenta -->
+    <div
+      id="newAccountModal"
+      class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center px-4 hidden"
+    >
+      <div
+        class="bg-slate-900 border border-white/20 rounded-2xl p-8 max-w-md w-full glass relative"
+      >
+        <button
+          onclick="closeNewAccountModal()"
+          class="absolute top-4 right-4 text-white/60 hover:text-white text-2xl"
+        >
+          ×
+        </button>
+        <h3 class="text-2xl font-bold mb-2">Crear Nueva Cuenta</h3>
+        <p class="text-white/70 mb-6">
+          Para continuar con tu compra, ingresa tu correo electrónico.
+        </p>
+        <form id="newAccountForm" class="space-y-4">
+          <div>
+            <label
+              for="newAccountEmail"
+              class="block text-sm font-semibold mb-2">Correo electrónico</label
+            >
+            <input
+              type="email"
+              id="newAccountEmail"
+              name="email"
+              required
+              placeholder="tu@email.com"
+              onkeypress="if(event.key === 'Enter') { event.preventDefault(); handleNewAccountSubmit(event); }"
+              class="w-full px-4 py-3 rounded-xl bg-slate-800/50 border border-white/10 text-white placeholder:text-white/40 focus:outline-none focus:border-red-500/50 focus:ring-2 focus:ring-red-500/20"
+            />
+          </div>
+          <div class="text-xs text-white/50">
+            Plan seleccionado:
+            <span id="selectedNewPlan" class="font-semibold text-white/80"
+            ></span>
+          </div>
+          <div id="newAccountMessage" class="hidden p-3 rounded-lg text-sm">
+          </div>
+          <button
+            type="button"
+            id="newAccountSubmitBtn"
+            onclick="handleNewAccountSubmit(event)"
+            class="w-full px-6 py-3 rounded-xl bg-red-500 hover:bg-red-400 text-slate-900 font-bold transition-colors"
+          >
+            Continuar
+          </button>
+          <button
+            type="button"
+            onclick="closeNewAccountModal()"
+            class="w-full px-6 py-3 rounded-xl bg-slate-800/50 hover:bg-slate-800 text-white font-semibold transition-colors"
+          >
+            Cancelar
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <footer class="py-8 border-t border-white/10">
+      <div
+        class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4 text-white/60 text-sm"
+      >
+        <p>© 2025 Solución Factura. Todos los derechos reservados.</p>
+        <nav class="flex gap-4">
+          <a href="#planes" class="hover:text-white">Planes</a>
+          <a href="#volumen" class="hover:text-white">Volumen</a>
+          <a href="#dos-anios" class="hover:text-white">2 años</a>
+          <a href="#upgrade" class="hover:text-white">Upgrade</a>
+          <a href="#faq" class="hover:text-white">FAQ</a>
+        </nav>
+      </div>
+    </footer>
+
+    <!-- Countdown Script (zona horaria Ciudad de México) -->
+    <script is:inline>
+      (function () {
+        // Fin: 2025-11-17 23:59:59 America/Mexico_City (UTC-6) => 2025-11-18T05:59:59Z
+        const target = new Date("2025-11-18T05:59:59Z");
+        const dd = document.getElementById("dd");
+        const hh = document.getElementById("hh");
+        const mm = document.getElementById("mm");
+        const ss = document.getElementById("ss");
+        function pad(n) {
+          return String(n).padStart(2, "0");
+        }
+        function tick() {
+          const now = new Date();
+          let diff = Math.max(0, target - now);
+          const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+          diff -= d * (1000 * 60 * 60 * 24);
+          const h = Math.floor(diff / (1000 * 60 * 60));
+          diff -= h * (1000 * 60 * 60);
+          const m = Math.floor(diff / (1000 * 60));
+          diff -= m * (1000 * 60);
+          const s = Math.floor(diff / 1000);
+          dd.textContent = pad(d);
+          hh.textContent = pad(h);
+          mm.textContent = pad(m);
+          ss.textContent = pad(s);
+        }
+        tick();
+        setInterval(tick, 1000);
+      })();
+    </script>
+
+    <!-- Script Modal Upgrade (webhook Wabotify) -->
+    <script is:inline>
+      let currentUpgradeType = "";
+      let currentUpgradeSKU = "";
+      function openUpgradeModal(upgradeType, sku) {
+        currentUpgradeType = upgradeType;
+        currentUpgradeSKU = sku;
+        const planName =
+          upgradeType === "premium"
+            ? "Premium"
+            : upgradeType === "premiumplus"
+              ? "Premium Plus"
+              : "Empresa";
+        document.getElementById("selectedPlan").textContent = planName;
+        document.getElementById("upgradeEmail").value = "";
+        document.getElementById("upgradeModal").classList.remove("hidden");
+        document.body.style.overflow = "hidden";
+      }
+      function closeUpgradeModal() {
+        document.getElementById("upgradeModal").classList.add("hidden");
+        document.body.style.overflow = "";
+        currentUpgradeType = "";
+        currentUpgradeSKU = "";
+        const messageDiv = document.getElementById("upgradeMessage");
+        const submitBtn = document.getElementById("upgradeSubmitBtn");
+        messageDiv.className = "hidden";
+        messageDiv.innerHTML = "";
+        submitBtn.disabled = false;
+        submitBtn.classList.remove("opacity-50", "cursor-not-allowed");
+      }
+      async function handleUpgradeSubmit(event) {
+        event.preventDefault();
+        const email = document.getElementById("upgradeEmail").value;
+        if (!(email && currentUpgradeType)) return;
+        showUpgradeLoading();
+        try {
+          const planType =
+            currentUpgradeType === "premium"
+              ? "premium"
+              : currentUpgradeType === "premiumplus"
+                ? "premium_plus"
+                : "empresa";
+          const response = await fetch(
+            `https://flow.wabotify.com/webhook/consult-email?email=${encodeURIComponent(email)}&plan_type=${planType}&sku=${currentUpgradeSKU}`,
+          );
+          const data = await response.json();
+          if (data.status === "success") {
+            showUpgradeSuccess(
+              "¡Correo verificado! Redirigiendo al checkout...",
+            );
+            setTimeout(() => {
+              if (data.link && data.link.trim() !== "") {
+                window.open(data.link, "_blank");
+                closeUpgradeModal();
+              } else {
+                showUpgradeError(
+                  "No se recibió el enlace de checkout. Contacta soporte.",
+                );
+              }
+            }, 1200);
+          } else if (data.status === "error") {
+            showUpgradeError(
+              "No se encontró una cuenta con <strong>" +
+                email +
+                "</strong>. Verifica tu correo.",
+              true,
+            );
+          } else {
+            showUpgradeError("Error inesperado. Intenta de nuevo.");
+          }
+        } catch (err) {
+          console.error(err);
+          showUpgradeError("Error al verificar el correo. Intenta de nuevo.");
+        }
+      }
+      function showUpgradeLoading() {
+        const messageDiv = document.getElementById("upgradeMessage");
+        const submitBtn = document.getElementById("upgradeSubmitBtn");
+        messageDiv.className =
+          "block p-3 rounded-lg text-sm bg-blue-500/20 border border-blue-500/30 text-blue-300";
+        messageDiv.innerHTML = `<div class="flex items-center gap-2"><svg class="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><circle class="opacity-75" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" stroke-dasharray="60" stroke-dashoffset="15" stroke-linecap="round"></circle></svg><span>Verificando correo...</span></div>`;
+        submitBtn.disabled = true;
+        submitBtn.classList.add("opacity-50", "cursor-not-allowed");
+      }
+      function showUpgradeSuccess(message) {
+        const messageDiv = document.getElementById("upgradeMessage");
+        messageDiv.className =
+          "block p-3 rounded-lg text-sm bg-green-500/20 border border-green-500/30 text-green-300";
+        messageDiv.innerHTML = `<div class="flex items-center gap-2"><svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span>${message}</span></div>`;
+      }
+      function showUpgradeError(message, showActions = false) {
+        const messageDiv = document.getElementById("upgradeMessage");
+        const submitBtn = document.getElementById("upgradeSubmitBtn");
+        let actionsHTML = showActions
+          ? `<div class="flex gap-2 mt-3"><button onclick="retryUpgrade()" class="flex-1 px-3 py-2 text-xs rounded-lg bg-white/10 hover:bg-white/20 transition-colors font-semibold">Intentar de nuevo</button><a href="#contacto" onclick="closeUpgradeModal()" class="flex-1 px-3 py-2 text-xs rounded-lg bg-white/10 hover:bg-white/20 transition-colors font-semibold text-center">Contactar soporte</a></div>`
+          : "";
+        messageDiv.className =
+          "block p-3 rounded-lg text-sm bg-red-500/20 border border-red-500/30 text-red-300";
+        messageDiv.innerHTML = `<div class="flex items-start gap-2"><svg class="h-4 w-4 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/></svg><div class="flex-1"><div>${message}</div>${actionsHTML}</div></div>`;
+        submitBtn.disabled = false;
+        submitBtn.classList.remove("opacity-50", "cursor-not-allowed");
+      }
+      function retryUpgrade() {
+        const messageDiv = document.getElementById("upgradeMessage");
+        const emailInput = document.getElementById("upgradeEmail");
+        messageDiv.className = "hidden";
+        messageDiv.innerHTML = "";
+        emailInput.select();
+        emailInput.focus();
+      }
+      document
+        .getElementById("upgradeModal")
+        ?.addEventListener("click", function (e) {
+          if (e.target === this) {
+            closeUpgradeModal();
+          }
+        });
+      document.addEventListener("keydown", function (e) {
+        if (
+          e.key === "Escape" &&
+          !document.getElementById("upgradeModal").classList.contains("hidden")
+        ) {
+          closeUpgradeModal();
+        }
+      });
+    </script>
+
+    <!-- Script Modal WhatsApp -->
+    <script is:inline>
+      function openWhatsAppModal(planType) {
+        const planConfigs = {
+          paquete_completo: {
+            html: '<p class="text-white/70 text-sm leading-relaxed">Uno de nuestros asesores te atenderá personalmente para ayudarte con la compra del:</p><p class="text-white font-bold text-lg mt-2">Paquete Empresarial Contable</p><p class="text-white/60 text-sm mt-1">(Sistema Contable + Plan Premium)</p>',
+            message:
+              "Hola, quiero información sobre el Paquete Empresarial Contable (Sistema Contable + Plan Premium)",
+          },
+          premium_2y: {
+            html: '<p class="text-white/70 text-sm leading-relaxed">Uno de nuestros asesores te atenderá personalmente para ayudarte con la compra del:</p><p class="text-white font-bold text-lg mt-2">Prepago a 2 años</p><p class="text-amber-400 font-semibold text-base mt-1">Plan Premium</p>',
+            message:
+              "Hola, quiero información sobre el Prepago a 2 años - Premium",
+          },
+          premium_plus_2y: {
+            html: '<p class="text-white/70 text-sm leading-relaxed">Uno de nuestros asesores te atenderá personalmente para ayudarte con la compra del:</p><p class="text-white font-bold text-lg mt-2">Prepago a 2 años</p><p class="text-amber-400 font-semibold text-base mt-1">Plan Premium Plus</p>',
+            message:
+              "Hola, quiero información sobre el Prepago a 2 años - Premium Plus",
+          },
+        };
+
+        const config = planConfigs[planType] || planConfigs.paquete_completo;
+
+        // Actualizar el texto del modal con HTML
+        document.getElementById("whatsappModalText").innerHTML = config.html;
+
+        // Actualizar el enlace de WhatsApp
+        const whatsappLink = document.getElementById("whatsappModalLink");
+        whatsappLink.href = `https://wa.me/5215576017764?text=${encodeURIComponent(config.message)}`;
+
+        // Mostrar el modal
+        document.getElementById("whatsappModal").classList.remove("hidden");
+        document.body.style.overflow = "hidden";
+      }
+      function closeWhatsAppModal() {
+        document.getElementById("whatsappModal").classList.add("hidden");
+        document.body.style.overflow = "";
+      }
+    </script>
+
+    <!-- Script Modal Nueva Cuenta -->
+    <script is:inline>
+      let currentNewAccountPlan = "";
+      let currentNewAccountSKU = "";
+
+      function openNewAccountModal(planType, sku) {
+        currentNewAccountPlan = planType;
+        currentNewAccountSKU = sku;
+
+        const planNames = {
+          emprende: "Emprende",
+          crece: "Crece",
+          empresa: "Empresa",
+          premium: "Premium",
+          premium_plus: "Premium Plus",
+        };
+
+        const planName = planNames[planType] || planType;
+        document.getElementById("selectedNewPlan").textContent = planName;
+        document.getElementById("newAccountEmail").value = "";
+        document.getElementById("newAccountModal").classList.remove("hidden");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeNewAccountModal() {
+        document.getElementById("newAccountModal").classList.add("hidden");
+        document.body.style.overflow = "";
+        currentNewAccountPlan = "";
+        currentNewAccountSKU = "";
+        const messageDiv = document.getElementById("newAccountMessage");
+        const submitBtn = document.getElementById("newAccountSubmitBtn");
+        messageDiv.className = "hidden";
+        messageDiv.innerHTML = "";
+        submitBtn.disabled = false;
+        submitBtn.classList.remove("opacity-50", "cursor-not-allowed");
+      }
+
+      async function handleNewAccountSubmit(event) {
+        event.preventDefault();
+        const email = document.getElementById("newAccountEmail").value;
+        if (!(email && currentNewAccountPlan)) return;
+
+        showNewAccountLoading();
+
+        try {
+          const response = await fetch(
+            `https://flow.wabotify.com/webhook/consult-new-accounts?email=${encodeURIComponent(email)}&plan_type=${currentNewAccountPlan}&sku=${currentNewAccountSKU}`,
+          );
+          const data = await response.json();
+
+          if (data.status === "success") {
+            showNewAccountSuccess(
+              "¡Perfecto! Serás redirigido al checkout para completar tu pago y activar tu plan.",
+            );
+            setTimeout(() => {
+              if (data.link && data.link.trim() !== "") {
+                window.open(data.link, "_blank");
+                closeNewAccountModal();
+              } else {
+                showNewAccountError(
+                  "No se recibió el enlace de checkout. Contacta soporte.",
+                );
+              }
+            }, 1500);
+          } else if (data.status === "error") {
+            // Manejar diferentes tipos de error según el plan
+            if (data.error_type === "payment_in_other_page") {
+              // Para planes Emprende y Crece
+              showNewAccountError(
+                "Ya tienes una cuenta registrada. Para comprar este plan debes ir a la página principal. Se abrirá en una nueva ventana...",
+              );
+              setTimeout(() => {
+                if (data.link && data.link.trim() !== "") {
+                  window.open(data.link, "_blank");
+                  closeNewAccountModal();
+                }
+              }, 2000);
+            } else if (data.error_type === "renew") {
+              // Para planes Empresa, Premium y Premium Plus
+              showNewAccountError(
+                "Ya tienes una cuenta registrada. Te llevaremos a la sección de renovación para clientes existentes.",
+              );
+              setTimeout(() => {
+                closeNewAccountModal();
+                // Ir directamente a la sección #upgrade
+                window.location.href = "#upgrade";
+              }, 2000);
+            } else {
+              showNewAccountError(
+                "Hubo un problema al procesar tu solicitud: " +
+                  (data.message || "Error desconocido"),
+              );
+            }
+          } else {
+            showNewAccountError(
+              "Respuesta inesperada del servidor. Intenta nuevamente.",
+            );
+          }
+        } catch (err) {
+          console.error("Error al consultar webhook:", err);
+          showNewAccountError(
+            "Error de conexión. Verifica tu red e inténtalo de nuevo.",
+          );
+        }
+      }
+
+      function showNewAccountLoading() {
+        const messageDiv = document.getElementById("newAccountMessage");
+        const submitBtn = document.getElementById("newAccountSubmitBtn");
+        messageDiv.className =
+          "p-3 rounded-lg text-sm bg-blue-500/20 text-blue-300 border border-blue-500/30";
+        messageDiv.innerHTML = `<div class="flex items-center gap-2"><svg class="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><circle class="opacity-75" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" stroke-dasharray="60" stroke-dashoffset="15" stroke-linecap="round"></circle></svg><span>Procesando...</span></div>`;
+        submitBtn.disabled = true;
+        submitBtn.classList.add("opacity-50", "cursor-not-allowed");
+      }
+
+      function showNewAccountSuccess(message) {
+        const messageDiv = document.getElementById("newAccountMessage");
+        messageDiv.className =
+          "p-3 rounded-lg text-sm bg-green-500/20 text-green-300 border border-green-500/30";
+        messageDiv.innerHTML = "✅ " + message;
+      }
+
+      function showNewAccountError(message) {
+        const messageDiv = document.getElementById("newAccountMessage");
+        const submitBtn = document.getElementById("newAccountSubmitBtn");
+        messageDiv.className =
+          "p-3 rounded-lg text-sm bg-red-500/20 text-red-300 border border-red-500/30";
+        messageDiv.innerHTML = "❌ " + message;
+        submitBtn.disabled = false;
+        submitBtn.classList.remove("opacity-50", "cursor-not-allowed");
+      }
+    </script>
+
+    <!-- === POPUP NUEVAS TARIFAS 2025 (Solución Factura) === -->
+    <style>
+      .sf-modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(2, 6, 23, 0.6);
+        backdrop-filter: blur(3px);
+        display: none;
+        z-index: 9998;
+      }
+      .sf-modal {
+        position: fixed;
+        inset: 0;
+        display: none;
+        z-index: 9999;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+      .sf-modal-card {
+        width: 100%;
+        max-width: 900px;
+        border-radius: 18px;
+        overflow: hidden;
+        background: #ffffff;
+        box-shadow: 0 20px 45px rgba(2, 6, 23, 0.35);
+        transform: translateY(20px) scale(0.98);
+        opacity: 0;
+        transition: 0.25s ease;
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+      }
+      .sf-modal.show .sf-modal-card {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      .sf-modal-header {
+        background: linear-gradient(135deg, #0c4a6e 0%, #075985 100%);
+        color: #fff;
+        padding: 18px 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .sf-badge {
+        background: #ffffff1a;
+        padding: 6px 10px;
+        border-radius: 999px;
+        font-size: 12px;
+      }
+      .sf-title {
+        font-size: 20px;
+        font-weight: 700;
+        margin: 0;
+        flex: 1;
+      }
+      .sf-close {
+        appearance: none;
+        border: 0;
+        background: #ffffff1a;
+        color: #fff;
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+        font-size: 18px;
+      }
+      .sf-modal-body {
+        padding: 18px 20px;
+        color: #0f172a;
+      }
+      .sf-sub {
+        color: #1e293b;
+        margin: 0.25rem 0 1rem;
+        font-size: 15px;
+      }
+      .sf-highlight {
+        background: #fef3c7;
+        border: 1px solid #fbbf24;
+        border-radius: 12px;
+        padding: 12px 14px;
+        margin-bottom: 14px;
+        text-align: center;
+        font-size: 14px;
+      }
+      .sf-highlight strong {
+        color: #b45309;
+      }
+      .sf-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        background: #fff;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.06);
+      }
+      .sf-table thead {
+        background: linear-gradient(135deg, #0c4a6e 0%, #075985 100%);
+        color: #fff;
+      }
+      .sf-table th {
+        padding: 12px 10px;
+        font-weight: 600;
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
+        text-align: left;
+      }
+      .sf-table td {
+        padding: 12px 10px;
+        color: #1e293b;
+        font-size: 11px;
+      }
+      .sf-table tbody tr {
+        transition: all 0.3s ease;
+        border-bottom: 1px solid #e2e8f0;
+      }
+      .sf-table tbody tr:last-child {
+        border-bottom: none;
+      }
+      .sf-table tbody tr:hover {
+        background: linear-gradient(90deg, #f0f9ff 0%, #e0f2fe 100%);
+        transform: scale(1.01);
+        box-shadow: 0 3px 8px rgba(12, 74, 110, 0.08);
+      }
+      .sf-table tbody tr:nth-child(even) {
+        background: #f8fafc;
+      }
+      .sf-table tbody tr:nth-child(even):hover {
+        background: linear-gradient(90deg, #f0f9ff 0%, #e0f2fe 100%);
+      }
+      .sf-plan-name {
+        font-weight: 700;
+        font-size: 12px;
+        color: #0c4a6e;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .sf-plan-badge {
+        display: inline-block;
+        padding: 2px 6px;
+        background: #0ea5e9;
+        color: #fff;
+        border-radius: 8px;
+        font-size: 8px;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+      .sf-price {
+        font-weight: 700;
+        font-size: 14px;
+        color: #0c4a6e;
+      }
+      .sf-price-note {
+        display: block;
+        font-size: 8px;
+        color: #64748b;
+        font-weight: 400;
+        margin-top: 2px;
+      }
+      .sf-stamps {
+        font-weight: 600;
+        color: #0ea5e9;
+        font-size: 12px;
+      }
+      .sf-stamps::after {
+        content: " timbres";
+        font-weight: 400;
+        color: #64748b;
+        font-size: 10px;
+      }
+      .sf-features {
+        color: #475569;
+        line-height: 1.4;
+        font-size: 10px;
+      }
+      .sf-actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 16px;
+      }
+      .sf-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 12px 18px;
+        border-radius: 10px;
+        font-weight: 700;
+        text-decoration: none;
+        cursor: pointer;
+        border: 0;
+      }
+      .sf-btn-primary {
+        background: #0c4a6e;
+        color: #fff;
+      }
+      .sf-btn-secondary {
+        background: #f1f5f9;
+        color: #0f172a;
+        border: 1px solid #e2e8f0;
+      }
+      .sf-foot {
+        margin-top: 10px;
+        font-size: 12px;
+        color: #475569;
+      }
+      @media (max-width: 768px) {
+        .sf-table {
+          font-size: 9px;
+        }
+        .sf-table thead th,
+        .sf-table td {
+          padding: 8px 6px;
+        }
+        .sf-plan-name {
+          font-size: 10px;
+        }
+        .sf-price {
+          font-size: 12px;
+        }
+      }
+    </style>
+
+    <div class="sf-modal-overlay" id="sfTarifasOverlay" aria-hidden="true">
+    </div>
+    <div
+      class="sf-modal"
+      id="sfTarifasModal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="sfTarifasTitle"
+    >
+      <div class="sf-modal-card" role="document">
+        <div class="sf-modal-header">
+          <span class="sf-badge">Aviso</span>
+          <h3 id="sfTarifasTitle" class="sf-title">
+            Nuevos PRECIOS en Planes de Facturación
+          </h3>
+          <button class="sf-close" id="sfTarifasClose" aria-label="Cerrar">
+            ✕
+          </button>
+        </div>
+        <div class="sf-modal-body">
+          <div class="sf-highlight">
+            ⚡ Precios disponibles
+            <strong>a partir del 18 de Noviembre 2025</strong>
+          </div>
+
+          <table
+            class="sf-table"
+            aria-label="Nuevos precios desde el 18 de noviembre de 2025"
+          >
+            <thead>
+              <tr>
+                <th>Plan</th>
+                <th>Precio Anual</th>
+                <th>Timbres</th>
+                <th>Funcionalidades Destacadas</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="sf-plan-name">
+                    Emprende
+                    <span class="sf-plan-badge">Básico</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="sf-price">
+                    $327 MXN
+                    <span class="sf-price-note">anual</span>
+                  </div>
+                </td>
+                <td><div class="sf-stamps">300</div></td>
+                <td class="sf-features">
+                  Facturación básica, CFDI 4.0, Envío por mail
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="sf-plan-name">Crece</div>
+                </td>
+                <td>
+                  <div class="sf-price">
+                    $561 MXN
+                    <span class="sf-price-note">anual</span>
+                  </div>
+                </td>
+                <td><div class="sf-stamps">600</div></td>
+                <td class="sf-features">
+                  Incluye funciones de Emprende + TIMBRES
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="sf-plan-name">
+                    Empresa
+                    <span class="sf-plan-badge" style="background: #f59e0b"
+                      >Popular</span
+                    >
+                  </div>
+                </td>
+                <td>
+                  <div class="sf-price">
+                    $1,075 MXN
+                    <span class="sf-price-note">anual</span>
+                  </div>
+                </td>
+                <td><div class="sf-stamps">1,200</div></td>
+                <td class="sf-features">
+                  Facturación masiva, Carta Porte, Recibo de Honorarios, Multi
+                  RFC
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="sf-plan-name">Premium</div>
+                </td>
+                <td>
+                  <div class="sf-price">
+                    $2,324 MXN
+                    <span class="sf-price-note">anual</span>
+                  </div>
+                </td>
+                <td><div class="sf-stamps">6,000</div></td>
+                <td class="sf-features">
+                  Descarga XML, Notas de Venta, Cotizaciones, Programación de
+                  Facturas
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="sf-plan-name">
+                    Premium Plus
+                    <span class="sf-plan-badge" style="background: #8b5cf6"
+                      >Completo</span
+                    >
+                  </div>
+                </td>
+                <td>
+                  <div class="sf-price">
+                    $3,135 MXN
+                    <span class="sf-price-note">anual</span>
+                  </div>
+                </td>
+                <td><div class="sf-stamps">10,000</div></td>
+                <td class="sf-features">
+                  Todas las funciones + AutoFactura, Conciliación Bancaria y
+                  Validación EFOS/EDOS
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="sf-actions">
+            <a
+              class="sf-btn sf-btn-primary"
+              href="https://wa.me/5215576017764?text=Hola,%20quiero%20renovar%20mi%20plan%20y%20conservar%20mi%20precio%20actual%20de%20Solución%20Factura"
+              target="_blank"
+              rel="noopener">💬 Hablar y renovar ahora</a
+            >
+            <a class="sf-btn sf-btn-secondary" href="#planes"
+              >Ver planes completos</a
+            >
+          </div>
+
+          <div class="sf-foot">
+            ⚠️ Los precios actuales estarán disponibles únicamente hasta el 17
+            de noviembre de 2025.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        const MODAL_ID = "sfTarifasModal";
+        const OVERLAY_ID = "sfTarifasOverlay";
+        const CLOSE_ID = "sfTarifasClose";
+        const STORAGE_KEY = "sf_tarifas2025_dismissed_until";
+
+        const showBetweenDates = true; // <- Si quieres que aparezca solo en rango de fechas
+        const start = new Date("2025-11-10T00:00:00"); // desde
+        const end = new Date("2025-11-17T23:59:59"); // hasta
+        const now = new Date();
+
+        function inRange() {
+          if (!showBetweenDates) return true;
+          return now >= start && now <= end;
+        }
+
+        function shouldShow() {
+          try {
+            const until = localStorage.getItem(STORAGE_KEY);
+            if (until && new Date(until) > now) return false;
+          } catch (e) {}
+          return inRange();
+        }
+
+        function openModal() {
+          const m = document.getElementById(MODAL_ID);
+          const o = document.getElementById(OVERLAY_ID);
+          if (!m || !o) return;
+          o.style.display = "block";
+          m.style.display = "flex";
+          // anima
+          requestAnimationFrame(() => m.classList.add("show"));
+          // focus
+          const closeBtn = document.getElementById(CLOSE_ID);
+          closeBtn && closeBtn.focus();
+          // cerrar por overlay/ESC
+          o.addEventListener("click", closeModal);
+          document.addEventListener("keydown", escClose);
+        }
+
+        function closeModal() {
+          const m = document.getElementById(MODAL_ID);
+          const o = document.getElementById(OVERLAY_ID);
+          if (!m || !o) return;
+          m.classList.remove("show");
+          setTimeout(() => {
+            m.style.display = "none";
+            o.style.display = "none";
+          }, 200);
+          // no mostrar por 7 días
+          try {
+            const until = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
+            localStorage.setItem(STORAGE_KEY, until.toISOString());
+          } catch (e) {}
+          document.removeEventListener("keydown", escClose);
+        }
+
+        function escClose(e) {
+          if (e.key === "Escape") closeModal();
+        }
+
+        function init() {
+          const closeBtn = document.getElementById(CLOSE_ID);
+          closeBtn && closeBtn.addEventListener("click", closeModal);
+          if (shouldShow()) {
+            // abre con leve retraso para no ser intrusivo
+            setTimeout(openModal, 900);
+          }
+        }
+
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", init);
+        } else {
+          init();
+        }
+      })();
+    </script>
+    <!-- === / POPUP NUEVAS TARIFAS 2025 === -->
+  </body>
+</html>

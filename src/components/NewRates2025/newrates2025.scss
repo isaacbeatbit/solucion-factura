@@ -1,0 +1,306 @@
+/* New Rates 2025 Section - Always Light Theme */
+.new-rates {
+  padding: 3rem 0;
+  background: #ffffff;
+  color: #1a1a2e;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+  overflow-x: hidden;
+
+  @media (max-width: 768px) {
+    padding: 2rem 0;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1.5rem 0;
+  }
+}
+
+.new-rates .section-header {
+  margin-bottom: 2.5rem;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  text-align: center;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (max-width: 768px) {
+    margin-bottom: 2rem;
+    padding: 0 1rem;
+  }
+
+  @media (max-width: 480px) {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.new-rates .title-section {
+  color: #1a1a2e;
+  -webkit-text-fill-color: #1a1a2e;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 0 1.5rem 0;
+  line-height: 1.2;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    margin-bottom: 1.25rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+}
+
+.new-rates .info-text {
+  font-size: 1.1rem;
+  color: #1a1a2e;
+  margin: 0 0 1rem 0;
+  line-height: 1.6;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.95rem;
+  }
+}
+
+.new-rates .info-text strong {
+  color: #1a6dcc;
+  font-weight: 700;
+}
+
+.new-rates .highlight-text {
+  font-size: 1.1rem;
+  color: #1a1a2e;
+  margin: 1.5rem 0 0 0;
+  line-height: 1.6;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    margin-top: 1.25rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.95rem;
+    margin-top: 1rem;
+  }
+}
+
+.new-rates .highlight-text strong {
+  color: #1a6dcc;
+  font-weight: 700;
+}
+
+.rates-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Rates Table */
+.rates-table-wrapper {
+  overflow-x: auto;
+  margin-bottom: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 768px) {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.rates-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  backdrop-filter: blur(10px);
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.rates-table thead {
+  background: #1a6dcc;
+  color: #ffffff;
+}
+
+.rates-table th {
+  padding: 1.25rem 1rem;
+  text-align: left;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+
+  @media (max-width: 768px) {
+    padding: 1rem 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 480px) {
+    display: none;
+  }
+}
+
+.rates-table .table-subtitle {
+  font-size: 0.75rem;
+  font-weight: 400;
+  opacity: 0.9;
+  display: block;
+  margin-top: 0.25rem;
+}
+
+.rates-table tbody tr {
+  border-bottom: 1px solid #e0e0e0;
+  transition: background-color 0.2s ease;
+}
+
+.rates-table tbody tr:hover {
+  background: rgba(26, 109, 204, 0.05);
+}
+
+.rates-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.rates-table td {
+  padding: 1.25rem 1rem;
+  color: #1a1a2e;
+  font-size: 0.95rem;
+  line-height: 1.5;
+
+  @media (max-width: 768px) {
+    padding: 1rem 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 480px) {
+    display: block;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: none;
+  }
+}
+
+.rates-table td strong {
+  color: #1a6dcc;
+  font-weight: 700;
+}
+
+.rates-table td .price {
+  color: #0f9d58;
+  font-weight: 700;
+  font-size: 1.1rem;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+}
+
+/* Mobile responsive table */
+@media (max-width: 480px) {
+  .rates-table tbody tr {
+    display: block;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 0.75rem;
+    padding: 0.5rem 0;
+    background: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+
+  .rates-table tbody tr:hover {
+    background: #ffffff;
+  }
+
+  .rates-table td::before {
+    content: attr(data-label);
+    font-weight: 700;
+    display: block;
+    margin-bottom: 0.25rem;
+    color: #1a6dcc;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .rates-table td:first-child {
+    padding-top: 1rem;
+  }
+
+  .rates-table td:last-child {
+    padding-bottom: 1rem;
+  }
+}
+
+/* CTA Section */
+.cta-section {
+  text-align: center;
+  margin-bottom: 2rem;
+
+  @media (max-width: 768px) {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.btn-advisor {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  background: #1a6dcc;
+  color: #ffffff;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+
+  @media (max-width: 768px) {
+    padding: 0.875rem 1.75rem;
+    font-size: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+    width: 100%;
+  }
+}
+
+.btn-advisor:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(26, 109, 204, 0.3);
+  background: #1557a8;
+}
+
+/* Disclaimer */
+.disclaimer {
+  text-align: center;
+  padding: 1rem;
+  background: rgba(255, 193, 7, 0.1);
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 193, 7, 0.3);
+}
+
+.disclaimer p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #1a1a2e;
+
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+  }
+}
+
+.disclaimer em {
+  font-style: italic;
+  color: #666666;
+}

@@ -148,13 +148,14 @@ import "./prices.scss";
     display: flex;
   }
   #plan-modal .modal-content {
-    background: #fff;
-    color: #222;
+    background: var(--bg-card);
+    color: var(--text-primary);
     border-radius: 12px;
-    max-width: 340px;
+    max-width: 420px;
     width: 90vw;
     padding: 2rem 1.5rem 1.5rem 1.5rem;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+    box-shadow: var(--theme-shadow-xl);
+    border: 1px solid var(--border-color);
     text-align: center;
     position: relative;
   }
@@ -165,226 +166,389 @@ import "./prices.scss";
     background: none;
     border: none;
     font-size: 1.5rem;
-    color: #888;
+    color: var(--text-muted);
     cursor: pointer;
+    transition: color 0.2s;
+  }
+  #plan-modal .close-modal:hover {
+    color: var(--text-primary);
   }
   #plan-modal .modal-title {
-    font-size: 1.25rem;
+    font-size: 1.35rem;
     font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--secondary);
+  }
+  #plan-modal .modal-subtitle {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+  }
+  #plan-modal .form-group {
+    text-align: left;
     margin-bottom: 1rem;
+  }
+  #plan-modal .form-group label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+  }
+  #plan-modal .form-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+  }
+  #plan-modal .form-group input:focus {
+    outline: none;
+    border-color: var(--secondary);
+    background: var(--bg-primary);
+  }
+  #plan-modal .plan-selected {
+    background: var(--bg-secondary);
+    padding: 0.75rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    border: 1px solid var(--border-color);
+  }
+  #plan-modal .plan-selected strong {
+    color: var(--secondary);
+    text-transform: capitalize;
   }
   #plan-modal .modal-actions {
     display: flex;
-    flex-direction: column;
     gap: 0.75rem;
     margin-top: 1.5rem;
   }
-  #plan-modal .modal-actions a {
-    display: block;
-    padding: 0.75rem;
+  #plan-modal .modal-actions button {
+    flex: 1;
+    padding: 0.85rem;
     border-radius: 8px;
     font-weight: 600;
-    text-decoration: none;
-    transition: background 0.15s;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 1rem;
   }
-  #plan-modal .modal-actions a.yes {
-    background: #1a6dcc;
+  #plan-modal .modal-actions button.btn-submit {
+    background: var(--secondary);
     color: #fff;
   }
-  #plan-modal .modal-actions a.no {
-    background: #f0f4ff;
-    color: #1a6dcc;
-    border: 1px solid #1a6dcc;
+  #plan-modal .modal-actions button.btn-submit:hover {
+    background: var(--highlight-blue);
   }
-  #plan-modal .modal-actions a:hover {
-    opacity: 0.85;
+  #plan-modal .modal-actions button.btn-submit:disabled {
+    background: var(--text-muted);
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+  #plan-modal .modal-actions button.btn-cancel {
+    background: var(--bg-secondary);
+    color: var(--secondary);
+    border: 1px solid var(--secondary);
+  }
+  #plan-modal .modal-actions button.btn-cancel:hover {
+    background: var(--bg-tertiary);
+  }
+  #plan-modal .error-message {
+    color: #dc3545;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    display: none;
+  }
+  #plan-modal .error-message.show {
+    display: block;
+  }
+  #plan-modal .loading {
+    display: none;
+    margin-top: 1rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+  }
+  #plan-modal .loading.show {
+    display: block;
+  }
+  #plan-modal .success-message {
+    display: none;
+    margin-top: 1rem;
+    padding: 1rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--accent);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  #plan-modal .success-message.show {
+    display: block;
+  }
+  #plan-modal .success-message strong {
+    color: var(--accent);
+    display: block;
+    margin-bottom: 0.5rem;
   }
 </style>
 <div id="plan-modal">
   <div class="modal-content">
     <button class="close-modal" aria-label="Cerrar">&times;</button>
-    <div class="modal-title">¿Ya tienes cuenta?</div>
-    <div class="modal-actions">
-      <a class="yes" id="modal-yes-link" href="" target="_blank" rel="noopener"
-        >Sí, comprar</a
-      >
-      <a
-        class="no"
-        id="modal-register-link"
-        href="https://app.solucionfactura.mx/register"
-        target="_blank"
-        rel="noopener">No, registrarme</a
-      >
+    <div class="modal-title">Continuar con tu compra</div>
+    <div class="modal-subtitle">
+      Ingresa tu correo electrónico para continuar
     </div>
+
+    <form id="plan-form">
+      <div class="form-group">
+        <label for="email-input">Correo electrónico:</label>
+        <input
+          type="email"
+          id="email-input"
+          name="email"
+          placeholder="tu@correo.com"
+          required
+          autocomplete="email"
+        />
+      </div>
+
+      <div class="plan-selected">
+        Plan seleccionado: <strong id="selected-plan-name">-</strong>
+      </div>
+
+      <div class="error-message" id="error-message"></div>
+      <div class="loading" id="loading-message">Procesando...</div>
+      <div class="success-message" id="success-message">
+        <strong>✓ Redirigiendo...</strong>
+        Serás redirigido a otra página para completar tu pago.
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn-cancel">Cancelar</button>
+        <button type="submit" class="btn-submit">Continuar</button>
+      </div>
+    </form>
   </div>
 </div>
 <script>
+  // Variable global para compartir con Table.astro
+  if (typeof window !== "undefined") {
+    window.currentPlan = null;
+  }
+  let currentPlan = null;
+
+  // Mapeo de planes a nombres de API (con guión bajo) - compartido globalmente
+  if (typeof window !== "undefined") {
+    window.planApiNames = {
+      emprende: "emprende",
+      crece: "crece",
+      empresa: "empresa",
+      premium: "premium",
+      "premium-plus": "premium_plus",
+    };
+  }
+  const planApiNames = {
+    emprende: "emprende",
+    crece: "crece",
+    empresa: "empresa",
+    premium: "premium",
+    "premium-plus": "premium_plus",
+  };
+
+  // URLs de fallback por si falla la API
+  const planUrls = {
+    emprende: {
+      subscribe:
+        "https://pagos.solucionfiscal.online/subscribe/6677460f60546edc2553076f/plan-emprende",
+      register: "https://app.solucionfactura.mx/register?plan=emprende",
+    },
+    crece: {
+      subscribe:
+        "https://pagos.solucionfiscal.online/subscribe/6677544560546edc255308ea/plan-crece",
+      register: "https://app.solucionfactura.mx/register?plan=crece",
+    },
+    empresa: {
+      subscribe:
+        "https://pagos.solucionfiscal.online/subscribe/667754e89b6a9adc0e5693f1/plan-empresa",
+      register: "https://app.solucionfactura.mx/register?plan=empresa",
+    },
+    premium: {
+      subscribe:
+        "https://pagos.solucionfiscal.online/subscribe/6677554f9b6a9adc0e5693f6/plan-premium",
+      register: "https://app.solucionfactura.mx/register?plan=premium",
+    },
+    "premium-plus": {
+      subscribe:
+        "https://pagos.solucionfiscal.online/subscribe/667756fe9b6a9adc0e569424/plan-premium-plus",
+      register: "https://app.solucionfactura.mx/register?plan=premium-plus",
+    },
+  };
+
+  // Función para formatear el nombre del plan
+  function formatPlanName(plan) {
+    return plan.replace(/-/g, " ").replace(/\b\w/g, (l) => l.toUpperCase());
+  }
+
   // Abrir modal al hacer click en cualquier botón de plan
   document.querySelectorAll(".plan-button").forEach((btn) => {
     btn.addEventListener("click", function (e) {
       e.preventDefault();
-      const plan = btn.getAttribute("data-plan");
-      const modal = document.getElementById("plan-modal");
-      const registerLink = document.getElementById("modal-register-link");
-      const yesLink = document.getElementById("modal-yes-link");
-
-      // Links de compra y registro por plan
-      let yesUrl = "";
-      let regUrl = "";
-
-      if (plan === "emprende") {
-        yesUrl =
-          "https://pagos.solucionfiscal.online/subscribe/6677460f60546edc2553076f/plan-emprende";
-        regUrl = "https://app.solucionfactura.mx/register?plan=emprende";
-      } else if (plan === "crece") {
-        yesUrl =
-          "https://pagos.solucionfiscal.online/subscribe/6677544560546edc255308ea/plan-crece";
-        regUrl = "https://app.solucionfactura.mx/register?plan=crece";
-      } else if (plan === "empresa") {
-        yesUrl =
-          "https://pagos.solucionfiscal.online/subscribe/667754e89b6a9adc0e5693f1/plan-empresa";
-        regUrl = "https://app.solucionfactura.mx/register?plan=empresa";
-      } else if (plan === "premium") {
-        yesUrl =
-          "https://pagos.solucionfiscal.online/subscribe/6677554f9b6a9adc0e5693f6/plan-premium";
-        regUrl = "https://app.solucionfactura.mx/register?plan=premium";
-      } else if (plan === "premium-plus") {
-        yesUrl =
-          "https://pagos.solucionfiscal.online/subscribe/667756fe9b6a9adc0e569424/plan-premium-plus";
-        regUrl = "https://app.solucionfactura.mx/register?plan=premium-plus";
-      } else {
-        // fallback: registro general
-        regUrl = "https://app.solucionfactura.mx/register";
+      currentPlan = btn.getAttribute("data-plan");
+      if (typeof window !== "undefined") {
+        window.currentPlan = currentPlan;
       }
+      const modal = document.getElementById("plan-modal");
+      const planNameEl = document.getElementById("selected-plan-name");
+      const emailInput = document.getElementById("email-input");
+      const errorMessage = document.getElementById("error-message");
 
-      yesLink.setAttribute("href", yesUrl);
-      registerLink.setAttribute("href", regUrl);
+      // Actualizar nombre del plan
+      planNameEl.textContent = formatPlanName(currentPlan);
 
+      // Limpiar formulario
+      emailInput.value = "";
+      errorMessage.classList.remove("show");
+      errorMessage.textContent = "";
+
+      // Mostrar modal
       modal.classList.add("active");
       document.body.style.overflow = "hidden";
+
+      // Focus en el input
+      setTimeout(() => emailInput.focus(), 100);
     });
   });
-  // Cerrar modal al hacer click en la X
+
+  // Cerrar modal
+  function closeModalHandler() {
+    const modal = document.getElementById("plan-modal");
+    const submitBtn = document.querySelector(".btn-submit");
+    const successMessage = document.getElementById("success-message");
+    const loadingMessage = document.getElementById("loading-message");
+    const errorMessage = document.getElementById("error-message");
+
+    modal.classList.remove("active");
+    document.body.style.overflow = "";
+    currentPlan = null;
+    if (typeof window !== "undefined") {
+      window.currentPlan = null;
+    }
+
+    // Resetear estado del botón y mensajes
+    if (submitBtn) submitBtn.disabled = false;
+    if (successMessage) successMessage.classList.remove("show");
+    if (loadingMessage) loadingMessage.classList.remove("show");
+    if (errorMessage) errorMessage.classList.remove("show");
+  }
+
+  // Cerrar modal al hacer click en la X o botón cancelar
   document
     .querySelector("#plan-modal .close-modal")
-    .addEventListener("click", function () {
-      document.getElementById("plan-modal").classList.remove("active");
-      document.body.style.overflow = "";
-    });
+    .addEventListener("click", closeModalHandler);
+  document
+    .querySelector("#plan-modal .btn-cancel")
+    .addEventListener("click", closeModalHandler);
+
   // Cerrar modal al hacer click fuera del contenido
   document.getElementById("plan-modal").addEventListener("click", function (e) {
     if (e.target === this) {
-      this.classList.remove("active");
-      document.body.style.overflow = "";
+      closeModalHandler();
     }
   });
-</script>
 
-<!-- Modal centrado para selección de cuenta -->
-<style>
-  #plan-modal {
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    left: 0;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.45);
-    align-items: center;
-    justify-content: center;
-    transition: opacity 0.2s;
-  }
-  #plan-modal .modal-content {
-    background: #fff;
-    color: #222;
-    border-radius: 12px;
-    max-width: 340px;
-    width: 90vw;
-    padding: 2rem 1.5rem 1.5rem 1.5rem;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
-    text-align: center;
-    position: relative;
-  }
-  #plan-modal .close-modal {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    color: #888;
-    cursor: pointer;
-  }
-  #plan-modal .modal-title {
-    font-size: 1.25rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-  }
-  #plan-modal .modal-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    margin-top: 1.5rem;
-  }
-  #plan-modal .modal-actions a {
-    display: block;
-    padding: 0.75rem;
-    border-radius: 8px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: background 0.15s;
-  }
-  #plan-modal .modal-actions a.yes {
-    background: #1a6dcc;
-    color: #fff;
-  }
-  #plan-modal .modal-actions a.no {
-    background: #f0f4ff;
-    color: #1a6dcc;
-    border: 1px solid #1a6dcc;
-  }
-  #plan-modal .modal-actions a:hover {
-    opacity: 0.85;
-  }
-</style>
-<div id="plan-modal">
-  <div class="modal-content">
-    <button class="close-modal" onclick="closeModal()" aria-label="Cerrar"
-      >&times;</button
-    >
-    <div class="modal-title">¿Ya tienes cuenta?</div>
-    <div class="modal-actions">
-      <a class="yes" href="https://app.solucionfactura.mx/login">Sí, ingresar</a
-      >
-      <a class="no" id="modal-register-link" href="#">No, quiero registrarme</a>
-    </div>
-  </div>
-</div>
-<script>
-  // Actualiza el link de registro según el plan seleccionado
-  function updateRegisterLink() {
-    const link = document.getElementById("modal-register-link");
-    if (!link) return;
-    let url = "https://app.solucionfactura.mx/register";
-    if (selectedPlan) {
-      url += "?plan=" + selectedPlan;
-    }
-    link.href = url;
-  }
-  // Observa cambios en el modal y actualiza el link
-  const observer = new MutationObserver(updateRegisterLink);
-  observer.observe(document.getElementById("plan-modal"), {
-    attributes: true,
-    childList: true,
-    subtree: true,
-  });
-  // También actualiza al abrir el modal
-  window.openModal = function (plan) {
-    selectedPlan = plan;
-    showModal = true;
-    document.body.style.overflow = "hidden";
-    updateModal();
-    updateRegisterLink();
-  };
+  // Manejar envío del formulario
+  document
+    .getElementById("plan-form")
+    .addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const emailInput = document.getElementById("email-input");
+      const submitBtn = document.querySelector(".btn-submit");
+      const errorMessage = document.getElementById("error-message");
+      const loadingMessage = document.getElementById("loading-message");
+      const email = emailInput.value.trim();
+
+      // Obtener currentPlan de variable local o global
+      const planToUse =
+        currentPlan ||
+        (typeof window !== "undefined" ? window.currentPlan : null);
+
+      if (!email || !planToUse) return;
+
+      // Validar email básico
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        errorMessage.textContent = "Por favor ingresa un correo válido";
+        errorMessage.classList.add("show");
+        return;
+      }
+
+      // Ocultar error y mostrar loading
+      errorMessage.classList.remove("show");
+      loadingMessage.classList.add("show");
+      submitBtn.disabled = true;
+
+      try {
+        // Obtener el nombre del plan para la API
+        const apiNames =
+          planApiNames ||
+          (typeof window !== "undefined" ? window.planApiNames : null);
+        const planType = apiNames ? apiNames[planToUse] : null;
+
+        if (!planType) {
+          throw new Error("Plan no válido");
+        }
+
+        // Construir URL con query params
+        const apiUrl = new URL(
+          "https://flow.wabotify.com/webhook/get-correct-link",
+        );
+        apiUrl.searchParams.append("email", email);
+        apiUrl.searchParams.append("plan_type", planType);
+
+        // Hacer la consulta
+        const response = await fetch(apiUrl.toString(), {
+          method: "GET",
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        // Verificar que la respuesta sea exitosa y tenga el link
+        if (data.status !== "success" || !data.link) {
+          throw new Error("No se recibió URL de redirección");
+        }
+
+        // Ocultar loading y mostrar mensaje de éxito
+        loadingMessage.classList.remove("show");
+        const successMessage = document.getElementById("success-message");
+        successMessage.classList.add("show");
+
+        // Esperar 1.5 segundos antes de redirigir
+        setTimeout(() => {
+          // Abrir el link en nueva ventana
+          window.open(data.link, "_blank");
+
+          // Cerrar modal después de 500ms
+          setTimeout(() => {
+            closeModalHandler();
+          }, 500);
+        }, 1500);
+      } catch (error) {
+        console.error("Error:", error);
+        errorMessage.textContent =
+          "Ocurrió un error. Por favor intenta de nuevo.";
+        errorMessage.classList.add("show");
+        loadingMessage.classList.remove("show");
+        submitBtn.disabled = false;
+      }
+    });
 </script>

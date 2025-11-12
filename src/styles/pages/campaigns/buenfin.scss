@@ -1,0 +1,1024 @@
+@use "../../variables.scss" as *;
+
+// ========================================
+// BUEN FIN 2025 - ESTILOS
+// ========================================
+
+// Variables específicas de la campaña
+:root {
+  --sf-primary: #1d4ed8;
+  --sf-dark: #0b1220;
+  --sf-muted: #6b7280;
+  --sf-accent-red: #ef4444;
+  --sf-accent-red-dark: #dc2626;
+}
+
+// Reset y base para la página
+.buenfin-page {
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica,
+    Arial, "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+  background-color: #020617; // slate-950
+  color: #ffffff;
+  scroll-behavior: smooth;
+  min-height: 100vh;
+
+  // Reset de listas - quitar bullets
+  ul,
+  ol {
+    list-style: none !important;
+    padding-left: 0;
+  }
+
+  // Reset de text-decoration para botones y links
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  button {
+    text-decoration: none;
+    outline: none;
+    font-family: inherit;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 1rem !important;
+    line-height: 1.5;
+  }
+
+  // Forzar que botones con onclick no tengan underline
+  button[onclick],
+  button[data-sku] {
+    text-decoration: none !important;
+    font-size: 1rem !important;
+  }
+
+  // Links que se ven como botones
+  a.inline-flex {
+    text-decoration: none !important;
+    font-size: 1rem !important;
+    font-weight: 600;
+  }
+
+  // Botones estilo primario
+  button.bg-red-500,
+  button.bg-red-400,
+  button.bg-green-500,
+  button.bg-green-400,
+  a.bg-red-500,
+  a.bg-red-400,
+  a.bg-green-500,
+  a.bg-green-400 {
+    text-decoration: none !important;
+    font-size: 1rem !important;
+    line-height: 1.5;
+    font-weight: 600;
+  }
+
+  // Botones principales con font semibold o bold
+  button.font-semibold,
+  button.font-bold,
+  a.font-semibold,
+  a.font-bold {
+    font-size: 1rem !important;
+  }
+
+  // Botones outlined
+  a.border,
+  button.border {
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    text-decoration: none !important;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  a.border-2,
+  button.border-2 {
+    border: 2px solid !important;
+    text-decoration: none !important;
+  }
+
+  // Spinner loading
+  .animate-spin {
+    animation: spin 0.8s linear infinite !important;
+    display: inline-block;
+  }
+
+  svg.animate-spin,
+  svg.h-4.w-4,
+  svg.h-5.w-5 {
+    width: 1.25rem !important;
+    height: 1.25rem !important;
+    flex-shrink: 0;
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+// Utilidad glass effect
+.glass {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+// ========================================
+// TOP BAR
+// ========================================
+.bf-top-bar {
+  width: 100%;
+  background-color: rgba(15, 23, 42, 0.8); // slate-900/80
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+  .bf-top-bar__container {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.875rem;
+  }
+
+  .bf-top-bar__text {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .bf-top-bar__nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      transition: color 0.2s;
+
+      &:hover {
+        color: #ffffff;
+      }
+    }
+  }
+}
+
+// ========================================
+// BANNER
+// ========================================
+.bf-banner {
+  position: relative;
+
+  .bf-banner__container {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+
+  .bf-banner__image {
+    width: 100%;
+    height: 12rem;
+    object-fit: cover;
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+
+    @media (min-width: 768px) {
+      height: 16rem;
+    }
+  }
+}
+
+// ========================================
+// HERO
+// ========================================
+.bf-hero {
+  position: relative;
+  overflow: hidden;
+
+  .bf-hero__gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(153, 27, 27, 0.4), #020617);
+  }
+
+  .bf-hero__container {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 4rem 1rem;
+    position: relative;
+
+    @media (min-width: 768px) {
+      padding: 6rem 1rem;
+    }
+  }
+
+  .bf-hero__grid {
+    display: grid;
+    gap: 2.5rem;
+    align-items: center;
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .bf-hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 9999px;
+    padding: 0.25rem 0.75rem;
+  }
+
+  .bf-hero__title {
+    margin-top: 1.25rem;
+    font-size: 2.25rem;
+    font-weight: 800;
+    line-height: 1.2;
+
+    @media (min-width: 768px) {
+      font-size: 3rem;
+    }
+
+    .bf-hero__title--highlight {
+      color: #f87171; // red-400
+    }
+  }
+
+  .bf-hero__subtitle {
+    margin-top: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.125rem;
+    max-width: 36rem;
+
+    strong {
+      font-weight: 600;
+    }
+  }
+
+  .bf-hero__actions {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .bf-hero__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    transition: all 0.2s;
+    text-decoration: none;
+
+    &--primary {
+      background-color: #ef4444;
+      color: #0f172a;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+
+      &:hover {
+        background-color: #f87171;
+      }
+    }
+
+    &--secondary {
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+    }
+  }
+
+  .bf-hero__disclaimer {
+    margin-top: 0.75rem;
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .bf-hero__benefits {
+    position: relative;
+
+    .bf-benefits-card {
+      border-radius: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(10px);
+
+      h3 {
+        font-size: 1.25rem;
+        font-weight: 700;
+      }
+
+      ul {
+        margin-top: 1rem;
+        list-style: none !important;
+        padding: 0;
+
+        li {
+          color: rgba(255, 255, 255, 0.8);
+          margin-bottom: 0.5rem;
+
+          strong {
+            font-weight: 600;
+          }
+        }
+      }
+
+      .bf-benefits-card__note {
+        font-size: 0.75rem;
+        color: rgba(255, 255, 255, 0.5);
+        margin-top: 0.75rem;
+      }
+    }
+  }
+}
+
+// ========================================
+// COUNTDOWN
+// ========================================
+.bf-countdown {
+  margin-top: 1.5rem;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  width: 100%;
+
+  @media (min-width: 768px) {
+    width: auto;
+  }
+
+  .bf-countdown__label {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.875rem;
+  }
+
+  .bf-countdown__grid {
+    margin-top: 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+    text-align: center;
+  }
+
+  .bf-countdown__item {
+    border-radius: 0.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.75rem;
+
+    .bf-countdown__number {
+      font-size: 1.875rem;
+      font-weight: 700;
+    }
+
+    .bf-countdown__unit {
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+  }
+}
+
+// ========================================
+// SECCIONES
+// ========================================
+.bf-section {
+  padding: 4rem 0;
+
+  @media (min-width: 768px) {
+    padding: 5rem 0;
+  }
+
+  &--alt {
+    background-color: rgba(15, 23, 42, 0.4); // slate-900/40
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .bf-section__container {
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+    text-align: center;
+
+    &--wide {
+      max-width: 80rem;
+    }
+  }
+
+  .bf-section__title {
+    font-size: 1.875rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+
+    @media (min-width: 768px) {
+      font-size: 2.25rem;
+    }
+  }
+
+  .bf-section__subtitle {
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 48rem;
+    margin: 0 auto;
+
+    strong {
+      color: #f87171;
+    }
+  }
+}
+
+// ========================================
+// CARDS
+// ========================================
+.bf-card {
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  .bf-card__price-label {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+  }
+
+  .bf-card__price {
+    margin-top: 0.75rem;
+    font-size: 1.875rem;
+    font-weight: 800;
+  }
+
+  .bf-card__discount {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.875rem;
+  }
+
+  .bf-card__features {
+    margin-top: 1rem;
+    list-style: none !important;
+    padding: 0;
+
+    li {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.875rem;
+      margin-bottom: 0.25rem;
+    }
+  }
+
+  .bf-card__note {
+    margin-top: 0.75rem;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .bf-card__spacer {
+    flex-grow: 1;
+  }
+
+  .bf-card__button {
+    margin-top: 1.25rem;
+    display: inline-flex;
+    width: 100%;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    border-radius: 0.75rem;
+    background-color: #ef4444;
+    color: #0f172a;
+    font-weight: 600;
+    font-size: 1rem !important;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    text-decoration: none;
+    text-align: center;
+
+    &:hover {
+      background-color: #f87171;
+    }
+  }
+
+  &--featured {
+    position: relative;
+    overflow: hidden;
+
+    .bf-card__badge {
+      position: absolute;
+      right: 1rem;
+      top: 1rem;
+      font-size: 0.75rem;
+      background-color: #fbbf24; // amber-400
+      color: #0f172a;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      border-radius: 9999px;
+      padding: 0.25rem 0.5rem;
+    }
+  }
+}
+
+// ========================================
+// GRIDS
+// ========================================
+.bf-grid {
+  margin-top: 2rem;
+  display: grid;
+  gap: 1.5rem;
+
+  &--2 {
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &--3 {
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &--5 {
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+}
+
+// ========================================
+// ALERT BOX
+// ========================================
+.bf-alert {
+  margin-top: 1.5rem;
+  border-radius: 1rem;
+  border: 2px solid rgba(251, 191, 36, 0.3);
+  background: rgba(251, 191, 36, 0.1);
+  padding: 1rem;
+
+  .bf-alert__content {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .bf-alert__icon {
+    font-size: 1.5rem;
+  }
+
+  .bf-alert__title {
+    font-weight: 700;
+    color: #fcd34d; // amber-300
+  }
+
+  .bf-alert__text {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+
+    strong {
+      font-weight: 600;
+    }
+
+    em {
+      font-style: italic;
+    }
+  }
+}
+
+// ========================================
+// FAQ
+// ========================================
+.bf-faq {
+  .bf-faq__item {
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(10px);
+
+    summary {
+      cursor: pointer;
+      list-style: none !important;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      font-weight: 600;
+
+      &::-webkit-details-marker {
+        display: none;
+      }
+    }
+
+    .bf-faq__icon {
+      color: rgba(255, 255, 255, 0.5);
+      transition: transform 0.3s;
+    }
+
+    &[open] .bf-faq__icon {
+      transform: rotate(180deg);
+    }
+
+    .bf-faq__answer {
+      margin-top: 0.75rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+  }
+}
+
+// ========================================
+// FOOTER
+// ========================================
+.bf-footer {
+  padding: 2rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+  .bf-footer__container {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.875rem;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+    }
+  }
+
+  .bf-footer__nav {
+    display: flex;
+    gap: 1rem;
+
+    a {
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: none;
+      transition: color 0.2s;
+
+      &:hover {
+        color: #ffffff;
+      }
+    }
+  }
+}
+
+// ========================================
+// MODALS
+// ========================================
+.bf-modal {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+
+  &.hidden {
+    display: none;
+  }
+
+  .bf-modal__content {
+    background-color: #0f172a; // slate-900
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 1rem;
+    padding: 2rem;
+    max-width: 28rem;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(10px);
+    position: relative;
+  }
+
+  .bf-modal__close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    color: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.08);
+    border: none;
+    font-size: 1.75rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    line-height: 1;
+    padding: 0;
+
+    &:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.15);
+      transform: rotate(90deg);
+    }
+  }
+
+  .bf-modal__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .bf-modal__subtitle {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 1.5rem;
+  }
+
+  .bf-modal__form {
+    .bf-modal__field {
+      margin-bottom: 1rem;
+
+      label {
+        display: block;
+        font-size: 0.875rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      input {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        border-radius: 0.75rem;
+        background-color: rgba(30, 41, 59, 0.5); // slate-800/50
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #ffffff;
+        font-size: 1.25rem !important;
+        transition: all 0.2s;
+
+        &::placeholder {
+          color: rgba(255, 255, 255, 0.4);
+        }
+
+        &:focus {
+          outline: none;
+          border-color: rgba(239, 68, 68, 0.5);
+          box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+        }
+      }
+    }
+
+    // Selector directo para inputs que no están en bf-modal__field
+    input[type="email"] {
+      font-size: 1.25rem !important;
+    }
+
+    .bf-modal__plan-info {
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.5);
+
+      strong {
+        color: rgba(255, 255, 255, 0.8);
+      }
+    }
+
+    .bf-modal__message {
+      padding: 0.75rem;
+      border-radius: 0.5rem;
+      font-size: 0.875rem;
+      margin-top: 1rem;
+
+      &.hidden {
+        display: none;
+      }
+
+      &--loading {
+        background-color: rgba(59, 130, 246, 0.2);
+        border: 1px solid rgba(59, 130, 246, 0.3);
+        color: #93c5fd;
+      }
+
+      &--success {
+        background-color: rgba(34, 197, 94, 0.2);
+        border: 1px solid rgba(34, 197, 94, 0.3);
+        color: #86efac;
+      }
+
+      &--error {
+        background-color: rgba(239, 68, 68, 0.2);
+        border: 1px solid rgba(239, 68, 68, 0.3);
+        color: #fca5a5;
+      }
+    }
+
+    .bf-modal__actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-top: 1rem;
+
+      button,
+      a {
+        width: 100%;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.75rem;
+        font-weight: 700;
+        border: none;
+        cursor: pointer;
+        transition: all 0.2s;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+
+        &.bf-modal__button--primary {
+          background-color: #ef4444;
+          color: #0f172a;
+          font-size: 1rem !important;
+
+          &:hover {
+            background-color: #f87171;
+          }
+
+          &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+          }
+        }
+
+        &.bf-modal__button--secondary {
+          background-color: rgba(255, 255, 255, 0.05);
+          color: #ffffff;
+          font-size: 1rem !important;
+
+          &:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+          }
+        }
+
+        &.bf-modal__button--ghost {
+          background-color: rgba(30, 41, 59, 0.5);
+          color: #ffffff;
+          font-size: 1rem !important;
+
+          &:hover {
+            background-color: #1e293b;
+          }
+        }
+      }
+    }
+  }
+
+  // Modal de WhatsApp específico
+  .bf-modal__whatsapp {
+    text-align: center;
+
+    .bf-modal__emoji {
+      font-size: 3.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .bf-modal__whatsapp-text {
+      margin-bottom: 1.5rem;
+
+      p {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+    }
+
+    .bf-modal__whatsapp-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.75rem;
+      background-color: #22c55e; // green-500
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 1rem !important;
+      transition: background-color 0.2s;
+      text-decoration: none;
+
+      &:hover {
+        background-color: #4ade80; // green-400
+      }
+    }
+  }
+}
+
+// ========================================
+// TÉRMINOS
+// ========================================
+.bf-terms {
+  padding: 3rem 0;
+
+  .bf-terms__container {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+
+  .bf-terms__title {
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .bf-terms__list {
+    list-style: none !important;
+    padding-left: 1.5rem;
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+  }
+}
+
+// ========================================
+// SECTION HEADER (títulos con flex)
+// ========================================
+.bf-section-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+
+  .bf-section-header__content {
+    h2 {
+      font-size: 1.875rem;
+      font-weight: 800;
+
+      @media (min-width: 768px) {
+        font-size: 2.25rem;
+      }
+    }
+
+    p {
+      color: rgba(255, 255, 255, 0.7);
+      margin-top: 0.5rem;
+    }
+  }
+
+  .bf-section-header__meta {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.6);
+  }
+}
+
+// ========================================
+// UTILIDADES
+// ========================================
+.text-center {
+  text-align: center;
+}
+
+.hidden {
+  display: none !important;
+}
+
+// Animaciones
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
