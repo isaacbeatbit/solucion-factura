@@ -246,6 +246,29 @@ import "../styles/global.css";
       </div>
     </main>
 
+    <!-- Alert personalizado -->
+    <div id="customAlert" class="fixed inset-0 z-50 flex items-center justify-center hidden" style="background-color: rgba(0, 0, 0, 0.5);">
+      <div class="bg-white dark:bg-[var(--bg-card)] rounded-2xl shadow-2xl border-2 border-green-500 p-8 max-w-md mx-4 transform transition-all scale-95 opacity-0" id="alertContent">
+        <div class="text-center">
+          <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-green-100 dark:bg-green-900/30 mb-4">
+            <svg class="h-10 w-10 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-[var(--text-primary)] mb-3">¡Ticket enviado exitosamente!</h3>
+          <p class="text-base text-[var(--text-secondary)] mb-6">
+            Tu solicitud ha sido recibida. Nos pondremos en contacto contigo pronto.
+          </p>
+          <button 
+            id="closeAlert" 
+            class="w-full px-6 py-3 bg-gradient-to-br from-green-500 to-green-600 text-white font-bold rounded-xl transition-all hover:shadow-xl hover:-translate-y-0.5"
+          >
+            Entendido
+          </button>
+        </div>
+      </div>
+    </div>
+
     <Footer />
     <WhatsAppFloat />
 
@@ -448,8 +471,8 @@ import "../styles/global.css";
             responseBox.textContent = "Tu ticket ha sido enviado. Nos pondremos en contacto contigo pronto.\n\nID: " + (data.id || 'N/A');
             responseBox.className = "text-xs text-green-600 dark:text-green-400";
             
-            // Mostrar alert de éxito
-            alert("✅ ¡Ticket enviado exitosamente!\n\nTu solicitud ha sido recibida. Nos pondremos en contacto contigo pronto.");
+            // Mostrar alert personalizado
+            showCustomAlert();
             
             // Scroll al inicio de la página
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -481,6 +504,44 @@ import "../styles/global.css";
           // Restaurar botón
           submitBtn.disabled = false;
           submitBtn.innerHTML = originalBtnContent;
+        }
+      });
+
+      // ------------ 🎨 Funciones para el alert personalizado ------------
+      function showCustomAlert() {
+        const alertOverlay = document.getElementById('customAlert');
+        const alertContent = document.getElementById('alertContent');
+        
+        if (alertOverlay && alertContent) {
+          alertOverlay.classList.remove('hidden');
+          // Pequeño delay para la animación
+          setTimeout(() => {
+            alertContent.style.transform = 'scale(1)';
+            alertContent.style.opacity = '1';
+          }, 10);
+        }
+      }
+
+      function closeCustomAlert() {
+        const alertOverlay = document.getElementById('customAlert');
+        const alertContent = document.getElementById('alertContent');
+        
+        if (alertOverlay && alertContent) {
+          alertContent.style.transform = 'scale(0.95)';
+          alertContent.style.opacity = '0';
+          setTimeout(() => {
+            alertOverlay.classList.add('hidden');
+          }, 200);
+        }
+      }
+
+      // Event listener para cerrar el alert
+      document.getElementById('closeAlert')?.addEventListener('click', closeCustomAlert);
+      
+      // Cerrar al hacer click fuera del alert
+      document.getElementById('customAlert')?.addEventListener('click', (e) => {
+        if (e.target === e.currentTarget) {
+          closeCustomAlert();
         }
       });
     </script>
