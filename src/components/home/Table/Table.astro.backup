@@ -1,73 +1,72 @@
 ---
-import "./table.scss";
 ---
 
-<section class="comparison-section">
-  <div class="layout-container">
-    <div class="section-header">
-      <h2 class="title-section">Comparación de planes</h2>
-      <p class="subtitle">
+<section class="py-16 md:py-20 lg:py-24 bg-[var(--bg-secondary)]">
+  <div class="w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10">
+    <div class="text-center mb-12 md:mb-16">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-[var(--text-primary)] mb-4">Comparación de planes</h2>
+      <p class="text-lg md:text-xl text-[var(--text-secondary)] leading-relaxed">
         Descubre todas las características incluidas en cada plan
       </p>
     </div>
 
     <!-- Desktop Table -->
-    <div class="table-wrapper desktop-table">
-      <div class="premium-badge">MÁS VENDIDO</div>
-      <table class="comparison-table">
+    <div class="relative overflow-x-auto rounded-xl border border-[var(--border-light)]">
+      <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-green-500 text-white px-4 py-1 rounded-full text-sm font-semibold shadow-lg z-10">MÁS VENDIDO</div>
+      <table class="w-full border-collapse bg-[var(--bg-card)]">
         <thead>
           <tr>
-            <th>
-              <div class="header-content features">Características</div>
+            <th class="bg-[var(--bg-secondary)] text-[var(--text-primary)] font-semibold p-4 text-left border-b border-[var(--border-light)]">
+              <div class="font-bold">Características</div>
             </th>
-            <th>
-              <div class="header-content">
-                <div class="plan-name">Emprende</div>
-                <div class="plan-price">$292</div>
-                <div class="plan-period">por año</div>
-                <button type="button" class="plan-button" data-plan="emprende"
+            <th class="bg-[var(--bg-secondary)] text-[var(--text-primary)] font-semibold p-4 text-center border-b border-[var(--border-light)]">
+              <div class="flex flex-col gap-2">
+                <div class="text-lg font-bold text-[var(--secondary)]">Emprende</div>
+                <div class="text-2xl font-bold">$292</div>
+                <div class="text-sm text-[var(--text-secondary)]">por año</div>
+                <button type="button" class="mt-2 px-4 py-2 rounded-lg font-semibold text-sm bg-gradient-to-br from-[var(--highlight-blue)] to-[var(--secondary)] text-white hover:opacity-90 transition-opacity" data-plan="emprende"
                   >Comprar</button
                 >
               </div>
             </th>
-            <th>
-              <div class="header-content">
-                <div class="plan-name">Crece</div>
-                <div class="plan-price">$501</div>
-                <div class="plan-period">por año</div>
-                <button type="button" class="plan-button" data-plan="crece"
+            <th class="bg-[var(--bg-secondary)] text-[var(--text-primary)] font-semibold p-4 text-center border-b border-[var(--border-light)]">
+              <div class="flex flex-col gap-2">
+                <div class="text-lg font-bold text-[var(--secondary)]">Crece</div>
+                <div class="text-2xl font-bold">$501</div>
+                <div class="text-sm text-[var(--text-secondary)]">por año</div>
+                <button type="button" class="mt-2 px-4 py-2 rounded-lg font-semibold text-sm bg-gradient-to-br from-[var(--highlight-blue)] to-[var(--secondary)] text-white hover:opacity-90 transition-opacity" data-plan="crece"
                   >Comprar</button
                 >
               </div>
             </th>
-            <th>
-              <div class="header-content">
-                <div class="plan-name">Empresa</div>
-                <div class="plan-price">$960</div>
-                <div class="plan-period">por año</div>
-                <button type="button" class="plan-button" data-plan="empresa"
+            <th class="bg-[var(--bg-secondary)] text-[var(--text-primary)] font-semibold p-4 text-center border-b border-[var(--border-light)]">
+              <div class="flex flex-col gap-2">
+                <div class="text-lg font-bold text-[var(--secondary)]">Empresa</div>
+                <div class="text-2xl font-bold">$960</div>
+                <div class="text-sm text-[var(--text-secondary)]">por año</div>
+                <button type="button" class="mt-2 px-4 py-2 rounded-lg font-semibold text-sm bg-gradient-to-br from-[var(--highlight-blue)] to-[var(--secondary)] text-white hover:opacity-90 transition-opacity" data-plan="empresa"
                   >Comprar</button
                 >
               </div>
             </th>
-            <th class="premium-header">
-              <div class="header-content">
-                <div class="plan-name">Premium</div>
-                <div class="plan-price">$2,075</div>
-                <div class="plan-period">por año</div>
-                <button type="button" class="plan-button" data-plan="premium"
+            <th class="bg-green-500/10 text-[var(--text-primary)] font-semibold p-4 text-center border-b-2 border-green-500">
+              <div class="flex flex-col gap-2">
+                <div class="text-lg font-bold text-green-500">Premium</div>
+                <div class="text-2xl font-bold">$2,075</div>
+                <div class="text-sm text-[var(--text-secondary)]">por año</div>
+                <button type="button" class="mt-2 px-4 py-2 rounded-lg font-semibold text-sm bg-green-500 text-white hover:bg-green-600 transition-colors" data-plan="premium"
                   >Comprar</button
                 >
               </div>
             </th>
-            <th>
-              <div class="header-content">
-                <div class="plan-name">Premium PLUS</div>
-                <div class="plan-price">$2,799</div>
-                <div class="plan-period">por año</div>
+            <th class="bg-[var(--bg-secondary)] text-[var(--text-primary)] font-semibold p-4 text-center border-b border-[var(--border-light)]">
+              <div class="flex flex-col gap-2">
+                <div class="text-lg font-bold text-[var(--secondary)]">Premium PLUS</div>
+                <div class="text-2xl font-bold">$2,799</div>
+                <div class="text-sm text-[var(--text-secondary)]">por año</div>
                 <button
                   type="button"
-                  class="plan-button"
+                  class="mt-2 px-4 py-2 rounded-lg font-semibold text-sm bg-gradient-to-br from-[var(--highlight-blue)] to-[var(--secondary)] text-white hover:opacity-90 transition-opacity"
                   data-plan="premium-plus">Comprar</button
                 >
               </div>
@@ -76,28 +75,28 @@ import "./table.scss";
         </thead>
         <tbody>
           <tr>
-            <td>Timbres incluidos</td>
-            <td><span class="timbres-number">300</span></td>
-            <td><span class="timbres-number">600</span></td>
-            <td><span class="timbres-number">1,200</span></td>
-            <td><span class="timbres-number">6,000</span></td>
-            <td><span class="timbres-number">10,000</span></td>
+            <td class="p-4 border-b border-[var(--border-light)] text-[var(--text-primary)] font-medium">Timbres incluidos</td>
+            <td class="p-4 border-b border-[var(--border-light)] text-center"><span class="text-[var(--secondary)] font-bold">300</span></td>
+            <td class="p-4 border-b border-[var(--border-light)] text-center"><span class="text-[var(--secondary)] font-bold">600</span></td>
+            <td class="p-4 border-b border-[var(--border-light)] text-center"><span class="text-[var(--secondary)] font-bold">1,200</span></td>
+            <td class="p-4 border-b border-[var(--border-light)] text-center bg-green-500/5"><span class="text-[var(--secondary)] font-bold">6,000</span></td>
+            <td class="p-4 border-b border-[var(--border-light)] text-center"><span class="text-[var(--secondary)] font-bold">10,000</span></td>
           </tr>
           <tr>
-            <td>MultiEmpresa</td>
-            <td><span class="icon-cross">✕</span></td>
-            <td><span class="icon-cross">✕</span></td>
-            <td><span class="icon-check">✓</span></td>
-            <td><span class="icon-check">✓</span></td>
-            <td><span class="icon-check">✓</span></td>
+            <td class="p-4 border-b border-[var(--border-light)] text-[var(--text-primary)] font-medium">MultiEmpresa</td>
+            <td class="p-4 border-b border-[var(--border-light)] text-center"><span class="text-red-500 text-xl">✕</span></td>
+            <td class="p-4 border-b border-[var(--border-light)] text-center"><span class="text-red-500 text-xl">✕</span></td>
+            <td class="p-4 border-b border-[var(--border-light)] text-center"><span class="text-green-500 text-xl font-bold">✓</span></td>
+            <td class="p-4 border-b border-[var(--border-light)] text-center bg-green-500/5"><span class="text-green-500 text-xl font-bold">✓</span></td>
+            <td class="p-4 border-b border-[var(--border-light)] text-center"><span class="text-green-500 text-xl font-bold">✓</span></td>
           </tr>
           <tr>
-            <td>Facturas</td>
-            <td><span class="icon-check">✓</span></td>
-            <td><span class="icon-check">✓</span></td>
-            <td><span class="icon-check">✓</span></td>
-            <td><span class="icon-check">✓</span></td>
-            <td><span class="icon-check">✓</span></td>
+            <td class="p-4 border-b border-[var(--border-light)] text-[var(--text-primary)] font-medium">Facturas</td>
+            <td class="p-4 border-b border-[var(--border-light)] text-center"><span class="text-green-500 text-xl font-bold">✓</span></td>
+            <td class="p-4 border-b border-[var(--border-light)] text-center"><span class="text-green-500 text-xl font-bold">✓</span></td>
+            <td class="p-4 border-b border-[var(--border-light)] text-center"><span class="text-green-500 text-xl font-bold">✓</span></td>
+            <td class="p-4 border-b border-[var(--border-light)] text-center bg-green-500/5"><span class="text-green-500 text-xl font-bold">✓</span></td>
+            <td class="p-4 border-b border-[var(--border-light)] text-center"><span class="text-green-500 text-xl font-bold">✓</span></td>
           </tr>
           <tr>
             <td>Cotizaciones</td>

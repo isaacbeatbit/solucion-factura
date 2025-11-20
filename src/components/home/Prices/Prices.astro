@@ -1,5 +1,4 @@
 ---
-import "./prices.scss";
 ---
 
 <script>
@@ -35,92 +34,107 @@ import "./prices.scss";
   });
 </script>
 
-<section id="planes" class="pricing">
-  <div class="layout-container">
-    <div class="section-header">
-      <h2 class="title-section">Planes que se adaptan a tu negocio</h2>
-      <p class="subtitle">
+<section id="planes" class="py-12 md:py-16 lg:py-20 bg-gradient-to-br from-[var(--primary)] to-[var(--bg-secondary)] overflow-x-hidden transition-[background-color,color] duration-300 light:bg-gradient-to-br light:from-[var(--bg-secondary)] light:to-[#f0f4ff]">
+  <div class="w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10">
+    <div class="text-center mb-10 md:mb-12 lg:mb-16 px-4 md:px-0 box-border">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-[var(--text-primary)] mb-4">Planes que se adaptan a tu negocio</h2>
+      <p class="text-lg md:text-xl text-[var(--text-primary)] leading-relaxed">
         Desde emprendedores hasta grandes empresas, tenemos el plan perfecto
         para ti
       </p>
     </div>
 
-    <div class="pricing-grid">
-      <div class="pricing-card">
-        <h3 class="title-medium">Empresa</h3>
-        <div class="plan-pricing">
-          <span class="plan-price">
-            <span class="currency">$</span>960
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mx-4 md:mx-0 items-stretch max-w-full md:max-w-[400px] md:mx-auto lg:max-w-none lg:mx-0">
+      <div class="flex flex-col bg-[var(--bg-primary)]/80 backdrop-blur-[10px] p-6 md:p-7 lg:p-8 rounded-2xl border border-[var(--border-light)] shadow-[var(--theme-shadow-md)] transition-all duration-300 min-h-[360px] md:min-h-[380px] lg:min-h-[400px] hover:shadow-[var(--theme-shadow-lg),0_0_20px_rgba(26,109,204,0.2)] hover:border-[rgba(26,109,204,0.4)] lg:hover:-translate-y-1 [data-theme='light']_&:bg-[var(--bg-primary)] [data-theme='light']_&:border-[var(--border-color)] [data-theme='light']_&:hover:shadow-[var(--theme-shadow-lg),0_0_15px_rgba(26,109,204,0.1)]">
+        <h3 class="text-2xl font-bold text-[var(--secondary)] mb-2">Empresa</h3>
+        <div class="flex items-baseline gap-2 flex-wrap mb-6 md:mb-5">
+          <span class="text-4xl md:text-[2.25rem] font-extrabold text-[var(--text-primary)] leading-none flex items-baseline">
+            <span class="text-base align-super">$</span>960
           </span>
-          <span class="plan-period">por año</span>
+          <span class="text-base text-[var(--text-secondary)] font-medium whitespace-nowrap ml-1 opacity-90">por año</span>
         </div>
 
-        <ul class="plan-features">
-          <li>1,200 timbres incluidos</li>
-          <li>50 Empresas</li>
-          <li>Facturas y complementos</li>
-          <li>Soporte por email</li>
+        <ul class="list-none p-0 mb-auto flex-grow space-y-2">
+          <li class="flex items-center gap-3 text-[var(--text-primary)] text-[0.95rem] py-[0.4rem]">
+            <span class="flex items-center justify-center w-5 h-5 rounded-full bg-[var(--accent)] text-white text-xs font-bold shrink-0">✓</span>
+            1,200 timbres incluidos
+          </li>
+          <li class="flex items-center gap-3 text-[var(--text-primary)] text-[0.95rem] py-[0.4rem]">
+            <span class="flex items-center justify-center w-5 h-5 rounded-full bg-[var(--accent)] text-white text-xs font-bold shrink-0">✓</span>
+            50 Empresas
+          </li>
+          <li class="flex items-center gap-3 text-[var(--text-primary)] text-[0.95rem] py-[0.4rem]">
+            <span class="flex items-center justify-center w-5 h-5 rounded-full bg-[var(--accent)] text-white text-xs font-bold shrink-0">✓</span>
+            Facturas y complementos
+          </li>
+          <li class="flex items-center gap-3 text-[var(--text-primary)] text-[0.95rem] py-[0.4rem]">
+            <span class="flex items-center justify-center w-5 h-5 rounded-full bg-[var(--accent)] text-white text-xs font-bold shrink-0">✓</span>
+            Soporte por email
+          </li>
         </ul>
 
         <button
           type="button"
-          class="btn btn-primary plan-button"
+          class="plan-button w-full flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all duration-200 cursor-pointer bg-gradient-to-br from-[var(--highlight-blue)] to-[var(--secondary)] text-white shadow-[var(--theme-shadow-md)] hover:-translate-y-1 hover:shadow-[var(--theme-shadow-lg)] mt-4 shrink-0"
           data-plan="empresa"
         >
           Comenzar Ahora
         </button>
       </div>
 
-      <div class="pricing-card featured">
-        <h3 class="title-medium">Premium</h3>
-        <div class="plan-pricing">
-          <span class="plan-price">
-            <span class="currency">$</span>2,075
+      <div class="relative flex flex-col bg-[var(--bg-primary)]/80 backdrop-blur-[10px] p-6 md:p-8 rounded-2xl border-2 border-green-500 shadow-[var(--theme-shadow-lg),0_0_20px_rgba(34,197,94,0.3)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[var(--theme-shadow-xl),0_0_30px_rgba(34,197,94,0.4)] scale-105">
+        <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-green-500 text-white px-4 py-1 rounded-full text-sm font-semibold shadow-lg">
+          Más Popular
+        </div>
+        <h3 class="text-xl md:text-2xl font-bold text-[var(--secondary)] mb-4 mt-2">Premium</h3>
+        <div class="mb-6">
+          <span class="block">
+            <span class="text-4xl md:text-5xl font-bold text-[var(--text-primary)]">$2,075</span>
           </span>
-          <span class="plan-period">por año</span>
+          <span class="text-sm text-[var(--text-secondary)]">por año</span>
         </div>
 
-        <ul class="plan-features">
-          <li>6,000 timbres incluidos</li>
-          <li>Empresas ilimitadas</li>
-          <li>Envío por WhatsApp</li>
-          <li>Descarga XML masiva</li>
-          <li>Importa historial</li>
-          <li>Conciliación bancaria</li>
-          <li>Soporte prioritario</li>
+        <ul class="list-none p-0 my-6 space-y-3 flex-1">
+          <li class="flex items-start gap-2 text-[var(--text-secondary)]"><span class="text-[var(--secondary)] font-bold">✓</span> 6,000 timbres incluidos</li>
+          <li class="flex items-start gap-2 text-[var(--text-secondary)]"><span class="text-[var(--secondary)] font-bold">✓</span> Empresas ilimitadas</li>
+          <li class="flex items-start gap-2 text-[var(--text-secondary)]"><span class="text-[var(--secondary)] font-bold">✓</span> Envío por WhatsApp</li>
+          <li class="flex items-start gap-2 text-[var(--text-secondary)]"><span class="text-[var(--secondary)] font-bold">✓</span> Descarga XML masiva</li>
+          <li class="flex items-start gap-2 text-[var(--text-secondary)]"><span class="text-[var(--secondary)] font-bold">✓</span> Importa historial</li>
+          <li class="flex items-start gap-2 text-[var(--text-secondary)]"><span class="text-[var(--secondary)] font-bold">✓</span> Conciliación bancaria</li>
+          <li class="flex items-start gap-2 text-[var(--text-secondary)]"><span class="text-[var(--secondary)] font-bold">✓</span> Soporte prioritario</li>
         </ul>
 
         <button
           type="button"
-          class="btn btn-primary plan-button"
+          class="plan-button w-full flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all duration-200 cursor-pointer bg-gradient-to-br from-[var(--highlight-blue)] to-[var(--secondary)] text-white shadow-[var(--theme-shadow-md)] hover:-translate-y-1 hover:shadow-[var(--theme-shadow-lg)] mt-4 shrink-0"
           data-plan="premium"
         >
           Más Popular
         </button>
       </div>
 
-      <div class="pricing-card">
-        <h3 class="title-medium">Premium PLUS</h3>
-        <div class="plan-pricing">
-          <span class="plan-price">
-            <span class="currency">$</span>2,799
+      <div class="flex flex-col bg-[var(--bg-primary)]/80 backdrop-blur-[10px] p-6 md:p-8 rounded-2xl border border-[var(--border-light)] shadow-[var(--theme-shadow-md)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[var(--theme-shadow-xl)]">
+        <h3 class="text-xl md:text-2xl font-bold text-[var(--secondary)] mb-4">Premium PLUS</h3>
+        <div class="mb-6">
+          <span class="block">
+            <span class="text-4xl md:text-5xl font-bold text-[var(--text-primary)]">$2,799</span>
           </span>
-          <span class="plan-period">por año</span>
+          <span class="text-sm text-[var(--text-secondary)]">por año</span>
         </div>
 
-        <ul class="plan-features">
-          <li>10,000 timbres incluidos</li>
-          <li>AutoFactura incluida</li>
-          <li>WhatsApp con tu número</li>
-          <li>Email personalizado</li>
-          <li>Complementos avanzados</li>
-          <li>Generación DIOT</li>
-          <li>Soporte dedicado</li>
+        <ul class="list-none p-0 my-6 space-y-3 flex-1">
+          <li class="flex items-start gap-2 text-[var(--text-secondary)]"><span class="text-[var(--secondary)] font-bold">✓</span> 10,000 timbres incluidos</li>
+          <li class="flex items-start gap-2 text-[var(--text-secondary)]"><span class="text-[var(--secondary)] font-bold">✓</span> AutoFactura incluida</li>
+          <li class="flex items-start gap-2 text-[var(--text-secondary)]"><span class="text-[var(--secondary)] font-bold">✓</span> WhatsApp con tu número</li>
+          <li class="flex items-start gap-2 text-[var(--text-secondary)]"><span class="text-[var(--secondary)] font-bold">✓</span> Email personalizado</li>
+          <li class="flex items-start gap-2 text-[var(--text-secondary)]"><span class="text-[var(--secondary)] font-bold">✓</span> Complementos avanzados</li>
+          <li class="flex items-start gap-2 text-[var(--text-secondary)]"><span class="text-[var(--secondary)] font-bold">✓</span> Generación DIOT</li>
+          <li class="flex items-start gap-2 text-[var(--text-secondary)]"><span class="text-[var(--secondary)] font-bold">✓</span> Soporte dedicado</li>
         </ul>
 
         <button
           type="button"
-          class="btn btn-primary plan-button"
+          class="plan-button w-full flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all duration-200 cursor-pointer bg-gradient-to-br from-[var(--highlight-blue)] to-[var(--secondary)] text-white shadow-[var(--theme-shadow-md)] hover:-translate-y-1 hover:shadow-[var(--theme-shadow-lg)] mt-4 shrink-0"
           data-plan="premium-plus"
         >
           Plan Completo
