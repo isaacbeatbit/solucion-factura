@@ -1,7 +1,6 @@
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *));
-@custom-variant light (&:where([data-theme="light"], [data-theme="light"] *));
 
 
 /* ========================================
@@ -60,6 +59,7 @@
    LIGHT MODE
    ======================================== */
 
+:root:not(.dark),
 [data-theme="light"] {
   /* Colores principales */
   --primary: #ffffff;

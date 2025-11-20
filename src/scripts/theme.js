@@ -4,29 +4,37 @@
     const savedTheme = localStorage.getItem("theme");
     const html = document.documentElement;
 
-    if (savedTheme === "light") {
-      html.setAttribute("data-theme", "light");
+    if (savedTheme === "dark") {
+      html.setAttribute("data-theme", "dark");
+      html.classList.add("dark");
     } else {
-      html.removeAttribute("data-theme");
+      html.setAttribute("data-theme", "light");
+      html.classList.remove("dark");
     }
   }
 
   function setTheme(theme) {
     const html = document.documentElement;
-    if (theme === "light") {
-      html.setAttribute("data-theme", "light");
+    if (theme === "dark") {
+      html.setAttribute("data-theme", "dark");
+      html.classList.add("dark");
     } else {
-      html.removeAttribute("data-theme");
+      html.setAttribute("data-theme", "light");
+      html.classList.remove("dark");
     }
     localStorage.setItem("theme", theme);
   }
 
   function toggleTheme() {
     const current =
-      document.documentElement.getAttribute("data-theme") || "dark";
-    setTheme(current === "light" ? "dark" : "light");
+      document.documentElement.getAttribute("data-theme") || "light";
+    setTheme(current === "dark" ? "light" : "dark");
+  }
+
+  function getCurrentTheme() {
+    return document.documentElement.getAttribute("data-theme") || "light";
   }
 
   initTheme();
-  window.themeManager = { setTheme, toggleTheme };
+  window.themeManager = { setTheme, toggleTheme, getCurrentTheme };
 })();

@@ -80,8 +80,10 @@ import "../styles/global.css";
 
           if (themeToApply === "light") {
             htmlElement.setAttribute("data-theme", "light");
+            htmlElement.classList.remove("dark");
           } else {
             htmlElement.removeAttribute("data-theme");
+            htmlElement.classList.add("dark");
           }
         }
 
@@ -97,9 +99,11 @@ import "../styles/global.css";
                 const htmlElement = document.documentElement;
                 if (e.matches) {
                   htmlElement.removeAttribute("data-theme");
+            htmlElement.classList.add("dark");
                   localStorage.setItem("theme", "dark");
                 } else {
                   htmlElement.setAttribute("data-theme", "light");
+            htmlElement.classList.remove("dark");
                   localStorage.setItem("theme", "light");
                 }
 
@@ -126,8 +130,10 @@ import "../styles/global.css";
 
           if (theme === "light") {
             htmlElement.setAttribute("data-theme", "light");
+            htmlElement.classList.remove("dark");
           } else {
             htmlElement.removeAttribute("data-theme");
+            htmlElement.classList.add("dark");
             theme = "dark";
           }
 
@@ -164,59 +170,60 @@ import "../styles/global.css";
         };
       })();
     </script>
+      <script src="../scripts/theme.js"></script>
   </head>
 
   <body>
     <Navbar />
 
     <!-- Hero Section -->
-    <section class="terms-hero">
-      <div class="container">
-        <div class="hero-content">
-          <h1 class="title-hero">Términos y Condiciones</h1>
-          <p class="hero-description">
+    <section class="pt-32 pb-16 bg-gray-100 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto">
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-4 leading-tight">Términos y Condiciones</h1>
+          <p class="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
             Conoce los términos y condiciones generales de uso de nuestros
             servicios de facturación electrónica CFDI 4.0
           </p>
-          <div class="last-updated">
-            <span class="update-label">Última actualización:</span>
-            <span class="update-date">01 de Enero de 2025</span>
+          <div class="inline-flex items-center gap-2 bg-white dark:bg-gray-800 px-6 py-3 rounded-full border border-gray-200 dark:border-gray-700 text-sm">
+            <span class="text-gray-600 dark:text-gray-400 font-medium">Última actualización:</span>
+            <span class="text-blue-600 dark:text-blue-400 font-semibold">01 de Enero de 2025</span>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Términos Content -->
-    <section class="terms-content">
-      <div class="container">
-        <div class="content-wrapper">
+    <section class="py-16 bg-white dark:bg-gray-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
           <!-- Contenido Principal -->
-          <main class="terms-main">
-            <div class="terms-intro">
-              <h2>Términos y Condiciones Generales</h2>
-              <p>
+          <main >
+            <div class="mb-12">
+              <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6 pb-2 border-b-2 border-blue-600 dark:border-blue-400">Términos y Condiciones Generales</h2>
+              <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                 Contrato de Términos y Condiciones Generales de los servicios
                 ofrecidos por
-                <strong>"SERINT 360 SAS DE C.V."</strong> que en lo sucesivo se le
+                <strong class="text-gray-900 dark:text-white font-semibold">"SERINT 360 SAS DE C.V."</strong> que en lo sucesivo se le
                 denominará
-                <strong>"LA EMPRESA"</strong> hacia usted que es denominado <strong
+                <strong class="text-gray-900 dark:text-white font-semibold">"LA EMPRESA"</strong> hacia usted que es denominado <strong
                   >"EL USUARIO"</strong
                 >.
               </p>
             </div>
 
             <!-- 1. Siglas y Glosario -->
-            <section id="siglas-glosario" class="terms-section">
-              <h3>1. SIGLAS Y GLOSARIO</h3>
-              <p>
+            <section id="siglas-glosario" class="mb-12 pb-8 border-b border-gray-200 dark:border-gray-700 last:border-b-0">
+              <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">1. SIGLAS Y GLOSARIO</h3>
+              <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                 Para efectos del presente, se tomarán en cuenta las siguientes
                 definiciones:
               </p>
 
-              <div class="definitions-grid">
-                <div class="definition-item">
-                  <dt>1.1 API.-</dt>
-                  <dd>
+              <div class="space-y-6">
+                <div>
+                  <dt class="font-bold text-gray-900 dark:text-white mb-2">1.1 API.-</dt>
+                  <dd class="text-gray-600 dark:text-gray-300 mb-4 pl-4">
                     Podemos entender la API como un código que indica a las
                     aplicaciones cómo pueden mantener una comunicación entre sí.
                     Estas reglas permiten que los distintos programas mantengan
@@ -224,18 +231,18 @@ import "../styles/global.css";
                   </dd>
                 </div>
 
-                <div class="definition-item">
-                  <dt>1.2 Aplicación Web.-</dt>
-                  <dd>
+                <div>
+                  <dt class="font-bold text-gray-900 dark:text-white mb-2">1.2 Aplicación Web.-</dt>
+                  <dd class="text-gray-600 dark:text-gray-300 mb-4 pl-4">
                     Referente a la interfaz que ofrece Solución Fiscal dentro de
                     su sitio web, donde puede administrar sus servicios
                     adquiridos y aprovechar sus características.
                   </dd>
                 </div>
 
-                <div class="definition-item">
-                  <dt>1.3 CFD.-</dt>
-                  <dd>
+                <div>
+                  <dt class="font-bold text-gray-900 dark:text-white mb-2">1.3 CFD.-</dt>
+                  <dd class="text-gray-600 dark:text-gray-300 mb-4 pl-4">
                     Comprobante Fiscal Digital; son documentos electrónicos que
                     permiten comprobar las operaciones realizadas entre los
                     contribuyentes, bajo estándares tecnológicos y de seguridad
@@ -245,9 +252,9 @@ import "../styles/global.css";
                   </dd>
                 </div>
 
-                <div class="definition-item">
-                  <dt>1.4 CFDI.-</dt>
-                  <dd>
+                <div>
+                  <dt class="font-bold text-gray-900 dark:text-white mb-2">1.4 CFDI.-</dt>
+                  <dd class="text-gray-600 dark:text-gray-300 mb-4 pl-4">
                     El Comprobante Fiscal Digital a través de Internet o Factura
                     Electrónica; Es el comprobante fiscal de un pago realizado
                     que describe el costo del producto vendido o servicio
@@ -257,9 +264,9 @@ import "../styles/global.css";
                   </dd>
                 </div>
 
-                <div class="definition-item">
-                  <dt>1.5 CFF.-</dt>
-                  <dd>
+                <div>
+                  <dt class="font-bold text-gray-900 dark:text-white mb-2">1.5 CFF.-</dt>
+                  <dd class="text-gray-600 dark:text-gray-300 mb-4 pl-4">
                     Código Fiscal de la Federación; Es un ordenamiento jurídico
                     de carácter tributario, de aplicación en los Estados Unidos
                     Mexicanos, que sirve como instrumento de la administración
@@ -267,9 +274,9 @@ import "../styles/global.css";
                   </dd>
                 </div>
 
-                <div class="definition-item">
-                  <dt>1.6 CSD.-</dt>
-                  <dd>
+                <div>
+                  <dt class="font-bold text-gray-900 dark:text-white mb-2">1.6 CSD.-</dt>
+                  <dd class="text-gray-600 dark:text-gray-300 mb-4 pl-4">
                     El Certificado de Sello Digital; Es un documento electrónico
                     mediante el cual una autoridad de certificación (SAT)
                     garantiza la vinculación entre la identidad de un sujeto o
@@ -277,35 +284,35 @@ import "../styles/global.css";
                   </dd>
                 </div>
 
-                <div class="definition-item">
-                  <dt>1.7 Magento.-</dt>
-                  <dd>
+                <div>
+                  <dt class="font-bold text-gray-900 dark:text-white mb-2">1.7 Magento.-</dt>
+                  <dd class="text-gray-600 dark:text-gray-300 mb-4 pl-4">
                     Es una plataforma de código abierto para comercio
                     electrónico escrita en PHP.
                   </dd>
                 </div>
 
-                <div class="definition-item">
-                  <dt>1.8 Prestashop.-</dt>
-                  <dd>
+                <div>
+                  <dt class="font-bold text-gray-900 dark:text-white mb-2">1.8 Prestashop.-</dt>
+                  <dd class="text-gray-600 dark:text-gray-300 mb-4 pl-4">
                     Es un sistema de gestión de contenidos libre y de código
                     abierto pensado para construir desde cero tiendas en línea
                     de comercio electrónico.
                   </dd>
                 </div>
 
-                <div class="definition-item">
-                  <dt>1.9 RCFF.-</dt>
-                  <dd>
+                <div>
+                  <dt class="font-bold text-gray-900 dark:text-white mb-2">1.9 RCFF.-</dt>
+                  <dd class="text-gray-600 dark:text-gray-300 mb-4 pl-4">
                     Reglamento del Código Fiscal de la Federación; La ley
                     adjetiva o reglamentaria que rige la aplicación del Código
                     Fiscal de la Federación.
                   </dd>
                 </div>
 
-                <div class="definition-item">
-                  <dt>1.10 RFC.-</dt>
-                  <dd>
+                <div>
+                  <dt class="font-bold text-gray-900 dark:text-white mb-2">1.10 RFC.-</dt>
+                  <dd class="text-gray-600 dark:text-gray-300 mb-4 pl-4">
                     Registro Federal de Contribuyentes; Es una clave única de
                     registro que sirve para identificar a toda persona que
                     realiza una actividad económica y deba contribuir con el
@@ -314,9 +321,9 @@ import "../styles/global.css";
                   </dd>
                 </div>
 
-                <div class="definition-item">
-                  <dt>1.11 RMF.-</dt>
-                  <dd>
+                <div>
+                  <dt class="font-bold text-gray-900 dark:text-white mb-2">1.11 RMF.-</dt>
+                  <dd class="text-gray-600 dark:text-gray-300 mb-4 pl-4">
                     Resolución Miscelánea Fiscal; La Miscelánea Fiscal se puede
                     definir como la disposición en materia de recaudación de
                     impuestos que emite anualmente la Secretaría de Hacienda y
@@ -325,9 +332,9 @@ import "../styles/global.css";
                   </dd>
                 </div>
 
-                <div class="definition-item">
-                  <dt>1.12 SAT.-</dt>
-                  <dd>
+                <div>
+                  <dt class="font-bold text-gray-900 dark:text-white mb-2">1.12 SAT.-</dt>
+                  <dd class="text-gray-600 dark:text-gray-300 mb-4 pl-4">
                     Servicio de Administración Tributaria; El Sistema de
                     Administración Tributaria, es una institución gubernamental
                     encargada de que las personas físicas y morales contribuyan
@@ -336,9 +343,9 @@ import "../styles/global.css";
                   </dd>
                 </div>
 
-                <div class="definition-item">
-                  <dt>1.13 SHCP.-</dt>
-                  <dd>
+                <div>
+                  <dt class="font-bold text-gray-900 dark:text-white mb-2">1.13 SHCP.-</dt>
+                  <dd class="text-gray-600 dark:text-gray-300 mb-4 pl-4">
                     Secretaría, la Secretaría de Hacienda y Crédito Público; Es
                     la entidad que se encarga de regular, dirigir y controlar en
                     materia fiscal la política del Gobierno Federal (las
@@ -347,9 +354,9 @@ import "../styles/global.css";
                   </dd>
                 </div>
 
-                <div class="definition-item">
-                  <dt>1.14 Shopify.-</dt>
-                  <dd>
+                <div>
+                  <dt class="font-bold text-gray-900 dark:text-white mb-2">1.14 Shopify.-</dt>
+                  <dd class="text-gray-600 dark:text-gray-300 mb-4 pl-4">
                     Se encarga de ofrecer una serie de servicios, incluidos
                     pagos, marketing, envíos y herramientas de fidelización de
                     clientes para simplificar el proceso de manejar una tienda
@@ -357,17 +364,17 @@ import "../styles/global.css";
                   </dd>
                 </div>
 
-                <div class="definition-item">
-                  <dt>1.15 WHMCS.-</dt>
-                  <dd>
+                <div>
+                  <dt class="font-bold text-gray-900 dark:text-white mb-2">1.15 WHMCS.-</dt>
+                  <dd class="text-gray-600 dark:text-gray-300 mb-4 pl-4">
                     Software de facturación para desarrolladores y web hosting.
                     Crea facturas de aspecto profesional.
                   </dd>
                 </div>
 
-                <div class="definition-item">
-                  <dt>1.16 Woocommerce.-</dt>
-                  <dd>
+                <div>
+                  <dt class="font-bold text-gray-900 dark:text-white mb-2">1.16 Woocommerce.-</dt>
+                  <dd class="text-gray-600 dark:text-gray-300 mb-4 pl-4">
                     Es un plugin de comercio electrónico de código abierto para
                     WordPress. Está diseñado para pequeños y grandes
                     comerciantes en línea con WordPress.
@@ -377,52 +384,52 @@ import "../styles/global.css";
             </section>
 
             <!-- 2. Datos Generales -->
-            <section id="datos-generales" class="terms-section">
-              <h3>2. DATOS GENERALES</h3>
-              <p>
-                Para sus efectos legales, <strong>"LA EMPRESA"</strong> declara que
+            <section id="datos-generales" class="mb-12 pb-8 border-b border-gray-200 dark:border-gray-700 last:border-b-0">
+              <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">2. DATOS GENERALES</h3>
+              <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
+                Para sus efectos legales, <strong class="text-gray-900 dark:text-white font-semibold">"LA EMPRESA"</strong> declara que
                 es una persona moral, debidamente constituida conforme a la legislación
                 mexicana. Que tiene la capacidad legal, tecnológica y humana para
                 ofrecer los servicios señalados en el presente escrito, facultades
                 que no han sido restringidas o modificadas en forma alguna. Su Registro
                 Federal de Contribuyentes ante la Secretaría de Hacienda y Crédito
-                Público es <strong>SER240101ABC</strong>.
+                Público es <strong class="text-gray-900 dark:text-white font-semibold">SER240101ABC</strong>.
               </p>
 
               <div class="company-info">
-                <h4>Información de Contacto:</h4>
-                <ul>
-                  <li>
-                    <strong>Domicilio:</strong> Alborada 124, Colonia Parques del
+                <h4 class="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-4">Información de Contacto:</h4>
+                <ul class="my-4 pl-8 text-gray-600 dark:text-gray-300 list-disc">
+                  <li class="mb-2 leading-relaxed">
+                    <strong class="text-gray-900 dark:text-white font-semibold">Domicilio:</strong> Alborada 124, Colonia Parques del
                     Pedregal (Torre Perisur), Tlalpan, Ciudad de México. C.P. 14010
                   </li>
-                  <li><strong>Teléfono:</strong> 55 9331 4767</li>
-                  <li><strong>WhatsApp:</strong> 55 7601 7764</li>
-                  <li>
-                    <strong>Correo electrónico:</strong> contacto@solucionfactura.mx
+                  <li class="mb-2 leading-relaxed"><strong class="text-gray-900 dark:text-white font-semibold">Teléfono:</strong> 55 9331 4767</li>
+                  <li class="mb-2 leading-relaxed"><strong class="text-gray-900 dark:text-white font-semibold">WhatsApp:</strong> 55 7601 7764</li>
+                  <li class="mb-2 leading-relaxed">
+                    <strong class="text-gray-900 dark:text-white font-semibold">Correo electrónico:</strong> contacto@solucionfactura.mx
                   </li>
                 </ul>
 
-                <h4>Sitios Web Oficiales:</h4>
-                <ul>
-                  <li>solucionfiscal.mx</li>
-                  <li>solucionfactura.mx</li>
-                  <li>solucioncrm.mx</li>
-                  <li>solucionconta.mx</li>
-                  <li>descargacfdi.com</li>
-                  <li>wabotify.com</li>
+                <h4 class="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-4">Sitios Web Oficiales:</h4>
+                <ul class="my-4 pl-8 text-gray-600 dark:text-gray-300 list-disc">
+                  <li class="mb-2 leading-relaxed">solucionfiscal.mx</li>
+                  <li class="mb-2 leading-relaxed">solucionfactura.mx</li>
+                  <li class="mb-2 leading-relaxed">solucioncrm.mx</li>
+                  <li class="mb-2 leading-relaxed">solucionconta.mx</li>
+                  <li class="mb-2 leading-relaxed">descargacfdi.com</li>
+                  <li class="mb-2 leading-relaxed">wabotify.com</li>
                 </ul>
 
-                <h4>Redes Sociales:</h4>
-                <ul>
-                  <li>Instagram: instagram.com/solucionfiscal</li>
-                  <li>Facebook: facebook.com/SolucionFiscalMX/</li>
-                  <li>YouTube: youtube.com/c/SolucionFiscal</li>
-                  <li>LinkedIn: mx.linkedin.com/company/solucion-fiscal</li>
+                <h4 class="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-4">Redes Sociales:</h4>
+                <ul class="my-4 pl-8 text-gray-600 dark:text-gray-300 list-disc">
+                  <li class="mb-2 leading-relaxed">Instagram: instagram.com/solucionfiscal</li>
+                  <li class="mb-2 leading-relaxed">Facebook: facebook.com/SolucionFiscalMX/</li>
+                  <li class="mb-2 leading-relaxed">YouTube: youtube.com/c/SolucionFiscal</li>
+                  <li class="mb-2 leading-relaxed">LinkedIn: mx.linkedin.com/company/solucion-fiscal</li>
                 </ul>
               </div>
 
-              <p>
+              <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                 Que es plenamente capaz para la celebración del presente
                 contrato, toda vez que su objeto social se lo permite y cuenta
                 con la debida autorización del SAT para prestar el servicio de
@@ -430,17 +437,17 @@ import "../styles/global.css";
                 tecnológica y de infraestructura que le permite prestar el
                 servicio de generación, validación y certificación de CFDI de
                 conformidad con los estándares y requerimientos establecidos por
-                el SAT, además <strong>"LA EMPRESA"</strong> es legítima propietaria
+                el SAT, además <strong class="text-gray-900 dark:text-white font-semibold">"LA EMPRESA"</strong> es legítima propietaria
                 de la APLICACIÓN WEB utilizada para el servicio otorgado.
               </p>
             </section>
 
             <!-- 3. Obligaciones de la Empresa -->
-            <section id="obligaciones-empresa" class="terms-section">
-              <h3>3. OBLIGACIONES DE "LA EMPRESA"</h3>
-              <p>
-                <strong>"LA EMPRESA"</strong> se obliga a generar, validar y certificar
-                los CFDI que emita <strong>"EL USUARIO"</strong> a partir de la APLICACIÓN
+            <section id="obligaciones-empresa" class="mb-12 pb-8 border-b border-gray-200 dark:border-gray-700 last:border-b-0">
+              <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">3. OBLIGACIONES DE "LA EMPRESA"</h3>
+              <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
+                <strong class="text-gray-900 dark:text-white font-semibold">"LA EMPRESA"</strong> se obliga a generar, validar y certificar
+                los CFDI que emita <strong class="text-gray-900 dark:text-white font-semibold">"EL USUARIO"</strong> a partir de la APLICACIÓN
                 WEB, cumpliendo con las características funcionales, servicios generales
                 y niveles de servicios mínimos, establecidos por las disposiciones
                 de carácter general aplicables y vigentes, y de conformidad con los
@@ -448,7 +455,7 @@ import "../styles/global.css";
                 SAT.
               </p>
 
-              <p>
+              <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                 De la misma forma se obliga a almacenar y conservar los CFDI que <strong
                   >"EL USUARIO"</strong
                 > emita a través de LA APLICACIÓN WEB, en una base de datos autónoma
@@ -458,53 +465,53 @@ import "../styles/global.css";
                 así requerirlo la legislación aplicable y vigente.
               </p>
 
-              <p>
-                Por último <strong>"LA EMPRESA"</strong> se obliga a no realizar
+              <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
+                Por último <strong class="text-gray-900 dark:text-white font-semibold">"LA EMPRESA"</strong> se obliga a no realizar
                 prácticas engañosas, por los distintos medios digitales y tradicionales.
               </p>
             </section>
 
             <!-- 4. Cumplimiento con el SAT -->
-            <section id="cumplimiento-sat" class="terms-section">
-              <h3>4. CUMPLIMIENTO CON EL SAT</h3>
-              <p>
-                Los servicios que <strong>"LA EMPRESA"</strong> otorga se sujetan
+            <section id="cumplimiento-sat" class="mb-12 pb-8 border-b border-gray-200 dark:border-gray-700 last:border-b-0">
+              <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">4. CUMPLIMIENTO CON EL SAT</h3>
+              <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
+                Los servicios que <strong class="text-gray-900 dark:text-white font-semibold">"LA EMPRESA"</strong> otorga se sujetan
                 al Código Fiscal Federal, en los apartados 29, 29 BIS, 29-A y los
                 demás relacionados con los Proveedores Autorizados de Certificaciones,
                 entre los requerimientos se encuentran los siguientes:
               </p>
 
               <ol class="sat-requirements">
-                <li>
+                <li class="mb-2 leading-relaxed">
                   Habilitación de la emisión de Comprobantes Fiscales Digitales
                   por Internet (CFDI)
                 </li>
-                <li>Procesamiento ágil y eficiente del CFDI</li>
-                <li>
+                <li class="mb-2 leading-relaxed">Procesamiento ágil y eficiente del CFDI</li>
+                <li class="mb-2 leading-relaxed">
                   Aceptación de la carga del o los Certificados de Sello Digital
                   (CSD) de "EL USUARIO", para el sellado de los comprobantes
                 </li>
-                <li>
+                <li class="mb-2 leading-relaxed">
                   Permiso de pre-cargar los datos fiscales de "EL USUARIO"
                   emisor
                 </li>
-                <li>
+                <li class="mb-2 leading-relaxed">
                   Generación del documento para su validación y certificación,
                   cumpliendo con todas las especificaciones técnicas emitidas
                   por el SAT
                 </li>
-                <li>Validación y certificación (timbrado) del CFDI</li>
-                <li>
+                <li class="mb-2 leading-relaxed">Validación y certificación (timbrado) del CFDI</li>
+                <li class="mb-2 leading-relaxed">
                   Entrega a "EL USUARIO" emisor del comprobante certificado o
                   acuse de rechazo, en su caso
                 </li>
-                <li>Administración del almacenamiento de los comprobantes</li>
-                <li>
+                <li class="mb-2 leading-relaxed">Administración del almacenamiento de los comprobantes</li>
+                <li class="mb-2 leading-relaxed">
                   Permite al emisor del comprobante consultar, guardar o
                   imprimir los comprobantes durante los 3 meses seguidos a
                   partir de la certificación del comprobante
                 </li>
-                <li>
+                <li class="mb-2 leading-relaxed">
                   Envío de copia del CFDI al SAT de manera inmediata o en un
                   plazo que no excede las 72 horas contadas a partir de la
                   certificación del comprobante
@@ -513,17 +520,17 @@ import "../styles/global.css";
             </section>
 
             <!-- 5. Obligaciones del Usuario -->
-            <section id="obligaciones-usuario" class="terms-section">
-              <h3>5. OBLIGACIONES DEL USUARIO</h3>
+            <section id="obligaciones-usuario" class="mb-12 pb-8 border-b border-gray-200 dark:border-gray-700 last:border-b-0">
+              <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">5. OBLIGACIONES DEL USUARIO</h3>
 
               <div class="user-obligations">
-                <h4>Información Veraz</h4>
-                <p>
+                <h4 class="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-4">Información Veraz</h4>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                   Cualquier persona que comparta su información personal a <strong
                     >"LA EMPRESA"</strong
                   > se obliga a proporcionar información fidedigna, por lo que manifiesta
                   que la información que proporciona es real y comprobable, relevando
-                  a <strong>"LA EMPRESA"</strong> de cualquier responsabilidad por
+                  a <strong class="text-gray-900 dark:text-white font-semibold">"LA EMPRESA"</strong> de cualquier responsabilidad por
                   la falsedad con la que se conduzca, por la falsificación de documentos
                   o suplantación de personas, nombres, direcciones o datos de identificación
                   que utilice para contratar los servicios que presta <strong
@@ -531,47 +538,47 @@ import "../styles/global.css";
                   >.
                 </p>
 
-                <h4>Capacidad Legal</h4>
-                <p>
+                <h4 class="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-4">Capacidad Legal</h4>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                   Así mismo declara encontrarse en pleno uso de sus facultades
                   físicas, mentales y legales para poder celebrar este contrato.
                   En el caso de ser usuario individual, <strong
                     >"EL USUARIO"</strong
                   > garantiza que al menos tiene 18 años de edad; en caso de ser
-                  usuario de una persona moral, <strong>"EL USUARIO"</strong> garantiza
+                  usuario de una persona moral, <strong class="text-gray-900 dark:text-white font-semibold">"EL USUARIO"</strong> garantiza
                   que el servicio no será usado por una persona menor a los 18 años
                   de edad.
                 </p>
 
-                <h4>Responsabilidad sobre Contenidos</h4>
-                <p>
+                <h4 class="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-4">Responsabilidad sobre Contenidos</h4>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                   También declara que es el único y exclusivo responsable por
                   los datos, marcas, logos, patentes o símbolos y colores de
                   identificación que proporciona.
                 </p>
 
-                <h4>Conocimiento de Normativas</h4>
-                <p>
-                  <strong>"EL USUARIO"</strong> se obliga a conocer las disposiciones
+                <h4 class="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-4">Conocimiento de Normativas</h4>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
+                  <strong class="text-gray-900 dark:text-white font-semibold">"EL USUARIO"</strong> se obliga a conocer las disposiciones
                   que rigen los derechos y obligaciones de los contribuyentes, respecto
                   a la emisión de CFDI contenidas en el CFF, entre otras las de sus
                   artículos 29, 29 BIS y 29-A, así como las de la RMF y la PÁGINA
                   DE INTERNET del SAT.
                 </p>
 
-                <h4>Uso Apropiado del Servicio</h4>
-                <p>
-                  <strong>"EL USUARIO"</strong> se compromete a abstenerse de utilizar
+                <h4 class="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-4">Uso Apropiado del Servicio</h4>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
+                  <strong class="text-gray-900 dark:text-white font-semibold">"EL USUARIO"</strong> se compromete a abstenerse de utilizar
                   el Servicio y/o la APLICACIÓN WEB con fines ilícitos, prohibidos
                   en las leyes o disposiciones aplicables que pudieran resultar lesivos
-                  a los intereses de terceros, o de <strong>"LA EMPRESA"</strong
+                  a los intereses de terceros, o de <strong class="text-gray-900 dark:text-white font-semibold">"LA EMPRESA"</strong
                   > o que de cualquier forma puedan dañar, inutilizar, sobrecargar
                   o deteriorar los servicios.
                 </p>
 
-                <h4>Relación de Respeto</h4>
-                <p>
-                  <strong>"EL USUARIO"</strong> y <strong>"LA EMPRESA"</strong> se
+                <h4 class="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-4">Relación de Respeto</h4>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
+                  <strong class="text-gray-900 dark:text-white font-semibold">"EL USUARIO"</strong> y <strong class="text-gray-900 dark:text-white font-semibold">"LA EMPRESA"</strong> se
                   comprometen a mantener una relación de respeto, por lo que las
                   coacciones, incitaciones a la violencia, discriminación y/o racismo
                   ya sea en contra de otros "USUARIOS", visitantes del sitio web,
@@ -580,9 +587,9 @@ import "../styles/global.css";
                   partes.
                 </p>
 
-                <h4>Autorización de Datos</h4>
-                <p>
-                  <strong>"EL USUARIO"</strong> acepta expresamente que sus datos
+                <h4 class="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-4">Autorización de Datos</h4>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
+                  <strong class="text-gray-900 dark:text-white font-semibold">"EL USUARIO"</strong> acepta expresamente que sus datos
                   personales podrán ser utilizados por <strong
                     >"LA EMPRESA"</strong
                   > para fines de marketing, envío de notificaciones comerciales,
@@ -594,10 +601,10 @@ import "../styles/global.css";
             </section>
 
             <!-- 6. Objeto -->
-            <section id="objeto" class="terms-section">
-              <h3>6. OBJETO</h3>
-              <p>
-                Por medio del presente contrato, <strong>"EL USUARIO"</strong> adquiere
+            <section id="objeto" class="mb-12 pb-8 border-b border-gray-200 dark:border-gray-700 last:border-b-0">
+              <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">6. OBJETO</h3>
+              <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
+                Por medio del presente contrato, <strong class="text-gray-900 dark:text-white font-semibold">"EL USUARIO"</strong> adquiere
                 y administra los servicios y/o planes de <strong
                   >"LA EMPRESA"</strong
                 > mediante sus sitios web oficiales, los cuales son mencionados a
@@ -605,45 +612,45 @@ import "../styles/global.css";
               </p>
 
               <ul class="service-list">
-                <li>Plan emprendedor</li>
-                <li>Plan PyME</li>
-                <li>Plan Empresa</li>
-                <li>Folios Digitales por Volumen</li>
-                <li>Servicio de API</li>
-                <li>Servicio de RFC adicional</li>
-                <li>Usuario Extra</li>
+                <li class="mb-2 leading-relaxed">Plan emprendedor</li>
+                <li class="mb-2 leading-relaxed">Plan PyME</li>
+                <li class="mb-2 leading-relaxed">Plan Empresa</li>
+                <li class="mb-2 leading-relaxed">Folios Digitales por Volumen</li>
+                <li class="mb-2 leading-relaxed">Servicio de API</li>
+                <li class="mb-2 leading-relaxed">Servicio de RFC adicional</li>
+                <li class="mb-2 leading-relaxed">Usuario Extra</li>
               </ul>
 
-              <p>
+              <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                 Siendo la generación de Comprobantes Fiscales Digitales por
                 Internet el servicio principal ofrecido por <strong
                   >"LA EMPRESA"</strong
                 >.
               </p>
 
-              <p>
-                <strong>"LA EMPRESA"</strong> se obliga a prestar a <strong
+              <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
+                <strong class="text-gray-900 dark:text-white font-semibold">"LA EMPRESA"</strong> se obliga a prestar a <strong
                   >"EL USUARIO"</strong
                 >, a través de la APLICACIÓN WEB, los servicios de facturación
                 electrónica establecidos en el presente contrato, siempre y
-                cuando <strong>"EL USUARIO"</strong> inicie sesión en la mencionada
+                cuando <strong class="text-gray-900 dark:text-white font-semibold">"EL USUARIO"</strong> inicie sesión en la mencionada
                 aplicación.
               </p>
             </section>
 
             <!-- 7. Protección de Datos Personales -->
-            <section id="proteccion-datos" class="terms-section">
-              <h3>7. PROTECCIÓN DE DATOS PERSONALES</h3>
-              <p>
-                <strong>"LA EMPRESA"</strong> se compromete a proteger los datos
-                personales de <strong>"EL USUARIO"</strong> de conformidad con la
+            <section id="proteccion-datos" class="mb-12 pb-8 border-b border-gray-200 dark:border-gray-700 last:border-b-0">
+              <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">7. PROTECCIÓN DE DATOS PERSONALES</h3>
+              <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
+                <strong class="text-gray-900 dark:text-white font-semibold">"LA EMPRESA"</strong> se compromete a proteger los datos
+                personales de <strong class="text-gray-900 dark:text-white font-semibold">"EL USUARIO"</strong> de conformidad con la
                 Ley Federal de Protección de Datos Personales en Posesión de los
                 Particulares y su Reglamento.
               </p>
 
               <div class="data-protection">
-                <h4>7.1 FINALIDADES DEL TRATAMIENTO DE DATOS</h4>
-                <p>
+                <h4 class="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-4">7.1 FINALIDADES DEL TRATAMIENTO DE DATOS</h4>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                   Los datos personales recabados serán utilizados para las
                   siguientes finalidades:
                 </p>
@@ -651,39 +658,39 @@ import "../styles/global.css";
                 <div class="finalidades">
                   <div class="finalidad-group">
                     <h5>Finalidades Primarias:</h5>
-                    <ul>
-                      <li>Prestación de los servicios contratados</li>
-                      <li>Facturación y cobranza</li>
-                      <li>Cumplimiento de obligaciones contractuales</li>
-                      <li>Atención al cliente y soporte técnico</li>
-                      <li>Cumplimiento de obligaciones legales y fiscales</li>
+                    <ul class="my-4 pl-8 text-gray-600 dark:text-gray-300 list-disc">
+                      <li class="mb-2 leading-relaxed">Prestación de los servicios contratados</li>
+                      <li class="mb-2 leading-relaxed">Facturación y cobranza</li>
+                      <li class="mb-2 leading-relaxed">Cumplimiento de obligaciones contractuales</li>
+                      <li class="mb-2 leading-relaxed">Atención al cliente y soporte técnico</li>
+                      <li class="mb-2 leading-relaxed">Cumplimiento de obligaciones legales y fiscales</li>
                     </ul>
                   </div>
 
                   <div class="finalidad-group">
                     <h5>Finalidades Secundarias:</h5>
-                    <ul>
-                      <li>
+                    <ul class="my-4 pl-8 text-gray-600 dark:text-gray-300 list-disc">
+                      <li class="mb-2 leading-relaxed">
                         Envío de comunicaciones comerciales, promocionales y
                         publicitarias
                       </li>
-                      <li>Marketing directo y campañas promocionales</li>
-                      <li>
+                      <li class="mb-2 leading-relaxed">Marketing directo y campañas promocionales</li>
+                      <li class="mb-2 leading-relaxed">
                         Desarrollo de estudios de mercado y análisis comerciales
                       </li>
-                      <li>Mejora de productos y servicios</li>
-                      <li>
+                      <li class="mb-2 leading-relaxed">Mejora de productos y servicios</li>
+                      <li class="mb-2 leading-relaxed">
                         Envío de notificaciones sobre actualizaciones, nuevos
                         servicios y ofertas
                       </li>
-                      <li>Prospección comercial</li>
+                      <li class="mb-2 leading-relaxed">Prospección comercial</li>
                     </ul>
                   </div>
                 </div>
 
-                <h4>7.2 DERECHOS ARCO</h4>
-                <p>
-                  <strong>"EL USUARIO"</strong> podrá ejercer sus derechos de Acceso,
+                <h4 class="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-4">7.2 DERECHOS ARCO</h4>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
+                  <strong class="text-gray-900 dark:text-white font-semibold">"EL USUARIO"</strong> podrá ejercer sus derechos de Acceso,
                   Rectificación, Cancelación y Oposición (derechos ARCO) mediante
                   solicitud dirigida a <a
                     href="mailto:contacto@solucionfactura.mx"
@@ -691,17 +698,17 @@ import "../styles/global.css";
                   >, proporcionando la documentación que acredite su identidad.
                 </p>
 
-                <h4>7.3 TRANSFERENCIAS</h4>
-                <p>
+                <h4 class="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-4">7.3 TRANSFERENCIAS</h4>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                   Los datos personales podrán ser transferidos a terceros
                   únicamente en los casos previstos por la ley, previo
                   consentimiento del titular o cuando sea necesario para la
                   prestación del servicio.
                 </p>
 
-                <h4>7.4 MEDIDAS DE SEGURIDAD</h4>
-                <p>
-                  <strong>"LA EMPRESA"</strong> implementa medidas técnicas, administrativas
+                <h4 class="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-4">7.4 MEDIDAS DE SEGURIDAD</h4>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
+                  <strong class="text-gray-900 dark:text-white font-semibold">"LA EMPRESA"</strong> implementa medidas técnicas, administrativas
                   y físicas de seguridad para proteger los datos personales contra
                   daño, pérdida, alteración, destrucción o uso no autorizado.
                 </p>
@@ -709,26 +716,26 @@ import "../styles/global.css";
             </section>
 
             <!-- 8. Contrato de Adhesión -->
-            <section id="contrato-adhesion" class="terms-section">
-              <h3>8. CONTRATO DE ADHESIÓN</h3>
-              <p>
+            <section id="contrato-adhesion" class="mb-12 pb-8 border-b border-gray-200 dark:border-gray-700 last:border-b-0">
+              <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">8. CONTRATO DE ADHESIÓN</h3>
+              <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                 El presente instrumento constituye un contrato de adhesión en
                 términos de los artículos 85, 86, 87 y 90 de la Ley Federal de
                 Protección al Consumidor. Las cláusulas del presente contrato
                 han sido redactadas unilateralmente por <strong
                   >"LA EMPRESA"</strong
-                > y no son negociables. <strong>"EL USUARIO"</strong> manifiesta
+                > y no son negociables. <strong class="text-gray-900 dark:text-white font-semibold">"EL USUARIO"</strong> manifiesta
                 que ha leído, entendido y acepta todas las cláusulas del presente
                 contrato.
               </p>
-              <p>
+              <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                 En caso de dudas sobre la interpretación de cualquier cláusula,
-                se estará a lo más favorable para <strong>"EL USUARIO"</strong>,
+                se estará a lo más favorable para <strong class="text-gray-900 dark:text-white font-semibold">"EL USUARIO"</strong>,
                 de conformidad con el principio de interpretación favorable al
                 consumidor establecido en la legislación de protección al
                 consumidor.
               </p>
-              <p>
+              <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                 Las cláusulas abusivas o leoninas que pudieran existir en el
                 presente contrato serán consideradas nulas de pleno derecho, sin
                 que ello afecte la validez del resto del contrato.
@@ -736,10 +743,10 @@ import "../styles/global.css";
             </section>
 
             <!-- 9. Cancelación del Servicio -->
-            <section id="cancelacion-servicio" class="terms-section">
-              <h3>9. CANCELACIÓN DEL SERVICIO</h3>
-              <p>
-                <strong>"EL USUARIO"</strong> podrá cancelar su servicio en cualquier
+            <section id="cancelacion-servicio" class="mb-12 pb-8 border-b border-gray-200 dark:border-gray-700 last:border-b-0">
+              <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">9. CANCELACIÓN DEL SERVICIO</h3>
+              <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
+                <strong class="text-gray-900 dark:text-white font-semibold">"EL USUARIO"</strong> podrá cancelar su servicio en cualquier
                 momento a través del portal de clientes ubicado en <a
                   href="https://pagos.solucionfiscal.online/portal/signin/solucionfactura"
                   target="_blank"
@@ -747,18 +754,18 @@ import "../styles/global.css";
                   >https://pagos.solucionfiscal.online/portal/signin/solucionfactura</a
                 >
               </p>
-              <p>
+              <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                 Una vez solicitada la cancelación a través del portal, el
                 servicio se cancelará de manera automática sin necesidad de
-                intervención adicional por parte de <strong>"LA EMPRESA"</strong
+                intervención adicional por parte de <strong class="text-gray-900 dark:text-white font-semibold">"LA EMPRESA"</strong
                 >.
               </p>
-              <p>
+              <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                 La cancelación será efectiva al término del período de
-                facturación vigente, por lo que <strong>"EL USUARIO"</strong> podrá
+                facturación vigente, por lo que <strong class="text-gray-900 dark:text-white font-semibold">"EL USUARIO"</strong> podrá
                 seguir utilizando el servicio hasta la fecha de vencimiento correspondiente.
               </p>
-              <p>
+              <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                 No se realizarán reembolsos por cancelaciones voluntarias del
                 servicio, salvo en los casos específicamente contemplados en la
                 cláusula de devoluciones del presente contrato.
@@ -766,21 +773,21 @@ import "../styles/global.css";
             </section>
 
             <!-- 10. Política de Devoluciones -->
-            <section id="politica-devoluciones" class="terms-section">
-              <h3>10. POLÍTICA DE DEVOLUCIONES</h3>
+            <section id="politica-devoluciones" class="mb-12 pb-8 border-b border-gray-200 dark:border-gray-700 last:border-b-0">
+              <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">10. POLÍTICA DE DEVOLUCIONES</h3>
 
               <div class="policy-subsection">
-                <h4>10.1 PROCEDENCIA DE DEVOLUCIONES</h4>
-                <p>
+                <h4 class="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-4">10.1 PROCEDENCIA DE DEVOLUCIONES</h4>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                   Las devoluciones únicamente procederán en los siguientes
                   casos:
                 </p>
-                <ul>
-                  <li>
-                    <strong>Fallas técnicas del sistema:</strong> Cuando existan
+                <ul class="my-4 pl-8 text-gray-600 dark:text-gray-300 list-disc">
+                  <li class="mb-2 leading-relaxed">
+                    <strong class="text-gray-900 dark:text-white font-semibold">Fallas técnicas del sistema:</strong> Cuando existan
                     fallas comprobables en el funcionamiento del sistema que impidan
                     el uso normal del servicio, siempre que sean atribuibles directamente
-                    a <strong>"LA EMPRESA"</strong> y no a factores externos como
+                    a <strong class="text-gray-900 dark:text-white font-semibold">"LA EMPRESA"</strong> y no a factores externos como
                     conectividad del usuario, configuración incorrecta o uso inadecuado
                     del servicio.
                   </li>
@@ -788,8 +795,8 @@ import "../styles/global.css";
               </div>
 
               <div class="policy-subsection">
-                <h4>10.2 PLAZO PARA SOLICITAR DEVOLUCIÓN</h4>
-                <p>
+                <h4 class="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-4">10.2 PLAZO PARA SOLICITAR DEVOLUCIÓN</h4>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                   Las solicitudes de devolución deberán presentarse dentro de
                   los 10 (diez) días naturales siguientes a la fecha de
                   activación del servicio o a la fecha en que se haya presentado
@@ -798,43 +805,43 @@ import "../styles/global.css";
               </div>
 
               <div class="policy-subsection">
-                <h4>10.3 CASOS EN QUE NO PROCEDE LA DEVOLUCIÓN</h4>
-                <ul>
-                  <li>
+                <h4 class="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-4">10.3 CASOS EN QUE NO PROCEDE LA DEVOLUCIÓN</h4>
+                <ul class="my-4 pl-8 text-gray-600 dark:text-gray-300 list-disc">
+                  <li class="mb-2 leading-relaxed">
                     Cuando el usuario no haya comprendido o investigado
                     adecuadamente las funciones y características del plan
                     adquirido
                   </li>
-                  <li>Por cambio de opinión o arrepentimiento de la compra</li>
-                  <li>Por uso incorrecto o inadecuado del servicio</li>
-                  <li>Por problemas de conectividad del usuario</li>
-                  <li>Por recontrataciones de servicios</li>
-                  <li>Por plugins e integraciones personalizadas</li>
-                  <li>Por cotizaciones de personalización de PDFs</li>
-                  <li>Por cambios personalizados en la plataforma</li>
-                  <li>
+                  <li class="mb-2 leading-relaxed">Por cambio de opinión o arrepentimiento de la compra</li>
+                  <li class="mb-2 leading-relaxed">Por uso incorrecto o inadecuado del servicio</li>
+                  <li class="mb-2 leading-relaxed">Por problemas de conectividad del usuario</li>
+                  <li class="mb-2 leading-relaxed">Por recontrataciones de servicios</li>
+                  <li class="mb-2 leading-relaxed">Por plugins e integraciones personalizadas</li>
+                  <li class="mb-2 leading-relaxed">Por cotizaciones de personalización de PDFs</li>
+                  <li class="mb-2 leading-relaxed">Por cambios personalizados en la plataforma</li>
+                  <li class="mb-2 leading-relaxed">
                     Cuando hayan transcurrido más de 10 días naturales desde la
                     activación del servicio
                   </li>
-                  <li>
+                  <li class="mb-2 leading-relaxed">
                     Servicios no activados por causas atribuibles al usuario
                   </li>
                 </ul>
               </div>
 
               <div class="policy-subsection">
-                <h4>10.4 PROCEDIMIENTO PARA SOLICITAR DEVOLUCIÓN</h4>
-                <p>
+                <h4 class="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-4">10.4 PROCEDIMIENTO PARA SOLICITAR DEVOLUCIÓN</h4>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                   Las solicitudes de devolución deberán enviarse al correo
                   electrónico <a href="mailto:contacto@solucionfactura.mx"
                     >contacto@solucionfactura.mx</a
                   >, incluyendo:
                 </p>
-                <ul>
-                  <li>Datos completos del usuario y del servicio contratado</li>
-                  <li>Descripción detallada del problema técnico</li>
-                  <li>Evidencia comprobable de la falla del sistema</li>
-                  <li>
+                <ul class="my-4 pl-8 text-gray-600 dark:text-gray-300 list-disc">
+                  <li class="mb-2 leading-relaxed">Datos completos del usuario y del servicio contratado</li>
+                  <li class="mb-2 leading-relaxed">Descripción detallada del problema técnico</li>
+                  <li class="mb-2 leading-relaxed">Evidencia comprobable de la falla del sistema</li>
+                  <li class="mb-2 leading-relaxed">
                     Documentación soporte que acredite la procedencia de la
                     devolución
                   </li>
@@ -842,31 +849,31 @@ import "../styles/global.css";
               </div>
 
               <div class="policy-subsection">
-                <h4>10.5 PROCESAMIENTO DE DEVOLUCIONES</h4>
-                <p>
+                <h4 class="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-4">10.5 PROCESAMIENTO DE DEVOLUCIONES</h4>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                   Una vez aprobada la procedencia de la devolución, el reintegro
                   se realizará por el mismo medio de pago utilizado para la
                   compra:
                 </p>
-                <ul>
-                  <li>
-                    <strong>Transferencias bancarias:</strong> Máximo 15 días hábiles
+                <ul class="my-4 pl-8 text-gray-600 dark:text-gray-300 list-disc">
+                  <li class="mb-2 leading-relaxed">
+                    <strong class="text-gray-900 dark:text-white font-semibold">Transferencias bancarias:</strong> Máximo 15 días hábiles
                     para realizar el depósito
                   </li>
-                  <li>
-                    <strong>Pagos con tarjeta:</strong> A través de Stripe, sujeto
+                  <li class="mb-2 leading-relaxed">
+                    <strong class="text-gray-900 dark:text-white font-semibold">Pagos con tarjeta:</strong> A través de Stripe, sujeto
                     a los tiempos de procesamiento de cada banco emisor
                   </li>
-                  <li>
-                    <strong>Otros medios de pago:</strong> Según las políticas del
+                  <li class="mb-2 leading-relaxed">
+                    <strong class="text-gray-900 dark:text-white font-semibold">Otros medios de pago:</strong> Según las políticas del
                     procesador correspondiente
                   </li>
                 </ul>
               </div>
 
               <div class="policy-subsection">
-                <h4>10.6 DEVOLUCIONES PROPORCIONALES</h4>
-                <p>
+                <h4 class="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-4">10.6 DEVOLUCIONES PROPORCIONALES</h4>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                   En caso de servicios parcialmente utilizados, la devolución
                   será proporcional al tiempo y recursos no consumidos,
                   aplicando descuentos correspondientes.
@@ -875,31 +882,31 @@ import "../styles/global.css";
             </section>
 
             <!-- 11. Reglas para la Prestación del Servicio -->
-            <section id="reglas-prestacion" class="terms-section">
-              <h3>11. REGLAS PARA LA PRESTACIÓN DEL SERVICIO</h3>
+            <section id="reglas-prestacion" class="mb-12 pb-8 border-b border-gray-200 dark:border-gray-700 last:border-b-0">
+              <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">11. REGLAS PARA LA PRESTACIÓN DEL SERVICIO</h3>
 
               <div class="service-rules">
-                <h4>11.1 DISPONIBILIDAD EN EL SERVICIO</h4>
-                <p>
+                <h4 class="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-4">11.1 DISPONIBILIDAD EN EL SERVICIO</h4>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                   La APLICACIÓN WEB, así como el servicio de generación,
                   validación y certificación de CFDI tendrán una disponibilidad
                   establecida de 99.3%, el cual no está garantizado, donde el
                   otro .7% corresponderá al periodo de tiempo máximo en que la
                   aplicación podría no estar disponible por causas no planeadas
-                  e imputables a <strong>"LA EMPRESA"</strong>, lo anterior en
+                  e imputables a <strong class="text-gray-900 dark:text-white font-semibold">"LA EMPRESA"</strong>, lo anterior en
                   cumplimiento de la legislación aplicable y de las
                   disposiciones de carácter general aplicables emitidas por el
                   SAT.
                 </p>
-                <p>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                   En caso de no cumplir con la anterior disponibilidad, se
                   ofrecerá un descuento de un día de servicio, siempre y cuando
                   haya sido por causas directas imputables a <strong
                     >"LA EMPRESA"</strong
                   >.
                 </p>
-                <p>
-                  Sin perjuicio de lo anterior, <strong>"LA EMPRESA"</strong>,
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
+                  Sin perjuicio de lo anterior, <strong class="text-gray-900 dark:text-white font-semibold">"LA EMPRESA"</strong>,
                   se reserva el derecho de realizar las mejoras y el
                   mantenimiento continuo de la infraestructura del servicio y de
                   la APLICACIÓN WEB, en cualquier momento, de igual forma <strong
@@ -910,15 +917,15 @@ import "../styles/global.css";
                   > con anterioridad a su ejecución.
                 </p>
 
-                <h4>11.2 SOPORTE TÉCNICO Y ATENCIÓN A CLIENTES</h4>
-                <p>
-                  <strong>"LA EMPRESA"</strong> dará soporte técnico, soluciones
+                <h4 class="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-4">11.2 SOPORTE TÉCNICO Y ATENCIÓN A CLIENTES</h4>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
+                  <strong class="text-gray-900 dark:text-white font-semibold">"LA EMPRESA"</strong> dará soporte técnico, soluciones
                   a aclaraciones, reclamaciones y dudas a <strong
                     >"EL USUARIO"</strong
                   > solamente sobre el producto, excluyendo programas de terceros
                   incluyendo pero no limitando a los Plugins y APIs externos.
                 </p>
-                <p>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                   En cualquier caso las solicitudes de soporte técnico, quejas,
                   aclaraciones y reclamaciones que realice <strong
                     >"EL USUARIO"</strong
@@ -928,20 +935,20 @@ import "../styles/global.css";
 
                 <div class="support-channels">
                   <h5>Canales de Atención y Soporte:</h5>
-                  <ul>
-                    <li><strong>Atención telefónica:</strong> 55 9331 4767</li>
-                    <li>
-                      <strong>Atención por WhatsApp:</strong> 55 7601 7764
+                  <ul class="my-4 pl-8 text-gray-600 dark:text-gray-300 list-disc">
+                    <li class="mb-2 leading-relaxed"><strong class="text-gray-900 dark:text-white font-semibold">Atención telefónica:</strong> 55 9331 4767</li>
+                    <li class="mb-2 leading-relaxed">
+                      <strong class="text-gray-900 dark:text-white font-semibold">Atención por WhatsApp:</strong> 55 7601 7764
                     </li>
-                    <li>
-                      <strong>Chat en Línea:</strong> Dentro del sitio web
+                    <li class="mb-2 leading-relaxed">
+                      <strong class="text-gray-900 dark:text-white font-semibold">Chat en Línea:</strong> Dentro del sitio web
                     </li>
-                    <li>
-                      <strong>Correo electrónico:</strong> contacto@solucionfactura.mx
+                    <li class="mb-2 leading-relaxed">
+                      <strong class="text-gray-900 dark:text-white font-semibold">Correo electrónico:</strong> contacto@solucionfactura.mx
                     </li>
                   </ul>
-                  <p>
-                    <strong>Horario:</strong> Lunes a Viernes de 9:00 a 14:00 y de
+                  <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
+                    <strong class="text-gray-900 dark:text-white font-semibold">Horario:</strong> Lunes a Viernes de 9:00 a 14:00 y de
                     15:00 a 18:00
                   </p>
                 </div>
@@ -949,9 +956,9 @@ import "../styles/global.css";
             </section>
 
             <!-- 12. Comunicaciones -->
-            <section id="comunicaciones" class="terms-section">
-              <h3>12. COMUNICACIONES</h3>
-              <p>
+            <section id="comunicaciones" class="mb-12 pb-8 border-b border-gray-200 dark:border-gray-700 last:border-b-0">
+              <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">12. COMUNICACIONES</h3>
+              <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                 Es voluntad de las partes que todas las comunicaciones, entre
                 ellos, para efectos del presente contrato, se realicen vía
                 correo electrónico a <a
@@ -964,35 +971,35 @@ import "../styles/global.css";
             </section>
 
             <!-- Información Final -->
-            <section class="terms-final-info">
-              <div class="websites-brands">
-                <div class="info-section">
-                  <h4>SITIOS WEB QUE AMPARA EL PRESENTE CONTRATO:</h4>
-                  <ul>
-                    <li>solucionfiscal.mx</li>
-                    <li>solucionfactura.mx</li>
-                    <li>solucioncrm.mx</li>
-                    <li>solucionconta.mx</li>
-                    <li>descargacfdi.com</li>
-                    <li>wabotify.com</li>
+            <section class="mt-12 pt-8 border-t-2 border-gray-200 dark:border-gray-700">
+              <div >
+                <div class="mb-8">
+                  <h4 class="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-4">SITIOS WEB QUE AMPARA EL PRESENTE CONTRATO:</h4>
+                  <ul class="my-4 pl-8 text-gray-600 dark:text-gray-300 list-disc">
+                    <li class="mb-2 leading-relaxed">solucionfiscal.mx</li>
+                    <li class="mb-2 leading-relaxed">solucionfactura.mx</li>
+                    <li class="mb-2 leading-relaxed">solucioncrm.mx</li>
+                    <li class="mb-2 leading-relaxed">solucionconta.mx</li>
+                    <li class="mb-2 leading-relaxed">descargacfdi.com</li>
+                    <li class="mb-2 leading-relaxed">wabotify.com</li>
                   </ul>
                 </div>
 
-                <div class="info-section">
-                  <h4>MARCAS COMERCIALES:</h4>
-                  <ul>
-                    <li>Solución Factura</li>
-                    <li>Solución Conta</li>
-                    <li>Solución Fiscal</li>
-                    <li>Solución CRM</li>
-                    <li>Descarga XML</li>
-                    <li>Wabotify MX</li>
+                <div class="mb-8">
+                  <h4 class="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-4">MARCAS COMERCIALES:</h4>
+                  <ul class="my-4 pl-8 text-gray-600 dark:text-gray-300 list-disc">
+                    <li class="mb-2 leading-relaxed">Solución Factura</li>
+                    <li class="mb-2 leading-relaxed">Solución Conta</li>
+                    <li class="mb-2 leading-relaxed">Solución Fiscal</li>
+                    <li class="mb-2 leading-relaxed">Solución CRM</li>
+                    <li class="mb-2 leading-relaxed">Descarga XML</li>
+                    <li class="mb-2 leading-relaxed">Wabotify MX</li>
                   </ul>
                 </div>
               </div>
 
               <div class="last-update-footer">
-                <p><strong>Última actualización:</strong> [01-01-2025]</p>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4"><strong class="text-gray-900 dark:text-white font-semibold">Última actualización:</strong> [01-01-2025]</p>
               </div>
             </section>
           </main>
@@ -1003,401 +1010,5 @@ import "../styles/global.css";
     <Footer />
     <WhatsAppFloat />
 
-    <style lang="scss">
-      // Terms and Conditions Page Styles
-
-      .terms-hero {
-        background: linear-gradient(
-          135deg,
-          var(--bg-primary) 0%,
-          var(--bg-secondary) 100%
-        );
-        padding: 120px 0 80px;
-        text-align: center;
-        border-bottom: 1px solid var(--border-light);
-
-        .container {
-          max-width: 1200px;
-        }
-
-        .hero-content {
-          max-width: 800px;
-          margin: 0 auto;
-        }
-
-        .title-hero {
-          font-size: var(--app-title-size-xl);
-          font-weight: 800;
-          line-height: 1.1;
-          margin-bottom: 1.5rem;
-          background: none;
-          -webkit-background-clip: initial;
-          background-clip: initial;
-          -webkit-text-fill-color: white;
-          color: white;
-          text-shadow: none;
-        }
-
-        .hero-description {
-          font-size: 1.2rem;
-          color: var(--text-secondary);
-          line-height: 1.6;
-          margin-bottom: 2rem;
-        }
-
-        .last-updated {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.5rem;
-          padding: 0.75rem 1.5rem;
-          background: var(--bg-card);
-          border: 1px solid var(--border-light);
-          border-radius: 50px;
-          font-size: 0.9rem;
-
-          .update-label {
-            color: var(--text-secondary);
-          }
-
-          .update-date {
-            color: var(--secondary);
-            font-weight: 600;
-          }
-        }
-      }
-
-      .terms-content {
-        padding: 80px 0;
-        background: var(--bg-primary);
-
-        .container {
-          max-width: 1400px;
-        }
-
-        .content-wrapper {
-          display: flex;
-          justify-content: center;
-        }
-      }
-
-      .terms-main {
-        width: 100%;
-        max-width: 1200px;
-
-        .terms-intro {
-          margin-bottom: 3rem;
-          padding: 2rem;
-          background: var(--bg-card);
-          border: 1px solid var(--border-light);
-          border-radius: 16px;
-
-          h2 {
-            font-size: 2rem;
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-          }
-
-          p {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
-          }
-        }
-      }
-
-      .terms-section {
-        margin-bottom: 3rem;
-        padding: 2.5rem;
-        background: var(--bg-card);
-        border: 1px solid var(--border-light);
-        border-radius: 16px;
-        box-shadow: var(--theme-shadow-sm);
-
-        h3 {
-          font-size: 1.5rem;
-          color: var(--text-primary);
-          margin-bottom: 1.5rem;
-          padding-bottom: 0.75rem;
-          border-bottom: 2px solid var(--secondary);
-        }
-
-        h4 {
-          font-size: 1.2rem;
-          color: var(--text-primary);
-          margin: 2rem 0 1rem 0;
-        }
-
-        h5 {
-          font-size: 1rem;
-          color: var(--secondary);
-          margin: 1.5rem 0 0.75rem 0;
-          font-weight: 600;
-        }
-
-        p {
-          color: var(--text-secondary);
-          line-height: 1.7;
-          margin-bottom: 1rem;
-        }
-
-        ul,
-        ol {
-          color: var(--text-secondary);
-          line-height: 1.7;
-          margin-bottom: 1rem;
-          padding-left: 1.5rem;
-
-          li {
-            margin-bottom: 0.5rem;
-          }
-        }
-
-        a {
-          color: var(--secondary);
-          text-decoration: underline;
-
-          &:hover {
-            text-decoration: none;
-          }
-        }
-
-        strong {
-          color: var(--text-primary);
-          font-weight: 600;
-        }
-      }
-
-      .definitions-grid {
-        display: grid;
-        gap: 1.5rem;
-
-        .definition-item {
-          padding: 1.5rem;
-          background: var(--bg-secondary);
-          border: 1px solid var(--border-light);
-          border-radius: 12px;
-
-          dt {
-            font-weight: 700;
-            color: var(--secondary);
-            margin-bottom: 0.5rem;
-            font-size: 0.95rem;
-          }
-
-          dd {
-            color: var(--text-secondary);
-            line-height: 1.6;
-            margin: 0;
-          }
-        }
-      }
-
-      .company-info {
-        background: var(--bg-secondary);
-        padding: 2rem;
-        border-radius: 12px;
-        margin: 2rem 0;
-
-        h4 {
-          color: var(--secondary);
-          margin-bottom: 1rem;
-          margin-top: 0;
-        }
-
-        ul {
-          margin-bottom: 1.5rem;
-
-          &:last-child {
-            margin-bottom: 0;
-          }
-        }
-      }
-
-      .sat-requirements {
-        background: var(--bg-secondary);
-        padding: 2rem;
-        border-radius: 12px;
-        border-left: 4px solid var(--secondary);
-      }
-
-      .user-obligations {
-        h4 {
-          color: var(--secondary);
-          border-left: 3px solid var(--secondary);
-          padding-left: 1rem;
-          margin: 2rem 0 1rem 0;
-        }
-      }
-
-      .service-list {
-        background: var(--bg-secondary);
-        padding: 1.5rem;
-        border-radius: 12px;
-        columns: 2;
-        column-gap: 2rem;
-
-        @media (max-width: 768px) {
-          columns: 1;
-        }
-      }
-
-      .data-protection {
-        .finalidades {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 2rem;
-          margin: 2rem 0;
-
-          @media (max-width: 768px) {
-            grid-template-columns: 1fr;
-          }
-
-          .finalidad-group {
-            background: var(--bg-secondary);
-            padding: 1.5rem;
-            border-radius: 12px;
-            border: 1px solid var(--border-light);
-          }
-        }
-      }
-
-      .policy-subsection {
-        margin: 2rem 0;
-        padding: 1.5rem;
-        background: var(--bg-secondary);
-        border: 1px solid var(--border-light);
-        border-radius: 12px;
-
-        h4 {
-          margin-top: 0;
-          color: var(--secondary);
-        }
-      }
-
-      .service-rules {
-        h4 {
-          color: var(--secondary);
-          border-bottom: 1px solid var(--border-light);
-          padding-bottom: 0.5rem;
-          margin: 2rem 0 1rem 0;
-        }
-
-        .support-channels {
-          background: var(--bg-secondary);
-          padding: 1.5rem;
-          border-radius: 12px;
-          margin-top: 1.5rem;
-
-          h5 {
-            margin-top: 0;
-          }
-        }
-      }
-
-      .terms-final-info {
-        margin-top: 3rem;
-        padding: 2.5rem;
-        background: linear-gradient(
-          135deg,
-          var(--bg-card) 0%,
-          var(--bg-secondary) 100%
-        );
-        border: 1px solid var(--border-light);
-        border-radius: 16px;
-        text-align: center;
-
-        .websites-brands {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 3rem;
-          margin-bottom: 2rem;
-
-          @media (max-width: 768px) {
-            grid-template-columns: 1fr;
-            gap: 2rem;
-          }
-        }
-
-        .info-section {
-          h4 {
-            color: var(--secondary);
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-          }
-
-          ul {
-            list-style: none;
-            padding: 0;
-
-            li {
-              padding: 0.5rem;
-              margin: 0.25rem 0;
-              background: var(--border-light);
-              border-radius: 6px;
-              color: var(--text-secondary);
-              font-size: 0.9rem;
-            }
-          }
-        }
-
-        .last-update-footer {
-          padding-top: 2rem;
-          border-top: 1px solid var(--border-light);
-
-          p {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin: 0;
-          }
-        }
-      }
-
-      // Smooth scroll behavior
-      html {
-        scroll-behavior: smooth;
-      }
-
-      // Responsive adjustments
-      @media (max-width: 768px) {
-        .terms-hero {
-          padding: 100px 0 60px;
-
-          .title-hero {
-            font-size: calc(var(--app-title-size-xl) * 0.8);
-            margin-bottom: 1rem;
-          }
-
-          .hero-description {
-            font-size: 1rem;
-          }
-        }
-
-        .terms-content {
-          padding: 60px 0;
-        }
-
-        .terms-section {
-          padding: 1.5rem;
-          margin-bottom: 2rem;
-        }
-
-        .table-of-contents {
-          padding: 1.5rem;
-        }
-      }
-
-      // Print styles
-      @media print {
-        .table-of-contents,
-        .terms-hero .last-updated {
-          display: none;
-        }
-
-        .terms-section {
-          break-inside: avoid;
-          page-break-inside: avoid;
-        }
-      }
-    </style>
   </body>
 </html>

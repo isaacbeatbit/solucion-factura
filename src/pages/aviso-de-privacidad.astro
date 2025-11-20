@@ -88,8 +88,10 @@ import "../styles/global.css";
 
           if (themeToApply === "light") {
             htmlElement.setAttribute("data-theme", "light");
+            htmlElement.classList.remove("dark");
           } else {
             htmlElement.removeAttribute("data-theme");
+            htmlElement.classList.add("dark");
           }
         }
 
@@ -105,9 +107,11 @@ import "../styles/global.css";
                 const htmlElement = document.documentElement;
                 if (e.matches) {
                   htmlElement.removeAttribute("data-theme");
+                  htmlElement.classList.add("dark");
                   localStorage.setItem("theme", "dark");
                 } else {
                   htmlElement.setAttribute("data-theme", "light");
+                  htmlElement.classList.remove("dark");
                   localStorage.setItem("theme", "light");
                 }
               }
@@ -123,8 +127,10 @@ import "../styles/global.css";
           const htmlElement = document.documentElement;
           if (theme === "light") {
             htmlElement.setAttribute("data-theme", "light");
+            htmlElement.classList.remove("dark");
           } else {
             htmlElement.removeAttribute("data-theme");
+            htmlElement.classList.add("dark");
           }
           localStorage.setItem("theme", theme);
 
@@ -151,6 +157,7 @@ import "../styles/global.css";
         window.toggleTheme = toggleTheme;
       })();
     </script>
+    <script src="../scripts/theme.js"></script>
   </head>
 
   <body>
@@ -158,31 +165,31 @@ import "../styles/global.css";
 
     <main>
       <!-- Hero Section -->
-      <section class="privacy-hero">
-        <div class="container">
-          <div class="hero-content">
-            <h1 class="hero-title">Aviso de Privacidad</h1>
-            <p class="hero-description">
+      <section class="pt-32 pb-16 bg-gray-100 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-3xl mx-auto">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-4 leading-tight">Aviso de Privacidad</h1>
+            <p class="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
               En Solución Factura protegemos la privacidad y seguridad de tus
               datos personales
             </p>
-            <div class="last-updated">
-              <span class="update-label">Última actualización:</span>
-              <span class="update-date">Enero 2025</span>
+            <div class="inline-flex items-center gap-2 bg-white dark:bg-gray-800 px-6 py-3 rounded-full border border-gray-200 dark:border-gray-700 text-sm">
+              <span class="text-gray-600 dark:text-gray-400 font-medium">Última actualización:</span>
+              <span class="text-blue-600 dark:text-blue-400 font-semibold">Enero 2025</span>
             </div>
           </div>
         </div>
       </section>
 
       <!-- Privacy Content -->
-      <section class="privacy-content">
-        <div class="container">
-          <div class="content-wrapper">
+      <section class="py-16 bg-white dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="max-w-4xl mx-auto">
             <!-- Responsible -->
-            <article class="privacy-main">
-              <div class="privacy-intro">
-                <p>
-                  <strong>SERINT 360 SAS DE C.V.</strong> con domicilio en Alborada
+            <article >
+              <div class="mb-12">
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
+                  <strong class="text-gray-900 dark:text-white font-semibold">SERINT 360 SAS DE C.V.</strong> con domicilio en Alborada
                   124, Colonia Parques del Pedregal (Torre Perisur), Tlalpan, Ciudad
                   de México, C.P. 14010, es el responsable del uso y protección de
                   sus datos personales, y al respecto le informamos lo siguiente:
@@ -190,35 +197,35 @@ import "../styles/global.css";
               </div>
 
               <!-- 1. Identificación del Responsable -->
-              <section class="privacy-section">
-                <h2>1. Identificación del Responsable</h2>
-                <div class="company-info">
-                  <ul>
-                    <li>
-                      <strong>Denominación:</strong> SERINT 360 SAS DE C.V.
+              <section class="mb-12 pb-8 border-b border-gray-200 dark:border-gray-700 last:border-b-0">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6 pb-2 border-b-2 border-blue-600 dark:border-blue-400">1. Identificación del Responsable</h2>
+                <div >
+                  <ul class="my-4 pl-8 text-gray-600 dark:text-gray-300 list-disc">
+                    <li class="mb-2 leading-relaxed">
+                      <strong class="text-gray-900 dark:text-white font-semibold">Denominación:</strong> SERINT 360 SAS DE C.V.
                     </li>
-                    <li>
-                      <strong>Domicilio:</strong> Alborada 124, Colonia Parques del
+                    <li class="mb-2 leading-relaxed">
+                      <strong class="text-gray-900 dark:text-white font-semibold">Domicilio:</strong> Alborada 124, Colonia Parques del
                       Pedregal (Torre Perisur), Tlalpan, Ciudad de México, C.P. 14010
                     </li>
-                    <li>
-                      <strong>Teléfono:</strong>
-                      <a href="tel:+525593314767">55 9331 4767</a>
+                    <li class="mb-2 leading-relaxed">
+                      <strong class="text-gray-900 dark:text-white font-semibold">Teléfono:</strong>
+                      <a href="tel:+525593314767" class="text-blue-600 dark:text-blue-400 font-medium hover:underline">55 9331 4767</a>
                     </li>
-                    <li>
-                      <strong>WhatsApp:</strong>
+                    <li class="mb-2 leading-relaxed">
+                      <strong class="text-gray-900 dark:text-white font-semibold">WhatsApp:</strong>
                       <a
                         href="https://wa.me/5576017764"
                         target="_blank"
                         rel="noopener noreferrer">55 7601 7764</a>
                     </li>
-                    <li>
-                      <strong>Correo electrónico:</strong>
+                    <li class="mb-2 leading-relaxed">
+                      <strong class="text-gray-900 dark:text-white font-semibold">Correo electrónico:</strong>
                       <a href="mailto:contacto@solucionfactura.mx"
                         >contacto@solucionfactura.mx</a>
                     </li>
-                    <li>
-                      <strong>Sitios web:</strong>
+                    <li class="mb-2 leading-relaxed">
+                      <strong class="text-gray-900 dark:text-white font-semibold">Sitios web:</strong>
                       <a
                         href="https://solucionfiscal.mx"
                         target="_blank"
@@ -255,9 +262,9 @@ import "../styles/global.css";
               </section>
 
               <!-- 2. Datos Personales que Recabamos -->
-              <section class="privacy-section">
-                <h2>2. Datos Personales que Recabamos</h2>
-                <p>
+              <section class="mb-12 pb-8 border-b border-gray-200 dark:border-gray-700 last:border-b-0">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6 pb-2 border-b-2 border-blue-600 dark:border-blue-400">2. Datos Personales que Recabamos</h2>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                   Para las finalidades señaladas en el presente aviso de
                   privacidad, podemos recabar sus datos personales de distintas
                   formas: cuando usted nos los proporciona directamente; cuando
@@ -265,86 +272,86 @@ import "../styles/global.css";
                   línea, y cuando obtenemos información a través de otras
                   fuentes que están permitidas por la ley.
                 </p>
-                <p>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                   Los datos personales que recabamos de usted son los
                   siguientes:
                 </p>
 
-                <h3>2.1 Datos de Identificación:</h3>
-                <ul>
-                  <li>Nombre completo</li>
-                  <li>RFC (Registro Federal de Contribuyentes)</li>
-                  <li>CURP (Clave Única de Registro de Población)</li>
-                  <li>Fecha de nacimiento</li>
-                  <li>Nacionalidad</li>
-                  <li>
+                <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">2.1 Datos de Identificación:</h3>
+                <ul class="my-4 pl-8 text-gray-600 dark:text-gray-300 list-disc">
+                  <li class="mb-2 leading-relaxed">Nombre completo</li>
+                  <li class="mb-2 leading-relaxed">RFC (Registro Federal de Contribuyentes)</li>
+                  <li class="mb-2 leading-relaxed">CURP (Clave Única de Registro de Población)</li>
+                  <li class="mb-2 leading-relaxed">Fecha de nacimiento</li>
+                  <li class="mb-2 leading-relaxed">Nacionalidad</li>
+                  <li class="mb-2 leading-relaxed">
                     Domicilio (calle, número, colonia, municipio, entidad
                     federativa, código postal)
                   </li>
-                  <li>Teléfono fijo y móvil</li>
-                  <li>Correo electrónico</li>
-                  <li>Firma autógrafa y electrónica</li>
+                  <li class="mb-2 leading-relaxed">Teléfono fijo y móvil</li>
+                  <li class="mb-2 leading-relaxed">Correo electrónico</li>
+                  <li class="mb-2 leading-relaxed">Firma autógrafa y electrónica</li>
                 </ul>
 
-                <h3>2.2 Datos de Contacto:</h3>
-                <ul>
-                  <li>Correo electrónico personal y empresarial</li>
-                  <li>Teléfono celular y fijo</li>
-                  <li>Direcciones de redes sociales</li>
-                  <li>Datos de contacto empresarial</li>
+                <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">2.2 Datos de Contacto:</h3>
+                <ul class="my-4 pl-8 text-gray-600 dark:text-gray-300 list-disc">
+                  <li class="mb-2 leading-relaxed">Correo electrónico personal y empresarial</li>
+                  <li class="mb-2 leading-relaxed">Teléfono celular y fijo</li>
+                  <li class="mb-2 leading-relaxed">Direcciones de redes sociales</li>
+                  <li class="mb-2 leading-relaxed">Datos de contacto empresarial</li>
                 </ul>
 
-                <h3>2.3 Datos Laborales:</h3>
-                <ul>
-                  <li>Puesto o cargo que desempeña</li>
-                  <li>Domicilio del trabajo</li>
-                  <li>Nombre del empleador</li>
-                  <li>Teléfono del trabajo</li>
-                  <li>Correo electrónico del trabajo</li>
+                <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">2.3 Datos Laborales:</h3>
+                <ul class="my-4 pl-8 text-gray-600 dark:text-gray-300 list-disc">
+                  <li class="mb-2 leading-relaxed">Puesto o cargo que desempeña</li>
+                  <li class="mb-2 leading-relaxed">Domicilio del trabajo</li>
+                  <li class="mb-2 leading-relaxed">Nombre del empleador</li>
+                  <li class="mb-2 leading-relaxed">Teléfono del trabajo</li>
+                  <li class="mb-2 leading-relaxed">Correo electrónico del trabajo</li>
                 </ul>
 
-                <h3>2.4 Datos Fiscales:</h3>
-                <ul>
-                  <li>Registro Federal de Contribuyentes (RFC)</li>
-                  <li>Domicilio fiscal</li>
-                  <li>Régimen fiscal</li>
-                  <li>Actividad económica</li>
-                  <li>Certificados de Sello Digital (CSD)</li>
-                  <li>Contraseñas de certificados digitales</li>
-                  <li>Información contenida en comprobantes fiscales</li>
+                <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">2.4 Datos Fiscales:</h3>
+                <ul class="my-4 pl-8 text-gray-600 dark:text-gray-300 list-disc">
+                  <li class="mb-2 leading-relaxed">Registro Federal de Contribuyentes (RFC)</li>
+                  <li class="mb-2 leading-relaxed">Domicilio fiscal</li>
+                  <li class="mb-2 leading-relaxed">Régimen fiscal</li>
+                  <li class="mb-2 leading-relaxed">Actividad económica</li>
+                  <li class="mb-2 leading-relaxed">Certificados de Sello Digital (CSD)</li>
+                  <li class="mb-2 leading-relaxed">Contraseñas de certificados digitales</li>
+                  <li class="mb-2 leading-relaxed">Información contenida en comprobantes fiscales</li>
                 </ul>
 
-                <h3>2.5 Datos Financieros y Patrimoniales:</h3>
-                <ul>
-                  <li>Cuentas bancarias</li>
-                  <li>Información de tarjetas de crédito y débito</li>
-                  <li>Estados financieros</li>
-                  <li>Información crediticia</li>
-                  <li>Ingresos y egresos</li>
-                  <li>Bienes muebles e inmuebles</li>
+                <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">2.5 Datos Financieros y Patrimoniales:</h3>
+                <ul class="my-4 pl-8 text-gray-600 dark:text-gray-300 list-disc">
+                  <li class="mb-2 leading-relaxed">Cuentas bancarias</li>
+                  <li class="mb-2 leading-relaxed">Información de tarjetas de crédito y débito</li>
+                  <li class="mb-2 leading-relaxed">Estados financieros</li>
+                  <li class="mb-2 leading-relaxed">Información crediticia</li>
+                  <li class="mb-2 leading-relaxed">Ingresos y egresos</li>
+                  <li class="mb-2 leading-relaxed">Bienes muebles e inmuebles</li>
                 </ul>
 
-                <h3>2.6 Datos de Navegación y Tecnológicos:</h3>
-                <ul>
-                  <li>Dirección IP</li>
-                  <li>Tipo de navegador</li>
-                  <li>Sistema operativo</li>
-                  <li>Páginas web visitadas</li>
-                  <li>Tiempo de navegación</li>
-                  <li>Cookies</li>
-                  <li>Web beacons</li>
-                  <li>Logs del servidor</li>
+                <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">2.6 Datos de Navegación y Tecnológicos:</h3>
+                <ul class="my-4 pl-8 text-gray-600 dark:text-gray-300 list-disc">
+                  <li class="mb-2 leading-relaxed">Dirección IP</li>
+                  <li class="mb-2 leading-relaxed">Tipo de navegador</li>
+                  <li class="mb-2 leading-relaxed">Sistema operativo</li>
+                  <li class="mb-2 leading-relaxed">Páginas web visitadas</li>
+                  <li class="mb-2 leading-relaxed">Tiempo de navegación</li>
+                  <li class="mb-2 leading-relaxed">Cookies</li>
+                  <li class="mb-2 leading-relaxed">Web beacons</li>
+                  <li class="mb-2 leading-relaxed">Logs del servidor</li>
                 </ul>
               </section>
 
               <!-- 3. Datos Personales Sensibles -->
-              <section class="privacy-section">
-                <h2>3. Datos Personales Sensibles</h2>
-                <p>
-                  Informamos que <strong>NO</strong> recabamos ni tratamos datos
+              <section class="mb-12 pb-8 border-b border-gray-200 dark:border-gray-700 last:border-b-0">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6 pb-2 border-b-2 border-blue-600 dark:border-blue-400">3. Datos Personales Sensibles</h2>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
+                  Informamos que <strong class="text-gray-900 dark:text-white font-semibold">NO</strong> recabamos ni tratamos datos
                   personales sensibles.
                 </p>
-                <p>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                   En caso de que en el futuro sea necesario recabar datos
                   personales sensibles, se solicitará su consentimiento expreso
                   para su tratamiento.
@@ -352,104 +359,104 @@ import "../styles/global.css";
               </section>
 
               <!-- 4. Finalidades del Tratamiento -->
-              <section class="privacy-section">
-                <h2>4. Finalidades del Tratamiento</h2>
-                <p>
+              <section class="mb-12 pb-8 border-b border-gray-200 dark:border-gray-700 last:border-b-0">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6 pb-2 border-b-2 border-blue-600 dark:border-blue-400">4. Finalidades del Tratamiento</h2>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                   Sus datos personales serán utilizados para las siguientes
                   finalidades:
                 </p>
 
-                <h3>
+                <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">
                   4.1 Finalidades Primarias (Necesarias para la relación
                   jurídica):
                 </h3>
 
-                <h4>a) Prestación de servicios:</h4>
-                <ul>
-                  <li>
+                <h4 class="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-4">a) Prestación de servicios:</h4>
+                <ul class="my-4 pl-8 text-gray-600 dark:text-gray-300 list-disc">
+                  <li class="mb-2 leading-relaxed">
                     Generación, validación y certificación de Comprobantes
                     Fiscales Digitales por Internet (CFDI)
                   </li>
-                  <li>Servicios de facturación electrónica</li>
-                  <li>Servicios de descarga de archivos XML</li>
-                  <li>Servicios de WhatsApp Business</li>
-                  <li>Servicios de CRM y contabilidad</li>
-                  <li>Soporte técnico y atención al cliente</li>
+                  <li class="mb-2 leading-relaxed">Servicios de facturación electrónica</li>
+                  <li class="mb-2 leading-relaxed">Servicios de descarga de archivos XML</li>
+                  <li class="mb-2 leading-relaxed">Servicios de WhatsApp Business</li>
+                  <li class="mb-2 leading-relaxed">Servicios de CRM y contabilidad</li>
+                  <li class="mb-2 leading-relaxed">Soporte técnico y atención al cliente</li>
                 </ul>
 
-                <h4>b) Cumplimiento de obligaciones contractuales:</h4>
-                <ul>
-                  <li>Verificación de identidad y capacidad legal</li>
-                  <li>Administración de cuentas de usuario</li>
-                  <li>Procesamiento de pagos y facturación</li>
-                  <li>Entrega de productos y servicios contratados</li>
+                <h4 class="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-4">b) Cumplimiento de obligaciones contractuales:</h4>
+                <ul class="my-4 pl-8 text-gray-600 dark:text-gray-300 list-disc">
+                  <li class="mb-2 leading-relaxed">Verificación de identidad y capacidad legal</li>
+                  <li class="mb-2 leading-relaxed">Administración de cuentas de usuario</li>
+                  <li class="mb-2 leading-relaxed">Procesamiento de pagos y facturación</li>
+                  <li class="mb-2 leading-relaxed">Entrega de productos y servicios contratados</li>
                 </ul>
 
-                <h4>c) Cumplimiento de obligaciones legales:</h4>
-                <ul>
-                  <li>Cumplimiento de disposiciones fiscales y tributarias</li>
-                  <li>
+                <h4 class="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-4">c) Cumplimiento de obligaciones legales:</h4>
+                <ul class="my-4 pl-8 text-gray-600 dark:text-gray-300 list-disc">
+                  <li class="mb-2 leading-relaxed">Cumplimiento de disposiciones fiscales y tributarias</li>
+                  <li class="mb-2 leading-relaxed">
                     Conservación de comprobantes fiscales conforme a la
                     legislación
                   </li>
-                  <li>Reporte de información al SAT cuando sea requerido</li>
-                  <li>
+                  <li class="mb-2 leading-relaxed">Reporte de información al SAT cuando sea requerido</li>
+                  <li class="mb-2 leading-relaxed">
                     Cumplimiento de obligaciones ante autoridades competentes
                   </li>
                 </ul>
 
-                <h4>d) Gestión administrativa:</h4>
-                <ul>
-                  <li>Control de acceso a sistemas y plataformas</li>
-                  <li>Administración de la relación comercial</li>
-                  <li>Gestión de cobranza y facturación</li>
-                  <li>Archivo de documentos y expedientes</li>
+                <h4 class="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-4">d) Gestión administrativa:</h4>
+                <ul class="my-4 pl-8 text-gray-600 dark:text-gray-300 list-disc">
+                  <li class="mb-2 leading-relaxed">Control de acceso a sistemas y plataformas</li>
+                  <li class="mb-2 leading-relaxed">Administración de la relación comercial</li>
+                  <li class="mb-2 leading-relaxed">Gestión de cobranza y facturación</li>
+                  <li class="mb-2 leading-relaxed">Archivo de documentos y expedientes</li>
                 </ul>
 
-                <h3>
+                <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">
                   4.2 Finalidades Secundarias (No son necesarias para la
                   relación jurídica):
                 </h3>
 
-                <h4>a) Mercadotecnia y publicidad:</h4>
-                <ul>
-                  <li>Envío de comunicaciones comerciales y promocionales</li>
-                  <li>Marketing directo de productos y servicios</li>
-                  <li>Envío de boletines informativos y newsletters</li>
-                  <li>Promoción de nuevos productos y servicios</li>
+                <h4 class="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-4">a) Mercadotecnia y publicidad:</h4>
+                <ul class="my-4 pl-8 text-gray-600 dark:text-gray-300 list-disc">
+                  <li class="mb-2 leading-relaxed">Envío de comunicaciones comerciales y promocionales</li>
+                  <li class="mb-2 leading-relaxed">Marketing directo de productos y servicios</li>
+                  <li class="mb-2 leading-relaxed">Envío de boletines informativos y newsletters</li>
+                  <li class="mb-2 leading-relaxed">Promoción de nuevos productos y servicios</li>
                 </ul>
 
-                <h4>b) Prospección comercial:</h4>
-                <ul>
-                  <li>Ofrecimiento de productos y servicios adicionales</li>
-                  <li>Invitaciones a eventos comerciales</li>
-                  <li>Envío de información sobre actualizaciones y mejoras</li>
-                  <li>Comunicación sobre ofertas especiales y descuentos</li>
+                <h4 class="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-4">b) Prospección comercial:</h4>
+                <ul class="my-4 pl-8 text-gray-600 dark:text-gray-300 list-disc">
+                  <li class="mb-2 leading-relaxed">Ofrecimiento de productos y servicios adicionales</li>
+                  <li class="mb-2 leading-relaxed">Invitaciones a eventos comerciales</li>
+                  <li class="mb-2 leading-relaxed">Envío de información sobre actualizaciones y mejoras</li>
+                  <li class="mb-2 leading-relaxed">Comunicación sobre ofertas especiales y descuentos</li>
                 </ul>
 
-                <h4>c) Estudios de mercado:</h4>
-                <ul>
-                  <li>Análisis de comportamiento del consumidor</li>
-                  <li>Investigación de mercado y tendencias</li>
-                  <li>Desarrollo de nuevos productos y servicios</li>
-                  <li>Mejora de la experiencia del usuario</li>
+                <h4 class="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-4">c) Estudios de mercado:</h4>
+                <ul class="my-4 pl-8 text-gray-600 dark:text-gray-300 list-disc">
+                  <li class="mb-2 leading-relaxed">Análisis de comportamiento del consumidor</li>
+                  <li class="mb-2 leading-relaxed">Investigación de mercado y tendencias</li>
+                  <li class="mb-2 leading-relaxed">Desarrollo de nuevos productos y servicios</li>
+                  <li class="mb-2 leading-relaxed">Mejora de la experiencia del usuario</li>
                 </ul>
 
-                <h4>d) Comunicación institucional:</h4>
-                <ul>
-                  <li>Envío de información corporativa</li>
-                  <li>Comunicados sobre cambios en términos y condiciones</li>
-                  <li>Notificaciones sobre mantenimientos y actualizaciones</li>
-                  <li>Información sobre políticas empresariales</li>
+                <h4 class="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-4">d) Comunicación institucional:</h4>
+                <ul class="my-4 pl-8 text-gray-600 dark:text-gray-300 list-disc">
+                  <li class="mb-2 leading-relaxed">Envío de información corporativa</li>
+                  <li class="mb-2 leading-relaxed">Comunicados sobre cambios en términos y condiciones</li>
+                  <li class="mb-2 leading-relaxed">Notificaciones sobre mantenimientos y actualizaciones</li>
+                  <li class="mb-2 leading-relaxed">Información sobre políticas empresariales</li>
                 </ul>
 
-                <p>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                   En caso de que no desee que sus datos personales sean tratados
                   para estas finalidades secundarias, desde este momento usted
                   nos puede comunicar lo anterior a través de los mecanismos que
                   hemos habilitado para tal efecto.
                 </p>
-                <p>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                   La negativa para el uso de sus datos personales para estas
                   finalidades no podrá ser un motivo para que le neguemos los
                   servicios y productos que solicita o contrata con nosotros.
@@ -457,104 +464,104 @@ import "../styles/global.css";
               </section>
 
               <!-- 5. Transferencias de Datos Personales -->
-              <section class="privacy-section">
-                <h2>5. Transferencias de Datos Personales</h2>
-                <p>
+              <section class="mb-12 pb-8 border-b border-gray-200 dark:border-gray-700 last:border-b-0">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6 pb-2 border-b-2 border-blue-600 dark:border-blue-400">5. Transferencias de Datos Personales</h2>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                   Le informamos que sus datos personales son compartidos dentro
                   y fuera del país con las siguientes personas, empresas,
                   organizaciones o autoridades distintas a nosotros, para los
                   siguientes fines:
                 </p>
 
-                <h3>5.1 Transferencias Nacionales:</h3>
+                <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">5.1 Transferencias Nacionales:</h3>
 
-                <h4>a) Autoridades fiscales (SAT):</h4>
-                <ul>
-                  <li>
-                    <strong>Finalidad:</strong> Cumplimiento de obligaciones fiscales
+                <h4 class="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-4">a) Autoridades fiscales (SAT):</h4>
+                <ul class="my-4 pl-8 text-gray-600 dark:text-gray-300 list-disc">
+                  <li class="mb-2 leading-relaxed">
+                    <strong class="text-gray-900 dark:text-white font-semibold">Finalidad:</strong> Cumplimiento de obligaciones fiscales
                     y tributarias
                   </li>
-                  <li>
-                    <strong>Base legal:</strong> Obligación legal establecida en
+                  <li class="mb-2 leading-relaxed">
+                    <strong class="text-gray-900 dark:text-white font-semibold">Base legal:</strong> Obligación legal establecida en
                     el Código Fiscal de la Federación
                   </li>
                 </ul>
 
-                <h4>b) Procesadores de pago:</h4>
-                <ul>
-                  <li>
-                    <strong>Finalidad:</strong> Procesamiento de transacciones y
+                <h4 class="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-4">b) Procesadores de pago:</h4>
+                <ul class="my-4 pl-8 text-gray-600 dark:text-gray-300 list-disc">
+                  <li class="mb-2 leading-relaxed">
+                    <strong class="text-gray-900 dark:text-white font-semibold">Finalidad:</strong> Procesamiento de transacciones y
                     cobros
                   </li>
-                  <li>
-                    <strong>Base legal:</strong> Relación jurídica necesaria para
+                  <li class="mb-2 leading-relaxed">
+                    <strong class="text-gray-900 dark:text-white font-semibold">Base legal:</strong> Relación jurídica necesaria para
                     la prestación del servicio
                   </li>
                 </ul>
 
-                <h4>c) Proveedores de servicios tecnológicos:</h4>
-                <ul>
-                  <li>
-                    <strong>Finalidad:</strong> Mantenimiento y operación de sistemas
+                <h4 class="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-4">c) Proveedores de servicios tecnológicos:</h4>
+                <ul class="my-4 pl-8 text-gray-600 dark:text-gray-300 list-disc">
+                  <li class="mb-2 leading-relaxed">
+                    <strong class="text-gray-900 dark:text-white font-semibold">Finalidad:</strong> Mantenimiento y operación de sistemas
                     informáticos
                   </li>
-                  <li>
-                    <strong>Base legal:</strong> Relación jurídica necesaria para
+                  <li class="mb-2 leading-relaxed">
+                    <strong class="text-gray-900 dark:text-white font-semibold">Base legal:</strong> Relación jurídica necesaria para
                     la prestación del servicio
                   </li>
                 </ul>
 
-                <h4>d) Instituciones financieras:</h4>
-                <ul>
-                  <li>
-                    <strong>Finalidad:</strong> Procesamiento de pagos y transferencias
+                <h4 class="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-4">d) Instituciones financieras:</h4>
+                <ul class="my-4 pl-8 text-gray-600 dark:text-gray-300 list-disc">
+                  <li class="mb-2 leading-relaxed">
+                    <strong class="text-gray-900 dark:text-white font-semibold">Finalidad:</strong> Procesamiento de pagos y transferencias
                   </li>
-                  <li>
-                    <strong>Base legal:</strong> Relación jurídica necesaria para
+                  <li class="mb-2 leading-relaxed">
+                    <strong class="text-gray-900 dark:text-white font-semibold">Base legal:</strong> Relación jurídica necesaria para
                     la prestación del servicio
                   </li>
                 </ul>
 
-                <h3>5.2 Transferencias Internacionales:</h3>
+                <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">5.2 Transferencias Internacionales:</h3>
 
-                <h4>a) Proveedores de servicios de nube (Cloud Services):</h4>
-                <ul>
-                  <li><strong>País:</strong> Estados Unidos de América</li>
-                  <li>
-                    <strong>Finalidad:</strong> Almacenamiento seguro de información
+                <h4 class="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-4">a) Proveedores de servicios de nube (Cloud Services):</h4>
+                <ul class="my-4 pl-8 text-gray-600 dark:text-gray-300 list-disc">
+                  <li class="mb-2 leading-relaxed"><strong class="text-gray-900 dark:text-white font-semibold">País:</strong> Estados Unidos de América</li>
+                  <li class="mb-2 leading-relaxed">
+                    <strong class="text-gray-900 dark:text-white font-semibold">Finalidad:</strong> Almacenamiento seguro de información
                     y respaldo de datos
                   </li>
-                  <li>
-                    <strong>Base legal:</strong> Consentimiento del titular
+                  <li class="mb-2 leading-relaxed">
+                    <strong class="text-gray-900 dark:text-white font-semibold">Base legal:</strong> Consentimiento del titular
                   </li>
                 </ul>
 
-                <h4>b) Meta Platforms (WhatsApp Business):</h4>
-                <ul>
-                  <li><strong>País:</strong> Estados Unidos de América</li>
-                  <li>
-                    <strong>Finalidad:</strong> Prestación de servicios de WhatsApp
+                <h4 class="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-4">b) Meta Platforms (WhatsApp Business):</h4>
+                <ul class="my-4 pl-8 text-gray-600 dark:text-gray-300 list-disc">
+                  <li class="mb-2 leading-relaxed"><strong class="text-gray-900 dark:text-white font-semibold">País:</strong> Estados Unidos de América</li>
+                  <li class="mb-2 leading-relaxed">
+                    <strong class="text-gray-900 dark:text-white font-semibold">Finalidad:</strong> Prestación de servicios de WhatsApp
                     Business
                   </li>
-                  <li>
-                    <strong>Base legal:</strong> Relación jurídica necesaria para
+                  <li class="mb-2 leading-relaxed">
+                    <strong class="text-gray-900 dark:text-white font-semibold">Base legal:</strong> Relación jurídica necesaria para
                     la prestación del servicio
                   </li>
                 </ul>
 
-                <h4>c) Stripe Inc.:</h4>
-                <ul>
-                  <li><strong>País:</strong> Estados Unidos de América</li>
-                  <li>
-                    <strong>Finalidad:</strong> Procesamiento de pagos con tarjeta
+                <h4 class="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-4">c) Stripe Inc.:</h4>
+                <ul class="my-4 pl-8 text-gray-600 dark:text-gray-300 list-disc">
+                  <li class="mb-2 leading-relaxed"><strong class="text-gray-900 dark:text-white font-semibold">País:</strong> Estados Unidos de América</li>
+                  <li class="mb-2 leading-relaxed">
+                    <strong class="text-gray-900 dark:text-white font-semibold">Finalidad:</strong> Procesamiento de pagos con tarjeta
                   </li>
-                  <li>
-                    <strong>Base legal:</strong> Relación jurídica necesaria para
+                  <li class="mb-2 leading-relaxed">
+                    <strong class="text-gray-900 dark:text-white font-semibold">Base legal:</strong> Relación jurídica necesaria para
                     la prestación del servicio
                   </li>
                 </ul>
 
-                <p>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                   Le informamos que para estas transferencias hemos celebrado
                   contratos de transmisión de datos que garantizan un nivel de
                   protección adecuado y comparable al que exige la Ley Federal
@@ -564,11 +571,11 @@ import "../styles/global.css";
               </section>
 
               <!-- 6. Derechos ARCO -->
-              <section class="privacy-section">
-                <h2>
+              <section class="mb-12 pb-8 border-b border-gray-200 dark:border-gray-700 last:border-b-0">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6 pb-2 border-b-2 border-blue-600 dark:border-blue-400">
                   6. Medios y Procedimiento para Ejercer los Derechos ARCO
                 </h2>
-                <p>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                   Usted tiene derecho a conocer qué datos personales tenemos de
                   usted, para qué los utilizamos y las condiciones del uso que
                   les damos (Acceso). Asimismo, es su derecho solicitar la
@@ -580,28 +587,28 @@ import "../styles/global.css";
                   personales para fines específicos (Oposición). Estos derechos
                   se conocen como derechos ARCO.
                 </p>
-                <p>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                   Para el ejercicio de cualquiera de los derechos ARCO, deberá
                   presentar la solicitud respectiva a través de los siguientes
                   medios:
                 </p>
 
-                <ul>
-                  <li>
-                    <strong>Correo electrónico:</strong>
+                <ul class="my-4 pl-8 text-gray-600 dark:text-gray-300 list-disc">
+                  <li class="mb-2 leading-relaxed">
+                    <strong class="text-gray-900 dark:text-white font-semibold">Correo electrónico:</strong>
                     <a href="mailto:contacto@solucionfactura.mx"
                       >contacto@solucionfactura.mx</a>
                   </li>
-                  <li>
-                    <strong>Domicilio:</strong> Alborada 124, Colonia Parques del
+                  <li class="mb-2 leading-relaxed">
+                    <strong class="text-gray-900 dark:text-white font-semibold">Domicilio:</strong> Alborada 124, Colonia Parques del
                     Pedregal (Torre Perisur), Tlalpan, Ciudad de México, C.P. 14010
                   </li>
-                  <li>
-                    <strong>Teléfono:</strong>
-                    <a href="tel:+525593314767">55 9331 4767</a>
+                  <li class="mb-2 leading-relaxed">
+                    <strong class="text-gray-900 dark:text-white font-semibold">Teléfono:</strong>
+                    <a href="tel:+525593314767" class="text-blue-600 dark:text-blue-400 font-medium hover:underline">55 9331 4767</a>
                   </li>
-                  <li>
-                    <strong>WhatsApp:</strong>
+                  <li class="mb-2 leading-relaxed">
+                    <strong class="text-gray-900 dark:text-white font-semibold">WhatsApp:</strong>
                     <a
                       href="https://wa.me/5576017764"
                       target="_blank"
@@ -609,60 +616,60 @@ import "../styles/global.css";
                   </li>
                 </ul>
 
-                <h3>6.1 Requisitos de la Solicitud:</h3>
-                <p>Su solicitud deberá contener y acompañar lo siguiente:</p>
-                <ol>
-                  <li>
+                <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">6.1 Requisitos de la Solicitud:</h3>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">Su solicitud deberá contener y acompañar lo siguiente:</p>
+                <ol class="my-4 pl-8 text-gray-600 dark:text-gray-300 list-decimal">
+                  <li class="mb-2 leading-relaxed">
                     El nombre del titular y domicilio u otro medio para
                     comunicarle la respuesta a su solicitud;
                   </li>
-                  <li>
+                  <li class="mb-2 leading-relaxed">
                     Los documentos que acrediten la identidad o, en su caso, la
                     representación legal del titular;
                   </li>
-                  <li>
+                  <li class="mb-2 leading-relaxed">
                     La descripción clara y precisa de los datos personales
                     respecto de los que se busca ejercer alguno de los derechos
                     antes mencionados;
                   </li>
-                  <li>
+                  <li class="mb-2 leading-relaxed">
                     Cualquier otro elemento o documento que facilite la
                     localización de los datos personales.
                   </li>
                 </ol>
 
-                <h3>6.2 Plazos de Respuesta:</h3>
-                <p>
+                <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">6.2 Plazos de Respuesta:</h3>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                   Le informaremos sobre la procedencia de su solicitud en un
-                  plazo máximo de <strong>20 (veinte) días hábiles</strong> contados
+                  plazo máximo de <strong class="text-gray-900 dark:text-white font-semibold">20 (veinte) días hábiles</strong> contados
                   desde la fecha en que recibamos su solicitud de acceso, rectificación,
                   cancelación u oposición.
                 </p>
-                <p>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                   En caso de que resulte procedente la solicitud, la misma se
                   hará efectiva en un plazo máximo de <strong
                     >15 (quince) días hábiles</strong
                   > después de haberse comunicado la respuesta.
                 </p>
-                <p>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                   Los plazos antes referidos podrán ser ampliados una sola vez
                   por un período igual, siempre y cuando así lo justifiquen las
                   circunstancias del caso.
                 </p>
 
-                <h3>6.3 Medios de Reproducción:</h3>
-                <p>
+                <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">6.3 Medios de Reproducción:</h3>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                   Para las solicitudes de acceso a datos personales, podrá
                   elegir entre los siguientes medios de reproducción:
                 </p>
-                <ul>
-                  <li>Documentos impresos</li>
-                  <li>Correo electrónico</li>
-                  <li>
+                <ul class="my-4 pl-8 text-gray-600 dark:text-gray-300 list-disc">
+                  <li class="mb-2 leading-relaxed">Documentos impresos</li>
+                  <li class="mb-2 leading-relaxed">Correo electrónico</li>
+                  <li class="mb-2 leading-relaxed">
                     Dispositivos magnéticos, ópticos o de cualquier otra
                     tecnología
                   </li>
-                  <li>
+                  <li class="mb-2 leading-relaxed">
                     Cualquier otro medio que resulte apropiado según el tipo de
                     datos personales de que se trate
                   </li>
@@ -670,17 +677,17 @@ import "../styles/global.css";
               </section>
 
               <!-- 7. Limitación de Uso -->
-              <section class="privacy-section">
-                <h2>
+              <section class="mb-12 pb-8 border-b border-gray-200 dark:border-gray-700 last:border-b-0">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6 pb-2 border-b-2 border-blue-600 dark:border-blue-400">
                   7. Medios para Limitar el Uso o Divulgación de sus Datos
                 </h2>
-                <p>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                   Con objeto de que usted pueda limitar el uso y divulgación de
                   su información personal, le ofrecemos los siguientes medios:
                 </p>
 
-                <h3>7.1 Registro Público para Evitar Publicidad:</h3>
-                <p>
+                <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">7.1 Registro Público para Evitar Publicidad:</h3>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                   Usted se puede registrar en el Registro Público para Evitar
                   Publicidad (REPEP) que está a cargo de la Procuraduría Federal
                   del Consumidor, con la finalidad de que sus datos no se
@@ -690,18 +697,18 @@ import "../styles/global.css";
                   o bien ponerse en contacto directo con ésta.
                 </p>
 
-                <h3>7.2 Lista de Exclusión:</h3>
-                <p>
+                <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">7.2 Lista de Exclusión:</h3>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                   Usted puede solicitar su inscripción en nuestra lista de
                   exclusión de comunicaciones comerciales enviando un correo
                   electrónico a <a href="mailto:contacto@solucionfactura.mx"
                     >contacto@solucionfactura.mx</a
                   > con el asunto "BAJA DE PUBLICIDAD" o comunicándose a nuestro
-                  teléfono <a href="tel:+525593314767">55 9331 4767</a>.
+                  teléfono <a href="tel:+525593314767" class="text-blue-600 dark:text-blue-400 font-medium hover:underline">55 9331 4767</a>.
                 </p>
 
-                <h3>7.3 Configuración de Cookies:</h3>
-                <p>
+                <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">7.3 Configuración de Cookies:</h3>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                   Para limitar el uso de tecnologías de rastreo en nuestro sitio
                   web, usted puede configurar su navegador para restringir,
                   bloquear o eliminar cookies.
@@ -709,9 +716,9 @@ import "../styles/global.css";
               </section>
 
               <!-- 8. Cookies -->
-              <section class="privacy-section">
-                <h2>8. Uso de Cookies, Web Beacons y Otras Tecnologías</h2>
-                <p>
+              <section class="mb-12 pb-8 border-b border-gray-200 dark:border-gray-700 last:border-b-0">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6 pb-2 border-b-2 border-blue-600 dark:border-blue-400">8. Uso de Cookies, Web Beacons y Otras Tecnologías</h2>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                   Le informamos que en nuestro sitio web utilizamos cookies, web
                   beacons y otras tecnologías a través de las cuales es posible
                   monitorear su comportamiento como usuario de internet, así
@@ -719,39 +726,39 @@ import "../styles/global.css";
                   nuestro sitio. Los datos personales que recabamos a través de
                   estas tecnologías los utilizamos para los siguientes fines:
                 </p>
-                <ul>
-                  <li>
+                <ul class="my-4 pl-8 text-gray-600 dark:text-gray-300 list-disc">
+                  <li class="mb-2 leading-relaxed">
                     Mejorar la experiencia del usuario en nuestro sitio web
                   </li>
-                  <li>Analizar el tráfico y uso del sitio web</li>
-                  <li>Personalizar contenido y publicidad</li>
-                  <li>Recordar preferencias y configuraciones del usuario</li>
-                  <li>Facilitar la navegación y uso de funcionalidades</li>
-                  <li>Generar estadísticas de uso y comportamiento</li>
+                  <li class="mb-2 leading-relaxed">Analizar el tráfico y uso del sitio web</li>
+                  <li class="mb-2 leading-relaxed">Personalizar contenido y publicidad</li>
+                  <li class="mb-2 leading-relaxed">Recordar preferencias y configuraciones del usuario</li>
+                  <li class="mb-2 leading-relaxed">Facilitar la navegación y uso de funcionalidades</li>
+                  <li class="mb-2 leading-relaxed">Generar estadísticas de uso y comportamiento</li>
                 </ul>
 
-                <h3>8.1 Tipos de Cookies que Utilizamos:</h3>
+                <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">8.1 Tipos de Cookies que Utilizamos:</h3>
                 <ol type="a">
-                  <li>
-                    <strong>Cookies técnicas:</strong> Necesarias para el funcionamiento
+                  <li class="mb-2 leading-relaxed">
+                    <strong class="text-gray-900 dark:text-white font-semibold">Cookies técnicas:</strong> Necesarias para el funcionamiento
                     del sitio web
                   </li>
-                  <li>
-                    <strong>Cookies analíticas:</strong> Para análisis estadístico
+                  <li class="mb-2 leading-relaxed">
+                    <strong class="text-gray-900 dark:text-white font-semibold">Cookies analíticas:</strong> Para análisis estadístico
                     del comportamiento de usuarios
                   </li>
-                  <li>
-                    <strong>Cookies de personalización:</strong> Para recordar preferencias
+                  <li class="mb-2 leading-relaxed">
+                    <strong class="text-gray-900 dark:text-white font-semibold">Cookies de personalización:</strong> Para recordar preferencias
                     del usuario
                   </li>
-                  <li>
-                    <strong>Cookies publicitarias:</strong> Para mostrar publicidad
+                  <li class="mb-2 leading-relaxed">
+                    <strong class="text-gray-900 dark:text-white font-semibold">Cookies publicitarias:</strong> Para mostrar publicidad
                     relevante
                   </li>
                 </ol>
 
-                <h3>8.2 Gestión de Cookies:</h3>
-                <p>
+                <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">8.2 Gestión de Cookies:</h3>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                   Usted puede configurar su navegador para ser notificado cuando
                   reciba cookies y para rechazarlas. También puede eliminar
                   cookies previamente almacenadas. Para obtener más información
@@ -759,41 +766,41 @@ import "../styles/global.css";
                   de ayuda del mismo.
                 </p>
 
-                <p>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                   Los datos personales que obtenemos de estas tecnologías de
                   rastreo son los siguientes:
                 </p>
-                <ul>
-                  <li>Identificadores, usuario y contraseñas de una sesión</li>
-                  <li>Idioma preferido por el usuario</li>
-                  <li>Región en la que se encuentra el usuario</li>
-                  <li>Tipo de navegador del usuario</li>
-                  <li>Tipo de sistema operativo del usuario</li>
-                  <li>
+                <ul class="my-4 pl-8 text-gray-600 dark:text-gray-300 list-disc">
+                  <li class="mb-2 leading-relaxed">Identificadores, usuario y contraseñas de una sesión</li>
+                  <li class="mb-2 leading-relaxed">Idioma preferido por el usuario</li>
+                  <li class="mb-2 leading-relaxed">Región en la que se encuentra el usuario</li>
+                  <li class="mb-2 leading-relaxed">Tipo de navegador del usuario</li>
+                  <li class="mb-2 leading-relaxed">Tipo de sistema operativo del usuario</li>
+                  <li class="mb-2 leading-relaxed">
                     Fecha y hora del inicio y final de una sesión de un usuario
                   </li>
-                  <li>Páginas web visitadas por un usuario</li>
-                  <li>Búsquedas realizadas por un usuario</li>
-                  <li>Publicidad revisada por un usuario</li>
+                  <li class="mb-2 leading-relaxed">Páginas web visitadas por un usuario</li>
+                  <li class="mb-2 leading-relaxed">Búsquedas realizadas por un usuario</li>
+                  <li class="mb-2 leading-relaxed">Publicidad revisada por un usuario</li>
                 </ul>
               </section>
 
               <!-- 9. Menores de Edad -->
-              <section class="privacy-section">
-                <h2>9. Datos Personales de Menores de Edad</h2>
-                <p>
+              <section class="mb-12 pb-8 border-b border-gray-200 dark:border-gray-700 last:border-b-0">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6 pb-2 border-b-2 border-blue-600 dark:border-blue-400">9. Datos Personales de Menores de Edad</h2>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                   Los servicios ofrecidos por SERINT 360 SAS DE C.V. están
                   dirigidos a personas mayores de 18 años. No recabamos ni
                   tratamos datos personales de menores de edad de manera
                   intencionada.
                 </p>
-                <p>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                   En caso de que tengamos conocimiento de que hemos recabado
                   datos personales de menores de edad sin el consentimiento
                   correspondiente, procederemos a eliminar dicha información de
                   nuestros registros.
                 </p>
-                <p>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                   Si usted es padre, madre o tutor legal y tiene conocimiento de
                   que un menor de edad nos ha proporcionado datos personales, le
                   solicitamos se ponga en contacto con nosotros para que podamos
@@ -802,41 +809,41 @@ import "../styles/global.css";
               </section>
 
               <!-- 10. Cambios al Aviso -->
-              <section class="privacy-section">
-                <h2>10. Cambios al Aviso de Privacidad</h2>
-                <p>
+              <section class="mb-12 pb-8 border-b border-gray-200 dark:border-gray-700 last:border-b-0">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6 pb-2 border-b-2 border-blue-600 dark:border-blue-400">10. Cambios al Aviso de Privacidad</h2>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                   El presente aviso de privacidad puede sufrir modificaciones,
                   cambios o actualizaciones derivadas de nuevos requerimientos
                   legales; de nuestras propias necesidades por los productos o
                   servicios que ofrecemos; de nuestras prácticas de privacidad;
                   de cambios en nuestro modelo de negocio, o por otras causas.
                 </p>
-                <p>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                   Nos comprometemos a mantenerlo informado sobre los cambios que
                   pueda sufrir el presente aviso de privacidad, a través de los
                   siguientes medios:
                 </p>
-                <ul>
-                  <li>Correo electrónico registrado en su cuenta</li>
-                  <li>Notificaciones en nuestro sitio web</li>
-                  <li>Aviso en nuestra aplicación web</li>
-                  <li>Publicación en nuestros sitios web oficiales</li>
+                <ul class="my-4 pl-8 text-gray-600 dark:text-gray-300 list-disc">
+                  <li class="mb-2 leading-relaxed">Correo electrónico registrado en su cuenta</li>
+                  <li class="mb-2 leading-relaxed">Notificaciones en nuestro sitio web</li>
+                  <li class="mb-2 leading-relaxed">Aviso en nuestra aplicación web</li>
+                  <li class="mb-2 leading-relaxed">Publicación en nuestros sitios web oficiales</li>
                 </ul>
-                <p>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                   El procedimiento a través del cual se llevarán a cabo las
                   notificaciones sobre cambios o actualizaciones al presente
                   aviso de privacidad es el siguiente:
                 </p>
-                <ul>
-                  <li>
+                <ul class="my-4 pl-8 text-gray-600 dark:text-gray-300 list-disc">
+                  <li class="mb-2 leading-relaxed">
                     Se enviará una notificación al correo electrónico registrado
                     en su cuenta
                   </li>
-                  <li>
+                  <li class="mb-2 leading-relaxed">
                     Se publicará el aviso actualizado en nuestros sitios web
                   </li>
-                  <li>Se colocará un aviso visible en la aplicación web</li>
-                  <li>
+                  <li class="mb-2 leading-relaxed">Se colocará un aviso visible en la aplicación web</li>
+                  <li class="mb-2 leading-relaxed">
                     Los cambios entrarán en vigor 5 días naturales después de la
                     publicación
                   </li>
@@ -844,21 +851,21 @@ import "../styles/global.css";
               </section>
 
               <!-- 11. Consentimiento -->
-              <section class="privacy-section">
-                <h2>11. Consentimiento</h2>
-                <p>
+              <section class="mb-12 pb-8 border-b border-gray-200 dark:border-gray-700 last:border-b-0">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6 pb-2 border-b-2 border-blue-600 dark:border-blue-400">11. Consentimiento</h2>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                   Al proporcionar sus datos personales por cualquier medio,
                   usted consiente tácitamente en el tratamiento de los mismos
                   conforme a los términos y condiciones establecidos en el
                   presente Aviso de Privacidad.
                 </p>
 
-                <h3>11.1 Consentimiento para Finalidades Secundarias:</h3>
-                <p>
+                <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">11.1 Consentimiento para Finalidades Secundarias:</h3>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                   ¿Acepta el tratamiento de sus datos personales para las
                   siguientes finalidades secundarias?
                 </p>
-                <div class="consent-options">
+                <div class="my-6">
                   <label>
                     <input type="checkbox" name="mercadotecnia" />
                     Mercadotecnia y publicidad
@@ -877,8 +884,8 @@ import "../styles/global.css";
                   </label>
                 </div>
 
-                <p>Para transferencias internacionales:</p>
-                <div class="consent-options">
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">Para transferencias internacionales:</p>
+                <div class="my-6">
                   <label>
                     <input type="checkbox" name="transferencias" />
                     Acepto que mis datos sean transferidos a Estados Unidos para
@@ -886,7 +893,7 @@ import "../styles/global.css";
                   </label>
                 </div>
 
-                <p>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                   La falta de respuesta a las preguntas anteriores no impedirá
                   que podamos tratar sus datos personales para las finalidades
                   primarias establecidas en el presente aviso de privacidad.
@@ -894,29 +901,29 @@ import "../styles/global.css";
               </section>
 
               <!-- 12. Autoridad de Control -->
-              <section class="privacy-section">
-                <h2>12. Autoridad de Control</h2>
-                <p>
+              <section class="mb-12 pb-8 border-b border-gray-200 dark:border-gray-700 last:border-b-0">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6 pb-2 border-b-2 border-blue-600 dark:border-blue-400">12. Autoridad de Control</h2>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                   Para cualquier información adicional sobre la protección de
                   sus datos personales o si desea realizar alguna queja con
                   relación al tratamiento de su información personal, puede
                   dirigirse al Instituto Nacional de Transparencia, Acceso a la
                   Información y Protección de Datos Personales (INAI):
                 </p>
-                <ul>
-                  <li>
-                    <strong>Sitio web:</strong>
+                <ul class="my-4 pl-8 text-gray-600 dark:text-gray-300 list-disc">
+                  <li class="mb-2 leading-relaxed">
+                    <strong class="text-gray-900 dark:text-white font-semibold">Sitio web:</strong>
                     <a
                       href="https://www.inai.org.mx"
                       target="_blank"
                       rel="noopener noreferrer">www.inai.org.mx</a>
                   </li>
-                  <li>
-                    <strong>Teléfono:</strong>
-                    <a href="tel:+525550042400">55 5004 2400</a>
+                  <li class="mb-2 leading-relaxed">
+                    <strong class="text-gray-900 dark:text-white font-semibold">Teléfono:</strong>
+                    <a href="tel:+525550042400" class="text-blue-600 dark:text-blue-400 font-medium hover:underline">55 5004 2400</a>
                   </li>
-                  <li>
-                    <strong>Correo electrónico:</strong>
+                  <li class="mb-2 leading-relaxed">
+                    <strong class="text-gray-900 dark:text-white font-semibold">Correo electrónico:</strong>
                     <a href="mailto:datospersonales@inai.org.mx"
                       >datospersonales@inai.org.mx</a>
                   </li>
@@ -924,30 +931,29 @@ import "../styles/global.css";
               </section>
 
               <!-- 13. Aceptación -->
-              <section class="privacy-section">
-                <h2>13. Aceptación</h2>
-                <p>
+              <section class="mb-12 pb-8 border-b border-gray-200 dark:border-gray-700 last:border-b-0">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6 pb-2 border-b-2 border-blue-600 dark:border-blue-400">13. Aceptación</h2>
+                <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                   He leído y acepto los términos del presente Aviso de
                   Privacidad y otorgo mi consentimiento para el tratamiento de
                   mis datos personales de acuerdo con las finalidades y
                   condiciones aquí establecidas.
                 </p>
               </section>
-
               <!-- Footer Info -->
-              <div class="privacy-final-info">
-                <div class="last-update-footer">
-                  <p>
-                    <strong>Fecha de última actualización:</strong> Enero 2025<br
+              <div class="mt-12 pt-8 border-t-2 border-gray-200 dark:border-gray-700 text-center">
+                <div class="bg-white dark:bg-gray-700 p-8 rounded-lg border border-gray-200 dark:border-gray-600">
+                  <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
+                    <strong class="text-gray-900 dark:text-white font-semibold">Fecha de última actualización:</strong> Enero 2025<br
                     />
-                    <strong>SERINT 360 SAS DE C.V.</strong><br />
-                    <strong>Correo:</strong>
+                    <strong class="text-gray-900 dark:text-white font-semibold">SERINT 360 SAS DE C.V.</strong><br />
+                    <strong class="text-gray-900 dark:text-white font-semibold">Correo:</strong>
                     <a href="mailto:contacto@solucionfactura.mx"
                       >contacto@solucionfactura.mx</a
                     ><br />
-                    <strong>Teléfono:</strong>
-                    <a href="tel:+525593314767">55 9331 4767</a><br />
-                    <strong>WhatsApp:</strong>
+                    <strong class="text-gray-900 dark:text-white font-semibold">Teléfono:</strong>
+                    <a href="tel:+525593314767" class="text-blue-600 dark:text-blue-400 font-medium hover:underline">55 9331 4767</a><br />
+                    <strong class="text-gray-900 dark:text-white font-semibold">WhatsApp:</strong>
                     <a
                       href="https://wa.me/5576017764"
                       target="_blank"
@@ -966,293 +972,3 @@ import "../styles/global.css";
     <WhatsAppFloat />
   </body>
 </html>
-
-<style lang="scss">
-  // Privacy Hero Section
-  .privacy-hero {
-    padding: 8rem 0 4rem;
-    background: linear-gradient(
-      135deg,
-      var(--bg-primary) 0%,
-      var(--bg-secondary) 100%
-    );
-    border-bottom: 1px solid var(--border-light);
-
-    .container {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 var(--padding-x);
-    }
-
-    .hero-content {
-      text-align: center;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .hero-title {
-      font-size: clamp(2.5rem, 5vw, 3.5rem);
-      font-weight: 700;
-      color: var(--text-primary);
-      margin-bottom: 1rem;
-      line-height: 1.1;
-    }
-
-    .hero-description {
-      font-size: 1.25rem;
-      color: var(--text-secondary);
-      margin-bottom: 2rem;
-      line-height: 1.6;
-    }
-
-    .last-updated {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--bg-tertiary);
-      padding: 0.75rem 1.5rem;
-      border-radius: 2rem;
-      border: 1px solid var(--border-light);
-      font-size: 0.95rem;
-
-      .update-label {
-        color: var(--text-secondary);
-        font-weight: 500;
-      }
-
-      .update-date {
-        color: var(--secondary);
-        font-weight: 600;
-      }
-    }
-  }
-
-  // Privacy Content
-  .privacy-content {
-    padding: 4rem 0;
-    background: var(--bg-secondary);
-
-    .container {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 var(--padding-x);
-    }
-
-    .content-wrapper {
-      max-width: 900px;
-      margin: 0 auto;
-    }
-  }
-
-  .privacy-main {
-    .privacy-intro {
-      margin-bottom: 3rem;
-
-      p {
-        font-size: 1.1rem;
-        line-height: 1.7;
-        color: var(--text-secondary);
-        margin-bottom: 1.5rem;
-      }
-    }
-  }
-
-  .privacy-section {
-    margin-bottom: 3rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid var(--border-light);
-
-    &:last-child {
-      border-bottom: none;
-      margin-bottom: 2rem;
-    }
-
-    h2 {
-      font-size: 1.75rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      margin-bottom: 1.5rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 2px solid var(--secondary);
-    }
-
-    h3 {
-      font-size: 1.4rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin: 2rem 0 1rem;
-    }
-
-    h4 {
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin: 1.5rem 0 1rem;
-    }
-
-    h5 {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin: 1rem 0 0.75rem;
-    }
-
-    p {
-      font-size: 1rem;
-      line-height: 1.7;
-      color: var(--text-secondary);
-      margin-bottom: 1rem;
-    }
-
-    ul,
-    ol {
-      margin: 1rem 0;
-      padding-left: 2rem;
-      color: var(--text-secondary);
-
-      li {
-        margin-bottom: 0.5rem;
-        line-height: 1.6;
-      }
-    }
-
-    a {
-      color: var(--secondary);
-      text-decoration: none;
-      font-weight: 500;
-
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-
-    strong {
-      color: var(--text-primary);
-      font-weight: 600;
-    }
-  }
-
-  .company-info {
-    ul {
-      list-style: none;
-      padding-left: 0;
-
-      li {
-        margin-bottom: 0.75rem;
-        padding: 0.5rem 0;
-        border-bottom: 1px solid var(--border-light);
-
-        &:last-child {
-          border-bottom: none;
-        }
-      }
-    }
-  }
-
-  .consent-options {
-    margin: 1.5rem 0;
-
-    label {
-      display: block;
-      margin-bottom: 1rem;
-      cursor: pointer;
-      font-weight: 500;
-      color: var(--text-primary);
-
-      input[type="checkbox"] {
-        margin-right: 0.75rem;
-        transform: scale(1.2);
-        accent-color: var(--secondary);
-      }
-
-      &:hover {
-        color: var(--secondary);
-      }
-    }
-  }
-
-  .privacy-final-info {
-    margin-top: 3rem;
-    padding-top: 2rem;
-    border-top: 2px solid var(--border-light);
-    text-align: center;
-
-    .last-update-footer {
-      background: var(--bg-tertiary);
-      padding: 2rem;
-      border-radius: 1rem;
-      border: 1px solid var(--border-light);
-
-      p {
-        margin: 0;
-        color: var(--text-secondary);
-        line-height: 1.8;
-
-        strong {
-          color: var(--text-primary);
-        }
-
-        a {
-          color: var(--secondary);
-          font-weight: 600;
-        }
-      }
-    }
-  }
-
-  // Responsive Design
-  @media (max-width: 768px) {
-    .privacy-hero {
-      padding: 6rem 0 3rem;
-
-      .hero-title {
-        font-size: 2rem;
-      }
-
-      .hero-description {
-        font-size: 1.1rem;
-      }
-    }
-
-    .privacy-content {
-      padding: 3rem 0;
-    }
-
-    .privacy-section {
-      h2 {
-        font-size: 1.5rem;
-      }
-
-      h3 {
-        font-size: 1.25rem;
-      }
-
-      h4 {
-        font-size: 1.1rem;
-      }
-
-      ul,
-      ol {
-        padding-left: 1.5rem;
-      }
-    }
-
-    .consent-options {
-      label {
-        font-size: 0.95rem;
-      }
-    }
-  }
-
-  // Print styles
-  @media print {
-    .privacy-hero .last-updated {
-      display: none;
-    }
-
-    .privacy-section {
-      break-inside: avoid;
-      page-break-inside: avoid;
-    }
-  }
-</style>

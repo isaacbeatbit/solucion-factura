@@ -3,8 +3,8 @@
 // ========================================
 
 export function initMobileMenu() {
-  const mobileToggle = document.querySelector(".mobile-menu-toggle");
-  const mobileNav = document.querySelector(".mobile-nav");
+  const mobileToggle = document.getElementById("mobile-menu-toggle");
+  const mobileNav = document.getElementById("mobile-nav");
   const navbar = document.querySelector(".navbar-header");
 
   if (!mobileToggle || !mobileNav) {
@@ -27,7 +27,7 @@ export function initMobileMenu() {
     document.body.style.overflow = "hidden";
 
     // Focus en el primer enlace del menú para mejor accesibilidad
-    const firstLink = mobileNav.querySelector(".mobile-nav-link");
+    const firstLink = mobileNav.querySelector("a");
     if (firstLink) {
       setTimeout(() => firstLink.focus(), 100);
     }
@@ -65,7 +65,7 @@ export function initMobileMenu() {
   });
 
   // Cerrar menú al hacer click en enlaces
-  const mobileLinks = mobileNav.querySelectorAll(".mobile-nav-link");
+  const mobileLinks = mobileNav.querySelectorAll("a");
   mobileLinks.forEach((link) => {
     link.addEventListener("click", () => {
       // Solo cerrar si no es un enlace externo o de teléfono

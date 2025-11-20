@@ -37,11 +37,11 @@ const advancedFeatures = [
 ];
 
 const plans = [
-  { id: "emprende", name: "Emprende", price: "$292", period: "por año" },
-  { id: "crece", name: "Crece", price: "$501", period: "por año" },
-  { id: "empresa", name: "Empresa", price: "$960", period: "por año" },
-  { id: "premium", name: "Premium", price: "$2,075", period: "por año", featured: true },
-  { id: "premiumPlus", name: "Premium PLUS", price: "$2,799", period: "por año" },
+  { id: "emprende", name: "Emprende", price: "$327", period: "por año" },
+  { id: "crece", name: "Crece", price: "$561", period: "por año" },
+  { id: "empresa", name: "Empresa", price: "$1,075", period: "por año" },
+  { id: "premium", name: "Premium", price: "$2,324", period: "por año", featured: true },
+  { id: "premiumPlus", name: "Premium PLUS", price: "$3,135", period: "por año" },
 ];
 ---
 
@@ -76,7 +76,7 @@ const plans = [
                     <div class="text-xs text-[var(--text-secondary)] uppercase tracking-wide">{plan.period}</div>
                     <button 
                       type="button" 
-                      class={`mt-2 px-4 py-2.5 rounded-lg font-semibold text-sm transition-all ${plan.featured ? 'bg-gradient-to-r from-green-500 to-green-600 text-white hover:from-green-600 hover:to-green-700 shadow-lg' : 'bg-gradient-to-br from-[var(--highlight-blue)] to-[var(--secondary)] text-white hover:shadow-lg hover:-translate-y-0.5'}`}
+                      class={`mt-2 px-4 py-2.5 rounded-lg font-semibold text-sm transition-all ${plan.featured ? 'bg-gradient-to-r from-green-500 to-green-600 text-white hover:from-green-600 hover:to-green-700 shadow-lg' : 'bg-gradient-to-br from-blue-500 to-blue-600 text-white hover:shadow-lg hover:-translate-y-0.5'}`}
                       data-plan={plan.id}
                     >
                       Comprar ahora
@@ -156,7 +156,7 @@ const plans = [
                 <td class={`p-6 text-center border-t-2 ${plan.featured ? 'bg-green-500/10 border-green-500' : 'border-[var(--border-light)]'}`}>
                   <button 
                     type="button" 
-                    class={`w-full px-4 py-3 rounded-lg font-bold text-sm transition-all ${plan.featured ? 'bg-gradient-to-r from-green-500 to-green-600 text-white hover:from-green-600 hover:to-green-700 shadow-lg' : 'bg-gradient-to-br from-[var(--highlight-blue)] to-[var(--secondary)] text-white hover:shadow-lg hover:-translate-y-0.5'}`}
+                    class={`w-full px-4 py-3 rounded-lg font-bold text-sm transition-all ${plan.featured ? 'bg-gradient-to-r from-green-500 to-green-600 text-white hover:from-green-600 hover:to-green-700 shadow-lg' : 'bg-gradient-to-br from-blue-500 to-blue-600 text-white hover:shadow-lg hover:-translate-y-0.5'}`}
                     data-plan={plan.id}
                   >
                     Comprar {plan.price}
@@ -169,79 +169,102 @@ const plans = [
       </div>
     </div>
 
-    <!-- Mobile Cards -->
-    <div class="lg:hidden space-y-6">
-      {plans.map((plan) => (
-        <div class={`relative rounded-2xl overflow-hidden ${plan.featured ? 'border-2 border-green-500 shadow-[0_0_30px_rgba(34,197,94,0.3)]' : 'border-2 border-[var(--border-light)] shadow-lg'}`}>
-          {plan.featured && (
-            <div class="absolute -top-2 left-1/2 -translate-x-1/2 bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-lg z-10 whitespace-nowrap">
-              ⭐ MÁS VENDIDO
-            </div>
-          )}
-          
-          <div class={`p-6 text-center ${plan.featured ? 'bg-gradient-to-br from-green-500/10 to-green-500/5' : 'bg-gradient-to-br from-[var(--bg-secondary)] to-[var(--bg-tertiary)]'} ${plan.featured ? 'pt-8' : ''}`}>
-            <h3 class={`text-2xl font-bold mb-3 ${plan.featured ? 'text-green-500' : 'text-[var(--secondary)]'}`}>{plan.name}</h3>
-            <div class="text-4xl font-bold text-[var(--text-primary)] mb-2">{plan.price}</div>
-            <div class="text-sm text-[var(--text-secondary)] uppercase tracking-wide mb-5">{plan.period}</div>
-            <button 
-              type="button" 
-              class={`w-full px-6 py-3.5 rounded-xl font-bold transition-all ${plan.featured ? 'bg-gradient-to-r from-green-500 to-green-600 text-white hover:from-green-600 hover:to-green-700 shadow-lg' : 'bg-gradient-to-br from-[var(--highlight-blue)] to-[var(--secondary)] text-white hover:shadow-lg'}`}
-              data-plan={plan.id}
+    <!-- Mobile Optimized View -->
+    <div class="lg:hidden">
+      <!-- Plan Selector Tabs -->
+      <div class="mb-6 overflow-x-auto -mx-4 px-4">
+        <div class="flex gap-2 min-w-max">
+          {plans.map((plan, index) => (
+            <button
+              type="button"
+              class={`mobile-plan-tab flex-1 min-w-[100px] px-4 py-3 rounded-lg font-semibold text-sm transition-all whitespace-nowrap ${index === 3 ? 'bg-gradient-to-r from-green-500 to-green-600 text-white shadow-lg' : 'bg-[var(--bg-card)] text-[var(--text-secondary)] border-2 border-[var(--border-light)]'}`}
+              data-plan-id={plan.id}
+              data-plan-index={index}
             >
-              Comprar Plan
+              <div class="flex flex-col items-center gap-1">
+                {plan.featured && (
+                  <span class="text-[10px] font-bold">⭐ MÁS VENDIDO</span>
+                )}
+                <span class={plan.featured ? 'text-white' : ''}>{plan.name}</span>
+                <span class={`text-xs font-bold ${plan.featured ? 'text-white' : 'text-[var(--text-primary)]'}`}>{plan.price}</span>
+              </div>
             </button>
-          </div>
+          ))}
+        </div>
+      </div>
 
-          <div class="bg-[var(--bg-primary)]/80 backdrop-blur-sm p-6">
-            <div class="space-y-3">
-              {basicFeatures.map((feature) => {
-                const value = feature[plan.id as keyof typeof feature];
-                return (
-                  <div class="flex items-center justify-between py-3 border-b border-[var(--border-light)] last:border-0">
-                    <span class="text-sm text-[var(--text-primary)] font-medium flex-1">{feature.name}</span>
-                    <div class="ml-4">
-                      {feature.isNumber ? (
-                        <span class="inline-block px-3 py-1 rounded-full bg-[var(--secondary)]/10 text-[var(--secondary)] font-bold text-sm">{value}</span>
-                      ) : value ? (
-                        <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-green-500/20 text-green-500 text-lg font-bold">✓</span>
-                      ) : (
-                        <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-red-500/10 text-red-500/60 text-lg">✕</span>
-                      )}
-                    </div>
-                  </div>
-                );
-              })}
+      <!-- Plan Details (One at a time) -->
+      {plans.map((plan, index) => (
+        <div 
+          id={`mobile-plan-${plan.id}`}
+          class={`mobile-plan-content ${index === 3 ? '' : 'hidden'}`}
+          data-plan-id={plan.id}
+        >
+          <div class={`rounded-2xl overflow-hidden ${plan.featured ? 'border-2 border-green-500 shadow-[0_0_30px_rgba(34,197,94,0.3)]' : 'border-2 border-[var(--border-light)] shadow-lg'}`}>
+            <div class={`p-6 text-center ${plan.featured ? 'bg-gradient-to-br from-green-500/10 to-green-500/5' : 'bg-gradient-to-br from-[var(--bg-secondary)] to-[var(--bg-tertiary)]'}`}>
+              <h3 class={`text-2xl font-bold mb-3 ${plan.featured ? 'text-green-500' : 'text-[var(--secondary)]'}`}>{plan.name}</h3>
+              <div class="text-4xl font-bold text-[var(--text-primary)] mb-2">{plan.price}</div>
+              <div class="text-sm text-[var(--text-secondary)] uppercase tracking-wide mb-5">{plan.period}</div>
+              <button 
+                type="button" 
+                class={`w-full px-6 py-3.5 rounded-xl font-bold transition-all ${plan.featured ? 'bg-gradient-to-r from-green-500 to-green-600 text-white hover:from-green-600 hover:to-green-700 shadow-lg' : 'bg-gradient-to-br from-blue-500 to-blue-600 text-white hover:shadow-lg'}`}
+                data-plan={plan.id}
+              >
+                Comprar Plan
+              </button>
             </div>
 
-            <div id={`advanced-features-mobile-${plan.id}`} class="hidden space-y-3 mt-3">
-              {advancedFeatures.map((feature) => {
-                const value = feature[plan.id as keyof typeof feature];
-                return (
-                  <div class="flex items-center justify-between py-3 border-b border-[var(--border-light)] last:border-0">
-                    <span class="text-sm text-[var(--text-primary)] font-medium flex-1">{feature.name}</span>
-                    <div class="ml-4">
-                      {feature.isNumber ? (
-                        <span class="inline-block px-3 py-1 rounded-full bg-[var(--secondary)]/10 text-[var(--secondary)] font-bold text-sm">{value}</span>
-                      ) : value ? (
-                        <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-green-500/20 text-green-500 text-lg font-bold">✓</span>
-                      ) : (
-                        <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-red-500/10 text-red-500/60 text-lg">✕</span>
-                      )}
+            <div class="bg-[var(--bg-primary)]/80 backdrop-blur-sm p-6">
+              <div class="space-y-3">
+                {basicFeatures.map((feature) => {
+                  const value = feature[plan.id as keyof typeof feature];
+                  return (
+                    <div class="flex items-center justify-between py-3 border-b border-[var(--border-light)] last:border-0">
+                      <span class="text-sm text-[var(--text-primary)] font-medium flex-1">{feature.name}</span>
+                      <div class="ml-4">
+                        {feature.isNumber ? (
+                          <span class="inline-block px-3 py-1 rounded-full bg-[var(--secondary)]/10 text-[var(--secondary)] font-bold text-sm">{value}</span>
+                        ) : value ? (
+                          <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-green-500/20 text-green-500 text-lg font-bold">✓</span>
+                        ) : (
+                          <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-red-500/10 text-red-500/60 text-lg">✕</span>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                );
-              })}
-            </div>
+                  );
+                })}
+              </div>
 
-            <button 
-              class="toggle-mobile w-full mt-6 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold text-sm bg-[var(--bg-secondary)] text-[var(--text-primary)] border-2 border-[var(--border-light)] hover:border-[var(--secondary)] hover:text-[var(--secondary)] transition-all"
-              data-plan={plan.id}
-            >
-              <span class="toggle-text-mobile">Ver todas las características</span>
-              <svg class="toggle-icon-mobile w-5 h-5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
-            </button>
+              <div id={`advanced-features-mobile-${plan.id}`} class="hidden space-y-3 mt-3">
+                {advancedFeatures.map((feature) => {
+                  const value = feature[plan.id as keyof typeof feature];
+                  return (
+                    <div class="flex items-center justify-between py-3 border-b border-[var(--border-light)] last:border-0">
+                      <span class="text-sm text-[var(--text-primary)] font-medium flex-1">{feature.name}</span>
+                      <div class="ml-4">
+                        {feature.isNumber ? (
+                          <span class="inline-block px-3 py-1 rounded-full bg-[var(--secondary)]/10 text-[var(--secondary)] font-bold text-sm">{value}</span>
+                        ) : value ? (
+                          <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-green-500/20 text-green-500 text-lg font-bold">✓</span>
+                        ) : (
+                          <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-red-500/10 text-red-500/60 text-lg">✕</span>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              <button 
+                class="toggle-mobile w-full mt-6 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold text-sm bg-[var(--bg-secondary)] text-[var(--text-primary)] border-2 border-[var(--border-light)] hover:border-[var(--secondary)] hover:text-[var(--secondary)] transition-all"
+                data-plan={plan.id}
+              >
+                <span class="toggle-text-mobile">Ver todas las características</span>
+                <svg class="toggle-icon-mobile w-5 h-5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
       ))}
@@ -271,6 +294,39 @@ const plans = [
       }
     });
   }
+  
+  // Mobile plan tabs switching
+  const mobilePlanTabs = document.querySelectorAll('.mobile-plan-tab');
+  const mobilePlanContents = document.querySelectorAll('.mobile-plan-content');
+  
+  mobilePlanTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const planId = tab.getAttribute('data-plan-id');
+      
+      // Update active tab styles
+      mobilePlanTabs.forEach(t => {
+        const isFeatured = t.getAttribute('data-plan-id') === 'premium';
+        if (t === tab) {
+          if (isFeatured) {
+            t.className = 'mobile-plan-tab flex-1 min-w-[100px] px-4 py-3 rounded-lg font-semibold text-sm transition-all whitespace-nowrap bg-gradient-to-r from-green-500 to-green-600 text-white shadow-lg';
+          } else {
+            t.className = 'mobile-plan-tab flex-1 min-w-[100px] px-4 py-3 rounded-lg font-semibold text-sm transition-all whitespace-nowrap bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-lg';
+          }
+        } else {
+          t.className = 'mobile-plan-tab flex-1 min-w-[100px] px-4 py-3 rounded-lg font-semibold text-sm transition-all whitespace-nowrap bg-[var(--bg-card)] text-[var(--text-secondary)] border-2 border-[var(--border-light)]';
+        }
+      });
+      
+      // Show selected plan content
+      mobilePlanContents.forEach(content => {
+        if (content.getAttribute('data-plan-id') === planId) {
+          content.classList.remove('hidden');
+        } else {
+          content.classList.add('hidden');
+        }
+      });
+    });
+  });
   
   // Toggle mobile
   const togglesMobile = document.querySelectorAll('.toggle-mobile');

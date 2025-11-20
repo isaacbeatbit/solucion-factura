@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Probar Ticket API - Modo Oscuro</title>
+  <style>
+    body {
+      background: #0a0f1c;
+      color: #e2e8f0;
+      font-family: "Inter", sans-serif;
+      padding: 40px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #64b5f6;
+    }
+    .card {
+      max-width: 900px;
+      margin: auto;
+      background: #111827;
+      padding: 25px;
+      border-radius: 18px;
+      border: 1px solid #1e293b;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: 600;
+      color: #93c5fd;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 10px;
+      background: #0f172a;
+      border: 1px solid #334155;
+      color: #e2e8f0;
+      font-size: 15px;
+      margin-bottom: 12px;
+    }
+    textarea {
+      min-height: 120px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(to right, #3b82f6, #06b6d4);
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+      margin-top: 5px;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+    button:hover {
+      filter: brightness(1.1);
+    }
+    pre {
+      background: #0f172a;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+      border: 1px solid #334155;
+      max-height: 400px;
+      overflow: auto;
+      white-space: pre-wrap;
+      color: #a5f3fc;
+    }
+
+    /* Dropzone */
+    .dropzone {
+      border: 2px dashed #4b5563;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      cursor: pointer;
+      background: #020617;
+      color: #9ca3af;
+      margin-top: 10px;
+      transition: 0.2s;
+    }
+    .dropzone.dragover {
+      border-color: #38bdf8;
+      background: rgba(56, 189, 248, 0.06);
+      color: #e0f2fe;
+    }
+    #fileList {
+      margin-top: 8px;
+      font-size: 13px;
+      color: #e5e7eb;
+      text-align: left;
+      max-height: 120px;
+      overflow-y: auto;
+    }
+
+    /* Ocultar campos (Inbox, Asignar a, Metadatos) */
+    .hidden-field {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Probar Creación de Ticket 🎟️</h1>
+
+<div class="card">
+  <form id="ticketForm">
+
+    <!-- INBOX oculto -->
+    <div class="hidden-field">
+      <label>Inbox</label>
+      <input type="hidden" name="inbox_email" value="soporte@solucion-factura.tickos.dev">
+    </div>
+
+    <label>Email del cliente</label>
+    <input type="email" name="customer_email" placeholder="cliente@ejemplo.com" required>
+
+    <label>Nombre</label>
+    <input type="text" name="customer_name" placeholder="Juan Pérez">
+
+    <label>Teléfono</label>
+    <input type="text" name="customer_phone" placeholder="+52 55 1234 5678">
+
+    <!-- GRUPO -> Soporte para el sistema (selector visible) -->
+    <label>Soporte para el sistema</label>
+    <select name="customer_group">
+      <option value="">Selecciona una opción…</option>
+      <option value="Sistema de facturacion">Sistema de facturación</option>
+      <option value="Sistema contable">Sistema contable</option>
+      <option value="Sistema Descarga XML">Sistema Descarga XML</option>
+      <option value="Otro">Otro</option>
+    </select>
+
+    <label>Asunto</label>
+    <input type="text" name="subject" required placeholder="Problema para iniciar sesión">
+
+    <label>Mensaje</label>
+    <textarea name="message" required placeholder="Describe el problema..."></textarea>
+
+    <label>Prioridad</label>
+    <select name="priority">
+      <option value="normal">Normal</option>
+      <option value="low">Baja</option>
+      <option value="medium">Media</option>
+      <option value="high">Alta</option>
+      <option value="urgent">Urgente</option>
+    </select>
+
+    <!-- Asignar a oculto con valor fijo -->
+    <div class="hidden-field">
+      <label>Asignar a</label>
+      <input type="hidden" name="assigned_to" value="contacto@solucionfiscal.mx">
+    </div>
+
+    <!-- Metadatos ocultos -->
+    <div class="hidden-field">
+      <h3>Metadatos</h3>
+      <input type="text" name="metadata[user_id]" placeholder="ID usuario">
+      <input type="text" name="metadata[plan]" placeholder="Plan del usuario">
+      <input type="text" name="metadata[browser]" placeholder="Navegador">
+      <input type="text" name="metadata[os]" placeholder="Sistema operativo">
+      <input type="text" name="metadata[source]" placeholder="Origen (web_app)">
+    </div>
+
+    <h3 style="color:#60a5fa;margin-top:20px;">Adjuntos</h3>
+
+    <!-- Input real oculto -->
+    <input type="file" id="attachments" multiple class="hidden-field">
+
+    <!-- Dropzone visible -->
+    <div id="dropZone" class="dropzone">
+      Arrastra y suelta tus archivos aquí<br>
+      <small>o haz clic para seleccionarlos</small>
+    </div>
+    <div id="fileList"></div>
+
+    <button type="submit">Enviar Ticket 🚀</button>
+  </form>
+
+  <h3 style="margin-top:25px;color:#38bdf8;">Respuesta del servidor:</h3>
+  <pre id="responseBox">Aún no hay respuesta…</pre>
+</div>
+
+<script>
+// ------------ 🔧 CONFIGURACIÓN ------------
+const API_URL = "https://api.tickos.dev/api/v1/tickets";
+const API_KEY = "sk_e1da003120cd079b2483c286c75a5d19dcfbd43cbd778213"; // <-- PON AQUÍ TU API KEY
+
+
+// ------------ 📌 Convertir archivos a Base64 ------------
+function toBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () =>
+      resolve({
+        fileName: file.name,
+        fileData: reader.result.split(",")[1],
+        contentType: file.type,
+      });
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+// Manejo de drag & drop
+const dropZone = document.getElementById("dropZone");
+const fileInput = document.getElementById("attachments");
+const fileList = document.getElementById("fileList");
+let selectedFiles = [];
+
+dropZone.addEventListener("click", () => fileInput.click());
+
+dropZone.addEventListener("dragover", (e) => {
+  e.preventDefault();
+  dropZone.classList.add("dragover");
+});
+
+dropZone.addEventListener("dragleave", () => {
+  dropZone.classList.remove("dragover");
+});
+
+dropZone.addEventListener("drop", (e) => {
+  e.preventDefault();
+  dropZone.classList.remove("dragover");
+  if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+    selectedFiles = Array.from(e.dataTransfer.files);
+    renderFileList();
+  }
+});
+
+fileInput.addEventListener("change", (e) => {
+  selectedFiles = Array.from(e.target.files);
+  renderFileList();
+});
+
+function renderFileList() {
+  if (!selectedFiles.length) {
+    fileList.textContent = "";
+    return;
+  }
+  fileList.innerHTML = "";
+  selectedFiles.forEach((file, idx) => {
+    const line = document.createElement("div");
+    line.textContent = `${idx + 1}. ${file.name} (${Math.round(file.size / 1024)} KB)`;
+    fileList.appendChild(line);
+  });
+}
+
+// ------------ 🚀 Enviar formulario ------------
+document.getElementById("ticketForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const formData = new FormData(e.target);
+
+  // Metadatos (aunque estén ocultos, se mandan por si quieres llenarlos después por JS)
+  const metadata = {
+    user_id: formData.get("metadata[user_id]") || "",
+    plan: formData.get("metadata[plan]") || "",
+    browser: formData.get("metadata[browser]") || "",
+    os: formData.get("metadata[os]") || "",
+    source: formData.get("metadata[source]") || "",
+  };
+
+  // Adjuntos desde selectedFiles
+  const attachments = [];
+  for (let f of selectedFiles) {
+    attachments.push(await toBase64(f));
+  }
+
+  // JSON final
+  const body = {
+    inbox_email: formData.get("inbox_email"),               // fijo oculto
+    customer_email: formData.get("customer_email"),
+    customer_name: formData.get("customer_name"),
+    customer_phone: formData.get("customer_phone"),
+    customer_group: formData.get("customer_group"),         // soporte para el sistema
+    subject: formData.get("subject"),
+    message: formData.get("message"),
+    priority: formData.get("priority"),
+    assigned_to: formData.get("assigned_to"),               // fijo oculto
+    metadata,
+    attachments,
+  };
+
+  document.getElementById("responseBox").textContent =
+    "Enviando...\n\n" + JSON.stringify(body, null, 2);
+
+  try {
+    const res = await fetch(API_URL, {
+      method: "POST",
+      headers: {
+        "Authorization": "Bearer " + API_KEY,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
+
+    const data = await res.json();
+    document.getElementById("responseBox").textContent =
+      JSON.stringify(data, null, 2);
+
+  } catch (err) {
+    document.getElementById("responseBox").textContent =
+      "Error:\n" + err.message;
+  }
+});
+</script>
+</body>
+</html>

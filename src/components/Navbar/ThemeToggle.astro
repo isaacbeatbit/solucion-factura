@@ -4,134 +4,13 @@
 
 <button
   id="theme-toggle"
-  class="theme-toggle"
+  class="relative bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full w-11 h-11 cursor-pointer flex items-center justify-center transition-[transform,box-shadow] duration-300 hover:border-blue-600 hover:bg-gray-50 dark:hover:bg-gray-700 hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 overflow-visible"
   aria-label="Cambiar tema"
   title="Cambiar tema"
 >
-  <span class="theme-icon sun-emoji" aria-hidden="true">☀️</span>
-  <span class="theme-icon moon-emoji" aria-hidden="true">🌙</span>
+  <span class="absolute text-xl hidden dark:block" aria-hidden="true">☀️</span>
+  <span class="absolute text-xl block dark:hidden" aria-hidden="true">☾</span>
 </button>
-
-<style lang="scss">
-  .theme-toggle {
-    position: relative;
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-light);
-    border-radius: 50%;
-    width: 44px;
-    height: 44px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    overflow: hidden;
-
-    &:hover {
-      border-color: var(--secondary);
-      background: var(--border-light);
-      transform: scale(1.05);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    &:focus {
-      outline: none;
-      border-color: var(--secondary);
-      box-shadow: 0 0 0 3px rgba(26, 109, 204, 0.2);
-    }
-
-    .theme-icon {
-      position: absolute;
-      font-size: 1.2rem;
-      transition: all 0.3s ease;
-      user-select: none;
-    }
-
-    .moon-emoji {
-      opacity: 1;
-      transform: scale(1) rotate(0deg);
-    }
-
-    .sun-emoji {
-      opacity: 0;
-      transform: scale(0.5) rotate(180deg);
-    }
-
-    // Tema claro - mostrar luna para cambiar a oscuro
-    [data-theme="light"] & {
-      .moon-emoji {
-        opacity: 1;
-        transform: scale(1) rotate(0deg);
-      }
-
-      .sun-emoji {
-        opacity: 0;
-        transform: scale(0.5) rotate(-180deg);
-      }
-    }
-
-    // Tema oscuro - mostrar sol para cambiar a claro
-    :root:not([data-theme="light"]) &,
-    [data-theme="dark"] & {
-      .sun-emoji {
-        opacity: 1;
-        transform: scale(1) rotate(0deg);
-      }
-
-      .moon-emoji {
-        opacity: 0;
-        transform: scale(0.5) rotate(180deg);
-      }
-    }
-  }
-
-  // Tema claro - mejores estilos del botón
-  [data-theme="light"] .theme-toggle {
-    background: var(--bg-primary);
-    border-color: var(--border-color);
-
-    &:hover {
-      background: var(--bg-secondary);
-      border-color: var(--secondary);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    }
-  }
-
-  // Responsive - en móvil hacer más pequeño
-  @media (max-width: 768px) {
-    .theme-toggle {
-      width: 40px;
-      height: 40px;
-
-      .theme-icon {
-        font-size: 1rem;
-      }
-    }
-  }
-
-  // Animación de rotación suave
-  @keyframes rotate-in {
-    from {
-      transform: scale(0.5) rotate(-180deg);
-      opacity: 0;
-    }
-    to {
-      transform: scale(1) rotate(0deg);
-      opacity: 1;
-    }
-  }
-
-  @keyframes rotate-out {
-    from {
-      transform: scale(1) rotate(0deg);
-      opacity: 1;
-    }
-    to {
-      transform: scale(0.5) rotate(180deg);
-      opacity: 0;
-    }
-  }
-</style>
 
 <script>
   function initThemeToggle() {
