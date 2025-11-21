@@ -100,15 +100,34 @@ import "../styles/global.css";
 
                     <div>
                       <label for="customer_phone" class="block text-sm font-bold text-[var(--text-primary)] mb-2.5">
-                        Teléfono
+                        Teléfono <span class="text-red-500">*</span>
                       </label>
-                      <input 
-                        type="tel" 
-                        id="customer_phone"
-                        name="customer_phone" 
-                        placeholder="55 1234 5678"
-                        class="w-full px-4 py-3.5 rounded-xl bg-[var(--bg-secondary)] border-2 border-[var(--border-light)] text-[var(--text-primary)] placeholder:text-[var(--text-secondary)]/60 focus:outline-none focus:ring-2 focus:ring-[var(--secondary)] focus:border-[var(--secondary)] transition-all shadow-sm hover:shadow-md"
-                      >
+                      <div class="flex flex-col sm:flex-row gap-3">
+                        <div class="relative w-full sm:w-28">
+                          <select 
+                            id="customer_lada"
+                            name="customer_lada"
+                            class="w-full px-4 py-3 rounded-xl bg-[var(--bg-secondary)] border-2 border-[var(--border-light)] text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--secondary)] focus:border-[var(--secondary)] transition-all cursor-pointer shadow-sm hover:shadow-md font-normal appearance-none pr-8"
+                            required
+                          >
+                            <option value="+52">+52</option>
+                            <option value="+1">+1</option>
+                          </select>
+                          <span class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[var(--text-secondary)]">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                          </span>
+                        </div>
+                        <input 
+                          type="tel" 
+                          id="customer_phone"
+                          name="customer_phone" 
+                          placeholder="5512345678"
+                          maxlength="10"
+                          required
+                          pattern="[0-9]{10}"
+                          class="w-full px-4 py-3 rounded-xl bg-[var(--bg-secondary)] border-2 border-[var(--border-light)] text-[var(--text-primary)] placeholder:text-[var(--text-secondary)]/60 focus:outline-none focus:ring-2 focus:ring-[var(--secondary)] focus:border-[var(--secondary)] transition-all shadow-sm hover:shadow-md font-normal"
+                        >
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -125,34 +144,44 @@ import "../styles/global.css";
                       <label for="customer_group" class="block text-sm font-bold text-[var(--text-primary)] mb-2.5">
                         Sistema afectado
                       </label>
-                      <select 
-                        id="customer_group"
-                        name="customer_group"
-                        class="w-full px-4 py-3.5 rounded-xl bg-[var(--bg-secondary)] border-2 border-[var(--border-light)] text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--secondary)] focus:border-[var(--secondary)] transition-all cursor-pointer shadow-sm hover:shadow-md"
-                      >
-                        <option value="">Seleccionar...</option>
-                        <option value="Sistema de facturacion">Sistema de facturación</option>
-                        <option value="Sistema contable">Sistema contable</option>
-                        <option value="Sistema Descarga XML">Sistema Descarga XML</option>
-                        <option value="Otro">Otro</option>
-                      </select>
+                      <div class="relative">
+                        <select 
+                          id="customer_group"
+                          name="customer_group"
+                          class="w-full px-4 py-3 rounded-xl bg-[var(--bg-secondary)] border-2 border-[var(--border-light)] text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--secondary)] focus:border-[var(--secondary)] transition-all cursor-pointer shadow-sm hover:shadow-md font-normal appearance-none pr-10"
+                        >
+                          <option value="">Seleccionar...</option>
+                          <option value="Sistema de facturacion">Sistema de facturación</option>
+                          <option value="Sistema contable">Sistema contable</option>
+                          <option value="Sistema Descarga XML">Sistema Descarga XML</option>
+                          <option value="Otro">Otro</option>
+                        </select>
+                        <span class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[var(--text-secondary)]">
+                          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </span>
+                      </div>
                     </div>
 
                     <div>
                       <label for="priority" class="block text-sm font-bold text-[var(--text-primary)] mb-2.5">
                         Prioridad
                       </label>
-                      <select 
-                        id="priority"
-                        name="priority"
-                        class="w-full px-4 py-3.5 rounded-xl bg-[var(--bg-secondary)] border-2 border-[var(--border-light)] text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--secondary)] focus:border-[var(--secondary)] transition-all cursor-pointer shadow-sm hover:shadow-md"
-                      >
-                        <option value="normal">Normal</option>
-                        <option value="low">Baja</option>
-                        <option value="medium">Media</option>
-                        <option value="high">Alta</option>
-                        <option value="urgent">Urgente</option>
-                      </select>
+                      <div class="relative">
+                        <select 
+                          id="priority"
+                          name="priority"
+                          class="w-full px-4 py-3 rounded-xl bg-[var(--bg-secondary)] border-2 border-[var(--border-light)] text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--secondary)] focus:border-[var(--secondary)] transition-all cursor-pointer shadow-sm hover:shadow-md font-normal appearance-none pr-10"
+                        >
+                          <option value="normal">Normal</option>
+                          <option value="low">Baja</option>
+                          <option value="medium">Media</option>
+                          <option value="high">Alta</option>
+                          <option value="urgent">Urgente</option>
+                        </select>
+                        <span class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[var(--text-secondary)]">
+                          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </span>
+                      </div>
                     </div>
                   </div>
 
@@ -166,7 +195,7 @@ import "../styles/global.css";
                       name="subject" 
                       required 
                       placeholder="Resumen breve del problema"
-                      class="w-full px-4 py-3.5 rounded-xl bg-[var(--bg-secondary)] border-2 border-[var(--border-light)] text-[var(--text-primary)] placeholder:text-[var(--text-secondary)]/60 focus:outline-none focus:ring-2 focus:ring-[var(--secondary)] focus:border-[var(--secondary)] transition-all shadow-sm hover:shadow-md"
+                      class="w-full px-4 py-3 rounded-xl bg-[var(--bg-secondary)] border-2 border-[var(--border-light)] text-[var(--text-primary)] placeholder:text-[var(--text-secondary)]/60 focus:outline-none focus:ring-2 focus:ring-[var(--secondary)] focus:border-[var(--secondary)] transition-all shadow-sm hover:shadow-md font-medium"
                     >
                   </div>
 
@@ -180,7 +209,7 @@ import "../styles/global.css";
                       required 
                       placeholder="Describe detalladamente qué sucedió, qué esperabas que sucediera y los pasos para reproducir el problema..."
                       rows="6"
-                      class="w-full px-4 py-3.5 rounded-xl bg-[var(--bg-secondary)] border-2 border-[var(--border-light)] text-[var(--text-primary)] placeholder:text-[var(--text-secondary)]/60 focus:outline-none focus:ring-2 focus:ring-[var(--secondary)] focus:border-[var(--secondary)] transition-all resize-y shadow-sm hover:shadow-md"
+                      class="w-full px-4 py-3 rounded-xl bg-[var(--bg-secondary)] border-2 border-[var(--border-light)] text-[var(--text-primary)] placeholder:text-[var(--text-secondary)]/60 focus:outline-none focus:ring-2 focus:ring-[var(--secondary)] focus:border-[var(--secondary)] transition-all resize-y shadow-sm hover:shadow-md font-medium"
                     ></textarea>
                     <p class="mt-2.5 text-xs text-[var(--text-secondary)]">Incluye capturas de pantalla o archivos relevantes abajo</p>
                   </div>
@@ -419,6 +448,7 @@ import "../styles/global.css";
         responseBox.textContent = "Por favor espera mientras procesamos tu solicitud.";
         responseBox.className = "text-xs text-blue-600 dark:text-blue-400";
 
+
         const formData = new FormData(form);
 
         // Metadatos
@@ -436,12 +466,27 @@ import "../styles/global.css";
           attachments.push(await toBase64(f));
         }
 
+        // Formatear el número de WhatsApp
+        let lada = (form.querySelector('[name="customer_lada"]') as HTMLSelectElement)?.value || '+52';
+        let phone = (formData.get("customer_phone") as string || '').replace(/[^0-9]/g, '');
+        let customer_phone = '';
+        if (lada === '+52' && phone.length === 10) {
+          // México: +52 1 [número]
+          customer_phone = `+521${phone}`;
+        } else if (lada === '+1' && phone.length === 10) {
+          // USA/Canadá: +1 1 [número] (si también se requiere el 1, si no, solo +1)
+          customer_phone = `+11${phone}`;
+        } else {
+          // Fallback: solo lada + número
+          customer_phone = `${lada}${phone}`;
+        }
+
         // JSON final
         const body = {
           inbox_email: formData.get("inbox_email") as string,
           customer_email: formData.get("customer_email") as string,
           customer_name: formData.get("customer_name") as string,
-          customer_phone: formData.get("customer_phone") as string,
+          customer_phone,
           customer_group: formData.get("customer_group") as string,
           subject: formData.get("subject") as string,
           message: formData.get("message") as string,
