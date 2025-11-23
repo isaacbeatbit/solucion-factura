@@ -6,32 +6,56 @@ export interface Props {
 const { hideDistributorCTA = false } = Astro.props;
 ---
 
-<footer class="bg-[var(--bg-primary)] text-[var(--text-primary)] pt-20 md:pt-24 lg:pt-28 pb-8 md:pb-10 lg:pb-12 transition-[background-color,color] duration-300 ease-in-out [data-theme='light']_&:bg-[var(--bg-secondary)] [data-theme='light']_&:border-t [data-theme='light']_&:border-[var(--border-color)]">
+<footer
+  class="bg-bg-primary-light dark:bg-bg-primary text-text-primary-light dark:text-text-primary pt-20 md:pt-24 lg:pt-28 pb-8 md:pb-10 lg:pb-12 transition-[background-color,color] duration-300 ease-in-out"
+>
   <div class="w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10">
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-12 mb-16 md:mb-20">
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-12 mb-16 md:mb-20"
+    >
       <div>
-        <h3 class="text-xl md:text-2xl font-bold text-[var(--app-title-color)] mb-5">Solución Factura</h3>
+        <h3
+          class="text-xl md:text-2xl font-bold text-text-primary-light dark:text-text-primary mb-5"
+        >
+          Solución Factura
+        </h3>
         <p>
           La plataforma más completa para facturación electrónica en México.
         </p>
       </div>
 
       <div>
-        <h3 class="text-xl md:text-2xl font-bold text-[var(--app-title-color)] mb-5">Servicios</h3>
+        <h3
+          class="text-xl md:text-2xl font-bold text-text-primary-light dark:text-text-primary mb-5"
+        >
+          Servicios
+        </h3>
         <ul class="list-none p-0 m-0 flex flex-col gap-4">
           <li class="m-0">
-            <a href="/#planes" class="text-base md:text-lg text-[var(--text-secondary)] no-underline transition-colors duration-200 inline-block hover:text-[var(--secondary)]">Planes de Facturación</a>
+            <a
+              href="/#planes"
+              class="text-base md:text-lg text-text-secondary-light dark:text-text-secondary no-underline transition-colors duration-200 inline-block hover:text-secondary"
+              >Planes de Facturación</a
+            >
           </li>
           <li class="m-0">
-            <a href="/#caracteristicas" class="text-base md:text-lg text-[var(--text-secondary)] no-underline transition-colors duration-200 inline-block hover:text-[var(--secondary)]">Características</a>
+            <a
+              href="/#caracteristicas"
+              class="text-base md:text-lg text-text-secondary-light dark:text-text-secondary no-underline transition-colors duration-200 inline-block hover:text-secondary"
+              >Características</a
+            >
           </li>
           <li class="m-0">
-            <a href="https://solucioncrm.mx/knowledge-base/category/soporte-general" class="text-[var(--text-secondary)] no-underline transition-colors duration-200 inline-block hover:text-[var(--secondary)]">Centro de Ayuda</a>
+            <a
+              href="https://solucioncrm.mx/knowledge-base/category/soporte-general"
+              class="text-text-secondary-light dark:text-text-secondary no-underline transition-colors duration-200 inline-block hover:text-secondary"
+              >Centro de Ayuda</a
+            >
           </li>
           <li class="m-0">
             <a
               href="https://pagos.solucionfiscal.online/portal/signin/solucionfactura"
-              class="text-[var(--text-secondary)] no-underline transition-colors duration-200 inline-block hover:text-[var(--secondary)]"
+              class="text-text-secondary-light dark:text-text-secondary no-underline transition-colors duration-200 inline-block hover:text-secondary"
               >Portal de Clientes</a
             >
           </li>
@@ -39,35 +63,56 @@ const { hideDistributorCTA = false } = Astro.props;
       </div>
 
       <div>
-        <h3 class="text-xl md:text-2xl font-bold text-[var(--app-title-color)] mb-5">Empresa</h3>
+        <h3
+          class="text-xl md:text-2xl font-bold text-text-primary-light dark:text-text-primary mb-5"
+        >
+          Empresa
+        </h3>
         <ul class="list-none p-0 m-0 flex flex-col gap-4">
           <li class="m-0">
-            <a href="/#sobre-nosotros" class="text-[var(--text-secondary)] no-underline transition-colors duration-200 inline-block hover:text-[var(--secondary)]">Acerca de Nosotros</a>
+            <a
+              href="/#sobre-nosotros"
+              class="text-text-secondary-light dark:text-text-secondary no-underline transition-colors duration-200 inline-block hover:text-secondary"
+              >Acerca de Nosotros</a
+            >
           </li>
           <li class="m-0">
             <a
               href="https://solucioncrm.mx/knowledge-base/category/soporte-general"
               target="_blank"
-              class="text-[var(--text-secondary)] no-underline transition-colors duration-200 inline-block hover:text-[var(--secondary)]">Blog y Noticias</a
+              class="text-text-secondary-light dark:text-text-secondary no-underline transition-colors duration-200 inline-block hover:text-secondary"
+              >Blog y Noticias</a
             >
           </li>
           <li class="m-0">
-            <a href="/distribuidores" class="text-[var(--text-secondary)] no-underline transition-colors duration-200 inline-block hover:text-[var(--secondary)]">Trabajar con Nosotros</a>
+            <a
+              href="/distribuidores"
+              class="text-text-secondary-light dark:text-text-secondary no-underline transition-colors duration-200 inline-block hover:text-secondary"
+              >Trabajar con Nosotros</a
+            >
           </li>
         </ul>
       </div>
 
       <div>
-        <h3 class="text-xl md:text-2xl font-bold text-[var(--app-title-color)] mb-5">Contacto</h3>
+        <h3
+          class="text-xl md:text-2xl font-bold text-text-primary-light dark:text-text-primary mb-5"
+        >
+          Contacto
+        </h3>
         <ul class="list-none p-0 m-0 flex flex-col gap-4">
           <li class="m-0">
-            <a href="tel:+525593314767" class="text-[var(--text-secondary)] no-underline transition-colors duration-200 inline-block hover:text-[var(--secondary)]">📞 Ventas: 55 9331 4767</a>
+            <a
+              href="tel:+525593314767"
+              class="text-text-secondary-light dark:text-text-secondary no-underline transition-colors duration-200 inline-block hover:text-secondary"
+              >📞 Ventas: 55 9331 4767</a
+            >
           </li>
           <li class="m-0">
             <a
               target="_blank"
               href="https://wa.me/525576017764?text=Hola%20Soporte%2C%20necesito%20ayuda"
-              class="text-[var(--text-secondary)] no-underline transition-colors duration-200 inline-block hover:text-[var(--secondary)]"
+              class="text-text-secondary-light dark:text-text-secondary no-underline transition-colors duration-200 inline-block hover:text-secondary"
             >
               <img
                 src="/icons/whatsapp.svg"
@@ -79,12 +124,18 @@ const { hideDistributorCTA = false } = Astro.props;
             >
           </li>
           <li class="m-0">
-            <a href="https://wa.link/solucionfactura" target="_blank" class="text-[var(--text-secondary)] no-underline transition-colors duration-200 inline-block hover:text-[var(--secondary)]"
+            <a
+              href="https://wa.link/solucionfactura"
+              target="_blank"
+              class="text-text-secondary-light dark:text-text-secondary no-underline transition-colors duration-200 inline-block hover:text-secondary"
               >💬 WhatsApp</a
             >
           </li>
           <li class="m-0">
-            <a href="https://app.solucionfactura.mx" target="_blank" class="text-[var(--text-secondary)] no-underline transition-colors duration-200 inline-block hover:text-[var(--secondary)]"
+            <a
+              href="https://app.solucionfactura.mx"
+              target="_blank"
+              class="text-text-secondary-light dark:text-text-secondary no-underline transition-colors duration-200 inline-block hover:text-secondary"
               >🔐 Acceso al Sistema</a
             >
           </li>
@@ -92,16 +143,32 @@ const { hideDistributorCTA = false } = Astro.props;
       </div>
 
       <div>
-        <h3 class="text-xl md:text-2xl font-bold text-[var(--app-title-color)] mb-5">Legal</h3>
+        <h3
+          class="text-xl md:text-2xl font-bold text-text-primary-light dark:text-text-primary mb-5"
+        >
+          Legal
+        </h3>
         <ul class="list-none p-0 m-0 flex flex-col gap-4">
           <li class="m-0">
-            <a href="/aviso-de-privacidad" class="text-[var(--text-secondary)] no-underline transition-colors duration-200 inline-block hover:text-[var(--secondary)]">Aviso de Privacidad</a>
+            <a
+              href="/aviso-de-privacidad"
+              class="text-text-secondary-light dark:text-text-secondary no-underline transition-colors duration-200 inline-block hover:text-secondary"
+              >Aviso de Privacidad</a
+            >
           </li>
           <li class="m-0">
-            <a href="/terminos-y-condiciones" class="text-[var(--text-secondary)] no-underline transition-colors duration-200 inline-block hover:text-[var(--secondary)]">Términos y Condiciones</a>
+            <a
+              href="/terminos-y-condiciones"
+              class="text-text-secondary-light dark:text-text-secondary no-underline transition-colors duration-200 inline-block hover:text-secondary"
+              >Términos y Condiciones</a
+            >
           </li>
           <li class="m-0">
-            <a href="/distribuidores" class="text-[var(--text-secondary)] no-underline transition-colors duration-200 inline-block hover:text-[var(--secondary)]">Política de Socios</a>
+            <a
+              href="/distribuidores"
+              class="text-text-secondary-light dark:text-text-secondary no-underline transition-colors duration-200 inline-block hover:text-secondary"
+              >Política de Socios</a
+            >
           </li>
         </ul>
       </div>
@@ -111,7 +178,7 @@ const { hideDistributorCTA = false } = Astro.props;
     {
       !hideDistributorCTA && (
         <div class="my-12 md:my-16 p-0">
-          <div class="bg-gradient-to-br from-[#1a6dcc] to-[#36a168] rounded-2xl p-10 md:p-12 flex flex-col md:flex-row items-center justify-between gap-10 md:gap-12 max-[768px]:flex-col max-[768px]:text-center shadow-[var(--theme-shadow-lg)] transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-[var(--theme-shadow-xl)]">
+          <div class="bg-gradient-to-br from-[#1a6dcc] to-[#36a168] rounded-2xl p-10 md:p-12 flex flex-col md:flex-row items-center justify-between gap-10 md:gap-12 max-[768px]:flex-col max-[768px]:text-center shadow-lg transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-xl">
             <div class="flex-1 text-white">
               <h4 class="text-2xl md:text-3xl font-bold mb-4 text-white">
                 🚀 ¿Quieres crear tu propio negocio de facturación?
@@ -126,7 +193,10 @@ const { hideDistributorCTA = false } = Astro.props;
               </p>
             </div>
             <div class="flex-shrink-0 max-[768px]:w-full max-[768px]:max-w-[250px] max-[768px]:justify-center">
-              <a href="/distribuidores" class="inline-flex items-center gap-3 bg-white/15 backdrop-blur-[10px] text-white px-8 py-4 rounded-xl no-underline font-bold text-lg border border-white/20 transition-all duration-300 ease-in-out whitespace-nowrap hover:bg-white/25 hover:-translate-y-1 hover:shadow-[0_4px_15px_rgba(0,0,0,0.2)] max-[768px]:w-full max-[768px]:justify-center">
+              <a
+                href="/distribuidores"
+                class="inline-flex items-center gap-3 bg-white/15 backdrop-blur-[10px] text-white px-8 py-4 rounded-xl no-underline font-bold text-lg border border-white/20 transition-all duration-300 ease-in-out whitespace-nowrap hover:bg-white/25 hover:-translate-y-1 hover:shadow-[0_4px_15px_rgba(0,0,0,0.2)] max-[768px]:w-full max-[768px]:justify-center"
+              >
                 <span class="text-lg">💼</span>
                 Conocer Más
               </a>
@@ -136,7 +206,9 @@ const { hideDistributorCTA = false } = Astro.props;
       )
     }
 
-    <div class="border-t border-[var(--border-light)] pt-8 mt-4 text-center text-[var(--text-secondary)] text-base md:text-lg">
+    <div
+      class="border-t border-border-light-mode dark:border-border-light pt-8 mt-4 text-center text-text-secondary-light dark:text-text-secondary text-base md:text-lg"
+    >
       <p>&copy; 2025 Solución Factura. Todos los derechos reservados.</p>
     </div>
   </div>

@@ -1,168 +1,466 @@
 ---
 const basicFeatures = [
-  { name: "Timbres incluidos", emprende: "300", crece: "600", empresa: "1,200", premium: "6,000", premiumPlus: "10,000", isNumber: true },
-  { name: "MultiEmpresa", emprende: false, crece: false, empresa: true, premium: true, premiumPlus: true },
-  { name: "Facturas", emprende: true, crece: true, empresa: true, premium: true, premiumPlus: true },
-  { name: "Cotizaciones", emprende: false, crece: false, empresa: false, premium: true, premiumPlus: true },
-  { name: "Notas de Venta", emprende: false, crece: false, empresa: false, premium: true, premiumPlus: true },
-  { name: "Recibo de Honorarios", emprende: true, crece: true, empresa: true, premium: true, premiumPlus: true },
-  { name: "Recibo de Arrendamiento", emprende: true, crece: true, empresa: true, premium: true, premiumPlus: true },
-  { name: "Carta Porte", emprende: false, crece: true, empresa: true, premium: true, premiumPlus: true },
+  {
+    name: "Timbres incluidos",
+    emprende: "300",
+    crece: "600",
+    empresa: "1,200",
+    premium: "6,000",
+    premiumPlus: "10,000",
+    isNumber: true,
+  },
+  {
+    name: "MultiEmpresa",
+    emprende: false,
+    crece: false,
+    empresa: true,
+    premium: true,
+    premiumPlus: true,
+  },
+  {
+    name: "Facturas",
+    emprende: true,
+    crece: true,
+    empresa: true,
+    premium: true,
+    premiumPlus: true,
+  },
+  {
+    name: "Cotizaciones",
+    emprende: false,
+    crece: false,
+    empresa: false,
+    premium: true,
+    premiumPlus: true,
+  },
+  {
+    name: "Notas de Venta",
+    emprende: false,
+    crece: false,
+    empresa: false,
+    premium: true,
+    premiumPlus: true,
+  },
+  {
+    name: "Recibo de Honorarios",
+    emprende: true,
+    crece: true,
+    empresa: true,
+    premium: true,
+    premiumPlus: true,
+  },
+  {
+    name: "Recibo de Arrendamiento",
+    emprende: true,
+    crece: true,
+    empresa: true,
+    premium: true,
+    premiumPlus: true,
+  },
+  {
+    name: "Carta Porte",
+    emprende: false,
+    crece: true,
+    empresa: true,
+    premium: true,
+    premiumPlus: true,
+  },
 ];
 
 const advancedFeatures = [
-  { name: "Facturar Notas masivamente", emprende: false, crece: false, empresa: false, premium: true, premiumPlus: true },
-  { name: "AUTO FACTURA", emprende: false, crece: false, empresa: false, premium: false, premiumPlus: true },
-  { name: "Factura GLOBAL masiva", emprende: false, crece: false, empresa: true, premium: true, premiumPlus: true },
-  { name: "Complemento Pago", emprende: true, crece: true, empresa: true, premium: true, premiumPlus: true },
-  { name: "Recibo de Nómina", emprende: false, crece: false, empresa: true, premium: true, premiumPlus: true },
-  { name: "Programación de Facturas", emprende: true, crece: true, empresa: true, premium: true, premiumPlus: true },
-  { name: "Complemento Educativo", emprende: false, crece: false, empresa: true, premium: true, premiumPlus: true },
-  { name: "Complemento Comercio Exterior", emprende: false, crece: false, empresa: true, premium: true, premiumPlus: true },
-  { name: "Complemento Donatarias", emprende: false, crece: false, empresa: false, premium: false, premiumPlus: true },
-  { name: "Complemento Múltiples Pagos", emprende: false, crece: false, empresa: false, premium: false, premiumPlus: true },
-  { name: "Plantillas PDF Personalizables", emprende: true, crece: true, empresa: true, premium: true, premiumPlus: true },
-  { name: "Envío por Mail", emprende: true, crece: true, empresa: true, premium: true, premiumPlus: true },
-  { name: "Envío por Email Propio", emprende: false, crece: false, empresa: false, premium: false, premiumPlus: true },
-  { name: "Factura 72 hrs antes", emprende: true, crece: true, empresa: true, premium: true, premiumPlus: true },
-  { name: "Envío por WhatsApp", emprende: false, crece: false, empresa: false, premium: true, premiumPlus: true },
-  { name: "WhatsApp número propio", emprende: false, crece: false, empresa: false, premium: false, premiumPlus: true },
-  { name: "Descarga XML masiva", emprende: false, crece: false, empresa: false, premium: true, premiumPlus: true },
-  { name: "Importar Historial", emprende: false, crece: false, empresa: false, premium: true, premiumPlus: true },
-  { name: "Conciliación Bancaria", emprende: false, crece: false, empresa: false, premium: true, premiumPlus: true },
-  { name: "Conciliación de Pagos", emprende: false, crece: false, empresa: false, premium: true, premiumPlus: true },
-  { name: "Validación EFOS/EDOS", emprende: false, crece: false, empresa: false, premium: true, premiumPlus: true },
-  { name: "Validación de Vigencia", emprende: false, crece: false, empresa: false, premium: true, premiumPlus: true },
-  { name: "Genera DIOT", emprende: false, crece: false, empresa: false, premium: false, premiumPlus: true },
+  {
+    name: "Facturar Notas masivamente",
+    emprende: false,
+    crece: false,
+    empresa: false,
+    premium: true,
+    premiumPlus: true,
+  },
+  {
+    name: "AUTO FACTURA",
+    emprende: false,
+    crece: false,
+    empresa: false,
+    premium: false,
+    premiumPlus: true,
+  },
+  {
+    name: "Factura GLOBAL masiva",
+    emprende: false,
+    crece: false,
+    empresa: true,
+    premium: true,
+    premiumPlus: true,
+  },
+  {
+    name: "Complemento Pago",
+    emprende: true,
+    crece: true,
+    empresa: true,
+    premium: true,
+    premiumPlus: true,
+  },
+  {
+    name: "Recibo de Nómina",
+    emprende: false,
+    crece: false,
+    empresa: true,
+    premium: true,
+    premiumPlus: true,
+  },
+  {
+    name: "Programación de Facturas",
+    emprende: true,
+    crece: true,
+    empresa: true,
+    premium: true,
+    premiumPlus: true,
+  },
+  {
+    name: "Complemento Educativo",
+    emprende: false,
+    crece: false,
+    empresa: true,
+    premium: true,
+    premiumPlus: true,
+  },
+  {
+    name: "Complemento Comercio Exterior",
+    emprende: false,
+    crece: false,
+    empresa: true,
+    premium: true,
+    premiumPlus: true,
+  },
+  {
+    name: "Complemento Donatarias",
+    emprende: false,
+    crece: false,
+    empresa: false,
+    premium: false,
+    premiumPlus: true,
+  },
+  {
+    name: "Complemento Múltiples Pagos",
+    emprende: false,
+    crece: false,
+    empresa: false,
+    premium: false,
+    premiumPlus: true,
+  },
+  {
+    name: "Plantillas PDF Personalizables",
+    emprende: true,
+    crece: true,
+    empresa: true,
+    premium: true,
+    premiumPlus: true,
+  },
+  {
+    name: "Envío por Mail",
+    emprende: true,
+    crece: true,
+    empresa: true,
+    premium: true,
+    premiumPlus: true,
+  },
+  {
+    name: "Envío por Email Propio",
+    emprende: false,
+    crece: false,
+    empresa: false,
+    premium: false,
+    premiumPlus: true,
+  },
+  {
+    name: "Factura 72 hrs antes",
+    emprende: true,
+    crece: true,
+    empresa: true,
+    premium: true,
+    premiumPlus: true,
+  },
+  {
+    name: "Envío por WhatsApp",
+    emprende: false,
+    crece: false,
+    empresa: false,
+    premium: true,
+    premiumPlus: true,
+  },
+  {
+    name: "WhatsApp número propio",
+    emprende: false,
+    crece: false,
+    empresa: false,
+    premium: false,
+    premiumPlus: true,
+  },
+  {
+    name: "Descarga XML masiva",
+    emprende: false,
+    crece: false,
+    empresa: false,
+    premium: true,
+    premiumPlus: true,
+  },
+  {
+    name: "Importar Historial",
+    emprende: false,
+    crece: false,
+    empresa: false,
+    premium: true,
+    premiumPlus: true,
+  },
+  {
+    name: "Conciliación Bancaria",
+    emprende: false,
+    crece: false,
+    empresa: false,
+    premium: true,
+    premiumPlus: true,
+  },
+  {
+    name: "Conciliación de Pagos",
+    emprende: false,
+    crece: false,
+    empresa: false,
+    premium: true,
+    premiumPlus: true,
+  },
+  {
+    name: "Validación EFOS/EDOS",
+    emprende: false,
+    crece: false,
+    empresa: false,
+    premium: true,
+    premiumPlus: true,
+  },
+  {
+    name: "Validación de Vigencia",
+    emprende: false,
+    crece: false,
+    empresa: false,
+    premium: true,
+    premiumPlus: true,
+  },
+  {
+    name: "Genera DIOT",
+    emprende: false,
+    crece: false,
+    empresa: false,
+    premium: false,
+    premiumPlus: true,
+  },
 ];
 
 const plans = [
   { id: "emprende", name: "Emprende", price: "$327", period: "por año" },
   { id: "crece", name: "Crece", price: "$561", period: "por año" },
   { id: "empresa", name: "Empresa", price: "$1,075", period: "por año" },
-  { id: "premium", name: "Premium", price: "$2,324", period: "por año", featured: true },
-  { id: "premiumPlus", name: "Premium PLUS", price: "$3,135", period: "por año" },
+  {
+    id: "premium",
+    name: "Premium",
+    price: "$2,324",
+    period: "por año",
+    featured: true,
+  },
+  {
+    id: "premiumPlus",
+    name: "Premium PLUS",
+    price: "$3,135",
+    period: "por año",
+  },
 ];
 ---
 
-<section class="py-16 md:py-20 lg:py-24 bg-[var(--bg-primary)]">
+<section class="py-16 md:py-20 lg:py-24 bg-bg-primary-light dark:bg-bg-primary">
   <div class="w-full max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10">
     <div class="text-center mb-12 md:mb-16">
-      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-[var(--text-primary)] mb-4">Comparación de planes</h2>
-      <p class="text-lg md:text-xl text-[var(--text-secondary)] leading-relaxed">
+      <h2
+        class="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary-light dark:text-text-primary mb-4"
+      >
+        Comparación de planes
+      </h2>
+      <p
+        class="text-lg md:text-xl text-text-secondary-light dark:text-text-secondary leading-relaxed"
+      >
         Encuentra el plan perfecto para tu negocio
       </p>
     </div>
 
     <!-- Desktop Table -->
     <div class="hidden lg:block">
-      <div class="overflow-visible rounded-2xl border-2 border-[var(--border-light)] shadow-2xl bg-[var(--bg-primary)]/90 backdrop-blur-sm">
+      <div
+        class="overflow-visible rounded-2xl border-2 border-border-light-mode dark:border-border-light shadow-2xl bg-bg-primary-light dark:bg-bg-primary/90 backdrop-blur-sm"
+      >
         <table class="w-full border-collapse">
           <thead>
-            <tr class="bg-[var(--bg-primary)]/70">
-              <th class="sticky left-0 z-20 bg-[var(--bg-primary)]/70 text-[var(--text-primary)] font-bold p-6 text-left border-b-2 border-[var(--border-light)] w-[280px]">
+            <tr class="bg-bg-primary-light dark:bg-bg-primary/70">
+              <th
+                class="sticky left-0 z-20 bg-bg-primary-light dark:bg-bg-primary/70 text-text-primary-light dark:text-text-primary font-bold p-6 text-left border-b-2 border-border-light-mode dark:border-border-light w-[280px]"
+              >
                 <div class="text-lg">Características</div>
               </th>
-              {plans.map((plan) => (
-                <th class={`relative text-center border-b-2 w-[180px] ${plan.featured ? 'bg-green-500/10 border-green-500 pt-12 pb-6 px-6' : 'p-6 border-[var(--border-light)]'}`}>
-                  {plan.featured && (
-                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-lg whitespace-nowrap z-50">
-                      ⭐ MÁS VENDIDO
+              {
+                plans.map((plan) => (
+                  <th
+                    class={`relative text-center border-b-2 w-[180px] ${plan.featured ? "bg-green-500/10 border-green-500 pt-12 pb-6 px-6" : "p-6 border-border-light-mode dark:border-border-light"}`}
+                  >
+                    {plan.featured && (
+                      <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-lg whitespace-nowrap z-50">
+                        ⭐ MÁS VENDIDO
+                      </div>
+                    )}
+                    <div class="flex flex-col gap-3">
+                      <div
+                        class={`text-lg font-bold ${plan.featured ? "text-green-500" : "text-secondary"}`}
+                      >
+                        {plan.name}
+                      </div>
+                      <div class="text-3xl font-bold text-text-primary-light dark:text-text-primary">
+                        {plan.price}
+                      </div>
+                      <div class="text-xs text-text-secondary-light dark:text-text-secondary uppercase tracking-wide">
+                        {plan.period}
+                      </div>
+                      <button
+                        type="button"
+                        class={`mt-2 px-4 py-2.5 rounded-lg font-semibold text-sm transition-all cursor-pointer ${plan.featured ? "bg-gradient-to-r from-green-500 to-green-600 text-white hover:from-green-600 hover:to-green-700 shadow-lg" : "bg-gradient-to-br from-blue-500 to-blue-600 text-white hover:shadow-lg hover:-translate-y-0.5"}`}
+                        data-plan={plan.id}
+                      >
+                        Comprar ahora
+                      </button>
                     </div>
-                  )}
-                  <div class="flex flex-col gap-3">
-                    <div class={`text-lg font-bold ${plan.featured ? 'text-green-500' : 'text-[var(--secondary)]'}`}>{plan.name}</div>
-                    <div class="text-3xl font-bold text-[var(--text-primary)]">{plan.price}</div>
-                    <div class="text-xs text-[var(--text-secondary)] uppercase tracking-wide">{plan.period}</div>
-                    <button 
-                      type="button" 
-                      class={`mt-2 px-4 py-2.5 rounded-lg font-semibold text-sm transition-all ${plan.featured ? 'bg-gradient-to-r from-green-500 to-green-600 text-white hover:from-green-600 hover:to-green-700 shadow-lg' : 'bg-gradient-to-br from-blue-500 to-blue-600 text-white hover:shadow-lg hover:-translate-y-0.5'}`}
-                      data-plan={plan.id}
-                    >
-                      Comprar ahora
-                    </button>
-                  </div>
-                </th>
-              ))}
+                  </th>
+                ))
+              }
             </tr>
           </thead>
           <tbody>
-            {basicFeatures.map((feature, index) => (
-              <tr class={`transition-colors hover:bg-[var(--bg-primary)]/60 ${index % 2 === 0 ? 'bg-[var(--bg-primary)]/40' : 'bg-[var(--bg-primary)]/20'}`}>
-                <td class="sticky left-0 z-10 bg-inherit p-5 text-[var(--text-primary)] font-medium border-b border-[var(--border-light)]">
-                  {feature.name}
-                </td>
-                {plans.map((plan) => {
-                  const value = feature[plan.id as keyof typeof feature];
-                  return (
-                    <td class={`p-5 text-center border-b border-[var(--border-light)] ${plan.featured ? 'bg-green-500/5' : ''}`}>
-                      {feature.isNumber ? (
-                        <span class="inline-block px-3 py-1 rounded-full bg-[var(--secondary)]/10 text-[var(--secondary)] font-bold text-sm">{value}</span>
-                      ) : value ? (
-                        <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-green-500/20 text-green-500 text-lg font-bold">✓</span>
-                      ) : (
-                        <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-red-500/10 text-red-500/60 text-lg">✕</span>
-                      )}
-                    </td>
-                  );
-                })}
-              </tr>
-            ))}
+            {
+              basicFeatures.map((feature, index) => (
+                <tr
+                  class={`transition-colors hover:bg-gray-100 dark:hover:bg-bg-secondary ${index % 2 === 0 ? "bg-bg-primary-light dark:bg-bg-primary/40" : "bg-bg-primary-light dark:bg-bg-primary/20"}`}
+                >
+                  <td class="sticky left-0 z-10 bg-inherit p-5 text-text-primary-light dark:text-text-primary font-medium border-b border-border-light-mode dark:border-border-light">
+                    {feature.name}
+                  </td>
+                  {plans.map((plan) => {
+                    const value = feature[plan.id as keyof typeof feature];
+                    return (
+                      <td
+                        class={`p-5 text-center border-b border-border-light-mode dark:border-border-light ${plan.featured ? "bg-green-500/5" : ""}`}
+                      >
+                        {feature.isNumber ? (
+                          <span class="inline-block px-3 py-1 rounded-full bg-secondary/10 text-secondary font-bold text-sm">
+                            {value}
+                          </span>
+                        ) : value ? (
+                          <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-green-500/20 text-green-500 text-lg font-bold">
+                            ✓
+                          </span>
+                        ) : (
+                          <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-red-500/10 text-red-500/60 text-lg">
+                            ✕
+                          </span>
+                        )}
+                      </td>
+                    );
+                  })}
+                </tr>
+              ))
+            }
           </tbody>
           <tbody id="advanced-features-desktop" class="hidden">
-            {advancedFeatures.map((feature, index) => (
-              <tr class={`transition-colors hover:bg-[var(--bg-primary)]/60 ${index % 2 === 0 ? 'bg-[var(--bg-primary)]/40' : 'bg-[var(--bg-primary)]/20'}`}>
-                <td class="sticky left-0 z-10 bg-inherit p-5 text-[var(--text-primary)] font-medium border-b border-[var(--border-light)]">
-                  {feature.name}
-                </td>
-                {plans.map((plan) => {
-                  const value = feature[plan.id as keyof typeof feature];
-                  return (
-                    <td class={`p-5 text-center border-b border-[var(--border-light)] ${plan.featured ? 'bg-green-500/5' : ''}`}>
-                      {feature.isNumber ? (
-                        <span class="inline-block px-3 py-1 rounded-full bg-[var(--secondary)]/10 text-[var(--secondary)] font-bold text-sm">{value}</span>
-                      ) : value ? (
-                        <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-green-500/20 text-green-500 text-lg font-bold">✓</span>
-                      ) : (
-                        <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-red-500/10 text-red-500/60 text-lg">✕</span>
-                      )}
-                    </td>
-                  );
-                })}
-              </tr>
-            ))}
+            {
+              advancedFeatures.map((feature, index) => (
+                <tr
+                  class={`transition-colors hover:bg-gray-100 dark:hover:bg-bg-secondary ${index % 2 === 0 ? "bg-bg-primary-light dark:bg-bg-primary/40" : "bg-bg-primary-light dark:bg-bg-primary/20"}`}
+                >
+                  <td class="sticky left-0 z-10 bg-inherit p-5 text-text-primary-light dark:text-text-primary font-medium border-b border-border-light-mode dark:border-border-light">
+                    {feature.name}
+                  </td>
+                  {plans.map((plan) => {
+                    const value = feature[plan.id as keyof typeof feature];
+                    return (
+                      <td
+                        class={`p-5 text-center border-b border-border-light-mode dark:border-border-light ${plan.featured ? "bg-green-500/5" : ""}`}
+                      >
+                        {feature.isNumber ? (
+                          <span class="inline-block px-3 py-1 rounded-full bg-secondary/10 text-secondary font-bold text-sm">
+                            {value}
+                          </span>
+                        ) : value ? (
+                          <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-green-500/20 text-green-500 text-lg font-bold">
+                            ✓
+                          </span>
+                        ) : (
+                          <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-red-500/10 text-red-500/60 text-lg">
+                            ✕
+                          </span>
+                        )}
+                      </td>
+                    );
+                  })}
+                </tr>
+              ))
+            }
           </tbody>
           <tbody>
             <tr>
-              <td colspan="6" class="p-6 text-center bg-[var(--bg-primary)]/30">
-                <button 
+              <td
+                colspan="6"
+                class="p-6 text-center bg-bg-primary-light dark:bg-bg-primary/30"
+              >
+                <button
                   id="toggle-desktop"
-                  class="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-sm bg-[var(--bg-card)] text-[var(--text-primary)] border-2 border-[var(--border-light)] hover:border-[var(--secondary)] hover:text-[var(--secondary)] transition-all"
+                  class="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-sm bg-bg-card-light dark:bg-bg-card text-text-primary-light dark:text-text-primary border-2 border-border-light-mode dark:border-border-light hover:border-secondary hover:text-secondary transition-all cursor-pointer"
                 >
-                  <span id="toggle-text-desktop">Ver todas las características</span>
-                  <svg id="toggle-icon-desktop" class="w-5 h-5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  <span id="toggle-text-desktop"
+                    >Ver todas las características</span
+                  >
+                  <svg
+                    id="toggle-icon-desktop"
+                    class="w-5 h-5 transition-transform"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"></path>
                   </svg>
                 </button>
               </td>
             </tr>
           </tbody>
           <tfoot>
-            <tr class="bg-gradient-to-r from-[var(--bg-secondary)] to-[var(--bg-tertiary)]">
-              <td class="sticky left-0 z-20 bg-gradient-to-r from-[var(--bg-secondary)] to-[var(--bg-tertiary)] text-[var(--text-primary)] font-bold p-6 text-left border-t-2 border-[var(--border-light)]">
+            <tr
+              class="bg-gradient-to-r from-bg-secondary-light to-bg-tertiary-light dark:from-bg-secondary dark:to-bg-tertiary"
+            >
+              <td
+                class="sticky left-0 z-20 bg-gradient-to-r from-bg-secondary-light to-bg-tertiary-light dark:from-bg-secondary dark:to-bg-tertiary text-text-primary-light dark:text-text-primary font-bold p-6 text-left border-t-2 border-border-light-mode dark:border-border-light"
+              >
                 <div class="text-lg">Comprar Plan</div>
               </td>
-              {plans.map((plan) => (
-                <td class={`p-6 text-center border-t-2 ${plan.featured ? 'bg-green-500/10 border-green-500' : 'border-[var(--border-light)]'}`}>
-                  <button 
-                    type="button" 
-                    class={`w-full px-4 py-3 rounded-lg font-bold text-sm transition-all ${plan.featured ? 'bg-gradient-to-r from-green-500 to-green-600 text-white hover:from-green-600 hover:to-green-700 shadow-lg' : 'bg-gradient-to-br from-blue-500 to-blue-600 text-white hover:shadow-lg hover:-translate-y-0.5'}`}
-                    data-plan={plan.id}
+              {
+                plans.map((plan) => (
+                  <td
+                    class={`p-6 text-center border-t-2 ${plan.featured ? "bg-green-500/10 border-green-500" : "border-border-light-mode dark:border-border-light"}`}
                   >
-                    Comprar {plan.price}
-                  </button>
-                </td>
-              ))}
+                    <button
+                      type="button"
+                      class={`w-full px-4 py-3 rounded-lg font-bold text-sm transition-all cursor-pointer ${plan.featured ? "bg-gradient-to-r from-green-500 to-green-600 text-white hover:from-green-600 hover:to-green-700 shadow-lg" : "bg-gradient-to-br from-blue-500 to-blue-600 text-white hover:shadow-lg hover:-translate-y-0.5"}`}
+                      data-plan={plan.id}
+                    >
+                      Comprar {plan.price}
+                    </button>
+                  </td>
+                ))
+              }
             </tr>
           </tfoot>
         </table>
@@ -174,209 +472,278 @@ const plans = [
       <!-- Plan Selector Tabs -->
       <div class="mb-6 overflow-x-auto -mx-4 px-4">
         <div class="flex gap-2 min-w-max">
-          {plans.map((plan, index) => (
-            <button
-              type="button"
-              class={`mobile-plan-tab flex-1 min-w-[100px] px-4 py-3 rounded-lg font-semibold text-sm transition-all whitespace-nowrap ${index === 3 ? 'bg-gradient-to-r from-green-500 to-green-600 text-white shadow-lg' : 'bg-[var(--bg-card)] text-[var(--text-secondary)] border-2 border-[var(--border-light)]'}`}
-              data-plan-id={plan.id}
-              data-plan-index={index}
-            >
-              <div class="flex flex-col items-center gap-1">
-                {plan.featured && (
-                  <span class="text-[10px] font-bold">⭐ MÁS VENDIDO</span>
-                )}
-                <span class={plan.featured ? 'text-white' : ''}>{plan.name}</span>
-                <span class={`text-xs font-bold ${plan.featured ? 'text-white' : 'text-[var(--text-primary)]'}`}>{plan.price}</span>
-              </div>
-            </button>
-          ))}
+          {
+            plans.map((plan, index) => (
+              <button
+                type="button"
+                class={`mobile-plan-tab flex-1 min-w-[100px] px-4 py-3 rounded-lg font-semibold text-sm transition-all whitespace-nowrap cursor-pointer ${index === 3 ? "bg-gradient-to-r from-green-500 to-green-600 text-white shadow-lg" : "bg-bg-card-light dark:bg-bg-card text-text-secondary-light dark:text-text-secondary border-2 border-border-light-mode dark:border-border-light"}`}
+                data-plan-id={plan.id}
+                data-plan-index={index}
+              >
+                <div class="flex flex-col items-center gap-1">
+                  {plan.featured && (
+                    <span class="text-[10px] font-bold">⭐ MÁS VENDIDO</span>
+                  )}
+                  <span class={plan.featured ? "text-white" : ""}>
+                    {plan.name}
+                  </span>
+                  <span
+                    class={`text-xs font-bold ${plan.featured ? "text-white" : "text-text-primary-light dark:text-text-primary"}`}
+                  >
+                    {plan.price}
+                  </span>
+                </div>
+              </button>
+            ))
+          }
         </div>
       </div>
 
       <!-- Plan Details (One at a time) -->
-      {plans.map((plan, index) => (
-        <div 
-          id={`mobile-plan-${plan.id}`}
-          class={`mobile-plan-content ${index === 3 ? '' : 'hidden'}`}
-          data-plan-id={plan.id}
-        >
-          <div class={`rounded-2xl overflow-hidden ${plan.featured ? 'border-2 border-green-500 shadow-[0_0_30px_rgba(34,197,94,0.3)]' : 'border-2 border-[var(--border-light)] shadow-lg'}`}>
-            <div class={`p-6 text-center ${plan.featured ? 'bg-gradient-to-br from-green-500/10 to-green-500/5' : 'bg-gradient-to-br from-[var(--bg-secondary)] to-[var(--bg-tertiary)]'}`}>
-              <h3 class={`text-2xl font-bold mb-3 ${plan.featured ? 'text-green-500' : 'text-[var(--secondary)]'}`}>{plan.name}</h3>
-              <div class="text-4xl font-bold text-[var(--text-primary)] mb-2">{plan.price}</div>
-              <div class="text-sm text-[var(--text-secondary)] uppercase tracking-wide mb-5">{plan.period}</div>
-              <button 
-                type="button" 
-                class={`w-full px-6 py-3.5 rounded-xl font-bold transition-all ${plan.featured ? 'bg-gradient-to-r from-green-500 to-green-600 text-white hover:from-green-600 hover:to-green-700 shadow-lg' : 'bg-gradient-to-br from-blue-500 to-blue-600 text-white hover:shadow-lg'}`}
-                data-plan={plan.id}
+      {
+        plans.map((plan, index) => (
+          <div
+            id={`mobile-plan-${plan.id}`}
+            class={`mobile-plan-content ${index === 3 ? "" : "hidden"}`}
+            data-plan-id={plan.id}
+          >
+            <div
+              class={`rounded-2xl overflow-hidden ${plan.featured ? "border-2 border-green-500 shadow-[0_0_30px_rgba(34,197,94,0.3)]" : "border-2 border-border-light-mode dark:border-border-light shadow-lg"}`}
+            >
+              <div
+                class={`p-6 text-center ${plan.featured ? "bg-gradient-to-br from-green-500/10 to-green-500/5" : "bg-gradient-to-br from-bg-secondary-light to-bg-tertiary-light dark:from-bg-secondary dark:to-bg-tertiary"}`}
               >
-                Comprar Plan
-              </button>
-            </div>
-
-            <div class="bg-[var(--bg-primary)]/80 backdrop-blur-sm p-6">
-              <div class="space-y-3">
-                {basicFeatures.map((feature) => {
-                  const value = feature[plan.id as keyof typeof feature];
-                  return (
-                    <div class="flex items-center justify-between py-3 border-b border-[var(--border-light)] last:border-0">
-                      <span class="text-sm text-[var(--text-primary)] font-medium flex-1">{feature.name}</span>
-                      <div class="ml-4">
-                        {feature.isNumber ? (
-                          <span class="inline-block px-3 py-1 rounded-full bg-[var(--secondary)]/10 text-[var(--secondary)] font-bold text-sm">{value}</span>
-                        ) : value ? (
-                          <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-green-500/20 text-green-500 text-lg font-bold">✓</span>
-                        ) : (
-                          <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-red-500/10 text-red-500/60 text-lg">✕</span>
-                        )}
-                      </div>
-                    </div>
-                  );
-                })}
+                <h3
+                  class={`text-2xl font-bold mb-3 ${plan.featured ? "text-green-500" : "text-secondary"}`}
+                >
+                  {plan.name}
+                </h3>
+                <div class="text-4xl font-bold text-text-primary-light dark:text-text-primary mb-2">
+                  {plan.price}
+                </div>
+                <div class="text-sm text-text-secondary-light dark:text-text-secondary uppercase tracking-wide mb-5">
+                  {plan.period}
+                </div>
+                <button
+                  type="button"
+                  class={`w-full px-6 py-3.5 rounded-xl font-bold transition-all cursor-pointer ${plan.featured ? "bg-gradient-to-r from-green-500 to-green-600 text-white hover:from-green-600 hover:to-green-700 shadow-lg" : "bg-gradient-to-br from-blue-500 to-blue-600 text-white hover:shadow-lg"}`}
+                  data-plan={plan.id}
+                >
+                  Comprar Plan
+                </button>
               </div>
 
-              <div id={`advanced-features-mobile-${plan.id}`} class="hidden space-y-3 mt-3">
-                {advancedFeatures.map((feature) => {
-                  const value = feature[plan.id as keyof typeof feature];
-                  return (
-                    <div class="flex items-center justify-between py-3 border-b border-[var(--border-light)] last:border-0">
-                      <span class="text-sm text-[var(--text-primary)] font-medium flex-1">{feature.name}</span>
-                      <div class="ml-4">
-                        {feature.isNumber ? (
-                          <span class="inline-block px-3 py-1 rounded-full bg-[var(--secondary)]/10 text-[var(--secondary)] font-bold text-sm">{value}</span>
-                        ) : value ? (
-                          <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-green-500/20 text-green-500 text-lg font-bold">✓</span>
-                        ) : (
-                          <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-red-500/10 text-red-500/60 text-lg">✕</span>
-                        )}
+              <div class="bg-bg-primary-light dark:bg-bg-primary/80 backdrop-blur-sm p-6">
+                <div class="space-y-3">
+                  {basicFeatures.map((feature) => {
+                    const value = feature[plan.id as keyof typeof feature];
+                    return (
+                      <div class="flex items-center justify-between py-3 border-b border-border-light-mode dark:border-border-light last:border-0">
+                        <span class="text-sm text-text-primary-light dark:text-text-primary font-medium flex-1">
+                          {feature.name}
+                        </span>
+                        <div class="ml-4">
+                          {feature.isNumber ? (
+                            <span class="inline-block px-3 py-1 rounded-full bg-secondary/10 text-secondary font-bold text-sm">
+                              {value}
+                            </span>
+                          ) : value ? (
+                            <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-green-500/20 text-green-500 text-lg font-bold">
+                              ✓
+                            </span>
+                          ) : (
+                            <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-red-500/10 text-red-500/60 text-lg">
+                              ✕
+                            </span>
+                          )}
+                        </div>
                       </div>
-                    </div>
-                  );
-                })}
-              </div>
+                    );
+                  })}
+                </div>
 
-              <button 
-                class="toggle-mobile w-full mt-6 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold text-sm bg-[var(--bg-secondary)] text-[var(--text-primary)] border-2 border-[var(--border-light)] hover:border-[var(--secondary)] hover:text-[var(--secondary)] transition-all"
-                data-plan={plan.id}
-              >
-                <span class="toggle-text-mobile">Ver todas las características</span>
-                <svg class="toggle-icon-mobile w-5 h-5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                </svg>
-              </button>
+                <div
+                  id={`advanced-features-mobile-${plan.id}`}
+                  class="hidden space-y-3 mt-3"
+                >
+                  {advancedFeatures.map((feature) => {
+                    const value = feature[plan.id as keyof typeof feature];
+                    return (
+                      <div class="flex items-center justify-between py-3 border-b border-border-light-mode dark:border-border-light last:border-0">
+                        <span class="text-sm text-text-primary-light dark:text-text-primary font-medium flex-1">
+                          {feature.name}
+                        </span>
+                        <div class="ml-4">
+                          {feature.isNumber ? (
+                            <span class="inline-block px-3 py-1 rounded-full bg-secondary/10 text-secondary font-bold text-sm">
+                              {value}
+                            </span>
+                          ) : value ? (
+                            <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-green-500/20 text-green-500 text-lg font-bold">
+                              ✓
+                            </span>
+                          ) : (
+                            <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-red-500/10 text-red-500/60 text-lg">
+                              ✕
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                <button
+                  class="toggle-mobile w-full mt-6 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold text-sm bg-bg-secondary-light dark:bg-bg-secondary text-text-primary-light dark:text-text-primary border-2 border-border-light-mode dark:border-border-light hover:border-secondary hover:text-secondary transition-all cursor-pointer"
+                  data-plan={plan.id}
+                >
+                  <span class="toggle-text-mobile">
+                    Ver todas las características
+                  </span>
+                  <svg
+                    class="toggle-icon-mobile w-5 h-5 transition-transform"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))
+      }
     </div>
   </div>
 </section>
 
 <script>
   // Toggle desktop
-  const toggleDesktop = document.getElementById('toggle-desktop');
-  const advancedDesktop = document.getElementById('advanced-features-desktop');
-  const toggleTextDesktop = document.getElementById('toggle-text-desktop');
-  const toggleIconDesktop = document.getElementById('toggle-icon-desktop');
-  
-  if (toggleDesktop && advancedDesktop && toggleTextDesktop && toggleIconDesktop) {
-    toggleDesktop.addEventListener('click', () => {
-      const isHidden = advancedDesktop.classList.contains('hidden');
-      
+  const toggleDesktop = document.getElementById("toggle-desktop");
+  const advancedDesktop = document.getElementById("advanced-features-desktop");
+  const toggleTextDesktop = document.getElementById("toggle-text-desktop");
+  const toggleIconDesktop = document.getElementById("toggle-icon-desktop");
+
+  if (
+    toggleDesktop &&
+    advancedDesktop &&
+    toggleTextDesktop &&
+    toggleIconDesktop
+  ) {
+    toggleDesktop.addEventListener("click", () => {
+      const isHidden = advancedDesktop.classList.contains("hidden");
+
       if (isHidden) {
-        advancedDesktop.classList.remove('hidden');
-        toggleTextDesktop.textContent = 'Ver menos características';
-        toggleIconDesktop.style.transform = 'rotate(180deg)';
+        advancedDesktop.classList.remove("hidden");
+        toggleTextDesktop.textContent = "Ver menos características";
+        toggleIconDesktop.style.transform = "rotate(180deg)";
       } else {
-        advancedDesktop.classList.add('hidden');
-        toggleTextDesktop.textContent = 'Ver todas las características';
-        toggleIconDesktop.style.transform = 'rotate(0deg)';
+        advancedDesktop.classList.add("hidden");
+        toggleTextDesktop.textContent = "Ver todas las características";
+        toggleIconDesktop.style.transform = "rotate(0deg)";
       }
     });
   }
-  
+
   // Mobile plan tabs switching
-  const mobilePlanTabs = document.querySelectorAll('.mobile-plan-tab');
-  const mobilePlanContents = document.querySelectorAll('.mobile-plan-content');
-  
-  mobilePlanTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      const planId = tab.getAttribute('data-plan-id');
-      
+  const mobilePlanTabs = document.querySelectorAll(".mobile-plan-tab");
+  const mobilePlanContents = document.querySelectorAll(".mobile-plan-content");
+
+  mobilePlanTabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const planId = tab.getAttribute("data-plan-id");
+
       // Update active tab styles
-      mobilePlanTabs.forEach(t => {
-        const isFeatured = t.getAttribute('data-plan-id') === 'premium';
+      mobilePlanTabs.forEach((t) => {
+        const isFeatured = t.getAttribute("data-plan-id") === "premium";
         if (t === tab) {
           if (isFeatured) {
-            t.className = 'mobile-plan-tab flex-1 min-w-[100px] px-4 py-3 rounded-lg font-semibold text-sm transition-all whitespace-nowrap bg-gradient-to-r from-green-500 to-green-600 text-white shadow-lg';
+            t.className =
+              "mobile-plan-tab flex-1 min-w-[100px] px-4 py-3 rounded-lg font-semibold text-sm transition-all whitespace-nowrap bg-gradient-to-r from-green-500 to-green-600 text-white shadow-lg";
           } else {
-            t.className = 'mobile-plan-tab flex-1 min-w-[100px] px-4 py-3 rounded-lg font-semibold text-sm transition-all whitespace-nowrap bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-lg';
+            t.className =
+              "mobile-plan-tab flex-1 min-w-[100px] px-4 py-3 rounded-lg font-semibold text-sm transition-all whitespace-nowrap bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-lg";
           }
         } else {
-          t.className = 'mobile-plan-tab flex-1 min-w-[100px] px-4 py-3 rounded-lg font-semibold text-sm transition-all whitespace-nowrap bg-[var(--bg-card)] text-[var(--text-secondary)] border-2 border-[var(--border-light)]';
+          t.className =
+            "mobile-plan-tab flex-1 min-w-[100px] px-4 py-3 rounded-lg font-semibold text-sm transition-all whitespace-nowrap bg-bg-card-light dark:bg-bg-card text-text-secondary-light dark:text-text-secondary border-2 border-border-light-mode dark:border-border-light";
         }
       });
-      
+
       // Show selected plan content
-      mobilePlanContents.forEach(content => {
-        if (content.getAttribute('data-plan-id') === planId) {
-          content.classList.remove('hidden');
+      mobilePlanContents.forEach((content) => {
+        if (content.getAttribute("data-plan-id") === planId) {
+          content.classList.remove("hidden");
         } else {
-          content.classList.add('hidden');
+          content.classList.add("hidden");
         }
       });
     });
   });
-  
+
   // Toggle mobile
-  const togglesMobile = document.querySelectorAll('.toggle-mobile');
-  
-  togglesMobile.forEach(toggle => {
-    toggle.addEventListener('click', (e) => {
+  const togglesMobile = document.querySelectorAll(".toggle-mobile");
+
+  togglesMobile.forEach((toggle) => {
+    toggle.addEventListener("click", (e) => {
       const button = e.currentTarget as HTMLElement;
-      const planId = button.getAttribute('data-plan');
-      const advancedMobile = document.getElementById(`advanced-features-mobile-${planId}`);
-      const toggleText = button.querySelector('.toggle-text-mobile');
-      const toggleIcon = button.querySelector('.toggle-icon-mobile') as HTMLElement;
-      
+      const planId = button.getAttribute("data-plan");
+      const advancedMobile = document.getElementById(
+        `advanced-features-mobile-${planId}`,
+      );
+      const toggleText = button.querySelector(".toggle-text-mobile");
+      const toggleIcon = button.querySelector(
+        ".toggle-icon-mobile",
+      ) as HTMLElement;
+
       if (advancedMobile && toggleText && toggleIcon) {
-        const isHidden = advancedMobile.classList.contains('hidden');
-        
+        const isHidden = advancedMobile.classList.contains("hidden");
+
         if (isHidden) {
-          advancedMobile.classList.remove('hidden');
-          toggleText.textContent = 'Ver menos características';
-          toggleIcon.style.transform = 'rotate(180deg)';
+          advancedMobile.classList.remove("hidden");
+          toggleText.textContent = "Ver menos características";
+          toggleIcon.style.transform = "rotate(180deg)";
         } else {
-          advancedMobile.classList.add('hidden');
-          toggleText.textContent = 'Ver todas las características';
-          toggleIcon.style.transform = 'rotate(0deg)';
+          advancedMobile.classList.add("hidden");
+          toggleText.textContent = "Ver todas las características";
+          toggleIcon.style.transform = "rotate(0deg)";
         }
       }
     });
   });
-  
+
   // Conectar botones de compra con el modal de Prices.astro
   function formatPlanName(plan: string) {
     // Convertir camelCase a espacios (premiumPlus -> premium Plus)
-    const withSpaces = plan.replace(/([A-Z])/g, ' $1').trim();
+    const withSpaces = plan.replace(/([A-Z])/g, " $1").trim();
     // Capitalizar primera letra de cada palabra
     return withSpaces.replace(/\b\w/g, (l) => l.toUpperCase());
   }
 
   // Seleccionar todos los botones de compra (los que tienen data-plan pero no son toggles)
-  const buyButtons = document.querySelectorAll('button[data-plan]:not(.toggle-mobile)');
-  
+  const buyButtons = document.querySelectorAll(
+    "button[data-plan]:not(.toggle-mobile)",
+  );
+
   buyButtons.forEach((btn) => {
-    btn.addEventListener('click', function (e) {
+    btn.addEventListener("click", function (e) {
       e.preventDefault();
-      const plan = btn.getAttribute('data-plan');
-      const modal = document.getElementById('plan-modal');
-      const planNameEl = document.getElementById('selected-plan-name');
-      const emailInput = document.getElementById('email-input') as HTMLInputElement;
-      const errorMessage = document.getElementById('error-message');
+      const plan = btn.getAttribute("data-plan");
+      const modal = document.getElementById("plan-modal");
+      const planNameEl = document.getElementById("selected-plan-name");
+      const emailInput = document.getElementById(
+        "email-input",
+      ) as HTMLInputElement;
+      const errorMessage = document.getElementById("error-message");
 
       if (!modal || !planNameEl || !emailInput || !plan) {
-        console.warn('Modal elements not found');
+        console.warn("Modal elements not found");
         return;
       }
 
@@ -384,24 +751,24 @@ const plans = [
       planNameEl.textContent = formatPlanName(plan);
 
       // Limpiar formulario
-      emailInput.value = '';
+      emailInput.value = "";
       if (errorMessage) {
-        errorMessage.classList.remove('show');
-        errorMessage.textContent = '';
+        errorMessage.classList.remove("show");
+        errorMessage.textContent = "";
       }
 
       // Convertir camelCase a kebab-case para compatibilidad con Prices.astro
       // premiumPlus -> premium-plus
-      const planForApi = plan.replace(/([A-Z])/g, '-$1').toLowerCase();
+      const planForApi = plan.replace(/([A-Z])/g, "-$1").toLowerCase();
 
       // Actualizar currentPlan global (definida en Prices.astro)
-      if (typeof window !== 'undefined') {
+      if (typeof window !== "undefined") {
         (window as any).currentPlan = planForApi;
       }
 
       // Mostrar modal
-      modal.classList.add('active');
-      document.body.style.overflow = 'hidden';
+      modal.classList.add("active");
+      document.body.style.overflow = "hidden";
 
       // Focus en el input
       setTimeout(() => emailInput.focus(), 100);

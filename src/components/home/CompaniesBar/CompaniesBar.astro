@@ -2,46 +2,92 @@
 // CompaniesBar.astro - Barra de empresas clientes para credibilidad
 ---
 
-<section class="py-12 bg-[var(--bg-primary)] border-b border-[var(--border-light)]">
+<section
+  class="py-12 bg-bg-primary-light dark:bg-bg-primary border-b border-border-light-mode dark:border-border-light"
+>
   <div class="w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10">
     <div class="text-center mb-8">
-      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-[var(--text-primary)] mb-4">
+      <h2
+        class="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary-light dark:text-text-primary mb-4"
+      >
         Empresas que confían en nosotros
       </h2>
-      <p class="text-lg md:text-xl text-[var(--text-secondary)] leading-relaxed">
+      <p
+        class="text-lg md:text-xl text-text-secondary-light dark:text-text-secondary leading-relaxed"
+      >
         Más de 9,500+ empresas ya utilizan nuestros servicios
       </p>
     </div>
 
-    <div class="flex justify-center items-center gap-8 md:gap-12 lg:gap-16 flex-wrap py-8">
-      <img src="/logos/autozone.svg" alt="AutoZone" class="max-h-12 max-w-[140px] w-auto h-auto object-contain opacity-80 transition-all duration-300 hover:opacity-100 hover:scale-105" />
-      <img src="/logos/fuelex.svg" alt="Fuelex" class="max-h-12 max-w-[140px] w-auto h-auto object-contain opacity-80 transition-all duration-300 hover:opacity-100 hover:scale-105" />
+    <div
+      class="flex justify-center items-center gap-8 md:gap-12 lg:gap-16 flex-wrap py-8"
+    >
+      <img
+        src="/logos/autozone.svg"
+        alt="AutoZone"
+        class="max-h-12 max-w-[140px] w-auto h-auto object-contain opacity-80 transition-all duration-300 hover:opacity-100 hover:scale-105"
+      />
+      <img
+        src="/logos/fuelex.svg"
+        alt="Fuelex"
+        class="max-h-12 max-w-[140px] w-auto h-auto object-contain opacity-80 transition-all duration-300 hover:opacity-100 hover:scale-105"
+      />
       <img
         src="/logos/constructora.svg"
         alt="Constructora"
         class="max-h-12 max-w-[140px] w-auto h-auto object-contain opacity-80 transition-all duration-300 hover:opacity-100 hover:scale-105"
       />
-      <img src="/logos/manpower.svg" alt="Manpower" class="max-h-12 max-w-[140px] w-auto h-auto object-contain opacity-80 transition-all duration-300 hover:opacity-100 hover:scale-105" />
-      <img src="/logos/spinmaster.png" alt="Spinmaster" class="max-h-12 max-w-[140px] w-auto h-auto object-contain opacity-80 transition-all duration-300 hover:opacity-100 hover:scale-105" />
+      <img
+        src="/logos/manpower.svg"
+        alt="Manpower"
+        class="max-h-12 max-w-[140px] w-auto h-auto object-contain opacity-80 transition-all duration-300 hover:opacity-100 hover:scale-105"
+      />
+      <img
+        src="/logos/spinmaster.png"
+        alt="Spinmaster"
+        class="max-h-12 max-w-[140px] w-auto h-auto object-contain opacity-80 transition-all duration-300 hover:opacity-100 hover:scale-105"
+      />
     </div>
 
     <!-- Estadísticas de confianza -->
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 mt-8 pt-8 border-t border-[var(--border-light)]">
+    <div
+      class="grid grid-cols-2 lg:grid-cols-4 gap-6 mt-8 pt-8 border-t border-border-light-mode dark:border-border-light"
+    >
       <div class="text-center">
-        <span class="block text-3xl md:text-4xl font-bold text-[var(--secondary)] mb-2">9,500+</span>
-        <span class="text-base text-[var(--text-secondary)] font-medium">Empresas activas</span>
+        <span class="block text-3xl md:text-4xl font-bold text-secondary mb-2"
+          >9,500+</span
+        >
+        <span
+          class="text-base text-text-secondary-light dark:text-text-secondary font-medium"
+          >Empresas activas</span
+        >
       </div>
       <div class="text-center">
-        <span class="block text-3xl md:text-4xl font-bold text-[var(--secondary)] mb-2">15M+</span>
-        <span class="text-base text-[var(--text-secondary)] font-medium">Facturas procesadas</span>
+        <span class="block text-3xl md:text-4xl font-bold text-secondary mb-2"
+          >15M+</span
+        >
+        <span
+          class="text-base text-text-secondary-light dark:text-text-secondary font-medium"
+          >Facturas procesadas</span
+        >
       </div>
       <div class="text-center">
-        <span class="block text-3xl md:text-4xl font-bold text-[var(--secondary)] mb-2">99.9%</span>
-        <span class="text-base text-[var(--text-secondary)] font-medium">Tiempo de actividad</span>
+        <span class="block text-3xl md:text-4xl font-bold text-secondary mb-2"
+          >99.9%</span
+        >
+        <span
+          class="text-base text-text-secondary-light dark:text-text-secondary font-medium"
+          >Tiempo de actividad</span
+        >
       </div>
       <div class="text-center">
-        <span class="block text-3xl md:text-4xl font-bold text-[var(--secondary)] mb-2">24/7</span>
-        <span class="text-base text-[var(--text-secondary)] font-medium">Soporte técnico</span>
+        <span class="block text-3xl md:text-4xl font-bold text-secondary mb-2"
+          >24/7</span
+        >
+        <span
+          class="text-base text-text-secondary-light dark:text-text-secondary font-medium"
+          >Soporte técnico</span
+        >
       </div>
     </div>
   </div>

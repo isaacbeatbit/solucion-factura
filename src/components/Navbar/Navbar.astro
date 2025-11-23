@@ -2,31 +2,66 @@
 import ThemeToggle from "./ThemeToggle.astro";
 ---
 
-<header class="sticky top-0 z-[1000] w-full max-w-full left-0 right-0 overflow-visible box-border bg-white/95 border-b border-gray-200 shadow-sm transition-all duration-300 ease-in-out supports-[backdrop-filter]:bg-white/85 supports-[backdrop-filter]:backdrop-blur-2xl [&.scrolled]:bg-white/98 [&.scrolled]:shadow-md [&.scrolled]:border-b [&.scrolled]:border-gray-200 [&.scrolled]:supports-[backdrop-filter]:bg-white/90 [&.hidden]:transform [&.hidden]:-translate-y-full dark:bg-gray-900/95 dark:border-gray-800 dark:shadow-[0_2px_8px_rgba(0,0,0,0.15)] dark:supports-[backdrop-filter]:bg-gray-900/75 dark:[&.scrolled]:bg-gray-900/95 dark:[&.scrolled]:shadow-[0_4px_16px_rgba(0,0,0,0.25)] dark:[&.scrolled]:supports-[backdrop-filter]:bg-gray-900/85">
-  <div class="w-full mx-auto px-4 max-w-[100vw] box-border overflow-visible sm:px-6 md:px-8 lg:px-10 lg:max-w-[1400px] xl:max-w-[1600px] xl:px-12">
-    <nav class="flex items-center justify-between min-h-[70px] gap-4 relative w-full max-w-full overflow-visible box-border md:min-h-20 lg:min-h-[88px] lg:gap-8" role="navigation" aria-label="Navegación principal">
-      <a href="/" class="flex items-center flex-shrink-0" aria-label="Ir al inicio">
-        <img src="/solucion-factura-logo.png" alt="Solución Factura" class="h-8 w-auto block md:h-9 lg:h-10" />
+<header
+  class="sticky top-0 z-[1000] w-full max-w-full left-0 right-0 overflow-visible box-border bg-white border-b border-gray-200 shadow-sm transition-all duration-300 ease-in-out [&.scrolled]:shadow-md [&.hidden]:transform [&.hidden]:-translate-y-full dark:bg-bg-primary/95 dark:border-border-light dark:shadow-[0_2px_8px_rgba(0,0,0,0.15)] dark:supports-[backdrop-filter]:bg-bg-primary/75 dark:supports-[backdrop-filter]:backdrop-blur-2xl dark:[&.scrolled]:bg-bg-primary/95 dark:[&.scrolled]:shadow-[0_4px_16px_rgba(0,0,0,0.25)] dark:[&.scrolled]:supports-[backdrop-filter]:bg-bg-primary/85"
+>
+  <div
+    class="w-full mx-auto px-4 max-w-[100vw] box-border overflow-visible sm:px-6 md:px-8 lg:px-10 lg:max-w-[1400px] xl:max-w-[1600px] xl:px-12"
+  >
+    <nav
+      class="flex items-center justify-between min-h-[70px] gap-4 relative w-full max-w-full overflow-visible box-border md:min-h-20 lg:min-h-[88px] lg:gap-8"
+      role="navigation"
+      aria-label="Navegación principal"
+    >
+      <a
+        href="/"
+        class="flex items-center flex-shrink-0"
+        aria-label="Ir al inicio"
+      >
+        <img
+          src="/solucion-factura-logo.png"
+          alt="Solución Factura"
+          class="h-8 w-auto block md:h-9 lg:h-10"
+        />
       </a>
 
-      <ul class="hidden list-none m-0 p-0 items-center gap-2 flex-1 justify-center max-w-full overflow-visible box-border lg:flex lg:gap-4 xl:gap-6" role="menubar">
+      <ul
+        class="hidden list-none m-0 p-0 items-center gap-2 flex-1 justify-center max-w-full overflow-visible box-border lg:flex lg:gap-4 xl:gap-6"
+        role="menubar"
+      >
         <li role="none" class="m-0 p-0">
-          <a class="inline-flex items-center px-3 py-2 text-[var(--text-primary)] no-underline font-medium text-[0.9rem] rounded-md transition-all duration-200 ease-in-out whitespace-nowrap relative hover:bg-[var(--border-light)] hover:text-[var(--secondary)] hover:-translate-y-px focus:outline-2 focus:outline-[var(--secondary)] focus:outline-offset-2 [&.active]:text-[var(--secondary)] [&.active]:bg-[var(--border-light)] [&.active]:relative [&.active]:after:content-[''] [&.active]:after:absolute [&.active]:after:-bottom-0.5 [&.active]:after:left-1/2 [&.active]:after:-translate-x-1/2 [&.active]:after:w-4/5 [&.active]:after:h-0.5 [&.active]:after:bg-[var(--secondary)] [&.active]:after:rounded-sm xl:px-4 xl:py-2.5 xl:text-[0.95rem]" href="/" role="menuitem">Inicio</a>
+          <a
+            class="inline-flex items-center px-3 py-2 text-text-primary-light dark:text-text-primary no-underline font-medium text-[0.9rem] rounded-md transition-all duration-200 ease-in-out whitespace-nowrap relative hover:bg-border-light-mode/50 dark:hover:bg-border-light hover:text-secondary hover:-translate-y-px focus:outline-2 focus:outline-secondary focus:outline-offset-2 [&.active]:text-secondary [&.active]:bg-border-light-mode/50 dark:[&.active]:bg-border-light [&.active]:relative [&.active]:after:content-[''] [&.active]:after:absolute [&.active]:after:-bottom-0.5 [&.active]:after:left-1/2 [&.active]:after:-translate-x-1/2 [&.active]:after:w-4/5 [&.active]:after:h-0.5 [&.active]:after:bg-secondary [&.active]:after:rounded-sm xl:px-4 xl:py-2.5 xl:text-[0.95rem]"
+            href="/"
+            role="menuitem">Inicio</a
+          >
         </li>
         <li role="none" class="m-0 p-0">
-          <a class="inline-flex items-center px-3 py-2 text-[var(--text-primary)] no-underline font-medium text-[0.9rem] rounded-md transition-all duration-200 ease-in-out whitespace-nowrap relative hover:bg-[var(--border-light)] hover:text-[var(--secondary)] hover:-translate-y-px focus:outline-2 focus:outline-[var(--secondary)] focus:outline-offset-2 [&.active]:text-[var(--secondary)] [&.active]:bg-[var(--border-light)] [&.active]:relative [&.active]:after:content-[''] [&.active]:after:absolute [&.active]:after:-bottom-0.5 [&.active]:after:left-1/2 [&.active]:after:-translate-x-1/2 [&.active]:after:w-4/5 [&.active]:after:h-0.5 [&.active]:after:bg-[var(--secondary)] [&.active]:after:rounded-sm xl:px-4 xl:py-2.5 xl:text-[0.95rem]" href="/#caracteristicas" role="menuitem">Características</a>
+          <a
+            class="inline-flex items-center px-3 py-2 text-text-primary-light dark:text-text-primary no-underline font-medium text-[0.9rem] rounded-md transition-all duration-200 ease-in-out whitespace-nowrap relative hover:bg-border-light-mode/50 dark:hover:bg-border-light hover:text-secondary hover:-translate-y-px focus:outline-2 focus:outline-secondary focus:outline-offset-2 [&.active]:text-secondary [&.active]:bg-border-light-mode/50 dark:[&.active]:bg-border-light [&.active]:relative [&.active]:after:content-[''] [&.active]:after:absolute [&.active]:after:-bottom-0.5 [&.active]:after:left-1/2 [&.active]:after:-translate-x-1/2 [&.active]:after:w-4/5 [&.active]:after:h-0.5 [&.active]:after:bg-secondary [&.active]:after:rounded-sm xl:px-4 xl:py-2.5 xl:text-[0.95rem]"
+            href="/#caracteristicas"
+            role="menuitem">Características</a
+          >
         </li>
         <li role="none" class="m-0 p-0">
-          <a class="inline-flex items-center px-3 py-2 text-[var(--text-primary)] no-underline font-medium text-[0.9rem] rounded-md transition-all duration-200 ease-in-out whitespace-nowrap relative hover:bg-[var(--border-light)] hover:text-[var(--secondary)] hover:-translate-y-px focus:outline-2 focus:outline-[var(--secondary)] focus:outline-offset-2 [&.active]:text-[var(--secondary)] [&.active]:bg-[var(--border-light)] [&.active]:relative [&.active]:after:content-[''] [&.active]:after:absolute [&.active]:after:-bottom-0.5 [&.active]:after:left-1/2 [&.active]:after:-translate-x-1/2 [&.active]:after:w-4/5 [&.active]:after:h-0.5 [&.active]:after:bg-[var(--secondary)] [&.active]:after:rounded-sm xl:px-4 xl:py-2.5 xl:text-[0.95rem]" href="/#planes" role="menuitem">Planes</a>
+          <a
+            class="inline-flex items-center px-3 py-2 text-text-primary-light dark:text-text-primary no-underline font-medium text-[0.9rem] rounded-md transition-all duration-200 ease-in-out whitespace-nowrap relative hover:bg-border-light-mode/50 dark:hover:bg-border-light hover:text-secondary hover:-translate-y-px focus:outline-2 focus:outline-secondary focus:outline-offset-2 [&.active]:text-secondary [&.active]:bg-border-light-mode/50 dark:[&.active]:bg-border-light [&.active]:relative [&.active]:after:content-[''] [&.active]:after:absolute [&.active]:after:-bottom-0.5 [&.active]:after:left-1/2 [&.active]:after:-translate-x-1/2 [&.active]:after:w-4/5 [&.active]:after:h-0.5 [&.active]:after:bg-secondary [&.active]:after:rounded-sm xl:px-4 xl:py-2.5 xl:text-[0.95rem]"
+            href="/#planes"
+            role="menuitem">Planes</a
+          >
         </li>
         <li role="none" class="m-0 p-0">
-          <a class="inline-flex items-center px-3 py-2 text-[var(--text-primary)] no-underline font-medium text-[0.9rem] rounded-md transition-all duration-200 ease-in-out whitespace-nowrap relative hover:bg-[var(--border-light)] hover:text-[var(--secondary)] hover:-translate-y-px focus:outline-2 focus:outline-[var(--secondary)] focus:outline-offset-2 [&.active]:text-[var(--secondary)] [&.active]:bg-[var(--border-light)] [&.active]:relative [&.active]:after:content-[''] [&.active]:after:absolute [&.active]:after:-bottom-0.5 [&.active]:after:left-1/2 [&.active]:after:-translate-x-1/2 [&.active]:after:w-4/5 [&.active]:after:h-0.5 [&.active]:after:bg-[var(--secondary)] [&.active]:after:rounded-sm xl:px-4 xl:py-2.5 xl:text-[0.95rem]" href="tel:+525593314767" role="menuitem">
+          <a
+            class="inline-flex items-center px-3 py-2 text-text-primary-light dark:text-text-primary no-underline font-medium text-[0.9rem] rounded-md transition-all duration-200 ease-in-out whitespace-nowrap relative hover:bg-border-light-mode/50 dark:hover:bg-border-light hover:text-secondary hover:-translate-y-px focus:outline-2 focus:outline-secondary focus:outline-offset-2 [&.active]:text-secondary [&.active]:bg-border-light-mode/50 dark:[&.active]:bg-border-light [&.active]:relative [&.active]:after:content-[''] [&.active]:after:absolute [&.active]:after:-bottom-0.5 [&.active]:after:left-1/2 [&.active]:after:-translate-x-1/2 [&.active]:after:w-4/5 [&.active]:after:h-0.5 [&.active]:after:bg-secondary [&.active]:after:rounded-sm xl:px-4 xl:py-2.5 xl:text-[0.95rem]"
+            href="tel:+525593314767"
+            role="menuitem"
+          >
             📞 Ventas: 55 9331 4767
           </a>
         </li>
         <li role="none" class="m-0 p-0">
           <a
-            class="inline-flex items-center px-3 py-2 text-[var(--text-primary)] no-underline font-medium text-[0.9rem] rounded-md transition-all duration-200 ease-in-out whitespace-nowrap relative hover:bg-[var(--border-light)] hover:text-[var(--secondary)] hover:-translate-y-px focus:outline-2 focus:outline-[var(--secondary)] focus:outline-offset-2 [&.active]:text-[var(--secondary)] [&.active]:bg-[var(--border-light)] [&.active]:relative [&.active]:after:content-[''] [&.active]:after:absolute [&.active]:after:-bottom-0.5 [&.active]:after:left-1/2 [&.active]:after:-translate-x-1/2 [&.active]:after:w-4/5 [&.active]:after:h-0.5 [&.active]:after:bg-[var(--secondary)] [&.active]:after:rounded-sm xl:px-4 xl:py-2.5 xl:text-[0.95rem]"
+            class="inline-flex items-center px-3 py-2 text-text-primary-light dark:text-text-primary no-underline font-medium text-[0.9rem] rounded-md transition-all duration-200 ease-in-out whitespace-nowrap relative hover:bg-border-light-mode/50 dark:hover:bg-border-light hover:text-secondary hover:-translate-y-px focus:outline-2 focus:outline-secondary focus:outline-offset-2 [&.active]:text-secondary [&.active]:bg-border-light-mode/50 dark:[&.active]:bg-border-light [&.active]:relative [&.active]:after:content-[''] [&.active]:after:absolute [&.active]:after:-bottom-0.5 [&.active]:after:left-1/2 [&.active]:after:-translate-x-1/2 [&.active]:after:w-4/5 [&.active]:after:h-0.5 [&.active]:after:bg-secondary [&.active]:after:rounded-sm xl:px-4 xl:py-2.5 xl:text-[0.95rem]"
             href="https://wa.me/525576017764?text=Hola%20Soporte%2C%20necesito%20ayuda"
             target="_blank"
             rel="noopener noreferrer"
@@ -45,7 +80,9 @@ import ThemeToggle from "./ThemeToggle.astro";
         </li>
       </ul>
 
-      <div class="flex items-center gap-3 flex-shrink-0 max-w-full overflow-visible box-border md:gap-4">
+      <div
+        class="flex items-center gap-3 flex-shrink-0 max-w-full overflow-visible box-border md:gap-4"
+      >
         <ThemeToggle />
         <a
           href="https://app.solucionfactura.mx"
@@ -65,7 +102,7 @@ import ThemeToggle from "./ThemeToggle.astro";
         </a>
         <button
           id="mobile-menu-toggle"
-          class="flex lg:hidden items-center justify-center w-11 h-11 p-2 bg-[var(--bg-secondary)] border border-[var(--border-light)] rounded-lg cursor-pointer transition-all duration-200 ease-in-out text-[var(--text-primary)] hover:bg-[var(--border-light)] hover:border-[var(--secondary)] hover:scale-105 hover:shadow-[0_2px_8px_rgba(0,0,0,0.1)] focus:outline-2 focus:outline-[var(--secondary)] focus:outline-offset-2 [&.active]:bg-[var(--secondary)] [&.active]:border-[var(--secondary)] [&.active]:text-white [&.active]:scale-95 [data-theme='light']_&:bg-[var(--bg-primary)] [data-theme='light']_&:border-[var(--border-color)] [data-theme='light']_&:hover:bg-[var(--bg-secondary)] [data-theme='light']_&:hover:border-[var(--secondary)] [data-theme='light']_&:hover:shadow-[0_2px_8px_rgba(0,0,0,0.15)] [data-theme='light']_&.active:bg-[var(--secondary)] [data-theme='light']_&.active:text-white"
+          class="flex lg:hidden items-center justify-center w-11 h-11 p-2 bg-bg-secondary-light dark:bg-bg-secondary border border-border-light-mode dark:border-border-light rounded-lg cursor-pointer transition-all duration-200 ease-in-out text-text-primary-light dark:text-text-primary hover:bg-border-light-mode/50 dark:hover:bg-border-light hover:border-secondary hover:scale-105 hover:shadow-md focus:outline-2 focus:outline-secondary focus:outline-offset-2 [&.active]:bg-secondary [&.active]:border-secondary [&.active]:text-white [&.active]:scale-95"
           aria-label="Abrir menú de navegación"
           aria-expanded="false"
           aria-controls="mobile-nav"
@@ -82,22 +119,38 @@ import ThemeToggle from "./ThemeToggle.astro";
         </button>
       </div>
 
-      <div class="hidden absolute top-full left-0 right-0 bg-[var(--bg-card)] border-t border-b border-[var(--border-light)] shadow-[0_4px_12px_rgba(0,0,0,0.15)] z-[999] supports-[backdrop-filter]:backdrop-blur-[10px] [&.active]:block [&.active]:animate-[slideDown_0.25s_ease-out] lg:hidden" id="mobile-nav" aria-hidden="true">
+      <div
+        class="hidden absolute top-full left-0 right-0 bg-bg-card-light dark:bg-bg-card border-t border-b border-border-light-mode dark:border-border-light shadow-[0_4px_12px_rgba(0,0,0,0.15)] z-[999] supports-[backdrop-filter]:backdrop-blur-[10px] [&.active]:block [&.active]:animate-[slideDown_0.25s_ease-out] lg:hidden"
+        id="mobile-nav"
+        aria-hidden="true"
+      >
         <ul class="list-none p-0 m-0" role="menu">
           <li role="none" class="m-0 p-0">
-            <a class="block px-6 py-4 text-[var(--text-primary)] no-underline font-medium transition-all duration-200 ease-in-out border-b border-[var(--border-light)] hover:bg-[var(--border-light)] hover:text-[var(--secondary)] focus:outline-2 focus:outline-[var(--secondary)] focus:-outline-offset-2 [&.active]:bg-[var(--border-light)] [&.active]:text-[var(--secondary)] [&.active]:border-l-[3px] [&.active]:border-l-[var(--secondary)] min-h-12 flex items-center" href="/" role="menuitem">Inicio</a>
+            <a
+              class="block px-6 py-4 text-text-primary-light dark:text-text-primary no-underline font-medium transition-all duration-200 ease-in-out border-b border-border-light-mode dark:border-border-light hover:bg-border-light-mode/50 dark:hover:bg-border-light hover:text-secondary focus:outline-2 focus:outline-secondary focus:-outline-offset-2 [&.active]:bg-border-light-mode/50 dark:[&.active]:bg-border-light [&.active]:text-secondary [&.active]:border-l-[3px] [&.active]:border-l-secondary min-h-12 flex items-center"
+              href="/"
+              role="menuitem">Inicio</a
+            >
           </li>
           <li role="none" class="m-0 p-0">
-            <a class="block px-6 py-4 text-[var(--text-primary)] no-underline font-medium transition-all duration-200 ease-in-out border-b border-[var(--border-light)] hover:bg-[var(--border-light)] hover:text-[var(--secondary)] focus:outline-2 focus:outline-[var(--secondary)] focus:-outline-offset-2 [&.active]:bg-[var(--border-light)] [&.active]:text-[var(--secondary)] [&.active]:border-l-[3px] [&.active]:border-l-[var(--secondary)] min-h-12 flex items-center" href="/#caracteristicas" role="menuitem">
+            <a
+              class="block px-6 py-4 text-text-primary-light dark:text-text-primary no-underline font-medium transition-all duration-200 ease-in-out border-b border-border-light-mode dark:border-border-light hover:bg-border-light-mode/50 dark:hover:bg-border-light hover:text-secondary focus:outline-2 focus:outline-secondary focus:-outline-offset-2 [&.active]:bg-border-light-mode/50 dark:[&.active]:bg-border-light [&.active]:text-secondary [&.active]:border-l-[3px] [&.active]:border-l-secondary min-h-12 flex items-center"
+              href="/#caracteristicas"
+              role="menuitem"
+            >
               Características
             </a>
           </li>
           <li role="none" class="m-0 p-0">
-            <a class="block px-6 py-4 text-[var(--text-primary)] no-underline font-medium transition-all duration-200 ease-in-out border-b border-[var(--border-light)] hover:bg-[var(--border-light)] hover:text-[var(--secondary)] focus:outline-2 focus:outline-[var(--secondary)] focus:-outline-offset-2 [&.active]:bg-[var(--border-light)] [&.active]:text-[var(--secondary)] [&.active]:border-l-[3px] [&.active]:border-l-[var(--secondary)] min-h-12 flex items-center" href="/#planes" role="menuitem">Planes</a>
+            <a
+              class="block px-6 py-4 text-text-primary-light dark:text-text-primary no-underline font-medium transition-all duration-200 ease-in-out border-b border-border-light-mode dark:border-border-light hover:bg-border-light-mode/50 dark:hover:bg-border-light hover:text-secondary focus:outline-2 focus:outline-secondary focus:-outline-offset-2 [&.active]:bg-border-light-mode/50 dark:[&.active]:bg-border-light [&.active]:text-secondary [&.active]:border-l-[3px] [&.active]:border-l-secondary min-h-12 flex items-center"
+              href="/#planes"
+              role="menuitem">Planes</a
+            >
           </li>
           <li role="none" class="m-0 p-0">
             <a
-              class="block px-6 py-4 text-[var(--text-primary)] no-underline font-medium transition-all duration-200 ease-in-out border-b border-[var(--border-light)] hover:bg-[var(--border-light)] hover:text-[var(--secondary)] focus:outline-2 focus:outline-[var(--secondary)] focus:-outline-offset-2 [&.active]:bg-[var(--border-light)] [&.active]:text-[var(--secondary)] [&.active]:border-l-[3px] [&.active]:border-l-[var(--secondary)] min-h-12 flex items-center"
+              class="block px-6 py-4 text-text-primary-light dark:text-text-primary no-underline font-medium transition-all duration-200 ease-in-out border-b border-border-light-mode dark:border-border-light hover:bg-border-light-mode/50 dark:hover:bg-border-light hover:text-secondary focus:outline-2 focus:outline-secondary focus:-outline-offset-2 [&.active]:bg-border-light-mode/50 dark:[&.active]:bg-border-light [&.active]:text-secondary [&.active]:border-l-[3px] [&.active]:border-l-secondary min-h-12 flex items-center"
               href="https://wa.me/525576017764?text=Hola%20Soporte%2C%20necesito%20ayuda"
               target="_blank"
               rel="noopener noreferrer"
@@ -107,14 +160,18 @@ import ThemeToggle from "./ThemeToggle.astro";
             </a>
           </li>
           <li role="none" class="m-0 p-0">
-            <a class="block px-6 py-4 text-[var(--text-primary)] no-underline font-medium transition-all duration-200 ease-in-out border-b border-[var(--border-light)] hover:bg-[var(--border-light)] hover:text-[var(--secondary)] focus:outline-2 focus:outline-[var(--secondary)] focus:-outline-offset-2 [&.active]:bg-[var(--border-light)] [&.active]:text-[var(--secondary)] [&.active]:border-l-[3px] [&.active]:border-l-[var(--secondary)] min-h-12 flex items-center" href="tel:+525593314767" role="menuitem">
+            <a
+              class="block px-6 py-4 text-text-primary-light dark:text-text-primary no-underline font-medium transition-all duration-200 ease-in-out border-b border-border-light-mode dark:border-border-light hover:bg-border-light-mode/50 dark:hover:bg-border-light hover:text-secondary focus:outline-2 focus:outline-secondary focus:-outline-offset-2 [&.active]:bg-border-light-mode/50 dark:[&.active]:bg-border-light [&.active]:text-secondary [&.active]:border-l-[3px] [&.active]:border-l-secondary min-h-12 flex items-center"
+              href="tel:+525593314767"
+              role="menuitem"
+            >
               Ventas: 55 9331 4767
             </a>
           </li>
 
           <li role="none" class="m-0 p-0">
             <a
-              class="m-4 px-3 py-3 border-none rounded-lg text-center justify-center inline-flex items-center gap-2 font-semibold no-underline transition-all duration-200 ease-in-out cursor-pointer text-sm bg-gradient-to-br from-[var(--highlight-blue)] to-[var(--secondary)] text-[var(--gray-50)] shadow-[var(--theme-shadow-md)] hover:-translate-y-px hover:shadow-[var(--theme-shadow-lg),var(--glow)] hover:bg-gradient-to-br hover:from-[var(--secondary)] hover:to-[var(--highlight-blue)] focus:outline-2 focus:outline-[var(--secondary)] focus:outline-offset-2 [data-theme='light']_&:text-white w-[calc(100%-2rem)]"
+              class="m-4 px-3 py-3 border-none rounded-lg text-center justify-center inline-flex items-center gap-2 font-semibold no-underline transition-all duration-200 ease-in-out cursor-pointer text-sm bg-gradient-to-br from-highlight to-secondary text-gray-50 shadow-md hover:-translate-y-px hover:shadow-lg hover:bg-gradient-to-br hover:from-secondary hover:to-highlight focus:outline-2 focus:outline-secondary focus:outline-offset-2 [data-theme='light']_&:text-white w-[calc(100%-2rem)]"
               href="https://app.solucionfactura.mx"
               target="_blank"
               rel="noopener noreferrer"
