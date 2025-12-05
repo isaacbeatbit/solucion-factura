@@ -55,7 +55,7 @@
     </div>
 
     <div
-      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mx-4 md:mx-0 items-stretch max-w-full md:max-w-[400px] md:mx-auto lg:max-w-none lg:mx-0"
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mx-4 md:mx-0 items-stretch max-w-full lg:max-w-none lg:mx-0"
     >
       <div
         class="flex flex-col bg-bg-primary-light dark:bg-bg-primary/80 backdrop-blur-[10px] p-6 md:p-7 lg:p-8 rounded-2xl border border-border-light-mode dark:border-border-light shadow-md transition-all duration-300 min-h-[360px] md:min-h-[380px] lg:min-h-[400px] hover:shadow-lg hover:shadow-blue-500/20 hover:border-blue-500/40 lg:hover:-translate-y-1"
@@ -364,14 +364,15 @@
   }
   let currentPlan = null;
 
-  // Mapeo de planes a nombres de API (con guión bajo) - compartido globalmente
+  // Mapeo de planes a nombres de API - compartido globalmente
+  // Estos nombres deben coincidir con los IDs en register.astro
   if (typeof window !== "undefined") {
     window.planApiNames = {
       emprende: "emprende",
       crece: "crece",
       empresa: "empresa",
       premium: "premium",
-      "premium-plus": "premium_plus",
+      "premium-plus": "premiumPlus",
     };
   }
   const planApiNames = {
@@ -379,7 +380,7 @@
     crece: "crece",
     empresa: "empresa",
     premium: "premium",
-    "premium-plus": "premium_plus",
+    "premium-plus": "premiumPlus",
   };
 
   // URLs de fallback por si falla la API
@@ -541,7 +542,7 @@
 
         // Construir URL con query params
         const apiUrl = new URL(
-          "https://flow.wabotify.com/webhook/get-correct-link",
+          "https://flow.wabotify.com/webhook/b99e1b24-f2d7-4d8c-8758-637fa6af4647",
         );
         apiUrl.searchParams.append("email", email);
         apiUrl.searchParams.append("plan_type", planType);
@@ -557,9 +558,13 @@
 
         const data = await response.json();
 
-        // Verificar que la respuesta sea exitosa y tenga el link
-        if (data.status !== "success" || !data.link) {
+        // Verificar que la respuesta tenga el link y el status
+        if (!data.link) {
           throw new Error("No se recibió URL de redirección");
+        }
+
+        if (!data.status || (data.status !== "active_user" && data.status !== "new_user")) {
+          throw new Error("Respuesta inválida del servidor");
         }
 
         // Ocultar loading y mostrar mensaje de éxito
@@ -571,13 +576,18 @@
 
         // Esperar 1.5 segundos antes de redirigir
         setTimeout(() => {
-          // Abrir el link en nueva ventana
-          window.open(data.link, "_blank");
-
-          // Cerrar modal después de 500ms
-          setTimeout(() => {
-            closeModalHandler();
-          }, 500);
+          if (data.status === "active_user") {
+            // Usuario activo: abrir en nueva pestaña
+            window.open(data.link, "_blank");
+            
+            // Cerrar modal después de 500ms
+            setTimeout(() => {
+              closeModalHandler();
+            }, 500);
+          } else {
+            // Usuario nuevo: redirigir en la misma página
+            window.location.href = data.link;
+          }
         }, 1500);
       } catch (error) {
         console.error("Error:", error);
