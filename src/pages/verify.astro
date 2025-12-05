@@ -1,0 +1,918 @@
+---
+import Navbar from "../components/Navbar/Navbar.astro";
+import Footer from "../components/Footer/Footer.astro";
+import WhatsAppFloat from "../components/WhatsAppFloat/WhatsAppFloat.astro";
+import "../styles/global.css";
+---
+
+<!doctype html>
+<html lang="es-MX">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/png" href="/favicon.png" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <meta name="color-scheme" content="dark light" />
+        <title>Verificar Código - Solución Factura</title>
+        <meta
+            name="description"
+            content="Ingresa el código de verificación que enviamos a tu WhatsApp para completar tu registro."
+        />
+        <!-- Cloudflare Turnstile Resource Hint for Performance -->
+        <link
+            rel="preconnect"
+            href="https://challenges.cloudflare.com"
+        />
+
+        <script is:inline>
+            (function () {
+                const savedTheme = localStorage.getItem("theme");
+                const prefersDark =
+                    window.matchMedia &&
+                    window.matchMedia("(prefers-color-scheme: dark)").matches;
+                const theme = savedTheme || (prefersDark ? "dark" : "light");
+                const html = document.documentElement;
+                if (theme === "dark") {
+                    html.setAttribute("data-theme", "dark");
+                    html.classList.add("dark");
+                } else {
+                    html.setAttribute("data-theme", "light");
+                    html.classList.remove("dark");
+                }
+            })();
+        </script>
+        <script src="../scripts/theme.js"></script>
+    </head>
+
+    <body class="min-h-screen">
+        <Navbar />
+
+        <!-- Alert Container -->
+        <div
+            id="alert-container"
+            class="fixed top-20 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-md px-4"
+        >
+        </div>
+
+        <!-- Loading Overlay (Full Screen - Covers Everything Including Navbar) -->
+        <div
+            id="loading-overlay"
+            class="fixed inset-0 z-[9999] hidden flex items-center justify-center bg-gradient-to-br from-cyan-500/20 via-black to-blue-500/20 backdrop-blur-md"
+            style="pointer-events: none;"
+        >
+            <div class="text-center px-6">
+                <!-- Animated Spinner -->
+                <div class="relative w-24 h-24 mx-auto mb-6">
+                    <div class="absolute inset-0 border-4 border-cyan-500/30 rounded-full"></div>
+                    <div class="absolute inset-0 border-4 border-transparent border-t-cyan-500 rounded-full animate-spin"></div>
+                    <div class="absolute inset-2 border-4 border-transparent border-t-blue-500 rounded-full animate-spin" style="animation-duration: 1.5s;"></div>
+                </div>
+                
+                <!-- Loading Text -->
+                <h2 class="text-2xl font-bold text-white mb-3">
+                    Creando tu cuenta...
+                </h2>
+                <p class="text-cyan-200 text-base mb-2">
+                    Estamos configurando tu sistema de facturación
+                </p>
+                <p class="text-cyan-300/70 text-sm mb-4">
+                    Esto puede tomar hasta 90 segundos
+                </p>
+                
+                <!-- Warning Message -->
+                <div class="flex items-center justify-center gap-2 mb-4 bg-yellow-500/10 border border-yellow-500/30 rounded-lg px-4 py-2 max-w-sm mx-auto">
+                    <svg class="w-5 h-5 text-yellow-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+                    </svg>
+                    <p class="text-yellow-200 text-xs font-medium">
+                        Por favor no cierres esta página
+                    </p>
+                </div>
+                
+                <!-- Progress Dots -->
+                <div class="flex justify-center gap-2 mt-6">
+                    <div class="w-2 h-2 bg-cyan-500 rounded-full animate-pulse"></div>
+                    <div class="w-2 h-2 bg-cyan-500 rounded-full animate-pulse" style="animation-delay: 0.2s;"></div>
+                    <div class="w-2 h-2 bg-cyan-500 rounded-full animate-pulse" style="animation-delay: 0.4s;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Confirmation Modal -->
+        <div
+            id="confirmation-modal"
+            class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/50 backdrop-blur-sm p-4 opacity-0 transition-opacity duration-300"
+        >
+            <div
+                class="bg-white dark:bg-gray-900 rounded-2xl shadow-2xl max-w-sm w-full p-6 transform scale-95 transition-transform duration-300 border border-gray-200 dark:border-gray-700 relative"
+            >
+                <button
+                    id="close-modal-x"
+                    class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors cursor-pointer"
+                >
+                    <svg
+                        class="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+                <div class="text-center mb-6">
+                    <div
+                        class="w-12 h-12 bg-cyan-100 dark:bg-cyan-900/30 rounded-full flex items-center justify-center mx-auto mb-4"
+                    >
+                        <svg
+                            class="w-6 h-6 text-cyan-600 dark:text-cyan-400"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                            ></path>
+                        </svg>
+                    </div>
+                    <h3
+                        class="text-lg font-bold text-gray-900 dark:text-white mb-2"
+                    >
+                        ¿Es correcto este número?
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">
+                        Enviaremos el código a:
+                    </p>
+                    <p
+                        id="modal-phone-number"
+                        class="text-xl font-bold text-cyan-600 dark:text-cyan-400 mt-1"
+                    >
+                    </p>
+                </div>
+                <div class="flex flex-col gap-3">
+                    <button
+                        id="confirm-resend"
+                        class="w-full py-3 px-4 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold rounded-xl transition-all shadow-lg shadow-cyan-500/20 cursor-pointer"
+                    >
+                        Sí, reenviar código
+                    </button>
+                    <button
+                        id="cancel-resend"
+                        class="w-full py-3 px-4 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 font-medium rounded-xl transition-colors cursor-pointer"
+                    >
+                        No, corregir número
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <main
+            class="min-h-screen pt-24 lg:pt-32 pb-16 dark:bg-black bg-gray-50 relative overflow-hidden"
+        >
+            <!-- Background Pattern -->
+            <div
+                class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-transparent to-blue-500/10"
+            >
+            </div>
+
+            <!-- Decorative Elements -->
+            <div
+                class="absolute top-20 left-10 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl"
+            >
+            </div>
+            <div
+                class="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"
+            >
+            </div>
+
+            <div class="container mx-auto px-4 lg:px-8 py-8 relative z-10">
+                <div class="max-w-[420px] mx-auto">
+                    <!-- Header -->
+                    <div class="text-center mb-8">
+                        <div
+                            class="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-4"
+                        >
+                            <svg
+                                class="w-8 h-8 text-white"
+                                fill="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"
+                                ></path>
+                            </svg>
+                        </div>
+                        <h1
+                            class="text-3xl md:text-4xl font-bold dark:text-white text-gray-900 mb-3"
+                        >
+                            Verifica tu WhatsApp
+                        </h1>
+                        <p class="text-base dark:text-slate-400 text-gray-600">
+                            Hemos enviado un código de 6 dígitos a tu WhatsApp
+                            <br />
+                            <span
+                                id="phone-number-display"
+                                class="font-semibold text-cyan-600 dark:text-cyan-400"
+                            ></span>
+                        </p>
+                    </div>
+
+                    <!-- Verification Form -->
+                    <div
+                        class="glass rounded-2xl p-8 shadow-xl border-2 dark:border-gray-700/50 border-gray-200/50"
+                    >
+                        <form id="verify-form" class="space-y-6">
+                            <!-- OTP Input -->
+                            <div class="space-y-3">
+                                <label
+                                    for="otp"
+                                    class="block text-sm font-medium dark:text-slate-300 text-gray-700 text-center"
+                                >
+                                    Código de verificación
+                                </label>
+                                <div
+                                    class="flex gap-2 justify-center"
+                                    id="otp-inputs"
+                                >
+                                    <!-- 6 inputs individuales para cada dígito -->
+                                    <input
+                                        type="text"
+                                        maxlength="1"
+                                        pattern="[0-9]"
+                                        class="otp-digit w-12 h-14 text-center text-2xl font-bold rounded-lg border dark:border-gray-600 border-gray-300 dark:bg-gray-900/50 bg-white dark:text-white text-gray-900 focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-200 hover:border-cyan-400"
+                                        data-index="0"
+                                    />
+                                    <input
+                                        type="text"
+                                        maxlength="1"
+                                        pattern="[0-9]"
+                                        class="otp-digit w-12 h-14 text-center text-2xl font-bold rounded-lg border dark:border-gray-600 border-gray-300 dark:bg-gray-900/50 bg-white dark:text-white text-gray-900 focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-200 hover:border-cyan-400"
+                                        data-index="1"
+                                    />
+                                    <input
+                                        type="text"
+                                        maxlength="1"
+                                        pattern="[0-9]"
+                                        class="otp-digit w-12 h-14 text-center text-2xl font-bold rounded-lg border dark:border-gray-600 border-gray-300 dark:bg-gray-900/50 bg-white dark:text-white text-gray-900 focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-200 hover:border-cyan-400"
+                                        data-index="2"
+                                    />
+                                    <input
+                                        type="text"
+                                        maxlength="1"
+                                        pattern="[0-9]"
+                                        class="otp-digit w-12 h-14 text-center text-2xl font-bold rounded-lg border dark:border-gray-600 border-gray-300 dark:bg-gray-900/50 bg-white dark:text-white text-gray-900 focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-200 hover:border-cyan-400"
+                                        data-index="3"
+                                    />
+                                    <input
+                                        type="text"
+                                        maxlength="1"
+                                        pattern="[0-9]"
+                                        class="otp-digit w-12 h-14 text-center text-2xl font-bold rounded-lg border dark:border-gray-600 border-gray-300 dark:bg-gray-900/50 bg-white dark:text-white text-gray-900 focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-200 hover:border-cyan-400"
+                                        data-index="4"
+                                    />
+                                    <input
+                                        type="text"
+                                        maxlength="1"
+                                        pattern="[0-9]"
+                                        class="otp-digit w-12 h-14 text-center text-2xl font-bold rounded-lg border dark:border-gray-600 border-gray-300 dark:bg-gray-900/50 bg-white dark:text-white text-gray-900 focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-200 hover:border-cyan-400"
+                                        data-index="5"
+                                    />
+                                </div>
+                            </div>
+
+                            <!-- Timer -->
+                            <div
+                                class="text-center text-sm dark:text-slate-400 text-gray-600"
+                            >
+                                <p>
+                                    Código válido por: <span
+                                        id="timer"
+                                        class="font-semibold text-cyan-500"
+                                        >5:00</span
+                                    >
+                                </p>
+                            </div>
+
+                            <!-- Cloudflare Turnstile Widget (Invisible) -->
+                            <div class="flex justify-center">
+                                <div
+                                    class="cf-turnstile"
+                                    data-sitekey={import.meta.env
+                                        .PUBLIC_TURNSTILE_VERIFY_SITE_KEY}
+                                    data-theme="auto"
+                                    data-size="invisible"
+                                    data-callback="onTurnstileVerifySuccess"
+                                    data-error-callback="onTurnstileVerifyError"
+                                    data-expired-callback="onTurnstileVerifyExpired"
+                                    data-retry="auto"
+                                    data-action="verify-otp"
+                                    data-cdata="verification-form"
+                                >
+                                </div>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button
+                                type="submit"
+                                id="verify-button"
+                                class="w-full py-3.5 font-semibold text-base px-6 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-lg hover:from-cyan-600 hover:to-blue-600 transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+                            >
+                                Verificar código
+                            </button>
+
+                            <!-- Resend Code -->
+                            <div class="text-center">
+                                <button
+                                    type="button"
+                                    id="resend-button"
+                                    disabled
+                                    class="text-sm text-cyan-500 hover:text-cyan-600 font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:text-gray-400 cursor-pointer"
+                                >
+                                    Reenviar código
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Help Text -->
+                    <div class="mt-6 text-center">
+                        <p class="text-sm dark:text-slate-400 text-gray-600">
+                            Si no recibes el código en 1 minuto, verifica que
+                            tu número de WhatsApp esté correcto
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <Footer />
+        <WhatsAppFloat />
+
+        <!-- Cloudflare Turnstile Script -->
+        <script
+            src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+            async
+            defer></script>
+    </body>
+</html>
+
+<script>
+    // Verificar sesión y mostrar número
+    const registrationData = sessionStorage.getItem("registration_data");
+    if (!registrationData) {
+        window.location.href = "/register";
+    }
+
+    const userData = JSON.parse(registrationData || "{}");
+    const phoneNumberSpan = document.getElementById("phone-number-display");
+
+    // Función para formatear el número (quitar el 1 de 521 y agregar espacios)
+    const formatPhoneNumber = (phone: string) => {
+        if (!phone) return "";
+
+        let cleanPhone = phone;
+        // Si empieza con 521, quitamos el 1 (dejamos 52 + 10 dígitos)
+        if (phone.startsWith("521")) {
+            cleanPhone = "52" + phone.substring(3);
+        }
+
+        // Si es un número mexicano (+52), formateamos los últimos 10 dígitos
+        if (cleanPhone.startsWith("52") && cleanPhone.length === 12) {
+            const country = "52";
+            const tenDigits = cleanPhone.substring(2);
+            // Formato: 55 6523 4467
+            const p1 = tenDigits.substring(0, 2);
+            const p2 = tenDigits.substring(2, 6);
+            const p3 = tenDigits.substring(6, 10);
+            return `+${country} ${p1} ${p2} ${p3}`;
+        }
+
+        // Fallback para otros números
+        return `+${cleanPhone}`;
+    };
+
+    if (phoneNumberSpan && userData.whatsapp_number) {
+        phoneNumberSpan.textContent = formatPhoneNumber(
+            userData.whatsapp_number,
+        );
+    }
+
+    // Alert function
+    function showAlert(
+        message: string,
+        type: "error" | "success" | "warning" = "error",
+    ) {
+        const alertContainer = document.getElementById("alert-container");
+        if (!alertContainer) return;
+
+        const alert = document.createElement("div");
+        const bgColor =
+            type === "error"
+                ? "bg-red-500"
+                : type === "success"
+                  ? "bg-green-500"
+                  : "bg-yellow-500";
+
+        alert.className = `${bgColor} text-white px-6 py-4 rounded-lg shadow-lg flex items-center gap-3 mb-3`;
+        alert.innerHTML = `
+            <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                ${type === "error" ? '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>' : '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>'}
+            </svg>
+            <span class="flex-1">${message}</span>
+        `;
+
+        alertContainer.appendChild(alert);
+
+        setTimeout(() => {
+            alert.style.opacity = "0";
+            alert.style.transform = "translateY(-20px)";
+            alert.style.transition = "all 0.3s ease-out";
+            setTimeout(() => alert.remove(), 300);
+        }, 5000);
+    }
+
+    // Turnstile verification tracking
+    let turnstileVerified = false;
+
+    // Callbacks de Turnstile para verify page
+    (window as any).onTurnstileVerifySuccess = function (token: string) {
+        console.log("✅ Turnstile verificado exitosamente en verify page");
+        turnstileVerified = true;
+    };
+
+    (window as any).onTurnstileVerifyError = function (error: any) {
+        console.error("❌ Error en Turnstile (verify):", error);
+        turnstileVerified = false;
+        showAlert(
+            "Error en la verificación de seguridad. Por favor recarga la página.",
+            "error",
+        );
+    };
+
+    (window as any).onTurnstileVerifyExpired = function () {
+        console.warn("⚠️ Token de Turnstile expirado (verify)");
+        turnstileVerified = false;
+        showAlert(
+            "La verificación de seguridad ha expirado. Por favor intenta nuevamente.",
+            "warning",
+        );
+    };
+
+    // OTP Input handling
+    const otpInputs = document.querySelectorAll(
+        ".otp-digit",
+    ) as NodeListOf<HTMLInputElement>;
+    const form = document.getElementById("verify-form") as HTMLFormElement;
+    const verifyButton = document.getElementById(
+        "verify-button",
+    ) as HTMLButtonElement;
+    const resendButton = document.getElementById(
+        "resend-button",
+    ) as HTMLButtonElement;
+    const timerElement = document.getElementById("timer") as HTMLSpanElement;
+
+    // Auto-focus and navigation between inputs
+    otpInputs.forEach((input, index) => {
+        input.addEventListener("input", (e) => {
+            const target = e.target as HTMLInputElement;
+            const value = target.value;
+
+            // Solo permitir números
+            if (!/^\d*$/.test(value)) {
+                target.value = "";
+                return;
+            }
+
+            // Auto-focus al siguiente input
+            if (value && index < otpInputs.length - 1) {
+                otpInputs[index + 1].focus();
+            }
+        });
+
+        input.addEventListener("keydown", (e) => {
+            const target = e.target as HTMLInputElement;
+
+            // Backspace: ir al input anterior
+            if (e.key === "Backspace" && !target.value && index > 0) {
+                otpInputs[index - 1].focus();
+            }
+
+            // Arrow keys
+            if (e.key === "ArrowLeft" && index > 0) {
+                otpInputs[index - 1].focus();
+            }
+            if (e.key === "ArrowRight" && index < otpInputs.length - 1) {
+                otpInputs[index + 1].focus();
+            }
+        });
+
+        // Paste handling
+        input.addEventListener("paste", (e) => {
+            e.preventDefault();
+            const pastedData = e.clipboardData?.getData("text") || "";
+            const digits = pastedData.replace(/\D/g, "").slice(0, 6);
+
+            digits.split("").forEach((digit, i) => {
+                if (otpInputs[i]) {
+                    otpInputs[i].value = digit;
+                }
+            });
+
+            // Focus en el último input con valor
+            const lastFilledIndex = Math.min(digits.length, 5);
+            otpInputs[lastFilledIndex].focus();
+        });
+    });
+
+    // Auto-focus primer input
+    otpInputs[0]?.focus();
+
+    // Timer countdown (basado en timestamp guardado)
+    let timeLeft = 0;
+
+    if (userData.expiresAt) {
+        const now = Date.now();
+        const remaining = Math.floor((userData.expiresAt - now) / 1000);
+        timeLeft = remaining > 0 ? remaining : 0;
+    } else {
+        // Fallback si no hay timestamp
+        timeLeft = 5 * 60;
+    }
+
+    // Función para actualizar UI del timer
+    const updateTimerUI = () => {
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        timerElement.textContent = `${minutes}:${seconds.toString().padStart(2, "0")}`;
+
+        if (timeLeft <= 0) {
+            timerElement.textContent = "0:00";
+            timerElement.classList.add("text-red-500");
+
+            // Solo mostrar alerta si no estaba ya expirado al cargar
+            if (!verifyButton.disabled && resendButton.disabled) {
+                showAlert(
+                    "El código ha expirado. Puedes solicitar uno nuevo.",
+                    "warning",
+                );
+            }
+
+            verifyButton.disabled = true;
+            resendButton.disabled = false; // Habilitar reenvío cuando expira
+            return true; // Expirado
+        } else {
+            // Mientras corre el tiempo
+            resendButton.disabled = true; // Mantener deshabilitado
+        }
+        return false; // No expirado
+    };
+
+    // Inicializar UI inmediatamente
+    let timerInterval: number | undefined;
+
+    if (updateTimerUI()) {
+        // Si ya expiró al cargar
+        verifyButton.disabled = true;
+        resendButton.disabled = false;
+    } else {
+        // Si no ha expirado, iniciar intervalo
+        timerInterval = window.setInterval(() => {
+            timeLeft--;
+            if (updateTimerUI()) {
+                clearInterval(timerInterval);
+            }
+        }, 1000);
+    }
+
+    // Helper function to show/hide loading overlay
+    const loadingOverlay = document.getElementById("loading-overlay");
+    
+    const showLoading = () => {
+        if (loadingOverlay) {
+            loadingOverlay.classList.remove("hidden");
+            loadingOverlay.style.pointerEvents = "all"; // Block all interactions
+            document.body.style.overflow = "hidden"; // Prevent scrolling
+        }
+    };
+
+    const hideLoading = () => {
+        if (loadingOverlay) {
+            loadingOverlay.classList.add("hidden");
+            loadingOverlay.style.pointerEvents = "none";
+            document.body.style.overflow = "";
+        }
+    };
+
+    // Form submission
+    form?.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        // Validar si el código ha expirado
+        if (timeLeft <= 0) {
+            showAlert(
+                "El código ha expirado. Por favor solicita uno nuevo.",
+                "warning",
+            );
+            return;
+        }
+
+        // Obtener código OTP
+        const otp = Array.from(otpInputs)
+            .map((input) => input.value)
+            .join("");
+
+        if (otp.length !== 6) {
+            showAlert("Por favor ingresa los 6 dígitos del código", "error");
+            return;
+        }
+
+        // Verificar que Turnstile esté completo (modo invisible se ejecuta automáticamente)
+        if (!turnstileVerified) {
+            showAlert(
+                "Verificando seguridad... por favor espera un momento",
+                "warning",
+            );
+            // Dar un momento para que Turnstile se ejecute
+            setTimeout(() => {
+                if (turnstileVerified) {
+                    form.dispatchEvent(new Event("submit"));
+                }
+            }, 1000);
+            return;
+        }
+
+        // Obtener token de Turnstile
+        const turnstileResponse = (window as any).turnstile?.getResponse();
+
+        if (!turnstileResponse) {
+            showAlert(
+                "Error de verificación de seguridad. Por favor recarga la página.",
+                "error",
+            );
+            return;
+        }
+
+        // Mostrar loading overlay (bloquea toda la UI)
+        showLoading();
+        
+        // Deshabilitar botón mientras se verifica
+        verifyButton.disabled = true;
+        verifyButton.textContent = "Verificando...";
+
+        try {
+            const response = await fetch(
+                "https://flow.wabotify.com/webhook/d1d2dc0e-3c99-4b15-bf1f-38c08371b6dd",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        otp: otp,
+                        whatsapp_number: userData.whatsapp_number,
+                        cf_turnstile_token: turnstileResponse,
+                    }),
+                },
+            );
+
+            const result = await response.json();
+            console.log("=== RESPUESTA VERIFICACIÓN ===");
+            console.log("Success:", result.success);
+            console.log("Message:", result.message);
+            console.log("Code:", result.code);
+            console.log("Link:", result.link);
+            console.log("==============================");
+
+            // Ocultar loading overlay
+            hideLoading();
+
+            // Manejar respuesta exitosa (con link de checkout)
+            if (result.success === true && result.link) {
+                console.log("✅ Cuenta creada exitosamente");
+                showAlert("¡Cuenta creada! Redirigiendo al checkout...", "success");
+                
+                // Limpiar datos de sesión por seguridad
+                sessionStorage.removeItem("registration_data");
+                
+                // Redirigir al checkout en la misma pestaña
+                setTimeout(() => {
+                    window.location.href = result.link;
+                }, 1500);
+            } 
+            // Código inválido
+            else if (result.code === "INVALID_CODE") {
+                console.warn("⚠️ Código inválido");
+                showAlert(
+                    "Código incorrecto. Por favor verifica e intenta de nuevo.",
+                    "error",
+                );
+                // Limpiar inputs y permitir reintentar
+                otpInputs.forEach((input) => (input.value = ""));
+                otpInputs[0].focus();
+                verifyButton.disabled = false;
+                verifyButton.textContent = "Verificar código";
+                turnstileVerified = false;
+                (window as any).turnstile?.reset();
+            } 
+            // Fallo en el registro (token de Turnstile inválido)
+            else if (result.code === "REGISTRATION_FAILED") {
+                console.warn("⚠️ Fallo en la verificación de seguridad");
+                showAlert(
+                    "Error de seguridad. Por favor recarga la página e intenta de nuevo.",
+                    "error",
+                );
+                verifyButton.disabled = false;
+                verifyButton.textContent = "Verificar código";
+                turnstileVerified = false;
+                (window as any).turnstile?.reset();
+            } 
+            // Respuesta desconocida
+            else {
+                console.error("⚠️ Respuesta inesperada:", result);
+                showAlert(
+                    "Hubo un error al verificar el código. Por favor intenta de nuevo.",
+                    "error",
+                );
+                verifyButton.disabled = false;
+                verifyButton.textContent = "Verificar código";
+                turnstileVerified = false;
+                (window as any).turnstile?.reset();
+            }
+        } catch (error) {
+            console.error("❌ Error al verificar código:", error);
+            
+            // Ocultar loading overlay en caso de error
+            hideLoading();
+            
+            showAlert(
+                "Hubo un error al verificar el código. Por favor intenta de nuevo.",
+                "error",
+            );
+            verifyButton.disabled = false;
+            verifyButton.textContent = "Verificar código";
+            turnstileVerified = false;
+            (window as any).turnstile?.reset();
+        }
+    });
+
+    // Modal elements
+    const modal = document.getElementById("confirmation-modal");
+    const modalPhone = document.getElementById("modal-phone-number");
+    const confirmResendBtn = document.getElementById("confirm-resend");
+    const cancelResendBtn = document.getElementById("cancel-resend");
+    const closeModalXBtn = document.getElementById("close-modal-x");
+
+    // Helper to toggle modal
+    const toggleModal = (show: boolean) => {
+        if (show) {
+            modal?.classList.remove("hidden");
+            // Small delay for transition
+            setTimeout(() => {
+                modal?.classList.remove("opacity-0");
+                modal?.querySelector("div")?.classList.remove("scale-95");
+                modal?.querySelector("div")?.classList.add("scale-100");
+            }, 10);
+        } else {
+            modal?.classList.add("opacity-0");
+            modal?.querySelector("div")?.classList.remove("scale-100");
+            modal?.querySelector("div")?.classList.add("scale-95");
+            setTimeout(() => {
+                modal?.classList.add("hidden");
+            }, 300);
+        }
+    };
+
+    // Resend button click - Open Modal
+    resendButton?.addEventListener("click", () => {
+        if (modalPhone) {
+            modalPhone.textContent = formatPhoneNumber(
+                userData.whatsapp_number,
+            );
+        }
+        toggleModal(true);
+    });
+
+    // Close modal when clicking X
+    closeModalXBtn?.addEventListener("click", () => {
+        toggleModal(false);
+    });
+
+    // Close modal when clicking outside (backdrop)
+    modal?.addEventListener("click", (e) => {
+        if (e.target === modal) {
+            toggleModal(false);
+        }
+    });
+
+    // Cancel/Edit Number - Redirect to Register
+    cancelResendBtn?.addEventListener("click", () => {
+        window.location.href = "/register";
+    });
+
+    // Confirm Resend - Execute Logic
+    confirmResendBtn?.addEventListener("click", async () => {
+        toggleModal(false); // Close modal
+
+        resendButton.disabled = true;
+        resendButton.textContent = "Reenviando...";
+
+        try {
+            // Reenviar código usando el endpoint de reenvío
+            const response = await fetch(
+                "https://flow.wabotify.com/webhook/a8a97652-b45f-4470-9035-74f782ad3ba7",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        name: userData.name,
+                        last_name: userData.last_name,
+                        rfc: userData.rfc,
+                        email: userData.email,
+                        password: userData.password,
+                        whatsapp_number: userData.whatsapp_number,
+                        plan: userData.plan,
+                        cf_turnstile_token: userData.cf_turnstile_token,
+                    }),
+                },
+            );
+
+            const result = await response.json();
+            console.log("=== RESPUESTA REENVÍO ===");
+            console.log("Code:", result.code);
+            console.log("Message:", result.message);
+            console.log("=========================");
+
+            // Código reenviado exitosamente
+            if (result.code === "CODE_SENT") {
+                console.log("✅ Código reenviado exitosamente");
+                showAlert("Código reenviado a tu WhatsApp", "success");
+
+                // Actualizar timestamp de expiración en sessionStorage
+                const newExpiresAt = Date.now() + 5 * 60 * 1000;
+                userData.expiresAt = newExpiresAt;
+                sessionStorage.setItem(
+                    "registration_data",
+                    JSON.stringify(userData),
+                );
+
+                // Reiniciar timer
+                timeLeft = 5 * 60;
+                timerElement.classList.remove("text-red-500");
+                verifyButton.disabled = false;
+
+                // Reiniciar intervalo si estaba detenido
+                if (timerInterval) {
+                    clearInterval(timerInterval);
+                }
+                timerInterval = window.setInterval(() => {
+                    timeLeft--;
+                    if (updateTimerUI()) {
+                        clearInterval(timerInterval);
+                    }
+                }, 1000);
+
+                // El botón se mantendrá deshabilitado por updateTimerUI hasta que expire nuevamente
+                resendButton.disabled = true;
+                resendButton.textContent = "Reenviar código";
+            } 
+            // Fallo en la verificación (token de Turnstile inválido)
+            else if (result.code === "REGISTRATION_FAILED") {
+                console.warn("⚠️ Fallo al reenviar código");
+                showAlert(
+                    "No se pudo completar la solicitud. Por favor intenta de nuevo.",
+                    "error",
+                );
+                // Habilitar botón nuevamente para reintentar
+                resendButton.disabled = false;
+                resendButton.textContent = "Reenviar código";
+            } 
+            // Cualquier otro error
+            else {
+                console.error("⚠️ Respuesta inesperada:", result);
+                showAlert(
+                    "Hubo un error al reenviar el código. Por favor intenta de nuevo.",
+                    "error",
+                );
+                resendButton.disabled = false;
+                resendButton.textContent = "Reenviar código";
+            }
+        } catch (error) {
+            console.error("❌ Error al reenviar código:", error);
+            showAlert(
+                "No se pudo reenviar el código. Por favor intenta de nuevo.",
+                "error",
+            );
+            // Si falla, habilitar el botón nuevamente para que puedan reintentar
+            resendButton.disabled = false;
+            resendButton.textContent = "Reenviar código";
+        }
+    });
+</script>
