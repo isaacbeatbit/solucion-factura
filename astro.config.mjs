@@ -6,9 +6,11 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
+  server: {
+    port: 3000,
+  },
   integrations: [sitemap()],
   site: "http://solucionfactura.mx",
-
   vite: {
     plugins: [tailwindcss()],
     build: {
@@ -25,7 +27,6 @@ export default defineConfig({
       legalComments: "none",
     },
     server: {
-      port: 3000,
       // Optimizaciones para reducir uso de RAM
       watch: {
         // Reducir el número de archivos vigilados

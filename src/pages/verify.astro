@@ -299,40 +299,19 @@ import "../styles/global.css";
                                 </p>
                             </div>
 
-                            <!-- Cloudflare Turnstile Widget (Invisible) - Para verificación de OTP -->
+                            <!-- Cloudflare Turnstile Widget (Invisible) -->
                             <div class="flex justify-center">
                                 <div
-                                    id="turnstile-verify-widget"
+                                    id="turnstile-widget"
                                     class="cf-turnstile"
                                     data-sitekey={import.meta.env
                                         .PUBLIC_TURNSTILE_VERIFY_SITE_KEY}
                                     data-theme="auto"
                                     data-size="invisible"
-                                    data-callback="onTurnstileVerifySuccess"
-                                    data-error-callback="onTurnstileVerifyError"
-                                    data-expired-callback="onTurnstileVerifyExpired"
+                                    data-callback="onTurnstileSuccess"
+                                    data-error-callback="onTurnstileError"
+                                    data-expired-callback="onTurnstileExpired"
                                     data-retry="auto"
-                                    data-action="verify-otp"
-                                    data-cdata="verification-form"
-                                >
-                                </div>
-                            </div>
-
-                            <!-- Cloudflare Turnstile Widget (Invisible) - Para reenvío de código -->
-                            <div class="hidden">
-                                <div
-                                    id="turnstile-resend-widget"
-                                    class="cf-turnstile"
-                                    data-sitekey={import.meta.env
-                                        .PUBLIC_TURNSTILE_VERIFY_SITE_KEY}
-                                    data-theme="auto"
-                                    data-size="invisible"
-                                    data-callback="onTurnstileResendSuccess"
-                                    data-error-callback="onTurnstileResendError"
-                                    data-expired-callback="onTurnstileResendExpired"
-                                    data-retry="auto"
-                                    data-action="resend-code"
-                                    data-cdata="resend-form"
                                 >
                                 </div>
                             </div>
@@ -459,16 +438,16 @@ import "../styles/global.css";
 
     // Turnstile verification tracking
     let turnstileVerified = false;
-    let turnstileResendVerified = false;
+    let currentTurnstileAction: 'verify' | 'resend' | null = null;
 
-    // Callbacks de Turnstile para verificación de OTP
-    (window as any).onTurnstileVerifySuccess = function (token: string) {
-        console.log("✅ Turnstile verificado exitosamente para OTP");
+    // Callbacks de Turnstile unificados
+    (window as any).onTurnstileSuccess = function (token: string) {
+        console.log(`✅ Turnstile verificado exitosamente para ${currentTurnstileAction}`);
         turnstileVerified = true;
     };
 
-    (window as any).onTurnstileVerifyError = function (error: any) {
-        console.error("❌ Error en Turnstile (verify):", error);
+    (window as any).onTurnstileError = function (error: any) {
+        console.error(`❌ Error en Turnstile (${currentTurnstileAction}):`, error);
         turnstileVerified = false;
         showAlert(
             "Error en la verificación de seguridad. Por favor recarga la página.",
@@ -476,33 +455,13 @@ import "../styles/global.css";
         );
     };
 
-    (window as any).onTurnstileVerifyExpired = function () {
-        console.warn("⚠️ Token de Turnstile expirado (verify)");
+    (window as any).onTurnstileExpired = function () {
+        console.warn(`⚠️ Token de Turnstile expirado (${currentTurnstileAction})`);
         turnstileVerified = false;
         showAlert(
             "La verificación de seguridad ha expirado. Por favor intenta nuevamente.",
             "warning",
         );
-    };
-
-    // Callbacks de Turnstile para reenvío de código
-    (window as any).onTurnstileResendSuccess = function (token: string) {
-        console.log("✅ Turnstile verificado exitosamente para reenvío");
-        turnstileResendVerified = true;
-    };
-
-    (window as any).onTurnstileResendError = function (error: any) {
-        console.error("❌ Error en Turnstile (resend):", error);
-        turnstileResendVerified = false;
-        showAlert(
-            "Error en la verificación de seguridad para reenvío. Por favor intenta de nuevo.",
-            "error",
-        );
-    };
-
-    (window as any).onTurnstileResendExpired = function () {
-        console.warn("⚠️ Token de Turnstile expirado (resend)");
-        turnstileResendVerified = false;
     };
 
     // OTP Input handling
@@ -673,146 +632,150 @@ import "../styles/global.css";
             return;
         }
 
-        // Verificar que Turnstile esté completo (modo invisible se ejecuta automáticamente)
-        if (!turnstileVerified) {
-            showAlert(
-                "Verificando seguridad... por favor espera un momento",
-                "warning",
-            );
-            // Dar un momento para que Turnstile se ejecute
-            setTimeout(() => {
-                if (turnstileVerified) {
-                    form.dispatchEvent(new Event("submit"));
-                }
-            }, 1000);
-            return;
-        }
-
-        // Obtener token de Turnstile del widget de verificación
-        const turnstileWidget = document.getElementById("turnstile-verify-widget");
-        const turnstileResponse = turnstileWidget ? (window as any).turnstile?.getResponse(turnstileWidget) : null;
-
-        if (!turnstileResponse) {
-            showAlert(
-                "Error de verificación de seguridad. Por favor recarga la página.",
-                "error",
-            );
-            return;
-        }
-
-        // Mostrar loading overlay (bloquea toda la UI)
-        showLoading();
+        // Establecer acción actual y resetear widget
+        currentTurnstileAction = 'verify';
+        turnstileVerified = false;
+        const widget = document.getElementById("turnstile-widget");
         
-        // Deshabilitar botón mientras se verifica
-        verifyButton.disabled = true;
-        verifyButton.textContent = "Verificando...";
-
-        try {
-            const response = await fetch(
-                "https://flow.wabotify.com/webhook/d1d2dc0e-3c99-4b15-bf1f-38c08371b6dd",
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                        otp: otp,
-                        whatsapp_number: userData.whatsapp_number,
-                        cf_turnstile_token: turnstileResponse,
-                    }),
-                },
-            );
-
-            const result = await response.json();
-            console.log("=== RESPUESTA VERIFICACIÓN ===");
-            console.log("Success:", result.success);
-            console.log("Message:", result.message);
-            console.log("Code:", result.code);
-            console.log("Link:", result.link);
-            console.log("==============================");
-
-            // Ocultar loading overlay
-            hideLoading();
-
-            // Manejar respuesta exitosa (con link de checkout)
-            if (result.success === true && result.link) {
-                console.log("✅ Cuenta creada exitosamente");
-                showAlert("¡Cuenta creada! Redirigiendo al checkout...", "success");
-                
-                // Limpiar datos de sesión por seguridad
-                sessionStorage.removeItem("registration_data");
-                
-                // Redirigir al checkout en la misma pestaña
-                setTimeout(() => {
-                    window.location.href = result.link;
-                }, 1500);
-            } 
-            // Código inválido
-            else if (result.code === "INVALID_CODE") {
-                console.warn("⚠️ Código inválido");
-                showAlert(
-                    "Código incorrecto. Por favor verifica e intenta de nuevo.",
-                    "error",
-                );
-                // Limpiar inputs y permitir reintentar
-                otpInputs.forEach((input) => (input.value = ""));
-                otpInputs[0].focus();
-                verifyButton.disabled = false;
-                verifyButton.textContent = "Verificar código";
-                turnstileVerified = false;
-                const verifyWidget = document.getElementById("turnstile-verify-widget");
-                if (verifyWidget) {
-                    (window as any).turnstile?.reset(verifyWidget);
-                }
-            } 
-            // Fallo en el registro (token de Turnstile inválido)
-            else if (result.code === "REGISTRATION_FAILED") {
-                console.warn("⚠️ Fallo en la verificación de seguridad");
-                showAlert(
-                    "Error de seguridad. Por favor recarga la página e intenta de nuevo.",
-                    "error",
-                );
-                verifyButton.disabled = false;
-                verifyButton.textContent = "Verificar código";
-                turnstileVerified = false;
-                const verifyWidget = document.getElementById("turnstile-verify-widget");
-                if (verifyWidget) {
-                    (window as any).turnstile?.reset(verifyWidget);
-                }
-            } 
-            // Respuesta desconocida
-            else {
-                console.error("⚠️ Respuesta inesperada:", result);
-                showAlert(
-                    "Hubo un error al verificar el código. Por favor intenta de nuevo.",
-                    "error",
-                );
-                verifyButton.disabled = false;
-                verifyButton.textContent = "Verificar código";
-                turnstileVerified = false;
-                const verifyWidget = document.getElementById("turnstile-verify-widget");
-                if (verifyWidget) {
-                    (window as any).turnstile?.reset(verifyWidget);
-                }
-            }
-        } catch (error) {
-            console.error("❌ Error al verificar código:", error);
-            
-            // Ocultar loading overlay en caso de error
-            hideLoading();
-            
-            showAlert(
-                "Hubo un error al verificar el código. Por favor intenta de nuevo.",
-                "error",
-            );
-            verifyButton.disabled = false;
-            verifyButton.textContent = "Verificar código";
-            turnstileVerified = false;
-            const verifyWidget = document.getElementById("turnstile-verify-widget");
-            if (verifyWidget) {
-                (window as any).turnstile?.reset(verifyWidget);
-            }
+        if (!widget) {
+            showAlert("Error de configuración. Por favor recarga la página.", "error");
+            return;
         }
+
+        // Resetear y ejecutar el widget
+        (window as any).turnstile?.reset(widget);
+        (window as any).turnstile?.execute(widget);
+
+        // Esperar a que Turnstile se complete
+        let attempts = 0;
+        const maxAttempts = 50; // 5 segundos
+        
+        const waitForTurnstile = setInterval(async () => {
+            attempts++;
+            
+            if (turnstileVerified) {
+                clearInterval(waitForTurnstile);
+                
+                // Obtener token
+                const turnstileResponse = (window as any).turnstile?.getResponse(widget);
+                
+                if (!turnstileResponse) {
+                    showAlert(
+                        "Error al obtener token de seguridad. Por favor intenta de nuevo.",
+                        "error",
+                    );
+                    return;
+                }
+
+                // Mostrar loading overlay (bloquea toda la UI)
+                showLoading();
+                
+                // Deshabilitar botón mientras se verifica
+                verifyButton.disabled = true;
+                verifyButton.textContent = "Verificando...";
+
+                try {
+                    const response = await fetch(
+                        "https://flow.wabotify.com/webhook/d1d2dc0e-3c99-4b15-bf1f-38c08371b6dd",
+                        {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify({
+                                otp: otp,
+                                whatsapp_number: userData.whatsapp_number,
+                                cf_turnstile_token: turnstileResponse,
+                            }),
+                        },
+                    );
+
+                    const result = await response.json();
+                    console.log("=== RESPUESTA VERIFICACIÓN ===");
+                    console.log("Success:", result.success);
+                    console.log("Message:", result.message);
+                    console.log("Code:", result.code);
+                    console.log("Link:", result.link);
+                    console.log("==============================");
+
+                    // Ocultar loading overlay
+                    hideLoading();
+
+                    // Manejar respuesta exitosa (con link de checkout)
+                    if (result.success === true && result.link) {
+                        console.log("✅ Cuenta creada exitosamente");
+                        showAlert("¡Cuenta creada! Redirigiendo al checkout...", "success");
+                        
+                        // Limpiar datos de sesión por seguridad
+                        sessionStorage.removeItem("registration_data");
+                        
+                        // Redirigir al checkout en la misma pestaña
+                        setTimeout(() => {
+                            window.location.href = result.link;
+                        }, 1500);
+                    } 
+                    // Código inválido
+                    else if (result.code === "INVALID_CODE") {
+                        console.warn("⚠️ Código inválido");
+                        showAlert(
+                            "Código incorrecto. Por favor verifica e intenta de nuevo.",
+                            "error",
+                        );
+                        // Limpiar inputs y permitir reintentar
+                        otpInputs.forEach((input) => (input.value = ""));
+                        otpInputs[0].focus();
+                        verifyButton.disabled = false;
+                        verifyButton.textContent = "Verificar código";
+                        turnstileVerified = false;
+                        (window as any).turnstile?.reset(widget);
+                    } 
+                    // Fallo en el registro (token de Turnstile inválido)
+                    else if (result.code === "REGISTRATION_FAILED") {
+                        console.warn("⚠️ Fallo en la verificación de seguridad");
+                        showAlert(
+                            "Error de seguridad. Por favor recarga la página e intenta de nuevo.",
+                            "error",
+                        );
+                        verifyButton.disabled = false;
+                        verifyButton.textContent = "Verificar código";
+                        turnstileVerified = false;
+                        (window as any).turnstile?.reset(widget);
+                    } 
+                    // Respuesta desconocida
+                    else {
+                        console.error("⚠️ Respuesta inesperada:", result);
+                        showAlert(
+                            "Hubo un error al verificar el código. Por favor intenta de nuevo.",
+                            "error",
+                        );
+                        verifyButton.disabled = false;
+                        verifyButton.textContent = "Verificar código";
+                        turnstileVerified = false;
+                        (window as any).turnstile?.reset(widget);
+                    }
+                } catch (error) {
+                    console.error("❌ Error al verificar código:", error);
+                    
+                    // Ocultar loading overlay en caso de error
+                    hideLoading();
+                    
+                    showAlert(
+                        "Hubo un error al verificar el código. Por favor intenta de nuevo.",
+                        "error",
+                    );
+                    verifyButton.disabled = false;
+                    verifyButton.textContent = "Verificar código";
+                    turnstileVerified = false;
+                    (window as any).turnstile?.reset(widget);
+                }
+            } else if (attempts >= maxAttempts) {
+                clearInterval(waitForTurnstile);
+                showAlert(
+                    "La verificación de seguridad está tardando demasiado. Por favor intenta de nuevo.",
+                    "error",
+                );
+            }
+        }, 100);
     });
 
     // Modal elements
@@ -876,11 +839,12 @@ import "../styles/global.css";
         resendButton.disabled = true;
         resendButton.textContent = "Verificando...";
 
-        // Resetear y ejecutar el widget de Turnstile para reenvío
-        turnstileResendVerified = false;
-        const resendWidget = document.getElementById("turnstile-resend-widget");
+        // Establecer acción actual y resetear widget
+        currentTurnstileAction = 'resend';
+        turnstileVerified = false;
+        const widget = document.getElementById("turnstile-widget");
         
-        if (!resendWidget) {
+        if (!widget) {
             showAlert("Error de configuración. Por favor recarga la página.", "error");
             resendButton.disabled = false;
             resendButton.textContent = "Reenviar código";
@@ -888,8 +852,8 @@ import "../styles/global.css";
         }
 
         // Resetear el widget y ejecutarlo
-        (window as any).turnstile?.reset(resendWidget);
-        (window as any).turnstile?.execute(resendWidget);
+        (window as any).turnstile?.reset(widget);
+        (window as any).turnstile?.execute(widget);
 
         // Esperar a que Turnstile se complete (máximo 5 segundos)
         let attempts = 0;
@@ -898,11 +862,11 @@ import "../styles/global.css";
         const waitForTurnstile = setInterval(async () => {
             attempts++;
             
-            if (turnstileResendVerified) {
+            if (turnstileVerified) {
                 clearInterval(waitForTurnstile);
                 
-                // Obtener el token del widget de reenvío
-                const turnstileToken = (window as any).turnstile?.getResponse(resendWidget);
+                // Obtener el token del widget
+                const turnstileToken = (window as any).turnstile?.getResponse(widget);
                 
                 if (!turnstileToken) {
                     showAlert("Error al obtener token de seguridad. Por favor intenta de nuevo.", "error");
@@ -974,9 +938,9 @@ import "../styles/global.css";
                         resendButton.disabled = true;
                         resendButton.textContent = "Reenviar código";
                         
-                        // Resetear el widget de reenvío para futuras solicitudes
-                        turnstileResendVerified = false;
-                        (window as any).turnstile?.reset(resendWidget);
+                        // Resetear el widget para futuras solicitudes
+                        turnstileVerified = false;
+                        (window as any).turnstile?.reset(widget);
                     } 
                     // Fallo en la verificación (token de Turnstile inválido)
                     else if (result.code === "REGISTRATION_FAILED") {
@@ -988,8 +952,8 @@ import "../styles/global.css";
                         // Habilitar botón nuevamente para reintentar
                         resendButton.disabled = false;
                         resendButton.textContent = "Reenviar código";
-                        turnstileResendVerified = false;
-                        (window as any).turnstile?.reset(resendWidget);
+                        turnstileVerified = false;
+                        (window as any).turnstile?.reset(widget);
                     } 
                     // Cualquier otro error
                     else {
@@ -1000,8 +964,8 @@ import "../styles/global.css";
                         );
                         resendButton.disabled = false;
                         resendButton.textContent = "Reenviar código";
-                        turnstileResendVerified = false;
-                        (window as any).turnstile?.reset(resendWidget);
+                        turnstileVerified = false;
+                        (window as any).turnstile?.reset(widget);
                     }
                 } catch (error) {
                     console.error("❌ Error al reenviar código:", error);
@@ -1012,8 +976,8 @@ import "../styles/global.css";
                     // Si falla, habilitar el botón nuevamente para que puedan reintentar
                     resendButton.disabled = false;
                     resendButton.textContent = "Reenviar código";
-                    turnstileResendVerified = false;
-                    (window as any).turnstile?.reset(resendWidget);
+                    turnstileVerified = false;
+                    (window as any).turnstile?.reset(widget);
                 }
             } else if (attempts >= maxAttempts) {
                 // Timeout - Turnstile no se completó a tiempo
@@ -1025,12 +989,8 @@ import "../styles/global.css";
                 );
                 resendButton.disabled = false;
                 resendButton.textContent = "Reenviar código";
-                turnstileResendVerified = false;
-                const verifyWidget = document.getElementById("turnstile-verify-widget");
-                if (verifyWidget) {
-                    (window as any).turnstile?.reset(verifyWidget);
-                }
-                (window as any).turnstile?.reset(resendWidget);
+                turnstileVerified = false;
+                (window as any).turnstile?.reset(widget);
             }
         }, 100); // Verificar cada 100ms
     });
