@@ -252,7 +252,7 @@
         <button
           type="button"
           class="plan-button w-full flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all duration-200 cursor-pointer bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-md hover:-translate-y-1 hover:shadow-lg mt-4 shrink-0"
-          data-plan="premium-plus"
+          data-plan="premium_plus"
         >
           Plan Completo
         </button>
@@ -364,6 +364,15 @@
   }
   let currentPlan = null;
 
+  // Nombres de display para los planes
+  const planDisplayNames = {
+    emprende: "Emprende",
+    crece: "Crece",
+    empresa: "Empresa",
+    premium: "Premium",
+    premium_plus: "Premium Plus",
+  };
+
   // Mapeo de planes a nombres de API - compartido globalmente
   // Estos nombres deben coincidir con los IDs en register.astro
   if (typeof window !== "undefined") {
@@ -372,7 +381,7 @@
       crece: "crece",
       empresa: "empresa",
       premium: "premium",
-      "premium-plus": "premiumPlus",
+      premium_plus: "premium_plus",
     };
   }
   const planApiNames = {
@@ -380,42 +389,8 @@
     crece: "crece",
     empresa: "empresa",
     premium: "premium",
-    "premium-plus": "premiumPlus",
+    premium_plus: "premium_plus",
   };
-
-  // URLs de fallback por si falla la API
-  const planUrls = {
-    emprende: {
-      subscribe:
-        "https://pagos.solucionfiscal.online/subscribe/6677460f60546edc2553076f/plan-emprende",
-      register: "https://app.solucionfactura.mx/register?plan=emprende",
-    },
-    crece: {
-      subscribe:
-        "https://pagos.solucionfiscal.online/subscribe/6677544560546edc255308ea/plan-crece",
-      register: "https://app.solucionfactura.mx/register?plan=crece",
-    },
-    empresa: {
-      subscribe:
-        "https://pagos.solucionfiscal.online/subscribe/667754e89b6a9adc0e5693f1/plan-empresa",
-      register: "https://app.solucionfactura.mx/register?plan=empresa",
-    },
-    premium: {
-      subscribe:
-        "https://pagos.solucionfiscal.online/subscribe/6677554f9b6a9adc0e5693f6/plan-premium",
-      register: "https://app.solucionfactura.mx/register?plan=premium",
-    },
-    "premium-plus": {
-      subscribe:
-        "https://pagos.solucionfiscal.online/subscribe/667756fe9b6a9adc0e569424/plan-premium-plus",
-      register: "https://app.solucionfactura.mx/register?plan=premium-plus",
-    },
-  };
-
-  // Función para formatear el nombre del plan
-  function formatPlanName(plan) {
-    return plan.replace(/-/g, " ").replace(/\b\w/g, (l) => l.toUpperCase());
-  }
 
   // Abrir modal al hacer click en cualquier botón de plan
   document.querySelectorAll(".plan-button").forEach((btn) => {
@@ -431,7 +406,7 @@
       const errorMessage = document.getElementById("error-message");
 
       // Actualizar nombre del plan
-      planNameEl.textContent = formatPlanName(currentPlan);
+      planNameEl.textContent = planDisplayNames[currentPlan] || currentPlan;
 
       // Limpiar formulario
       emailInput.value = "";
