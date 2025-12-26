@@ -353,10 +353,37 @@ import "../styles/global.css";
         <Footer />
         <WhatsAppFloat />
 
+
+        <!-- Define Turnstile callbacks BEFORE loading the script -->
+        <script is:inline>
+            // Turnstile verification tracking (as window properties for global access)
+            window.turnstileVerified = false;
+            
+            console.log("🔧 [VERIFY] Definiendo callbacks de Turnstile ANTES de cargar el script...");
+
+            // Callbacks de Turnstile
+            window.onTurnstileSuccess = function (token) {
+                console.log("✅ [VERIFY] Turnstile verificado exitosamente");
+                console.log("Token recibido:", token.substring(0, 20) + "...");
+                window.turnstileVerified = true;
+                window.turnstileToken = token;
+                console.log("✅ turnstileVerified ahora es:", window.turnstileVerified);
+            };
+
+            window.onTurnstileError = function (error) {
+                console.error("❌ [VERIFY] Error en Turnstile:", error);
+                window.turnstileVerified = false;
+            };
+
+            window.onTurnstileExpired = function () {
+                console.warn("⚠️ [VERIFY] Token de Turnstile expirado");
+                window.turnstileVerified = false;
+            };
+        </script>
+
         <!-- Cloudflare Turnstile Script -->
         <script
             src="https://challenges.cloudflare.com/turnstile/v0/api.js"
-            async
             defer></script>
     </body>
 </html>

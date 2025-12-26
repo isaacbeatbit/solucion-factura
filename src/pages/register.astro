@@ -540,10 +540,36 @@ const basicFeaturesJSON = JSON.stringify(basicFeatures);
         <Footer />
         <WhatsAppFloat />
 
+        <!-- Define Turnstile callbacks BEFORE loading the script -->
+        <script is:inline>
+            // Turnstile verification tracking (as window properties for global access)
+            window.turnstileVerified = false;
+            
+            console.log("🔧 [REGISTER] Definiendo callbacks de Turnstile ANTES de cargar el script...");
+
+            // Callbacks de Turnstile
+            window.onTurnstileSuccess = function (token) {
+                console.log("✅ [REGISTER] Turnstile verificado exitosamente");
+                console.log("Token recibido:", token.substring(0, 20) + "...");
+                window.turnstileVerified = true;
+                window.turnstileToken = token;
+                console.log("✅ turnstileVerified ahora es:", window.turnstileVerified);
+            };
+
+            window.onTurnstileError = function (error) {
+                console.error("❌ [REGISTER] Error en Turnstile:", error);
+                window.turnstileVerified = false;
+            };
+
+            window.onTurnstileExpired = function () {
+                console.warn("⚠️ [REGISTER] Token de Turnstile expirado");
+                window.turnstileVerified = false;
+            };
+        </script>
+
         <!-- Cloudflare Turnstile Script -->
         <script
             src="https://challenges.cloudflare.com/turnstile/v0/api.js"
-            async
             defer></script>
 
         <script>
@@ -727,55 +753,9 @@ const basicFeaturesJSON = JSON.stringify(basicFeatures);
                     };
                 }
 
-                // Turnstile verification state
-                let turnstileVerified = false;
+
+                // Get submit button reference
                 const submitBtn = document.getElementById("submit-button");
-                
-                // Disable submit button until Turnstile is complete
-                if (submitBtn) {
-                    submitBtn.disabled = true;
-                    submitBtn.style.opacity = "0.6";
-                    submitBtn.style.cursor = "not-allowed";
-                }
-
-                // Turnstile callbacks
-                window.onTurnstileSuccess = function (token) {
-                    console.log("✅ Turnstile verificado exitosamente");
-                    turnstileVerified = true;
-                    if (submitBtn) {
-                        submitBtn.disabled = false;
-                        submitBtn.style.opacity = "1";
-                        submitBtn.style.cursor = "pointer";
-                    }
-                };
-
-                window.onTurnstileError = function (error) {
-                    console.error("❌ Error en Turnstile:", error);
-                    turnstileVerified = false;
-                    showAlert(
-                        "Error en la verificación de seguridad. Por favor recarga la página.",
-                        "error",
-                    );
-                    if (submitBtn) {
-                        submitBtn.disabled = true;
-                        submitBtn.style.opacity = "0.6";
-                        submitBtn.style.cursor = "not-allowed";
-                    }
-                };
-
-                window.onTurnstileExpired = function () {
-                    console.warn("⚠️ Token de Turnstile expirado");
-                    turnstileVerified = false;
-                    showAlert(
-                        "La verificación de seguridad ha expirado. Por favor complétala nuevamente.",
-                        "error",
-                    );
-                    if (submitBtn) {
-                        submitBtn.disabled = true;
-                        submitBtn.style.opacity = "0.6";
-                        submitBtn.style.cursor = "not-allowed";
-                    }
-                };
 
                 // Form submission
                 const form = document.getElementById("register-form");
@@ -799,7 +779,7 @@ const basicFeaturesJSON = JSON.stringify(basicFeatures);
                         e.preventDefault();
 
                         // Verify Turnstile is complete
-                        if (!turnstileVerified) {
+                        if (!window.turnstileVerified) {
                             showAlert(
                                 "Por favor completa la verificación de seguridad",
                                 "error",
@@ -830,7 +810,7 @@ const basicFeaturesJSON = JSON.stringify(basicFeatures);
                         submitLoader.classList.remove("hidden");
 
                         // Get Turnstile token
-                        const turnstileResponse = window.turnstile?.getResponse();
+                        const turnstileResponse = window.turnstileToken || window.turnstile?.getResponse();
 
                         if (!turnstileResponse) {
                             showAlert(
@@ -909,7 +889,7 @@ const basicFeaturesJSON = JSON.stringify(basicFeatures);
                                     "error",
                                 );
                                 // Reset Turnstile para permitir reintentar
-                                turnstileVerified = false;
+                                window.turnstileVerified = false;
                                 window.turnstile?.reset();
                                 submitBtn.disabled = true;
                                 submitText.classList.remove("hidden");
@@ -922,7 +902,7 @@ const basicFeaturesJSON = JSON.stringify(basicFeatures);
                                     "error",
                                 );
                                 // Reset Turnstile para permitir reintentar
-                                turnstileVerified = false;
+                                window.turnstileVerified = false;
                                 window.turnstile?.reset();
                                 submitBtn.disabled = true;
                                 submitText.classList.remove("hidden");
@@ -935,7 +915,7 @@ const basicFeaturesJSON = JSON.stringify(basicFeatures);
                                     "error",
                                 );
                                 // Reset Turnstile para permitir reintentar
-                                turnstileVerified = false;
+                                window.turnstileVerified = false;
                                 window.turnstile?.reset();
                                 submitBtn.disabled = true;
                                 submitText.classList.remove("hidden");
@@ -953,7 +933,7 @@ const basicFeaturesJSON = JSON.stringify(basicFeatures);
                                 "error",
                             );
                             // Reset Turnstile para permitir reintentar
-                            turnstileVerified = false;
+                            window.turnstileVerified = false;
                             window.turnstile?.reset();
                             submitBtn.disabled = true;
                             submitText.classList.remove("hidden");
