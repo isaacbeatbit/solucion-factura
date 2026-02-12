@@ -55,7 +55,7 @@ import "../styles/global.css";
           </p>
         </div>
 
-        <div class="max-w-md mx-auto">
+        <div class="max-w-xl mx-auto">
           <div
             class="rounded-2xl border-2 border-border-light-mode dark:border-border-light shadow-2xl bg-bg-primary-light dark:bg-bg-primary/90 backdrop-blur-sm p-6 md:p-8 lg:p-10"
           >
@@ -141,24 +141,38 @@ import "../styles/global.css";
               <div
                 id="usuario-error"
                 class="hidden rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 dark:border-red-900/60 dark:bg-red-900/20 dark:text-red-300"
-              ></div>
+              >
+              </div>
             </div>
             <div id="usuario-feedback" class="hidden text-center space-y-5">
               <p
                 id="usuario-feedback-message"
                 class="text-base md:text-lg text-text-secondary-light dark:text-text-secondary leading-relaxed"
-              ></p>
+              >
+              </p>
               <p
                 id="usuario-feedback-countdown"
                 class="hidden text-sm text-text-secondary-light dark:text-text-secondary"
-              ></p>
-              <a
-                id="usuario-feedback-cta"
-                href="#planes"
-                class="hidden w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold text-base bg-gradient-to-r from-cyan-500 to-blue-500 text-white hover:from-cyan-600 hover:to-blue-600 transition-all shadow-lg hover:shadow-xl"
               >
-                Ver planes
-              </a>
+              </p>
+              <div
+                id="code-1-actions"
+                class="hidden flex flex-row flex-wrap gap-3 mt-4 w-full"
+              >
+                <a
+                  id="btn-comprar-modulo"
+                  href="#"
+                  class="flex-1 whitespace-nowrap inline-flex items-center justify-center px-6 py-3 rounded-xl font-semibold text-base bg-gradient-to-r from-emerald-500 to-emerald-600 text-white hover:from-emerald-600 hover:to-emerald-700 transition-all shadow-lg cursor-pointer"
+                >
+                  Comprar modulo individual
+                </a>
+                <a
+                  href="/#planes"
+                  class="flex-1 whitespace-nowrap inline-flex items-center justify-center px-6 py-3 rounded-xl font-semibold text-base border-2 border-blue-500 text-blue-600 dark:text-blue-400 dark:border-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all cursor-pointer"
+                >
+                  Actualizar mi plan
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -176,9 +190,29 @@ import "../styles/global.css";
       const feedbackCountdown = document.getElementById(
         "usuario-feedback-countdown",
       );
-      const feedbackCta = document.getElementById("usuario-feedback-cta");
       const errorBox = document.getElementById("usuario-error");
+      const checkoutBaseUrl =
+        "https://pagos.solucionfiscal.online/subscribe/698cfb2b8118f11d5408f32a/modulo-envia-facturas-por-whatsapp";
+      const comprarModuloButton = document.getElementById(
+        "btn-comprar-modulo",
+      ) as HTMLAnchorElement | null;
+      const createCheckoutToken = () =>
+        window.crypto?.randomUUID?.() ??
+        `${Date.now()}-${Math.random().toString(16).slice(2)}`;
 
+      if (comprarModuloButton) {
+        comprarModuloButton.addEventListener("click", (event) => {
+          const finalToken = sessionStorage.getItem("checkout_modulo_token");
+          if (!finalToken) {
+            event.preventDefault();
+            return;
+          }
+          const url = new URL(checkoutBaseUrl);
+          url.searchParams.set("token", finalToken);
+          comprarModuloButton.href = url.toString();
+          window.location.href = url.toString();
+        });
+      }
       if (form) {
         form.addEventListener("submit", async (event) => {
           event.preventDefault();
@@ -194,14 +228,21 @@ import "../styles/global.css";
 
           const formData = new FormData(form as HTMLFormElement);
           const correo = formData.get("correo") as string;
+          const token = createCheckoutToken();
+          sessionStorage.setItem("checkout_modulo_token", token);
+          if (comprarModuloButton) {
+            const url = new URL(checkoutBaseUrl);
+            url.searchParams.set("token", token);
+            comprarModuloButton.href = url.toString();
+          }
           const payload = {
             nombre: formData.get("nombre"),
             correo,
             rfc: formData.get("rfc"),
             password: formData.get("password"),
             origin: "solucion_factura",
+            token,
           };
-
           try {
             const response = await fetch(
               "https://flow.wabotify.com/webhook/6ff754fd-72bb-4f96-a8da-16e90d2df4ae",
@@ -221,7 +262,6 @@ import "../styles/global.css";
               if (feedbackMessage) {
                 feedbackMessage.textContent = `Tu usuario se está creando con tu correo ${correo} y la contraseña que introduciste.`;
               }
-              if (feedbackCta) feedbackCta.classList.add("hidden");
               if (feedbackCountdown) {
                 let remaining = 10;
                 feedbackCountdown.textContent = `Serás redirigido en ${remaining} segundos.`;
@@ -245,10 +285,11 @@ import "../styles/global.css";
               if (formWrapper) formWrapper.classList.add("hidden");
               if (feedback) feedback.classList.remove("hidden");
               if (feedbackMessage) {
-                feedbackMessage.textContent =
-                  "No se puede crear tu usuario hasta que adquieras un plan Premium o Premium Plus.";
+                feedbackMessage.innerHTML =
+                  "Con tu plan actual puedes adquirir este modulo por <strong>$1042&nbsp;MXN</strong> o puedes actualizar tu plan a <strong>Premium</strong> o <strong>Premium Plus</strong> para tener este modulo incluido";
               }
-              if (feedbackCta) feedbackCta.classList.remove("hidden");
+              const code1Actions = document.getElementById("code-1-actions");
+              if (code1Actions) code1Actions.classList.remove("hidden");
               return;
             }
 

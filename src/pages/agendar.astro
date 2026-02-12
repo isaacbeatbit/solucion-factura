@@ -1,0 +1,74 @@
+---
+import Navbar from "../components/Navbar/Navbar.astro";
+import Footer from "../components/Footer/Footer.astro";
+import WhatsAppFloat from "../components/WhatsAppFloat/WhatsAppFloat.astro";
+import "../styles/global.css";
+---
+
+<html lang="es-MX">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/png" href="/favicon.png" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <meta name="color-scheme" content="dark light" />
+        <title>Agendar - Solución Factura</title>
+        <script is:inline>
+            (function () {
+                const savedTheme = localStorage.getItem("theme");
+                const prefersDark =
+                    window.matchMedia &&
+                    window.matchMedia("(prefers-color-scheme: dark)").matches;
+                const theme = savedTheme || (prefersDark ? "dark" : "light");
+                const html = document.documentElement;
+                if (theme === "dark") {
+                    html.setAttribute("data-theme", "dark");
+                    html.classList.add("dark");
+                } else {
+                    html.setAttribute("data-theme", "light");
+                    html.classList.remove("dark");
+                }
+            })();
+        </script>
+        <script src="../scripts/theme.js"></script>
+    </head>
+    <body class="min-h-screen">
+        <Navbar />
+        <main
+            class="py-16 md:py-20 lg:py-24 bg-bg-primary-light dark:bg-bg-primary"
+        >
+            <div
+                class="w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10"
+            >
+                <div class="text-center mb-12">
+                    <h1
+                        class="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary-light dark:text-text-primary mb-4"
+                    >
+                        Agenda una cita
+                    </h1>
+                    <p
+                        class="text-lg text-text-secondary-light dark:text-text-secondary max-w-2xl mx-auto"
+                    >
+                        Selecciona el horario que mejor te convenga para conocer
+                        nuestra plataforma y resolver todas tus dudas.
+                    </p>
+                </div>
+                <div
+                    class="rounded-2xl border-2 border-border-light-mode dark:border-border-light shadow-2xl bg-bg-primary-light dark:bg-bg-primary/90 backdrop-blur-sm p-4 md:p-6 lg:p-8"
+                >
+                    <iframe
+                        src="https://api2.wabotify.ai/widget/booking/s7kaHFxWTgF9zzqxxtrz"
+                        style="width: 100%; border: none; overflow: hidden;"
+                        scrolling="no"
+                        id="s7kaHFxWTgF9zzqxxtrz_1770849443926"></iframe>
+                    <br />
+                    <script
+                        src="https://api2.wabotify.ai/js/form_embed.js"
+                        type="text/javascript"></script>
+                </div>
+            </div>
+        </main>
+        <Footer />
+        <WhatsAppFloat />
+    </body>
+</html>

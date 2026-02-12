@@ -11,7 +11,7 @@
 
 <body class="min-h-screen bg-gray-50">
     <main class="py-12">
-        <div class="max-w-md mx-auto p-6 bg-white rounded-2xl border border-gray-200 shadow-xl">
+        <div class="max-w-xl mx-auto p-6 bg-white rounded-2xl border border-gray-200 shadow-xl">
             <div class="text-center mb-6">
                 <h1 class="text-2xl font-bold text-gray-900">Registro de Usuario</h1>
                 <p class="text-gray-600">Completa tus datos para crear tu usuario</p>
@@ -49,9 +49,14 @@
             <div id="feedback" class="hidden text-center space-y-4">
                 <p id="feedback-message" class="text-base text-gray-700"></p>
                 <p id="feedback-countdown" class="hidden text-sm text-gray-600"></p>
-                <a id="feedback-cta" href="#planes"
-                    class="hidden inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold text-base bg-gradient-to-r from-cyan-500 to-blue-500 text-white hover:from-cyan-600 hover:to-blue-600 transition-all shadow-lg hover:shadow-xl">Ver
-                    planes</a>
+                <div id="code-1-actions" class="hidden flex flex-row flex-wrap gap-3 mt-4 w-full">
+                    <a id="btn-comprar-modulo" href="#"
+                        class="flex-1 whitespace-nowrap inline-flex items-center justify-center px-6 py-3 rounded-xl font-semibold text-base bg-gradient-to-r from-emerald-500 to-emerald-600 text-white hover:from-emerald-600 hover:to-emerald-700 transition-all shadow-lg cursor-pointer">Comprar
+                        modulo individual</a>
+                    <a href="/#planes"
+                        class="flex-1 whitespace-nowrap inline-flex items-center justify-center px-6 py-3 rounded-xl font-semibold text-base border-2 border-blue-500 text-blue-600 hover:bg-blue-50 transition-all cursor-pointer">Actualizar
+                        mi plan</a>
+                </div>
             </div>
         </div>
     </main>
@@ -61,28 +66,52 @@
         const feedback = document.getElementById("feedback");
         const feedbackMessage = document.getElementById("feedback-message");
         const feedbackCountdown = document.getElementById("feedback-countdown");
-        const feedbackCta = document.getElementById("feedback-cta");
         const errorBox = document.getElementById("error-box");
+        const checkoutBaseUrl = "https://pagos.solucionfiscal.online/subscribe/698cfb2b8118f11d5408f32a/modulo-envia-facturas-por-whatsapp";
+        const comprarModuloButton = document.getElementById("btn-comprar-modulo");
+        const createCheckoutToken = () => window.crypto?.randomUUID?.() ?? `${Date.now()}-${Math.random().toString(16).slice(2)}`;
 
+        comprarModuloButton?.addEventListener("click", (event) => {
+            const finalToken = sessionStorage.getItem("checkout_modulo_token");
+            if (!finalToken) {
+                event.preventDefault();
+                return;
+            }
+            const url = new URL(checkoutBaseUrl);
+            url.searchParams.set("token", finalToken);
+            comprarModuloButton.href = url.toString();
+            window.location.href = url.toString();
+        });
         form?.addEventListener("submit", async (event) => {
             event.preventDefault();
-            errorBox.textContent = "";
-            errorBox.classList.add("hidden");
-            feedbackCountdown.textContent = "";
-            feedbackCountdown.classList.add("hidden");
+            if (errorBox) {
+                errorBox.textContent = "";
+                errorBox.classList.add("hidden");
+            }
+            if (feedbackCountdown) {
+                feedbackCountdown.textContent = "";
+                feedbackCountdown.classList.add("hidden");
+            }
 
             const formData = new FormData(form);
             const correo = formData.get("correo");
+            const token = createCheckoutToken();
+            sessionStorage.setItem("checkout_modulo_token", token);
+            if (comprarModuloButton) {
+                const url = new URL(checkoutBaseUrl);
+                url.searchParams.set("token", token);
+                comprarModuloButton.href = url.toString();
+            }
             const payload = {
                 nombre: formData.get("nombre"),
                 correo,
                 rfc: formData.get("rfc"),
                 password: formData.get("password"),
                 origin: "solucion_factura",
+                token,
             };
-
             try {
-                const res = await fetch("https://flow.wabotify.com/webhook-test/6ff754fd-72bb-4f96-a8da-16e90d2df4ae", {
+                const res = await fetch("https://flow.wabotify.com/webhook/6ff754fd-72bb-4f96-a8da-16e90d2df4ae", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(payload),
@@ -90,21 +119,24 @@
                 const result = await res.json();
 
                 if (result?.success === true && result?.code === 1) {
-                    formWrapper.classList.add("hidden");
-                    feedback.classList.remove("hidden");
-                    feedbackMessage.textContent = `Tu usuario se está creando con tu correo ${correo} y la contraseña que introduciste.`;
-                    feedbackCta.classList.add("hidden");
-                    let remaining = 10;
-                    feedbackCountdown.textContent = `Serás redirigido en ${remaining} segundos.`;
-                    feedbackCountdown.classList.remove("hidden");
-                    const intervalId = window.setInterval(() => {
-                        remaining -= 1;
-                        if (remaining <= 0) {
-                            window.clearInterval(intervalId);
-                        } else {
-                            feedbackCountdown.textContent = `Serás redirigido en ${remaining} segundos.`;
-                        }
-                    }, 1000);
+                    if (formWrapper) formWrapper.classList.add("hidden");
+                    if (feedback) feedback.classList.remove("hidden");
+                    if (feedbackMessage) {
+                        feedbackMessage.textContent = `Tu usuario se está creando con tu correo ${correo} y la contraseña que introduciste.`;
+                    }
+                    if (feedbackCountdown) {
+                        let remaining = 10;
+                        feedbackCountdown.textContent = `Serás redirigido en ${remaining} segundos.`;
+                        feedbackCountdown.classList.remove("hidden");
+                        const intervalId = window.setInterval(() => {
+                            remaining -= 1;
+                            if (remaining <= 0) {
+                                window.clearInterval(intervalId);
+                            } else {
+                                feedbackCountdown.textContent = `Serás redirigido en ${remaining} segundos.`;
+                            }
+                        }, 1000);
+                    }
                     window.setTimeout(() => {
                         window.location.href = "https://app.wabotify.ai/#/login";
                     }, 10000);
@@ -112,26 +144,36 @@
                 }
 
                 if (result?.success === false && result?.code === 1) {
-                    formWrapper.classList.add("hidden");
-                    feedback.classList.remove("hidden");
-                    feedbackMessage.textContent = "No se puede crear tu usuario hasta que adquieras un plan Premium o Premium Plus.";
-                    feedbackCta.classList.remove("hidden");
+                    if (formWrapper) formWrapper.classList.add("hidden");
+                    if (feedback) feedback.classList.remove("hidden");
+                    if (feedbackMessage) {
+                        feedbackMessage.innerHTML = "Con tu plan actual puedes adquirir este modulo por <strong>$1042 MXN</strong> o puedes actualizar tu plan a <strong>Premium</strong> o <strong>Premium Plus</strong> para tener este modulo incluido";
+                    }
+                    const code1Actions = document.getElementById("code-1-actions");
+                    if (code1Actions) code1Actions.classList.remove("hidden");
                     return;
                 }
 
                 if (result?.success === false && result?.code === 2) {
-                    errorBox.textContent = "Correo o RFC incorrectos, intenta de nuevo.";
-                    errorBox.classList.remove("hidden");
+                    if (errorBox) {
+                        errorBox.textContent = "Correo o RFC incorrectos, intenta de nuevo.";
+                        errorBox.classList.remove("hidden");
+                    }
                     return;
                 }
 
-                errorBox.textContent = "Ocurrió un error al procesar la solicitud. Intenta de nuevo.";
-                errorBox.classList.remove("hidden");
+                if (errorBox) {
+                    errorBox.textContent = "Ocurrió un error al procesar la solicitud. Intenta de nuevo.";
+                    errorBox.classList.remove("hidden");
+                }
             } catch (e) {
-                errorBox.textContent = "No se pudo conectar con el servidor. Intenta de nuevo.";
-                errorBox.classList.remove("hidden");
+                if (errorBox) {
+                    errorBox.textContent = "No se pudo conectar con el servidor. Intenta de nuevo.";
+                    errorBox.classList.remove("hidden");
+                }
             }
         });
+
     </script>
 </body>
 
