@@ -1,39 +1,6 @@
 ---
-
+const REGISTER_URL = "https://app.solucionfactura.mx/register";
 ---
-
-<script>
-  let selectedPlan = null;
-  let showModal = false;
-
-  function openModal(plan) {
-    selectedPlan = plan;
-    showModal = true;
-    document.body.style.overflow = "hidden";
-    updateModal();
-  }
-
-  function closeModal() {
-    showModal = false;
-    document.body.style.overflow = "";
-    updateModal();
-  }
-
-  function updateModal() {
-    const modal = document.getElementById("plan-modal");
-    if (modal) {
-      modal.style.display = showModal ? "flex" : "none";
-    }
-  }
-
-  // Cerrar modal al hacer click fuera del contenido
-  window.addEventListener("click", function (e) {
-    const modal = document.getElementById("plan-modal");
-    if (showModal && modal && e.target === modal) {
-      closeModal();
-    }
-  });
-</script>
 
 <section
   id="planes"
@@ -112,13 +79,12 @@
           </li>
         </ul>
 
-        <button
-          type="button"
+        <a
           class="plan-button w-full flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all duration-200 cursor-pointer bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-md hover:-translate-y-1 hover:shadow-lg mt-4 shrink-0"
-          data-plan="empresa"
+          href={REGISTER_URL}
         >
           Comenzar Ahora
-        </button>
+        </a>
       </div>
 
       <div
@@ -183,13 +149,12 @@
           </li>
         </ul>
 
-        <button
-          type="button"
+        <a
           class="plan-button w-full flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all duration-200 cursor-pointer bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-md hover:-translate-y-1 hover:shadow-lg mt-4 shrink-0"
-          data-plan="premium"
+          href={REGISTER_URL}
         >
           Más Popular
-        </button>
+        </a>
       </div>
 
       <div
@@ -249,330 +214,13 @@
           </li>
         </ul>
 
-        <button
-          type="button"
+        <a
           class="plan-button w-full flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all duration-200 cursor-pointer bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-md hover:-translate-y-1 hover:shadow-lg mt-4 shrink-0"
-          data-plan="premium_plus"
+          href={REGISTER_URL}
         >
           Plan Completo
-        </button>
+        </a>
       </div>
     </div>
   </div>
 </section>
-
-<!-- Modal centrado para selección de cuenta -->
-<style>
-  #plan-modal {
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    left: 0;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.45);
-    align-items: center;
-    justify-content: center;
-  }
-  #plan-modal.active {
-    display: flex;
-  }
-</style>
-<div id="plan-modal">
-  <div
-    class="bg-bg-card-light dark:bg-bg-card text-text-primary-light dark:text-text-primary rounded-xl max-w-[420px] w-[90vw] p-8 pt-8 pb-6 shadow-xl border border-border-light-mode dark:border-border-light text-center relative"
-  >
-    <button
-      class="close-modal absolute top-4 right-4 bg-transparent border-none text-2xl text-text-secondary-light dark:text-text-secondary cursor-pointer transition-colors hover:text-text-primary-light dark:hover:text-text-primary"
-      aria-label="Cerrar">&times;</button
-    >
-    <div class="text-[1.35rem] font-bold mb-2 text-secondary">
-      Continuar con tu compra
-    </div>
-    <div
-      class="text-sm text-text-secondary-light dark:text-text-secondary mb-6"
-    >
-      Ingresa tu correo electrónico para continuar
-    </div>
-
-    <form id="plan-form">
-      <div class="text-left mb-4">
-        <label
-          for="email-input"
-          class="block text-sm font-semibold mb-2 text-text-primary-light dark:text-text-primary"
-          >Correo electrónico:</label
-        >
-        <input
-          type="email"
-          id="email-input"
-          name="email"
-          placeholder="tu@correo.com"
-          required
-          autocomplete="email"
-          class="w-full px-3 py-3 border border-border-light-mode dark:border-border-light rounded-lg text-base bg-bg-secondary-light dark:bg-bg-secondary text-text-primary-light dark:text-text-primary transition-all focus:outline-none focus:border-secondary focus:bg-bg-primary-light dark:focus:bg-bg-primary"
-        />
-      </div>
-
-      <div
-        class="bg-bg-secondary-light dark:bg-bg-secondary px-3 py-3 rounded-lg mb-6 text-sm border border-border-light-mode dark:border-border-light"
-      >
-        Plan seleccionado: <strong
-          id="selected-plan-name"
-          class="text-secondary capitalize">-</strong
-        >
-      </div>
-
-      <div
-        class="error-message hidden text-red-500 text-sm mt-2"
-        id="error-message"
-      >
-      </div>
-      <div
-        class="loading hidden mt-4 text-text-secondary-light dark:text-text-secondary text-sm"
-        id="loading-message"
-      >
-        Procesando...
-      </div>
-      <div
-        class="success-message hidden mt-4 p-4 bg-bg-secondary-light dark:bg-bg-secondary border border-accent rounded-lg text-text-primary-light dark:text-text-primary text-sm leading-relaxed"
-        id="success-message"
-      >
-        <strong class="text-accent block mb-2">✓ Redirigiendo...</strong>
-        Serás redirigido a otra página para completar tu pago.
-      </div>
-
-      <div class="flex gap-3 mt-6">
-        <button
-          type="button"
-          class="btn-cancel flex-1 px-4 py-3 rounded-lg font-semibold border border-secondary cursor-pointer transition-all text-base bg-bg-secondary-light dark:bg-bg-secondary text-secondary hover:bg-bg-tertiary-light dark:hover:bg-bg-tertiary"
-          >Cancelar</button
-        >
-        <button
-          type="submit"
-          class="btn-submit flex-1 px-4 py-3 rounded-lg font-semibold border-none cursor-pointer transition-all text-base bg-secondary text-white hover:bg-highlight disabled:bg-gray-400 disabled:cursor-not-allowed disabled:opacity-50"
-          >Continuar</button
-        >
-      </div>
-    </form>
-  </div>
-</div>
-<script>
-  // Variable global para compartir con Table.astro
-  if (typeof window !== "undefined") {
-    window.currentPlan = null;
-  }
-  let currentPlan = null;
-
-  // Nombres de display para los planes
-  const planDisplayNames = {
-    emprende: "Emprende",
-    crece: "Crece",
-    empresa: "Empresa",
-    premium: "Premium",
-    premium_plus: "Premium Plus",
-  };
-
-  // Mapeo de planes a nombres de API - compartido globalmente
-  // Estos nombres deben coincidir con los IDs en register.astro
-  if (typeof window !== "undefined") {
-    window.planApiNames = {
-      emprende: "emprende",
-      crece: "crece",
-      empresa: "empresa",
-      premium: "premium",
-      premium_plus: "premium_plus",
-    };
-  }
-  const planApiNames = {
-    emprende: "emprende",
-    crece: "crece",
-    empresa: "empresa",
-    premium: "premium",
-    premium_plus: "premium_plus",
-  };
-
-  // Abrir modal al hacer click en cualquier botón de plan
-  document.querySelectorAll(".plan-button").forEach((btn) => {
-    btn.addEventListener("click", function (e) {
-      e.preventDefault();
-      currentPlan = btn.getAttribute("data-plan");
-      if (typeof window !== "undefined") {
-        window.currentPlan = currentPlan;
-      }
-      const modal = document.getElementById("plan-modal");
-      const planNameEl = document.getElementById("selected-plan-name");
-      const emailInput = document.getElementById("email-input");
-      const errorMessage = document.getElementById("error-message");
-
-      // Actualizar nombre del plan
-      planNameEl.textContent = planDisplayNames[currentPlan] || currentPlan;
-
-      // Limpiar formulario
-      emailInput.value = "";
-      errorMessage.classList.add("hidden");
-      errorMessage.classList.remove("block");
-      errorMessage.textContent = "";
-
-      // Mostrar modal
-      modal.classList.add("active");
-      document.body.style.overflow = "hidden";
-
-      // Focus en el input
-      setTimeout(() => emailInput.focus(), 100);
-    });
-  });
-
-  // Cerrar modal
-  function closeModalHandler() {
-    const modal = document.getElementById("plan-modal");
-    const submitBtn = document.querySelector(".btn-submit");
-    const successMessage = document.getElementById("success-message");
-    const loadingMessage = document.getElementById("loading-message");
-    const errorMessage = document.getElementById("error-message");
-
-    modal.classList.remove("active");
-    document.body.style.overflow = "";
-    currentPlan = null;
-    if (typeof window !== "undefined") {
-      window.currentPlan = null;
-    }
-
-    // Resetear estado del botón y mensajes
-    if (submitBtn) submitBtn.disabled = false;
-    if (successMessage) {
-      successMessage.classList.add("hidden");
-      successMessage.classList.remove("block");
-    }
-    if (loadingMessage) {
-      loadingMessage.classList.add("hidden");
-      loadingMessage.classList.remove("block");
-    }
-    if (errorMessage) {
-      errorMessage.classList.add("hidden");
-      errorMessage.classList.remove("block");
-    }
-  }
-
-  // Cerrar modal al hacer click en la X o botón cancelar
-  document
-    .querySelector("#plan-modal .close-modal")
-    .addEventListener("click", closeModalHandler);
-  document
-    .querySelector("#plan-modal .btn-cancel")
-    .addEventListener("click", closeModalHandler);
-
-  // Cerrar modal al hacer click fuera del contenido
-  document.getElementById("plan-modal").addEventListener("click", function (e) {
-    if (e.target === this) {
-      closeModalHandler();
-    }
-  });
-
-  // Manejar envío del formulario
-  document
-    .getElementById("plan-form")
-    .addEventListener("submit", async function (e) {
-      e.preventDefault();
-
-      const emailInput = document.getElementById("email-input");
-      const submitBtn = document.querySelector(".btn-submit");
-      const errorMessage = document.getElementById("error-message");
-      const loadingMessage = document.getElementById("loading-message");
-      const email = emailInput.value.trim();
-
-      // Obtener currentPlan de variable local o global
-      const planToUse =
-        currentPlan ||
-        (typeof window !== "undefined" ? window.currentPlan : null);
-
-      if (!email || !planToUse) return;
-
-      // Validar email básico
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) {
-        errorMessage.textContent = "Por favor ingresa un correo válido";
-        errorMessage.classList.remove("hidden");
-        errorMessage.classList.add("block");
-        return;
-      }
-
-      // Ocultar error y mostrar loading
-      errorMessage.classList.add("hidden");
-      errorMessage.classList.remove("block");
-      loadingMessage.classList.remove("hidden");
-      loadingMessage.classList.add("block");
-      submitBtn.disabled = true;
-
-      try {
-        // Obtener el nombre del plan para la API
-        const apiNames =
-          planApiNames ||
-          (typeof window !== "undefined" ? window.planApiNames : null);
-        const planType = apiNames ? apiNames[planToUse] : null;
-
-        if (!planType) {
-          throw new Error("Plan no válido");
-        }
-
-        // Construir URL con query params
-        const apiUrl = new URL(
-          "https://flow.wabotify.com/webhook/b99e1b24-f2d7-4d8c-8758-637fa6af4647",
-        );
-        apiUrl.searchParams.append("email", email);
-        apiUrl.searchParams.append("plan_type", planType);
-
-        // Hacer la consulta
-        const response = await fetch(apiUrl.toString(), {
-          method: "GET",
-        });
-
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const data = await response.json();
-
-        // Verificar que la respuesta tenga el link y el status
-        if (!data.link) {
-          throw new Error("No se recibió URL de redirección");
-        }
-
-        if (!data.status || (data.status !== "active_user" && data.status !== "new_user")) {
-          throw new Error("Respuesta inválida del servidor");
-        }
-
-        // Ocultar loading y mostrar mensaje de éxito
-        loadingMessage.classList.add("hidden");
-        loadingMessage.classList.remove("block");
-        const successMessage = document.getElementById("success-message");
-        successMessage.classList.remove("hidden");
-        successMessage.classList.add("block");
-
-        // Esperar 1.5 segundos antes de redirigir
-        setTimeout(() => {
-          if (data.status === "active_user") {
-            // Usuario activo: abrir en nueva pestaña
-            window.open(data.link, "_blank");
-            
-            // Cerrar modal después de 500ms
-            setTimeout(() => {
-              closeModalHandler();
-            }, 500);
-          } else {
-            // Usuario nuevo: redirigir en la misma página
-            window.location.href = data.link;
-          }
-        }, 1500);
-      } catch (error) {
-        console.error("Error:", error);
-        errorMessage.textContent =
-          "Ocurrió un error. Por favor intenta de nuevo.";
-        errorMessage.classList.remove("hidden");
-        errorMessage.classList.add("block");
-        loadingMessage.classList.add("hidden");
-        loadingMessage.classList.remove("block");
-        submitBtn.disabled = false;
-      }
-    });
-</script>

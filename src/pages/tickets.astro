@@ -224,16 +224,16 @@ import "../styles/global.css";
                           class="w-full px-4 py-3 rounded-xl bg-bg-secondary-light dark:bg-bg-secondary border-2 border-border-light-mode dark:border-border-light text-text-primary-light dark:text-text-primary focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all cursor-pointer shadow-sm hover:shadow-md font-normal appearance-none pr-10"
                         >
                           <option value="">Seleccionar...</option>
-                          <option value="Sistema de facturacion"
-                            >Sistema de facturación</option
-                          >
-                          <option value="Sistema contable"
-                            >Sistema contable</option
+                          <option value="Otro">Otro</option>
+                          <option value="Sistema Contable"
+                            >Sistema Contable</option
                           >
                           <option value="Sistema Descarga XML"
                             >Sistema Descarga XML</option
                           >
-                          <option value="Otro">Otro</option>
+                          <option value="Sistema de Facturacion"
+                            >Sistema de Facturacion</option
+                          >
                         </select>
                         <span
                           class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-text-secondary-light dark:text-text-secondary"
@@ -266,11 +266,10 @@ import "../styles/global.css";
                           name="priority"
                           class="w-full px-4 py-3 rounded-xl bg-bg-secondary-light dark:bg-bg-secondary border-2 border-border-light-mode dark:border-border-light text-text-primary-light dark:text-text-primary focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all cursor-pointer shadow-sm hover:shadow-md font-normal appearance-none pr-10"
                         >
-                          <option value="normal">Normal</option>
-                          <option value="low">Baja</option>
-                          <option value="medium">Media</option>
-                          <option value="high">Alta</option>
-                          <option value="urgent">Urgente</option>
+                          <option value="Urgente">Urgente</option>
+                          <option value="Alta">Alta</option>
+                          <option value="Media">Media</option>
+                          <option value="Baja">Baja</option>
                         </select>
                         <span
                           class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-text-secondary-light dark:text-text-secondary"
@@ -509,6 +508,15 @@ import "../styles/global.css";
             Tu solicitud ha sido recibida. Nos pondremos en contacto contigo
             pronto.
           </p>
+          <a
+            id="viewTicketBtn"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hidden block w-full mb-3 px-6 py-3 bg-gradient-to-br from-blue-500 to-blue-600 text-white font-bold rounded-xl transition-all hover:shadow-xl hover:-translate-y-0.5 text-center"
+          >
+            Ir a mi ticket
+          </a>
           <button
             id="closeAlert"
             class="w-full px-6 py-3 bg-gradient-to-br from-green-500 to-green-600 text-white font-bold rounded-xl transition-all hover:shadow-xl hover:-translate-y-0.5"
@@ -524,7 +532,8 @@ import "../styles/global.css";
 
     <script>
       // ------------ 🔧 CONFIGURACIÓN ------------
-      const WEBHOOK_URL = "https://flow.wabotify.com/webhook/create-ticket";
+      const WEBHOOK_URL =
+        "https://flow.wabotify.com/webhook/43b097e1-036c-4014-bbc5-02eda4eb53f8";
 
       // ------------ 📌 Convertir archivos a Base64 ------------
       function toBase64(
@@ -742,6 +751,9 @@ import "../styles/global.css";
           const responseBox = document.getElementById(
             "responseBox",
           ) as HTMLPreElement;
+          const viewTicketBtn = document.getElementById(
+            "viewTicketBtn",
+          ) as HTMLAnchorElement;
           const originalBtnContent = submitBtn.innerHTML;
 
           // Deshabilitar botón y mostrar loading
@@ -766,6 +778,8 @@ import "../styles/global.css";
           responseBox.textContent =
             "Por favor espera mientras procesamos tu solicitud.";
           responseBox.className = "text-xs text-blue-600 dark:text-blue-400";
+          viewTicketBtn.classList.add("hidden");
+          viewTicketBtn.removeAttribute("href");
 
           const formData = new FormData(form);
 
@@ -778,11 +792,10 @@ import "../styles/global.css";
             source: (formData.get("metadata[source]") as string) || "",
           };
 
-          // Adjuntos desde selectedFiles
-          const attachments = [];
-          for (let f of selectedFiles) {
-            attachments.push(await toBase64(f));
-          }
+          // Archivos para webhook (si no hay, enviar [])
+          const files = selectedFiles.length
+            ? await Promise.all(selectedFiles.map((file) => toBase64(file)))
+            : [];
 
           // Formatear el número de WhatsApp
           let lada =
@@ -794,28 +807,48 @@ import "../styles/global.css";
           let customer_phone = "";
           if (lada === "+52" && phone.length === 10) {
             // México: +52 1 [número]
-            customer_phone = `+521${phone}`;
+            customer_phone = `+52${phone}`;
           } else if (lada === "+1" && phone.length === 10) {
             // USA/Canadá: +1 1 [número] (si también se requiere el 1, si no, solo +1)
-            customer_phone = `+11${phone}`;
+            customer_phone = `+1${phone}`;
           } else {
             // Fallback: solo lada + número
             customer_phone = `${lada}${phone}`;
           }
 
           // JSON final
+          // Normalizar prioridad para enviar exactamente como en el select
+          let priority = formData.get("priority") as string;
+          // Si por alguna razón el valor no es uno de los permitidos, fallback a "Media"
+          if (!["Urgente", "Alta", "Media", "Baja"].includes(priority)) {
+            priority = "Media";
+          }
+
+          // Normalizar sistema afectado para enviar exactamente como en el select
+          let customer_group = formData.get("customer_group") as string;
+          if (
+            ![
+              "Otro",
+              "Sistema Contable",
+              "Sistema Descarga XML",
+              "Sistema de Facturacion",
+            ].includes(customer_group)
+          ) {
+            customer_group = "Otro";
+          }
+
           const body = {
             inbox_email: formData.get("inbox_email") as string,
             customer_email: formData.get("customer_email") as string,
             customer_name: formData.get("customer_name") as string,
             customer_phone,
-            customer_group: formData.get("customer_group") as string,
+            customer_group,
             subject: formData.get("subject") as string,
             message: formData.get("message") as string,
-            priority: formData.get("priority") as string,
+            priority,
             assigned_to: formData.get("assigned_to") as string,
             metadata,
-            attachments,
+            files,
           };
 
           try {
@@ -827,9 +860,14 @@ import "../styles/global.css";
               body: JSON.stringify(body),
             });
 
-            const data = await res.json();
+            let data: { publicUrl?: string; error?: boolean } = {};
+            try {
+              data = await res.json();
+            } catch {
+              data = {};
+            }
 
-            if (res.ok) {
+            if (res.ok && data.publicUrl) {
               // Éxito
               responseContainer.className =
                 "mt-6 p-6 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg";
@@ -839,13 +877,15 @@ import "../styles/global.css";
               responseTitle.className =
                 "text-sm font-semibold text-green-700 dark:text-green-300 mb-1";
               responseBox.textContent =
-                "Tu ticket ha sido enviado. Nos pondremos en contacto contigo pronto.\n\nID: " +
-                (data.id || "N/A");
+                "Tu ticket fue creado correctamente.\n\nURL pública:\n" +
+                data.publicUrl;
               responseBox.className =
                 "text-xs text-green-600 dark:text-green-400";
+              viewTicketBtn.href = data.publicUrl;
+              viewTicketBtn.classList.remove("hidden");
 
               // Mostrar alert personalizado
-              showCustomAlert();
+              showCustomAlert(data.publicUrl);
 
               // Scroll al inicio de la página
               window.scrollTo({ top: 0, behavior: "smooth" });
@@ -865,10 +905,13 @@ import "../styles/global.css";
               responseTitle.className =
                 "text-sm font-semibold text-red-700 dark:text-red-300 mb-1";
               responseBox.textContent =
-                data.message ||
-                "Ocurrió un error al procesar tu solicitud. Por favor inténtalo de nuevo.";
+                "No se pudo crear el ticket. Inténtalo de nuevo en unos minutos.";
               responseBox.className =
                 "text-xs text-red-600 dark:text-red-400 whitespace-pre-wrap font-mono";
+              viewTicketBtn.classList.add("hidden");
+              alert(
+                "No se pudo crear el ticket. Intenta de nuevo o más tarde.",
+              );
             }
           } catch (err) {
             // Error de conexión
@@ -882,6 +925,8 @@ import "../styles/global.css";
             responseBox.textContent =
               "No se pudo conectar con el servidor. Verifica tu conexión a internet e inténtalo de nuevo.";
             responseBox.className = "text-xs text-red-600 dark:text-red-400";
+            viewTicketBtn.classList.add("hidden");
+            alert("Error de conexión. Intenta de nuevo o más tarde.");
           } finally {
             // Restaurar botón
             submitBtn.disabled = false;
@@ -890,11 +935,21 @@ import "../styles/global.css";
         });
 
       // ------------ 🎨 Funciones para el alert personalizado ------------
-      function showCustomAlert() {
+      function showCustomAlert(publicUrl?: string) {
         const alertOverlay = document.getElementById("customAlert");
         const alertContent = document.getElementById("alertContent");
+        const viewTicketBtn = document.getElementById(
+          "viewTicketBtn",
+        ) as HTMLAnchorElement;
 
-        if (alertOverlay && alertContent) {
+        if (alertOverlay && alertContent && viewTicketBtn) {
+          if (publicUrl) {
+            viewTicketBtn.href = publicUrl;
+            viewTicketBtn.classList.remove("hidden");
+          } else {
+            viewTicketBtn.classList.add("hidden");
+            viewTicketBtn.removeAttribute("href");
+          }
           alertOverlay.classList.remove("hidden");
           // Pequeño delay para la animación
           setTimeout(() => {

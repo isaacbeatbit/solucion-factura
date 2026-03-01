@@ -718,16 +718,9 @@ const plans = [
     });
   });
 
-  // Nombres de display para los planes
-  const planDisplayNames: Record<string, string> = {
-    emprende: "Emprende",
-    crece: "Crece",
-    empresa: "Empresa",
-    premium: "Premium",
-    premium_plus: "Premium Plus",
-  };
+  const registerUrl = "https://app.solucionfactura.mx/register";
 
-  // Seleccionar todos los botones de compra (los que tienen data-plan pero no son toggles)
+  // Redirigir todos los botones de compra al registro
   const buyButtons = document.querySelectorAll(
     "button[data-plan]:not(.toggle-mobile)",
   );
@@ -735,41 +728,7 @@ const plans = [
   buyButtons.forEach((btn) => {
     btn.addEventListener("click", function (e) {
       e.preventDefault();
-      const plan = btn.getAttribute("data-plan");
-      const modal = document.getElementById("plan-modal");
-      const planNameEl = document.getElementById("selected-plan-name");
-      const emailInput = document.getElementById(
-        "email-input",
-      ) as HTMLInputElement;
-      const errorMessage = document.getElementById("error-message");
-
-      if (!modal || !planNameEl || !emailInput || !plan) {
-        console.warn("Modal elements not found");
-        return;
-      }
-
-      // Actualizar nombre del plan
-      planNameEl.textContent = planDisplayNames[plan] || plan;
-
-      // Limpiar formulario
-      emailInput.value = "";
-      if (errorMessage) {
-        errorMessage.classList.remove("show");
-        errorMessage.textContent = "";
-      }
-
-      // El plan ya está en snake_case, no necesita conversión
-      // Actualizar currentPlan global (definida en Prices.astro)
-      if (typeof window !== "undefined") {
-        (window as any).currentPlan = plan;
-      }
-
-      // Mostrar modal
-      modal.classList.add("active");
-      document.body.style.overflow = "hidden";
-
-      // Focus en el input
-      setTimeout(() => emailInput.focus(), 100);
+      window.location.href = registerUrl;
     });
   });
 </script>
