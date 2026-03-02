@@ -860,14 +860,22 @@ import "../styles/global.css";
               body: JSON.stringify(body),
             });
 
-            let data: { publicUrl?: string; error?: boolean } = {};
+            let data: unknown = null;
             try {
               data = await res.json();
             } catch {
-              data = {};
+              data = null;
             }
 
-            if (res.ok && data.publicUrl) {
+            let publicUrl = "";
+            if (Array.isArray(data) && data.length > 0) {
+              const firstItem = data[0] as { publicUrl?: unknown };
+              if (typeof firstItem?.publicUrl === "string") {
+                publicUrl = firstItem.publicUrl;
+              }
+            }
+
+            if (res.status === 200 && publicUrl) {
               // Éxito
               responseContainer.className =
                 "mt-6 p-6 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg";
@@ -878,14 +886,14 @@ import "../styles/global.css";
                 "text-sm font-semibold text-green-700 dark:text-green-300 mb-1";
               responseBox.textContent =
                 "Tu ticket fue creado correctamente.\n\nURL pública:\n" +
-                data.publicUrl;
+                publicUrl;
               responseBox.className =
                 "text-xs text-green-600 dark:text-green-400";
-              viewTicketBtn.href = data.publicUrl;
+              viewTicketBtn.href = publicUrl;
               viewTicketBtn.classList.remove("hidden");
 
               // Mostrar alert personalizado
-              showCustomAlert(data.publicUrl);
+              showCustomAlert(publicUrl);
 
               // Scroll al inicio de la página
               window.scrollTo({ top: 0, behavior: "smooth" });
@@ -896,37 +904,18 @@ import "../styles/global.css";
               renderFileList();
               responseContainer.classList.add("hidden");
             } else {
-              // Error del servidor
-              responseContainer.className =
-                "mt-6 p-6 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg";
-              responseIcon.innerHTML =
-                '<svg class="h-5 w-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>';
-              responseTitle.textContent = "Error al crear el ticket";
-              responseTitle.className =
-                "text-sm font-semibold text-red-700 dark:text-red-300 mb-1";
-              responseBox.textContent =
-                "No se pudo crear el ticket. Inténtalo de nuevo en unos minutos.";
-              responseBox.className =
-                "text-xs text-red-600 dark:text-red-400 whitespace-pre-wrap font-mono";
+              // Error del servidor: no mostrar detalle técnico en UI
               viewTicketBtn.classList.add("hidden");
-              alert(
-                "No se pudo crear el ticket. Intenta de nuevo o más tarde.",
-              );
+              viewTicketBtn.removeAttribute("href");
+              responseContainer.classList.add("hidden");
+              showError("Hubo un error al crear tu ticket, intenta nuevamente.");
             }
           } catch (err) {
             // Error de conexión
-            responseContainer.className =
-              "mt-6 p-6 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg";
-            responseIcon.innerHTML =
-              '<svg class="h-5 w-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>';
-            responseTitle.textContent = "Error de conexión";
-            responseTitle.className =
-              "text-sm font-semibold text-red-700 dark:text-red-300 mb-1";
-            responseBox.textContent =
-              "No se pudo conectar con el servidor. Verifica tu conexión a internet e inténtalo de nuevo.";
-            responseBox.className = "text-xs text-red-600 dark:text-red-400";
+            responseContainer.classList.add("hidden");
             viewTicketBtn.classList.add("hidden");
-            alert("Error de conexión. Intenta de nuevo o más tarde.");
+            viewTicketBtn.removeAttribute("href");
+            showError("Hubo un error al crear tu ticket, intenta nuevamente.");
           } finally {
             // Restaurar botón
             submitBtn.disabled = false;
@@ -935,6 +924,12 @@ import "../styles/global.css";
         });
 
       // ------------ 🎨 Funciones para el alert personalizado ------------
+      // Mostrar error con alert genérico
+      function showError(message?: string) {
+        // eslint-disable-next-line no-alert
+        alert(message || "Hubo un error al crear tu ticket, intenta nuevamente.");
+      }
+
       function showCustomAlert(publicUrl?: string) {
         const alertOverlay = document.getElementById("customAlert");
         const alertContent = document.getElementById("alertContent");
