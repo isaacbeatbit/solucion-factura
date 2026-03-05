@@ -868,10 +868,10 @@ import "../styles/global.css";
             }
 
             let publicUrl = "";
-            if (Array.isArray(data) && data.length > 0) {
-              const firstItem = data[0] as { publicUrl?: unknown };
-              if (typeof firstItem?.publicUrl === "string") {
-                publicUrl = firstItem.publicUrl;
+            if (data && typeof data === "object") {
+              const asObject = data as { publicUrl?: unknown };
+              if (typeof asObject.publicUrl === "string") {
+                publicUrl = asObject.publicUrl;
               }
             }
 
@@ -908,7 +908,9 @@ import "../styles/global.css";
               viewTicketBtn.classList.add("hidden");
               viewTicketBtn.removeAttribute("href");
               responseContainer.classList.add("hidden");
-              showError("Hubo un error al crear tu ticket, intenta nuevamente.");
+              showError(
+                "Hubo un error al crear tu ticket, intenta nuevamente.",
+              );
             }
           } catch (err) {
             // Error de conexión
@@ -927,7 +929,9 @@ import "../styles/global.css";
       // Mostrar error con alert genérico
       function showError(message?: string) {
         // eslint-disable-next-line no-alert
-        alert(message || "Hubo un error al crear tu ticket, intenta nuevamente.");
+        alert(
+          message || "Hubo un error al crear tu ticket, intenta nuevamente.",
+        );
       }
 
       function showCustomAlert(publicUrl?: string) {
