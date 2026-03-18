@@ -1,5 +1,10 @@
 ---
-
+import { Image } from "astro:assets";
+import dashboard from "../../../images/preview/dashboard.png";
+import conciliaciones from "../../../images/preview/conciliaciones.png";
+import descargaXml from "../../../images/preview/descarga-xml.png";
+import empresas from "../../../images/preview/empresas.png";
+import factura from "../../../images/preview/factura.png";
 ---
 
 <section class="py-16 md:py-20 lg:py-24 bg-bg-primary-light dark:bg-bg-primary">
@@ -37,12 +42,13 @@
             class="carousel-slide active"
             style="min-width: 100%; flex-shrink: 0; position: relative; width: 100%; height: 450px; overflow: hidden; border-radius: 8px;"
           >
-            <img
-              src="https://solucionfactura.mx/images/1"
+            <Image
+              src={dashboard}
               alt="Dashboard Principal"
               loading="eager"
-              style="width: 100%; height: 100%; object-fit: cover; display: block;"
+              style="width: 100%; height: 100%; object-fit: container; display: block;"
             />
+
             <div
               class="slide-overlay"
               style="position: absolute; bottom: -20px; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.95)); color: white; padding: 2rem; text-align: left; text-shadow: 1px 1px 2px rgba(0,0,0,0.7);"
@@ -62,11 +68,11 @@
             class="carousel-slide"
             style="min-width: 100%; flex-shrink: 0; position: relative; width: 100%; height: 450px; overflow: hidden; border-radius: 8px;"
           >
-            <img
-              src="https://solucionfactura.mx/images/2"
+            <Image
+              src={factura}
               alt="Generación de Facturas"
               loading="lazy"
-              style="width: 100%; height: 100%; object-fit: cover; display: block;"
+              style="width: 100%; height: 100%; object-fit: container ; display: block;"
             />
             <div
               class="slide-overlay"
@@ -83,7 +89,7 @@
             </div>
           </div>
 
-          <div
+          <!-- <div
             class="carousel-slide"
             style="min-width: 100%; flex-shrink: 0; position: relative; width: 100%; height: 450px; overflow: hidden; border-radius: 8px;"
           >
@@ -91,7 +97,7 @@
               src="https://solucionfactura.mx/images/3"
               alt="Convertidor PDF a Excel"
               loading="lazy"
-              style="width: 100%; height: 100%; object-fit: cover; display: block;"
+              style="width: 100%; height: 100%; object-fit: container; display: block;"
             />
             <div
               class="slide-overlay"
@@ -106,17 +112,17 @@
                 Convierte estados de cuenta a Excel
               </p>
             </div>
-          </div>
+          </div> -->
 
           <div
             class="carousel-slide"
             style="min-width: 100%; flex-shrink: 0; position: relative; width: 100%; height: 450px; overflow: hidden; border-radius: 8px;"
           >
-            <img
-              src="https://solucionfactura.mx/images/4"
+            <Image
+              src={empresas}
               alt="Multi-empresa"
               loading="lazy"
-              style="width: 100%; height: 100%; object-fit: cover; display: block;"
+              style="width: 100%; height: 100%; object-fit: container; display: block;"
             />
             <div
               class="slide-overlay"
@@ -137,11 +143,11 @@
             class="carousel-slide"
             style="min-width: 100%; flex-shrink: 0; position: relative; width: 100%; height: 450px; overflow: hidden; border-radius: 8px;"
           >
-            <img
-              src="https://solucionfactura.mx/images/5"
+            <Image
+              src={descargaXml}
               alt="Descarga XML"
               loading="lazy"
-              style="width: 100%; height: 100%; object-fit: cover; display: block;"
+              style="width: 100%; height: 100%; object-fit: container; display: block;"
             />
             <div
               class="slide-overlay"
@@ -162,11 +168,11 @@
             class="carousel-slide"
             style="min-width: 100%; flex-shrink: 0; position: relative; width: 100%; height: 450px; overflow: hidden; border-radius: 8px;"
           >
-            <img
-              src="https://solucionfactura.mx/images/6"
+            <Image
+              src={conciliaciones}
               alt="Conciliación Bancaria"
               loading="lazy"
-              style="width: 100%; height: 100%; object-fit: cover; display: block;"
+              style="width: 100%; height: 100%; object-fit: container; display: block;"
             />
             <div
               class="slide-overlay"
@@ -182,7 +188,7 @@
               </p>
             </div>
           </div>
-
+<!-- 
           <div
             class="carousel-slide"
             style="min-width: 100%; flex-shrink: 0; position: relative; width: 100%; height: 450px; overflow: hidden; border-radius: 8px;"
@@ -191,7 +197,7 @@
               src="https://solucionfactura.mx/images/7"
               alt="Facturación Masiva"
               loading="lazy"
-              style="width: 100%; height: 100%; object-fit: cover; display: block;"
+              style="width: 100%; height: 100%; object-fit: container; display: block;"
             />
             <div
               class="slide-overlay"
@@ -206,9 +212,9 @@
                 Procesa miles de facturas con un solo clic
               </p>
             </div>
-          </div>
+          </div> -->
 
-          <div
+          <!-- <div
             class="carousel-slide"
             style="min-width: 100%; flex-shrink: 0; position: relative; width: 100%; height: 450px; overflow: hidden; border-radius: 8px;"
           >
@@ -216,7 +222,7 @@
               src="https://solucionfactura.mx/images/8"
               alt="Conciliación Bancaria Avanzada"
               loading="lazy"
-              style="width: 100%; height: 100%; object-fit: cover; display: block;"
+              style="width: 100%; height: 100%; object-fit: container; display: block;"
             />
             <div
               class="slide-overlay"
@@ -231,7 +237,7 @@
                 Automatiza la conciliación de tus cuentas
               </p>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
 
